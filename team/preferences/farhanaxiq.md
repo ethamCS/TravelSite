@@ -22,7 +22,7 @@
 1. __What happens if people have different opinions on the quality of the work?__ 
    * ask outside opinions or consultation (i.e: other group or TA) and see if it match any of us and then decide from there.
 1. __How will you deal with different work habits of team members?__ 
-   * either cope with it or create own standard baseline of sort
+   * either cope with it or create own (group) standard baseline of sort
 1. __Do you want to have a standing meeting time outside of class?__ 
    * yes, preferrably when everyone is available.
 1. __How often do you think the team will need to meet outside of class?__ 
@@ -31,7 +31,7 @@
    * yes
 1. __What will you do if every team member except one agrees on something?__ 
    * maybe ask them why they disagree and we'll accomodate those needs.
-1. __What will you do if one person seems to be dominating the team process?__ 
+1. __What will you do if one person seems to be dominating the team process?__ s
    * ask them to back down a bit and listen to others as well.
 1. __What will you do if you feel most of the facilitation responsibilities are falling on you?__ 
    * get some help to assist you and also maybe, take a break and clear the mind a little bit
