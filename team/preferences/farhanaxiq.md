@@ -10,7 +10,7 @@
 1. __What kinds of obstacles might you encounter in trying to reach both your team and personal goals?__ 
    * I may screw up in the process and bringing down the rest of the teams (let's hope that doesn't happen). 
 1. __What happens if some people on the team want to get an “A” while others think a “B” will be acceptable?__ 
-   * maybe we should ask everyone to get an A...`¯\_(ツ)_/¯`
+   * maybe we should ask everyone to get an A, but if other really couldn't achieve A and can only settle for B, we can settle with those and make goal of getting A a bonus.
 1. __Is it acceptable for some team members to do more work on the assignment in order to get an “A”?__ 
    * it's best for the team to do them equally 
 1. __How much time per week do you anticipate it will take to make the project successful?__ 
