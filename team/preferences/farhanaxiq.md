@@ -31,7 +31,7 @@
    * yes
 1. __What will you do if every team member except one agrees on something?__ 
    * maybe ask them why they disagree and we'll accomodate those needs.
-1. __What will you do if one person seems to be dominating the team process?__ s
+1. __What will you do if one person seems to be dominating the team process?__ 
    * ask them to back down a bit and listen to others as well.
 1. __What will you do if you feel most of the facilitation responsibilities are falling on you?__ 
    * get some help to assist you and also maybe, take a break and clear the mind a little bit
