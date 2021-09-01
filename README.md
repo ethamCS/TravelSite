@@ -1,5 +1,11 @@
 # t17 - We Push to Main
-![alt text](/team/images/daveMeme.jpg?raw=true)
+<p>
+    <img src="/team/images/daveMeme.jpg?raw=true" alt>
+</p>
+<p>
+    <em>Sorry Dave</em>
+</p>
+
 | Last Name | First Name | CSU eName | Github | CSU Email |
 |---|---|---|---|---|
 |Myers|Ethan|etham|ethamCS|etham@rams.colostate.edu|
