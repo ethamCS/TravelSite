@@ -7,7 +7,7 @@
 ### *Tell them who we are.*
 
 ## Scrum Master
-### *firstname lastname*
+### *Ethan Myers*
 
 ## Definition of Done
 
