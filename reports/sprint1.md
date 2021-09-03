@@ -35,7 +35,7 @@
 
 ## Planned Epics
 
-{REMOVE THIS:  Write paragraphs, not bullets.}
+The first epic that our team is planning to complete is the Team Identification epic. The purpose of this epic is to let the user know the name of the team that built the application components that they are using. In order to complete this epic we are going to have to make a team name, then we are going to have to update our team identification (Team ## and name) in the browser tab/HTML Title and the application header and footer.
 
 ## Metrics
 
