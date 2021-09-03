@@ -37,6 +37,8 @@
 
 The first epic that our team is planning to complete is the Team Identification epic. The purpose of this epic is to let the user know the name of the team that built the application components that they are using. In order to complete this epic we are going to have to make a team name, then we are going to have to update our team identification (Team ## and name) in the browser tab/HTML Title and the application header and footer.
 
+The second epic that we will complete is the About epic.  The purpose of this epic is to let our users know who we are, and to give them information about ourselves.  The team information includes our team image and missions statement.  We will also give the users information about each individual member on our team, including an image of each member, our names, and a short biography for each of us. 
+
 ## Metrics
 
 These metrics reflect what was planned at the beginning of the sprint and what we actually completed by the end of the sprint.
