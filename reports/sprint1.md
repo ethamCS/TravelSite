@@ -1,4 +1,4 @@
-# Sprint # - *your team number* - *your team name*
+# Sprint 1 - *t17* - *We Push to Main*
 
 ## Product Goal
 ### *The Product Goal is an easy-to-use mobile trip planning application that satisfies a global audience.*
