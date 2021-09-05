@@ -13,7 +13,7 @@ export const teamData =
 export const memberData = [
     {
         name: "Christian Carnahan",
-        bio: "My name is Christian Carnahan, I am a Computer Science major from Boise, I am a High Jumper on the track and Field team here at CSU. In my free time I enjoy working on my Jeep as well as golfing, climbing, and mountain biking.",
+        bio: "My name is Christian Carnahan, I am a Computer Science major from Boise, Idaho. I am a High Jumper on the Track and Field team here at CSU. In my free time I enjoy working on my Jeep as well as golfing, climbing, and mountain biking.",
         homeTown: "Boise, Idaho",
         imagePath: christianImage
     },
