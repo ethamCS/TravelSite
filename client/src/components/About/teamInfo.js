@@ -37,9 +37,9 @@ export const memberData = [
         imagePath: memberPic
     },
     {
-        name: "Team Member 5",
-        bio: "Bio Here",
-        homeTown: "Hometown",
+        name: "Ethan Myers",
+        bio: "I'm Ethan, a computer science major in my senior year. I enjoy to oil painting and enduro mountain biking in my free time.",
+        homeTown: "Boulder, Colorado",
         imagePath: memberPic
     },
 ];
