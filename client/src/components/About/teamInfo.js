@@ -1,5 +1,6 @@
 import memberPic from "../../static/images/Placeholder.jpg";
 import christianImage from "../../static/images/ChristianImage.jpg";
+import farhanPic from "../../static/images/farhan.jpg";
 import teamPic from "../../static/images/PlaceholderTeam.jpg";
 
 export const teamData =
@@ -24,10 +25,10 @@ export const memberData = [
         imagePath: memberPic
     },
     {
-        name: "Team Member 3",
-        bio: "Bio Here",
-        homeTown: "Hometown",
-        imagePath: memberPic
+        name: "Farhan Haziq",
+        bio: "Farhan Haziq is currently a Senior at Colorado State University, Fort Collins majoring in Computer Science. Born in the historic town of Melaka, he later spent his time in Kuala Lumpur before continuing his study in the US. Farhan is an aspiring student in who are very passionate in technologies (and sometime with other hobbies to (e.g: cooking)). Today, you can find Farhan around Fort Collins, Colorado. Where he's studying and enjoying (and exploring) the mountain of Colorado.",
+        homeTown: "Kuala Lumpur, Malaysia",
+        imagePath: farhanPic
     },
     {
         name: "Team Member 4",
