@@ -20,7 +20,7 @@ export const memberData = [
     },
     {
         name: "Evan Ide",
-        bio: "Bio Here",
+        bio: "I'm a currently a Junior at Colorado State University, majoring in Computer Science with a concentration in Software Engineering.  I worked in the craft beer industry for seven years before deciding to pivot career directions.  I enjoy solving problems of any kind, and I enjoy programming because it allows me to solve problems in creative and interesting ways.  I'd like to pursue a career as a software developer after I graduate form CSU.",
         homeTown: "Atlanta, Georgia",
         imagePath: memberPic
     },
