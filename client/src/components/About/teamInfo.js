@@ -7,8 +7,8 @@ import evanPic from "../../static/images/evan.jpg";
 
 export const teamData =
 {
-    teamName: "Team Name",
-    missionStatement: "Mission Statement",
+    teamName: "We Commit to Main",
+    missionStatement: "To empower every customer with the ability to plan an amazing trip.",
     imagePath: teamPic,
 };
 
