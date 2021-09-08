@@ -4,7 +4,7 @@ import farhanPic from "../../static/images/farhan.jpg";
 import DylanImageTest from "../../static/images/DylanImageTest.jpg";
 import teamPic from "../../static/images/t17Picture.jpg";
 import evanPic from "../../static/images/evan.jpg";
-import ethanKMSpic from "../../static/images/ethanImg_1000x1499.jpg"
+import ethanpic from "../../static/images/ethanImg_1000x1499.jpg"
 
 export const teamData =
 {
@@ -43,6 +43,6 @@ export const memberData = [
         name: "Ethan Myers",
         bio: "I'm Ethan, a computer science major in my senior year. I enjoy to oil painting and enduro mountain biking in my free time.",
         homeTown: "Boulder, Colorado",
-        imagePath: memberPic
+        imagePath: ethanpic
     },
 ];
