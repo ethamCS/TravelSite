@@ -2,7 +2,7 @@ import memberPic from "../../static/images/Placeholder.jpg";
 import christianImage from "../../static/images/ChristianImage.jpg";
 import farhanPic from "../../static/images/farhan.jpg";
 import DylanImageTest from "../../static/images/DylanImageTest.jpg";
-import teamPic from "../../static/images/PlaceholderTeam.jpg";
+import teamPic from "../../static/images/t17Picture.jpg";
 import evanPic from "../../static/images/evan.jpg";
 
 export const teamData =
