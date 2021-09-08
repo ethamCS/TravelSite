@@ -4,6 +4,7 @@ import farhanPic from "../../static/images/farhan.jpg";
 import DylanImageTest from "../../static/images/DylanImageTest.jpg";
 import teamPic from "../../static/images/t17Picture.jpg";
 import evanPic from "../../static/images/evan.jpg";
+import ethanKMSpic from "../../static/images/ethanImg_1000x1499.jpg"
 
 export const teamData =
 {
