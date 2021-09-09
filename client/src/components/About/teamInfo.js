@@ -1,7 +1,7 @@
 import memberPic from "../../static/images/Placeholder.jpg";
 import christianImage from "../../static/images/ChristianImage.jpg";
 import farhanPic from "../../static/images/farhan.jpg";
-import DylanImageTest from "../../static/images/DylanImageTest.jpg";
+import DylanImage from "../../static/images/dylanImage.jpg";
 import teamPic from "../../static/images/t17Picture.jpg";
 import evanPic from "../../static/images/evan.jpg";
 import ethanpic from "../../static/images/ethanImg_1000x1499.jpg"
@@ -37,7 +37,7 @@ export const memberData = [
         name: "Dylan Armstrong",
         bio: "My name is Dylan Armstrong, I'm currently a junior at Colorado State University studying Computer Science. I really love the outdoors, camping and hunting are two of my favorite activities. I currently work as a TA for cs150, and in the summer I work at McNeil Scout Ranch at Peaceful Valley. ",
         homeTown: "Castle Pines, Colorado",
-        imagePath: DylanImageTest
+        imagePath: DylanImage
     },
     {
         name: "Ethan Myers",
