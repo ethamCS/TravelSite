@@ -1,6 +1,6 @@
 # t17 - We Push to Main
 <p>
-    <img src="/team/images/daveMeme.jpg?raw=true" alt>
+    <img src="/team/images/t17Picture.jpg?raw=true" alt>
 </p>
 <p>
     <em>Sorry Dave</em>
