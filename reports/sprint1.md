@@ -72,10 +72,10 @@ The #*task* numbers refer to the issue numbers in GitHub.
 ## Retrospective
 
 #### Things that went well
-<p> All team members got thier enviroment set up, wether it's locally or through ssh. Each member adapted quickly to VScode and using Git in conjunction. We have worked successfully as a team by using communication when we encounter issues, managing our time, helping other teamates when needed, allocating time to meet outside of class, and distributing the work in a fair and logical way so every tream member contributes via pull requests.</p>
+<p> All team members got thier environment set up, whether it's locally or through ssh. Each member adapted quickly to VScode and using Git in conjunction. We have worked successfully as a team by using communication when we encounter issues, managing our time, helping other teamates when needed, allocating time to meet outside of class, and distributing the work in a fair and logical way so every tream member contributes via pull requests.</p>
 
 #### Things that we need to improve
-<p> t17 has gotten the basic work flow of using VScode and git but we still need to be more consistent when executing pull requests, syncing with main, commite. There were times in the beginning of the sprint when we didn't fully understand the git workflow and made some mistakes. We had some issues setting up our enviroments. Next sprint we need to go into it having our enviroments streamlined.</p>
+<p> t17 has gotten the basic workflow of using VScode and Git but we still need to be more consistent when executing pull requests, syncing with main, commit. There were times in the beginning of the sprint when we didn't fully understand the Git workflow and made some mistakes. We had some issues setting up our environments. Next sprint we need to go into it having our enviroments streamlined.</p>
 
 #### One thing we will change next time
-<p>Start sprint 2 with a better undersatnding of git and VScode</p>
+<p>Start sprint 2 with a better undersatnding of Git and VScode</p>
