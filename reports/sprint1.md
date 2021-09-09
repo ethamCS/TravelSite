@@ -78,4 +78,4 @@ The #*task* numbers refer to the issue numbers in GitHub.
 <p> t17 has gotten the basic workflow of using VScode and Git but we still need to be more consistent when executing pull requests, syncing with main, commit. There were times in the beginning of the sprint when we didn't fully understand the Git workflow and made some mistakes. We had some issues setting up our environments. Next sprint we need to go into it having our enviroments streamlined.</p>
 
 #### One thing we will change next time
-<p>Start sprint 2 with a better undersatnding of Git and VScode</p>
+<p>Start sprint 2 with a better understanding of Git and VScode</p>
