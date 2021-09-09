@@ -45,9 +45,9 @@ These metrics reflect what was planned at the beginning of the sprint and what w
 
 | Statistic | # Planned | # Completed |
 | --- | ---: | ---: |
-| Epics | *2* | *count* |
-| Tasks |  *8*   | *count* | 
-| Story Points |  *15*  | *count* | 
+| Epics | *2* | *2* |
+| Tasks |  *8*   | *8* | 
+| Story Points |  *15*  | *15* | 
 
 
 ## Scrums
@@ -57,20 +57,25 @@ The #*task* numbers refer to the issue numbers in GitHub.
 
 | Date | Tasks closed  | Tasks in progress | Impediments |
 | :--- | :--- | :--- | :--- |
-| *9/6/21* | #*46*, #*45*, #*44*, #*43*, #*68*,#*54*, #*66*, #*39*, #*41*, #*40*, #*64*, #*56*, #*52* | #*49, #67* | *none* | 
+| *9/6/21* | #*46*, #*45*, #*44*, #*43*, #*68*,#*54*, #*66*, #*39*, #*41*, #*40*, #*64*, #*56*, #*52* | #*49, #67* | *none* |
+| *9/7/21* |  #*49, #67* | #*none* | *none* | 
 
 
 ## Review
 
 #### Epics completed  
+<p>t17 was able to complete both #42 About and #48 Team Identification epics. For the About epic we provided the user with information about the team and the people on the team by creating a team mission statement and an image, name, and short biography for each team member. Our team updated the team name in all the appropriate places to complete the Team Identification epic. The work was distributed throughout all team members</p>
 
 #### Epics not completed 
-
+<p> No epics were not completed</p>
 
 ## Retrospective
 
 #### Things that went well
+<p> All team members got thier environment set up, whether it's locally or through ssh. Each member adapted quickly to VScode and using Git in conjunction. We have worked successfully as a team by using communication when we encounter issues, managing our time, helping other teamates when needed, allocating time to meet outside of class, and distributing the work in a fair and logical way so every tream member contributes via pull requests.</p>
 
 #### Things that we need to improve
+<p> t17 has gotten the basic workflow of using VScode and Git but we still need to be more consistent when executing pull requests, syncing with main, commit. There were times in the beginning of the sprint when we didn't fully understand the Git workflow and made some mistakes. We had some issues setting up our environments. Next sprint we need to go into it having our enviroments streamlined.</p>
 
 #### One thing we will change next time
+<p>Start sprint 2 with a better undersatnding of Git and VScode</p>
