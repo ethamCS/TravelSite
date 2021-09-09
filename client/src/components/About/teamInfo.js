@@ -8,8 +8,8 @@ import ethanpic from "../../static/images/ethanImg_1000x1499.jpg"
 
 export const teamData =
 {
-    teamName: "We Commit to Main",
-    missionStatement: "To empower every customer with the ability to plan an amazing trip.",
+    teamName: "We Push to Main",
+    missionStatement: "To empower every customer with the ability and tools to plan an amazing trip.",
     imagePath: teamPic,
 };
 
@@ -23,7 +23,7 @@ export const memberData = [
     },
     {
         name: "Evan Ide",
-        bio: "He is currently a Junior at Colorado State University, majoring in Computer Science with a concentration in Software Engineering.  Evan worked in the craft beer industry for seven years before deciding to pivot career directions.  He enjoys solving problems of any kind, and he enjoys programming because it allows him to solve problems in creative and interesting ways.  He'd like to pursue a career as a software developer after he graduates form CSU.",
+        bio: "Evan Ide is currently a Junior at Colorado State University, majoring in Computer Science with a concentration in Software Engineering.  Evan worked in the craft beer industry for seven years before deciding to pivot career directions.  He enjoys solving problems of any kind, and he enjoys programming because it allows him to solve problems in creative and interesting ways.  He'd like to pursue a career as a software developer after he graduates form CSU.",
         homeTown: "Atlanta, Georgia",
         imagePath: evanPic
     },
