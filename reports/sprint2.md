@@ -53,6 +53,7 @@ The last epic that we hope to complete is the "Where is?" epic.  The purpose beh
 | Tasks |  *count*   | *count* | 
 | Story Points |  *sum*  | *sum* | 
 
+<p>We feel confident in getting all of these tasks completed. Based on the last sprint, we were able to get all tasks done within the 2 week period. Judging by the extra week for this sprint, and not having to spend a week setting up VS Code, we should be able to complete all of the tasks we selected.</p>
 
 ## Scrums
 
