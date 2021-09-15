@@ -144,7 +144,7 @@ Only minor changes to text constants are required.
 
 ### User Interface
 
-The user interface will largely stay the same as it was after Sprint 1.  Small improvements will be made, such as displaying locations on the map when the user selects them from their trip.  Along with that, we will also implement the ability for the user to look up locations by latitude and longitude.  We will add a text box that accepts input in order to support this added feature.  While there will be additional functionality, the actual layout of the user interface will stay mostly constant.
+The user interface will largely stay the same as it was after Sprint 1.  Small improvements will be made, such as displaying locations on the map when the user selects them from their trip.  Along with that, we will also implement the ability for the user to look up locations by either name or latitude and longitude.  We will add a text box that accepts input in order to support this added feature.  The biggest change to the user interface will be an element, likely implemented as a collapsible list, that shows potential search matches when the user searches for a new location.  
 
 ### Client Components
 
@@ -156,7 +156,7 @@ Other minor tweaks to the client side will include:
 
 ### Server Classes
 
-We will be adding a new server class that extends the Request class.  The new class will be called FindRequest, and it allow find requests and responses that follow the proper protocol.  This will ensure that we maintain interoperability with other servers.
+We will be adding a new server class that extends the Request class.  The new class will be called FindRequest, and it will allow find requests and responses that follow the proper protocol.  This will ensure that we maintain interoperability with other servers.
 
 # Sprint 3
 # Sprint 4 
