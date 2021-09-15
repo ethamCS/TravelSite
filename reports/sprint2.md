@@ -41,6 +41,10 @@ The second epic that our team chose to take on is the "Interoperability" epic. T
 
 The third epic that our team chose to take on is the "Where Am I?" epic. This epic is very straight forward. This epic is going to allow the client to add their current location to the trip rather than just adding the base home location. 
 
+<p>
+The last epic that we hope to complete is the "Where is?" epic.  The purpose behind this epic is to enhance the user experience and allow them to have more control over their trip planning.  For example, when the user enters a latitude and longitude the map should update to reflect the values that were entered.  The user should also have the option to add that specific location to their trip.  Like with all user input, the inputted values should be validated once entered.  After the map is updated to show the location which the user entered, it should also show more details about the location using reverse geocoding.
+</p>
+
 ## Metrics
 
 | Statistic | # Planned | # Completed |
