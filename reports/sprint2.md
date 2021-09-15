@@ -40,9 +40,10 @@ The first epic that our team chose to take on is the "Find Places" epic. The pur
 The second epic that our team chose to take on is the "Interoperability" epic. The purpose of this epic is to allow the client to be able to use different services (other teams servers) in order to plan their trip. This epic is going to allow for a seamless user experience no matter which server they want to use to plan their trip. This epic is going to allow the users to change to a different server and then list the features that are avaliable to the client on that server. Our client also need to verify that the barebones features are avaliable and if they are not, we need to let the users know.
 
 The third epic that our team chose to take on is the "Where Am I?" epic. This epic is very straight forward. This epic is going to allow the client to add their current location to the trip rather than just adding the base home location. 
-
+<p>
+The last epic that we hope to complete is the "Where is?" epic.  The purpose behind this epic is to enhance the user experience and allow them to have more control over their trip planning.  For example, when the user enters a latitude and longitude the map should update to reflect the values that were entered.  The user should also have the option to add that specific location to their trip.  Like with all user input, the inputted values should be validated once entered.  After the map is updated to show the location which the user entered, it should also show more details about the location using reverse geocoding.
+</p>
 <p>The fourth epic will be adding highlighting to the user experience. This will allow the user to select a place in the trip list and have it highlighted with a marker on the screen.</p>
-
 
 ## Metrics
 
