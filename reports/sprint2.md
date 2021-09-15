@@ -35,6 +35,12 @@
 
 ## Planned Epics
 
+The first epic that our team chose to take on is the "Find Places" epic. The purpose of this epic is to allow a user to input a string in order to find a place to add to their trip. Given the string, we are going to produce a list of matching places and the details of those places and allow the user to select one or more of these places to add to their trip. In order to implement this epic, we are going to need to implement the protocol find feature. In order to implement the find protocol we are going to need to break it down into a bunch of smaller tasks. Some of these tasks include adding FindRequest.json and FindResponse.json to the schemas directory, implementing the Find Request Class and creating tests in order to test the find feature.
+
+The second epic that our team chose to take on is the "Interoperability" epic. The purpose of this epic is to allow the client to be able to use different services (other teams servers) in order to plan their trip. This epic is going to allow for a seamless user experience no matter which server they want to use to plan their trip. This epic is going to allow the users to change to a different server and then list the features that are avaliable to the client on that server. Our client also need to verify that the barebones features are avaliable and if they are not, we need to let the users know.
+
+The third epic that our team chose to take on is the "Where Am I?" epic. This epic is very straight forward. This epic is going to allow the client to add their current location to the trip rather than just adding the base home location. 
+
 <p>
 The last epic that we hope to complete is the "Where is?" epic.  The purpose behind this epic is to enhance the user experience and allow them to have more control over their trip planning.  For example, when the user enters a latitude and longitude the map should update to reflect the values that were entered.  The user should also have the option to add that specific location to their trip.  Like with all user input, the inputted values should be validated once entered.  After the map is updated to show the location which the user entered, it should also show more details about the location using reverse geocoding.
 </p>
