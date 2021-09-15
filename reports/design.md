@@ -141,6 +141,23 @@ There are no changes to the server class structure in this sprint.
 Only minor changes to text constants are required.
 
 # Sprint 2
+
+### User Interface
+
+The user interface will largely stay the same as it was after Sprint 1.  Small improvements will be made, such as displaying locations on the map when the user selects them from their trip.  Along with that, we will also implement the ability for the user to look up locations by latitude and longitude.  We will add a text box that accepts input in order to support this added feature.  While there will be additional functionality, the actual layout of the user interface will stay mostly constant.
+
+### Client Components
+
+The biggest change to the client architecture will be adding an input box to allow the user to search for custom locations.
+
+Other minor tweaks to the client side will include:
+* Changing the default location from the CSU Oval to the user's current location.
+* Allowing the user to select a location from their trip and updating the map to reflect the selected location.
+
+### Server Classes
+
+We will be adding a new server class that extends the Request class.  The new class will be called FindRequest, and it allow find requests and responses that follow the proper protocol.  This will ensure that we maintain interoperability with other servers.
+
 # Sprint 3
 # Sprint 4 
 # Sprint 5
