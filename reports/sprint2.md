@@ -1,10 +1,10 @@
-# Sprint 2 - *your team number* - *your team name*
+# Sprint 2 - *t17* - *We Push To Main*
 
 ## Goal
 ### *Find places to go.*
 
 ## Sprint Leader: 
-### *firstname lastname*
+### *Christian Carnahan*
 
 ## Definition of Done
 
@@ -40,7 +40,7 @@
 
 | Statistic | # Planned | # Completed |
 | --- | ---: | ---: |
-| Epics | *count* | *count* |
+| Epics | *5* | *0* |
 | Tasks |  *count*   | *count* | 
 | Story Points |  *sum*  | *sum* | 
 
