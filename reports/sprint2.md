@@ -58,7 +58,7 @@ The last epic that we hope to complete is the "Where is?" epic.  The purpose beh
 
 | Date | Tasks closed  | Tasks in progress | Impediments |
 | :--- | :--- | :--- | :--- |
-| *date* | *#task, ...* | *#task, ...* |  | 
+| *9/14/21* | *none, ...* | *#126, #127, 128, #130, #131* | Dylan's Computer Keeps Breaking. | 
 
 
 ## Review
