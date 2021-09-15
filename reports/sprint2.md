@@ -34,7 +34,7 @@
 
 
 ## Planned Epics
-
+<p>The fourth epic will be adding highlighting to the user experience. This will allow the user to select a place in the trip list and have it highlighted with a marker on the screen.</p>
 
 ## Metrics
 
