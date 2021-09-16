@@ -143,8 +143,12 @@ Only minor changes to text constants are required.
 # Sprint 2
 
 ### User Interface
+- Find Location UI element
+![findLocations](images/findLocations.png)
+- Select Location UI element
+![selectLocation](images/selectLocation.png)
 
-The user interface will largely stay the same as it was after Sprint 1.  Small improvements will be made, such as displaying locations on the map when the user selects them from their trip.  Along with that, we will also implement the ability for the user to look up locations by either name or latitude and longitude.  We will add a text box that accepts input in order to support this added feature.  The biggest change to the user interface will be an element, likely implemented as a collapsible list, that shows potential search matches when the user searches for a new location.  
+The user interface will largely stay the same as it was after Sprint 1.  Small improvements will be made, such as displaying locations on the map when the user selects them from their trip.  Along with that, we will also implement the ability for the user to look up locations by either name or latitude and longitude.  We will add a text box that accepts input in order to support this added feature.  The biggest change to the user interface will be an element, likely implemented as a collapsible list or a pop up, that shows potential search matches when the user searches for a new location.  
 
 ### Client Components
 
