@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 public class FindRequest extends Request {
 
     private String match;
-    private Integer limit;
+    private Integer limit = 0;
 
     @Override
     public void buildResponse(){
@@ -23,5 +23,10 @@ during normal execution, including the constructor. */
         this.match = "";
         this.limit = 0;
     }
+
+    public String getMatch(){
+        return this.match;
+    }
+    
 
 }

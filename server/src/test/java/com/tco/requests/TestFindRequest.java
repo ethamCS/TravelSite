@@ -24,4 +24,11 @@ public class TestFindRequest {
         assertEquals("find", type);
     }
 
+    @Test
+    @DisplayName("Match is \"\"")
+    public void testMatch() {
+        String match = find.getMatch();
+        assertEquals("", match);
+    }
+    
 }
