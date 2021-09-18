@@ -17,4 +17,11 @@ public class TestFindRequest {
         find.buildResponse();
     }
 
+    @Test
+    @DisplayName("Request type is \"find\"")
+    public void testType() {
+        String type = find.getRequestType();
+        assertEquals("find", type);
+    }
+
 }
