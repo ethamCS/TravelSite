@@ -13,13 +13,15 @@ public class Query {
     private static String match = null;
     private static int limit = 0;
 
-   
+   public Query(){
+       this.match = findRequest.getMatch();
+       this.limit = findRequest.getLimit();
+       runner();
+   }
     public void runner(){
-        match = findRequest.getMatch();
-        limit = findRequest.getLimit();
         Credentials db = new Credentials();
         connect();
-        find(match,limit);
+        find(this.match,this.limit);
     }
     public void find(String match, int limit){
 
