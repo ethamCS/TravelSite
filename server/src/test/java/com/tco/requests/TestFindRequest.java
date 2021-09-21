@@ -30,5 +30,20 @@ public class TestFindRequest {
         String match = find.getMatch();
         assertEquals("", match);
     }
-    
+
+    @Test
+    @DisplayName("Limit is \"0\"")
+    public void testLimit() {
+        Integer limit = find.getLimit();
+        assertEquals(0, limit); 
+    }
+
+
+    @Test
+    @DisplayName("Query found is \"0\"")
+    public void testFound() {
+        Integer found = find.getFound();
+        assertEquals(0, found); 
+    }
+
 }

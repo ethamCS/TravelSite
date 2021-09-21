@@ -32,5 +32,13 @@ during normal execution, including the constructor. */
     public String getMatch(){
         return this.match;
     }
+
+    public Integer getLimit(){
+        return this.limit;
+    }
+
+    public Integer getFound(){
+        return this.found;
+    }
     
 }
