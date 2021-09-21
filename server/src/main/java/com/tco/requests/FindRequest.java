@@ -8,11 +8,15 @@ import org.slf4j.LoggerFactory;
 public class FindRequest extends Request {
 
     private String match;
-    private Integer limit = 0;
+    private Integer limit;
+    private Integer found;
+    private Places places;
 
     @Override
     public void buildResponse(){
-
+        found = 0;
+        places = new Places<>;
+        log.trace("buildResponse -> {}", this);
     }
 
 
@@ -28,5 +32,4 @@ during normal execution, including the constructor. */
         return this.match;
     }
     
-
 }
