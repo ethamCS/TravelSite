@@ -11,11 +11,12 @@ public class FindRequest extends Request {
     private Integer limit;
     private Integer found;
     private Places places;
+    private final transient Logger log = LoggerFactory.getLogger(FindRequest.class);
 
     @Override
     public void buildResponse(){
         found = 0;
-        places = new Places<>;
+        places = new Places();
         log.trace("buildResponse -> {}", this);
     }
 
