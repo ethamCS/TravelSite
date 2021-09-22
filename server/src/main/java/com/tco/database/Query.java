@@ -1,43 +1,40 @@
-package com.tco.server;
+package com.tco.database;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
 import java.sql.ResultSet;
-import com.tco.requests.FindRequest;
+import com.tco.database.DatabaseConnection;
+import java.sql.*;
+
 
 public class Query {
 
-    private Connection con; 
-    private Credentials db;
     private static String match;
     private static Integer limit;
 
    public Query(String match, Integer limit){
        this.match = match;
-       this.limit = limit; 
-       runner();
+       this.limit = limit;     
    }
-    public void runner(){
-        Credentials db = new Credentials();
-        connect();
-        find(this.match,this.limit);
-    }
-    public void find(String match, int limit){
-
-    }
-    static class Credentials {
-        final static String USER = "cs314-db";
-        final static String PASSWORD = "eiK5liet1uej";
-        final static String URL = "jdbc:mariadb://127.0.0.1:66666/cs314";
-      }
-
-    public void connect(){
-        try {
-            con = DriverManager.getConnection(db.URL,db.USER, db.PASSWORD);  
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("Connection Error");
+    public Integer selectCount(String match, int limit){
+        try{            
+            PreparedStatement stmt = DatabaseConnection.con.prepareStatement("select count(name) from world where name like'%?%' limit ?");  
+            stmt.setString(1, match);  
+            stmt.setInt(2, limit); 
+            ResultSet rs =  stmt.executeQuery(); 
+            if(!rs.next()){
+                return -1;
+            }else{
+                int result = rs.getInt("count(name)");
+                return result;
+            }
+            
+            
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            
         }
+        return 0;
     }
 }
 
