@@ -38,7 +38,7 @@ public class Query {
         return result;
     }
 
-    public int selectAll(){
+    public Integer selectAll(){
         int result = 0;
         try {
 
