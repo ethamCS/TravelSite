@@ -12,12 +12,11 @@ public class Query {
     private static String match;
     private static Integer limit;
 
-
    public Query(String match, Integer limit){
        this.match = match;
        this.limit = limit;     
    }
-    public Integer selectCount(){
+    public Integer selectCount(String match,Integer limit){
         int result = 0;
         try {
             DatabaseConnection.connect();
@@ -25,20 +24,24 @@ public class Query {
                                                                             + " from world where name"
                                                                             + " like \'%" + this.match + "%\'");  
             ResultSet rs =  stmt.executeQuery(); 
+
             if (!rs.next()) {
                 result = -1;
             } 
             else {
                 result = rs.getInt("count(name)");
-            }         
+            }
+            
+            
         } catch (Exception e){
             /* TODO: Change System.out.println to Logger */
-            System.out.println(e.getMessage());            
+            System.out.println(e.getMessage());
+            
         }
         return result;
     }
 
-    public Integer selectAll(){
+    public void selectAll(){
         int result = 0;
         try {
 
@@ -51,8 +54,7 @@ public class Query {
                                                                             + " JOIN world ON region.id = world.iso_region"
                                                                             + " WHERE (world.name LIKE \'%"+this.match+"%\' OR continent.name"
                                                                             + " LIKE \'%"+this.match+"%\'"
-                                                                            + " OR region.name LIKE \'%"+this.match+"%\'"
-                                                                            + " OR country.name LIKE \'%"+this.match+"%\')"
+                                                                            + " OR region.name LIKE \'%"+this.match+"%\' OR country.name LIKE \'%"+this.match+"%\')"
                                                                             + " GROUP BY world.latitude"
                                                                             + " LIMIT ?;");
                                                               
@@ -64,19 +66,19 @@ public class Query {
             } 
             else {
                 convertQueryResultsToPlaces(rs);
-            }    
+            }
+            
+            
         } catch (Exception e){
             /* TODO: Change System.out.println to Logger */
             System.out.println(e.getMessage());
             
         }
-        return result;
-    }
-    /* TODO:result set to places object*/
-    public void convertQueryResultsToPlaces(ResultSet results){
-
      
+    }
+      /* TODO: Change result set to places object */
+    public void convertQueryResultsToPlaces(ResultSet results){
+        
       }
   
 }
-
