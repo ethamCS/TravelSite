@@ -9,7 +9,7 @@ public class Credentials {
     public Credentials(){
         this.USER = "cs314-db";
         this.PASSWORD = "eiK5liet1uej";
-        this.URL = "jdbc:mysql://127.0.0.1:66666/cs314";
+        this.URL = "jdbc:mysql://127.0.0.1:6666/cs314";
     }
 
     public String getUSER(){
