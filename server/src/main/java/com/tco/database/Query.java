@@ -16,12 +16,13 @@ public class Query {
        this.match = match;
        this.limit = limit;     
    }
-    public Integer selectCount(String match, int limit){
+    public Integer selectCount(String match,Integer limit){
         int result = 0;
         try {
             DatabaseConnection.connect();
-
-            PreparedStatement stmt = DatabaseConnection.con.prepareStatement("select count(name) from world where name like \'%" + match + "%\'");  
+            PreparedStatement stmt = DatabaseConnection.con.prepareStatement("select count(name)"
+                                                                            + " from world where name"
+                                                                            + " like \'%" + this.match + "%\'");  
             ResultSet rs =  stmt.executeQuery(); 
 
             if (!rs.next()) {
@@ -39,5 +40,45 @@ public class Query {
         }
         return result;
     }
-}
 
+    public void selectAll(){
+        int result = 0;
+        try {
+
+            DatabaseConnection.connect();
+            PreparedStatement stmt = DatabaseConnection.con.prepareStatement("SELECT world.name, world.continent, world.latitude,"
+                                                                            + " world.longitude, region.name"
+                                                                            + " FROM continent" 
+                                                                            + " JOIN country ON continent.id = country.continent"
+                                                                            + " JOIN region ON country.id = region.iso_country"
+                                                                            + " JOIN world ON region.id = world.iso_region"
+                                                                            + " WHERE (world.name LIKE \'%"+this.match+"%\' OR continent.name"
+                                                                            + " LIKE \'%"+this.match+"%\'"
+                                                                            + " OR region.name LIKE \'%"+this.match+"%\' OR country.name LIKE \'%"+this.match+"%\')"
+                                                                            + " GROUP BY world.latitude"
+                                                                            + " LIMIT ?;");
+                                                              
+            stmt.setInt(1,this.limit);
+            ResultSet rs =  stmt.executeQuery(); 
+
+            if (!rs.next()) {
+                result = -1;
+            } 
+            else {
+                convertQueryResultsToPlaces(rs);
+            }
+            
+            
+        } catch (Exception e){
+            /* TODO: Change System.out.println to Logger */
+            System.out.println(e.getMessage());
+            
+        }
+     
+    }
+      /* TODO: Change result set to places object */
+    public void convertQueryResultsToPlaces(ResultSet results){
+        
+      }
+  
+}
