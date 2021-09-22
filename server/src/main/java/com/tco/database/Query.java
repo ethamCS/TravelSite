@@ -17,24 +17,27 @@ public class Query {
        this.limit = limit;     
    }
     public Integer selectCount(String match, int limit){
-        try{            
-            PreparedStatement stmt = DatabaseConnection.con.prepareStatement("select count(name) from world where name like'%?%' limit ?");  
-            stmt.setString(1, match);  
-            stmt.setInt(2, limit); 
+        int result = 0;
+        try {
+            DatabaseConnection.connect();
+
+            PreparedStatement stmt = DatabaseConnection.con.prepareStatement("select count(name) from world where name like \'%" + match + "%\'");  
             ResultSet rs =  stmt.executeQuery(); 
-            if(!rs.next()){
-                return -1;
-            }else{
-                int result = rs.getInt("count(name)");
-                return result;
+
+            if (!rs.next()) {
+                result = -1;
+            } 
+            else {
+                result = rs.getInt("count(name)");
             }
             
             
-        }catch (Exception e){
+        } catch (Exception e){
+            /* TODO: Change System.out.println to Logger */
             System.out.println(e.getMessage());
             
         }
-        return 0;
+        return result;
     }
 }
 
