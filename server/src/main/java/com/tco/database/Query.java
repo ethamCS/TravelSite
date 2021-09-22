@@ -9,13 +9,12 @@ public class Query {
 
     private Connection con; 
     private Credentials db;
-    private FindRequest findRequest;
-    private static String match = null;
-    private static int limit = 0;
+    private static String match;
+    private static Integer limit;
 
-   public Query(){
-       this.match = findRequest.getMatch();
-       this.limit = findRequest.getLimit();
+   public Query(String match, Integer limit){
+       this.match = match;
+       this.limit = limit; 
        runner();
    }
     public void runner(){
