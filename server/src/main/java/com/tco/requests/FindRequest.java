@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import com.tco.database.Query;
 
 public class FindRequest extends Request {
 
@@ -15,8 +16,10 @@ public class FindRequest extends Request {
 
     @Override
     public void buildResponse(){
-        found = 0;
-        places = new Places();
+        Query query = new Query(this.match, this.limit);
+        this.found = query.selectCount(this.match, this.limit);
+        
+        this.places = new Places();
         log.trace("buildResponse -> {}", this);
     }
 
