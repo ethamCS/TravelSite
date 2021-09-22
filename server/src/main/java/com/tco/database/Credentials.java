@@ -1,3 +1,5 @@
+package com.tco.database;
+
 public class Credentials {
     
     private String USER;
