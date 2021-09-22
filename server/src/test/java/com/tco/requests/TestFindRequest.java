@@ -43,7 +43,7 @@ public class TestFindRequest {
     @DisplayName("Query found is \"0\"")
     public void testFound() {
         Integer found = find.getFound();
-        assertEquals(0, found); 
+        assertEquals(50427, found); 
     }
 
 }
