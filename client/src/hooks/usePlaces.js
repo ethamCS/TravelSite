@@ -33,7 +33,7 @@ async function append(place, context) {
 
 async function moveToHome(context) {
     if (navigator.geolocation) {
-        await navigator.getCurrentLocation(onSuccess, onError);
+        await navigator.geolocation.getCurrentPosition(onSuccess, onError);
     }
 
     function onSuccess({ coords }) {
