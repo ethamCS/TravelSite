@@ -7,7 +7,8 @@ import { DEFAULT_STARTING_PLACE } from '../../../utils/constants';
 export function ItineraryActionsDropdown(props) {
     return (
         <ActionsDropdown {...props}>
-            <DropdownItem onClick={() => props.placeActions.append(DEFAULT_STARTING_PLACE)} data-testid='home-button'>
+            <DropdownItem onClick={() =>
+                props.placeActions.append(DEFAULT_STARTING_PLACE)} data-testid='home-button'>
                 <FaHome />
             </DropdownItem>
             <DropdownItem onClick={() => props.placeActions.removeAll()} data-testid='delete-all-button'>
