@@ -20,16 +20,22 @@ public class Query {
         int result = 0;
         try {
             DatabaseConnection.connect();
-            PreparedStatement stmt = DatabaseConnection.con.prepareStatement("select count(name)"
-                                                                            + " from world where name"
-                                                                            + " like \'%" + this.match + "%\'");  
-            ResultSet rs =  stmt.executeQuery(); 
+            PreparedStatement stmt = DatabaseConnection.con.prepareStatement("SELECT COUNT(*)"
+                                                                            + " FROM continent" 
+                                                                            + " JOIN country ON continent.id = country.continent"
+                                                                            + " JOIN region ON country.id = region.iso_country"
+                                                                            + " JOIN world ON region.id = world.iso_region"
+                                                                            + " WHERE (world.name LIKE \'%"+this.match+"%\' OR continent.name"
+                                                                            + " LIKE \'%"+this.match+"%\'"
+                                                                            + " OR region.name LIKE \'%"+this.match+"%\'" 
+                                                                            + " OR country.name LIKE \'%"+this.match+"%\')");
 
+            ResultSet rs =  stmt.executeQuery(); 
             if (!rs.next()) {
                 result = -1;
             } 
             else {
-                result = rs.getInt("count(name)");
+                result = rs.getInt("count(*)");
             }
             
             
@@ -44,7 +50,6 @@ public class Query {
     public void selectAll(){
         int result = 0;
         try {
-
             DatabaseConnection.connect();
             PreparedStatement stmt = DatabaseConnection.con.prepareStatement("SELECT world.name, world.continent, world.latitude,"
                                                                             + " world.longitude, region.name"
