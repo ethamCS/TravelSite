@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { placeToLatLng } from '../utils/transformers';
 import { reverseGeocode } from '../utils/reverseGeocode';
 import { LOG } from '../utils/constants';
+import { DEFAULT_STARTING_PLACE } from '../utils/constants';
+
 
 export function usePlaces() {
     const [places, setPlaces] = useState([]);
@@ -13,7 +15,8 @@ export function usePlaces() {
         append: async (place) => append(place, context),
         removeAtIndex: (index) => removeAtIndex(index, context),
         removeAll: () => removeAll(context),
-        selectIndex: (index) => selectIndex(index, context)
+        selectIndex: (index) => selectIndex(index, context),
+        moveToHome: async () => moveToHome(context)
     };
 
     return { places, selectedIndex, placeActions };
@@ -31,7 +34,7 @@ async function append(place, context) {
     setSelectedIndex(newPlaces.length - 1);
 }
 
-async function moveToHome(context) {
+export async function moveToHome(context) {
     if (navigator.geolocation) {
         await navigator.geolocation.getCurrentPosition(onSuccess, onError);
     }
