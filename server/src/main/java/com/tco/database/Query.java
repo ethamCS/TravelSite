@@ -8,11 +8,15 @@ import java.sql.*;
 
 import com.tco.requests.Places;
 import com.tco.requests.Place;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Query {
 
     private static String match;
     private static Integer limit;
+
+    private final transient Logger log = LoggerFactory.getLogger(Query.class);
 
    public Query(String match, Integer limit){
        this.match = match;
@@ -42,9 +46,7 @@ public class Query {
             
             
         } catch (Exception e){
-            /* TODO: Change System.out.println to Logger */
-            System.out.println(e.getMessage());
-            
+            log.error("Database connection failed");  
         }
         return result;
     }
@@ -79,7 +81,7 @@ public class Query {
             
         } catch (Exception e){
             /* TODO: Change System.out.println to Logger */
-            System.out.println(e.getMessage());
+            log.error("Database Connection failed");
             
         }
         return places;
@@ -97,7 +99,7 @@ public class Query {
                 places.add(place);
             }
         } catch (Exception e) {
-
+            log.error("Failed to convert ResultSet to Places");
         }
         return places;
     }
