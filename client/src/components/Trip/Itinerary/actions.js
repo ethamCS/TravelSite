@@ -3,12 +3,13 @@ import { ButtonGroup, DropdownItem, DropdownMenu, DropdownToggle, UncontrolledDr
 import { BiDotsVerticalRounded } from 'react-icons/bi';
 import { FaHome, FaTrash, FaTrashAlt, FaSearch } from 'react-icons/fa';
 import { DEFAULT_STARTING_PLACE } from '../../../utils/constants';
+import { moveToHome } from '../../../hooks/usePlaces';
 
 export function ItineraryActionsDropdown(props) {
     return (
         <ActionsDropdown {...props}>
             <DropdownItem onClick={() =>
-                props.placeActions.append(DEFAULT_STARTING_PLACE)} data-testid='home-button'>
+                props.placeActions.moveToHome()} data-testid='home-button'>
                 <FaHome />
             </DropdownItem>
             <DropdownItem onClick={() => props.placeActions.removeAll()} data-testid='delete-all-button'>
