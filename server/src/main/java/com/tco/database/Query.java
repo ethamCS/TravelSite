@@ -6,17 +6,23 @@ import java.sql.ResultSet;
 import com.tco.database.DatabaseConnection;
 import java.sql.*;
 
+import com.tco.requests.Places;
+import com.tco.requests.Place;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Query {
 
     private static String match;
     private static Integer limit;
 
+    private final transient Logger log = LoggerFactory.getLogger(Query.class);
+
    public Query(String match, Integer limit){
        this.match = match;
        this.limit = limit;     
    }
-    public Integer selectCount(String match,Integer limit){
+    public Integer selectCount() {
         int result = 0;
         try {
             DatabaseConnection.connect();
@@ -40,15 +46,14 @@ public class Query {
             
             
         } catch (Exception e){
-            /* TODO: Change System.out.println to Logger */
-            System.out.println(e.getMessage());
-            
+            log.error("Database connection failed");  
         }
         return result;
     }
 
-    public void selectAll(){
+    public Places selectAll(){
         int result = 0;
+        Places places = new Places();
         try {
             DatabaseConnection.connect();
             PreparedStatement stmt = DatabaseConnection.con.prepareStatement("SELECT world.name, world.continent, world.latitude,"
@@ -70,20 +75,33 @@ public class Query {
                 result = -1;
             } 
             else {
-                convertQueryResultsToPlaces(rs);
+                places = convertQueryResultsToPlaces(rs);
             }
             
             
         } catch (Exception e){
             /* TODO: Change System.out.println to Logger */
-            System.out.println(e.getMessage());
+            log.error("Database Connection failed");
             
         }
-     
+        return places;
     }
       /* TODO: Change result set to places object */
-    public void convertQueryResultsToPlaces(ResultSet results){
-        
-      }
+    public Places convertQueryResultsToPlaces(ResultSet results){
+        Places places = new Places();
+        try {
+            while (results.next()) {
+                Place place = new Place();
+                for (Place.Entry<String, String> entry : place.entrySet()) {
+                    String key = entry.getKey();
+                    place.put(key, results.getString(key));
+                }
+                places.add(place);
+            }
+        } catch (Exception e) {
+            log.error("Failed to convert ResultSet to Places");
+        }
+        return places;
+    }
   
 }

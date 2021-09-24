@@ -17,9 +17,9 @@ public class FindRequest extends Request {
     @Override
     public void buildResponse(){
         Query query = new Query(this.match, this.limit);
-        this.found = query.selectCount(this.match, this.limit);
+        this.found = query.selectCount();
         
-        this.places = new Places();
+        this.places = query.selectAll();
         log.trace("buildResponse -> {}", this);
     }
 
