@@ -89,7 +89,7 @@ public class Query {
     public Places convertQueryResultsToPlaces(ResultSet results){
         Places places = new Places();
         try {
-            while (results.next()) {
+            do {
                 Place place = new Place();
                 for (Place.Entry<String, String> entry : place.entrySet()) {
                     String key = entry.getKey();
@@ -97,6 +97,8 @@ public class Query {
                 }
                 places.add(place);
             }
+            while (results.next());
+            
         } catch (Exception e) {
             log.error("Failed to convert ResultSet to Places");
         }
