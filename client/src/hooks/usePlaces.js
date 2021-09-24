@@ -47,6 +47,7 @@ export async function moveToHome(context) {
     }
 
     function onError(error) {
+        append(DEFAULT_STARTING_PLACE, context);
         LOG.info(error.message);
     }
 }
