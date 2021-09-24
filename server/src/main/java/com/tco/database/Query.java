@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import com.tco.database.DatabaseConnection;
 import java.sql.*;
 
+import com.tco.requests.Places;
+import com.tco.requests.Place;
 
 public class Query {
 
@@ -16,7 +18,7 @@ public class Query {
        this.match = match;
        this.limit = limit;     
    }
-    public Integer selectCount(String match,Integer limit){
+    public Integer selectCount() {
         int result = 0;
         try {
             DatabaseConnection.connect();
@@ -47,8 +49,9 @@ public class Query {
         return result;
     }
 
-    public void selectAll(){
+    public Places selectAll(){
         int result = 0;
+        Places places = new Places();
         try {
             DatabaseConnection.connect();
             PreparedStatement stmt = DatabaseConnection.con.prepareStatement("SELECT world.name, world.continent, world.latitude,"
@@ -70,7 +73,7 @@ public class Query {
                 result = -1;
             } 
             else {
-                convertQueryResultsToPlaces(rs);
+                places = convertQueryResultsToPlaces(rs);
             }
             
             
@@ -79,11 +82,24 @@ public class Query {
             System.out.println(e.getMessage());
             
         }
-     
+        return places;
     }
       /* TODO: Change result set to places object */
-    public void convertQueryResultsToPlaces(ResultSet results){
-        
-      }
+    public Places convertQueryResultsToPlaces(ResultSet results){
+        Places places = new Places();
+        try {
+            while (results.next()) {
+                Place place = new Place();
+                for (Place.Entry<String, String> entry : place.entrySet()) {
+                    String key = entry.getKey();
+                    place.put(key, results.getString(key));
+                }
+                places.add(place);
+            }
+        } catch (Exception e) {
+
+        }
+        return places;
+    }
   
 }
