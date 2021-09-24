@@ -57,21 +57,23 @@ public class Query {
         Places places = new Places();
         try {
             DatabaseConnection.connect();
-            PreparedStatement stmt = DatabaseConnection.con.prepareStatement("SELECT world.name, world.continent, world.latitude,"
-                                                                            + " world.longitude, world.municipality, region.name"
-                                                                            + " FROM continent" 
-                                                                            + " JOIN country ON continent.id = country.continent"
-                                                                            + " JOIN region ON country.id = region.iso_country"
-                                                                            + " JOIN world ON region.id = world.iso_region"
-                                                                            + " WHERE (world.municipality LIKE \'%"+this.match+"%\'"
-                                                                            + " OR world.name LIKE \'%"+this.match+"%\'"
-                                                                            + " OR continent.name LIKE \'%"+this.match+"%\'"
-                                                                            + " OR region.name LIKE \'%"+this.match+"%\'"
-                                                                            + " OR country.name LIKE \'%"+this.match+"%\')"
-                                                                            + " GROUP BY world.latitude"
-                                                                            + " LIMIT ?;");
-                                                              
-            stmt.setInt(1,this.limit);
+
+            String selectStatement = "SELECT world.name, world.continent, world.latitude,"
+                                    + " world.longitude, world.municipality, region.name"
+                                    + " FROM continent" 
+                                    + " JOIN country ON continent.id = country.continent"
+                                    + " JOIN region ON country.id = region.iso_country"
+                                    + " JOIN world ON region.id = world.iso_region"
+                                    + " WHERE (world.municipality LIKE \'%"+this.match+"%\'"
+                                    + " OR world.name LIKE \'%"+this.match+"%\'"
+                                    + " OR continent.name LIKE \'%"+this.match+"%\'"
+                                    + " OR region.name LIKE \'%"+this.match+"%\'"
+                                    + " OR country.name LIKE \'%"+this.match+"%\')"
+                                    + " GROUP BY world.latitude";
+
+            selectStatement += (limit == 0) ? ";" : (" LIMIT " + this.limit + ";");
+            
+            PreparedStatement stmt = DatabaseConnection.con.prepareStatement(selectStatement);                                       
             ResultSet rs =  stmt.executeQuery(); 
 
             if (!rs.next()) {
@@ -81,7 +83,7 @@ public class Query {
                 places = convertQueryResultsToPlaces(rs);
             }       
         } catch (Exception e){
-            log.error("Database Connection failed");         
+            log.error(e.getMessage());         
         }
         return places;
     }
