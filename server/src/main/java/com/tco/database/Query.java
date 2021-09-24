@@ -31,8 +31,9 @@ public class Query {
                                                                             + " JOIN country ON continent.id = country.continent"
                                                                             + " JOIN region ON country.id = region.iso_country"
                                                                             + " JOIN world ON region.id = world.iso_region"
-                                                                            + " WHERE (world.name LIKE \'%"+this.match+"%\' OR continent.name"
-                                                                            + " LIKE \'%"+this.match+"%\'"
+                                                                            + " WHERE (world.municipality LIKE \'%"+this.match+"%\'"
+                                                                            + " OR world.name LIKE \'%"+this.match+"%\'" 
+                                                                            + " OR continent.name LIKE \'%"+this.match+"%\'"
                                                                             + " OR region.name LIKE \'%"+this.match+"%\'" 
                                                                             + " OR country.name LIKE \'%"+this.match+"%\')");
 
@@ -57,14 +58,16 @@ public class Query {
         try {
             DatabaseConnection.connect();
             PreparedStatement stmt = DatabaseConnection.con.prepareStatement("SELECT world.name, world.continent, world.latitude,"
-                                                                            + " world.longitude, region.name"
+                                                                            + " world.longitude, world.municipality, region.name"
                                                                             + " FROM continent" 
                                                                             + " JOIN country ON continent.id = country.continent"
                                                                             + " JOIN region ON country.id = region.iso_country"
                                                                             + " JOIN world ON region.id = world.iso_region"
-                                                                            + " WHERE (world.name LIKE \'%"+this.match+"%\' OR continent.name"
-                                                                            + " LIKE \'%"+this.match+"%\'"
-                                                                            + " OR region.name LIKE \'%"+this.match+"%\' OR country.name LIKE \'%"+this.match+"%\')"
+                                                                            + " WHERE (world.municipality LIKE \'%"+this.match+"%\'"
+                                                                            + " OR world.name LIKE \'%"+this.match+"%\'"
+                                                                            + " OR continent.name LIKE \'%"+this.match+"%\'"
+                                                                            + " OR region.name LIKE \'%"+this.match+"%\'"
+                                                                            + " OR country.name LIKE \'%"+this.match+"%\')"
                                                                             + " GROUP BY world.latitude"
                                                                             + " LIMIT ?;");
                                                               
@@ -76,17 +79,13 @@ public class Query {
             } 
             else {
                 places = convertQueryResultsToPlaces(rs);
-            }
-            
-            
+            }       
         } catch (Exception e){
-            /* TODO: Change System.out.println to Logger */
-            log.error("Database Connection failed");
-            
+            log.error("Database Connection failed");         
         }
         return places;
     }
-      /* TODO: Change result set to places object */
+
     public Places convertQueryResultsToPlaces(ResultSet results){
         Places places = new Places();
         try {
