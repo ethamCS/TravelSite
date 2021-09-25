@@ -16,6 +16,7 @@ public class ConfigRequest extends Request {
         serverName = "t17 We Push To Main";
         features = new ArrayList<>();
         features.add("config");
+        features.add("find");
         log.trace("buildResponse -> {}", this);
     }
 
