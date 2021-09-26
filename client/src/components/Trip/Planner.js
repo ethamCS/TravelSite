@@ -4,7 +4,7 @@ import Map from './Map/Map';
 import Itinerary from './Itinerary/Itinerary';
 import { usePlaces } from '../../hooks/usePlaces';
 
-export default function Planner() {
+export default function Planner(props) {
     const {places, selectedIndex, placeActions} = usePlaces();
 
     return (
@@ -13,7 +13,7 @@ export default function Planner() {
                 <Map places={places} selectedIndex={selectedIndex} placeActions={placeActions} />
             </Section>
             <Section>
-                <Itinerary places={places} selectedIndex={selectedIndex} placeActions={placeActions} />
+                <Itinerary places={places} selectedIndex={selectedIndex} placeActions={placeActions} openFind={props.openFind} />
             </Section>
         </Container>
     );
