@@ -6,7 +6,7 @@ import { latLngToText } from '../../../utils/transformers';
 export default function Itinerary(props) {
     return (
         <Table responsive striped>
-            <Header placeActions={props.placeActions} />
+            <Header placeActions={props.placeActions} openFind={props.openFind} />
             <Body places={props.places} placeActions={props.placeActions} />
         </Table>
     );
@@ -19,7 +19,7 @@ function Header(props) {
                 <th/>
                 <th>My Trip</th>
                 <th>
-                    <ItineraryActionsDropdown placeActions={props.placeActions} />
+                    <ItineraryActionsDropdown placeActions={props.placeActions} openFind={props.openFind}/>
                 </th>
             </tr>
         </thead>
