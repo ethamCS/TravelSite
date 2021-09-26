@@ -15,7 +15,7 @@ export function ItineraryActionsDropdown(props) {
             <DropdownItem onClick={() => props.placeActions.removeAll()} data-testid='delete-all-button'>
                 <FaTrashAlt />
             </DropdownItem>
-            <DropdownItem onClick={() => console.log('Search Button Clicked')}>
+            <DropdownItem onClick={props.openFind}>
                 <FaSearchLocation />
             </DropdownItem>
         </ActionsDropdown>
