@@ -1,7 +1,7 @@
 import React from 'react';
 import { ButtonGroup, DropdownItem, DropdownMenu, DropdownToggle, UncontrolledDropdown } from 'reactstrap';
 import { BiDotsVerticalRounded } from 'react-icons/bi';
-import { FaHome, FaTrash, FaTrashAlt, FaSearch } from 'react-icons/fa';
+import { FaHome, FaTrash, FaTrashAlt, FaSearchLocation } from 'react-icons/fa';
 import { DEFAULT_STARTING_PLACE } from '../../../utils/constants';
 import { moveToHome } from '../../../hooks/usePlaces';
 
@@ -16,7 +16,7 @@ export function ItineraryActionsDropdown(props) {
                 <FaTrashAlt />
             </DropdownItem>
             <DropdownItem onClick={() => console.log('Search Button Clicked')}>
-                <FaSearch />
+                <FaSearchLocation />
             </DropdownItem>
         </ActionsDropdown>
     );
