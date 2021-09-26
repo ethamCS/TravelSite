@@ -1,6 +1,7 @@
 package com.tco.misc;
 
 import com.tco.requests.ConfigRequest;
+import com.tco.requests.FindRequest;
 
 import java.lang.reflect.Type;
 
@@ -31,6 +32,18 @@ public class TestJSONValidator {
     @DisplayName("Config request should pass schema validation")
     public void testConfigRequestPass() {
         test("{\"requestType\":\"config\",\"features\":[\"config\"]}", ConfigRequest.class, true);
+    }
+
+    @Test
+    @DisplayName("Find request should fail schema validation")
+    public void testFindRequestFail() {
+        test("{}", FindRequest.class, false);
+    }
+
+    @Test
+    @DisplayName("Find request should pass schema validation")
+    public void testFindRequestPass() {
+        test("{\"requestType\": \"find\",\"match\": \"\",\"limit\":  0}", FindRequest.class, true);
     }
 
     @Test

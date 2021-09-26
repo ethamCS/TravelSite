@@ -5,7 +5,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TestFindRequest {
 
@@ -40,7 +39,7 @@ public class TestFindRequest {
 
 
     @Test
-    @DisplayName("Query found is \"0\"")
+    @DisplayName("Query found is \"50427\"")
     public void testFound() {
         Integer found = find.getFound();
         assertEquals(50427, found); 
