@@ -5,6 +5,7 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 import com.tco.database.DatabaseConnection;
 import java.sql.*;
+import java.util.Map;
 
 import com.tco.requests.Places;
 import com.tco.requests.Place;
@@ -15,15 +16,18 @@ public class Query {
 
     private static String match;
     private static Integer limit;
+    private Places places;
+    private Integer result;
 
     private final transient Logger log = LoggerFactory.getLogger(Query.class);
 
    public Query(String match, Integer limit){
        this.match = match;
-       this.limit = limit;     
+       this.limit = limit;
+       this.places = new Places();
+       this.result = 0;
    }
     public Integer selectCount() {
-        int result = 0;
         try {
             DatabaseConnection.connect();
             PreparedStatement stmt = DatabaseConnection.con.prepareStatement("SELECT COUNT(*)"
@@ -54,7 +58,6 @@ public class Query {
 
     public Places selectAll(){
         int result = 0;
-        Places places = new Places();
         try {
             DatabaseConnection.connect();
 
@@ -74,14 +77,14 @@ public class Query {
             selectStatement += (limit == 0) ? ";" : (" LIMIT " + this.limit + ";");
             
             PreparedStatement stmt = DatabaseConnection.con.prepareStatement(selectStatement);                                       
-            ResultSet rs =  stmt.executeQuery(); 
+            ResultSet rs =  stmt.executeQuery();
 
             if (!rs.next()) {
                 result = -1;
-            } 
+            }
             else {
                 places = convertQueryResultsToPlaces(rs);
-            }       
+            }
         } catch (Exception e){
             log.error(e.getMessage());         
         }
@@ -89,11 +92,10 @@ public class Query {
     }
 
     public Places convertQueryResultsToPlaces(ResultSet results){
-        Places places = new Places();
         try {
             do {
                 Place place = new Place();
-                for (Place.Entry<String, String> entry : place.entrySet()) {
+                for (Map.Entry<String, String> entry : place.entrySet()) {
                     String key = entry.getKey();
                     place.put(key, results.getString(key));
                 }
@@ -106,5 +108,16 @@ public class Query {
         }
         return places;
     }
-  
+
+
+    /* For testing use only */
+
+    public Places getPlaces(){
+       return this.places;
+    }
+
+    @Override
+    public String toString() {
+        return getPlaces().toString();
+    }
 }
