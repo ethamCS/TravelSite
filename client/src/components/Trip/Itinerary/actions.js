@@ -1,9 +1,10 @@
 import React from 'react';
 import { ButtonGroup, DropdownItem, DropdownMenu, DropdownToggle, UncontrolledDropdown } from 'reactstrap';
 import { BiDotsVerticalRounded } from 'react-icons/bi';
-import { FaHome, FaTrash, FaTrashAlt, FaSearchLocation } from 'react-icons/fa';
+import { FaHome, FaTrash, FaTrashAlt, FaSearchLocation, FaQuestion } from 'react-icons/fa';
 import { DEFAULT_STARTING_PLACE } from '../../../utils/constants';
 import { moveToHome } from '../../../hooks/usePlaces';
+import { LOG } from '../../../utils/constants';
 
 export function ItineraryActionsDropdown(props) {
     return (
@@ -17,6 +18,9 @@ export function ItineraryActionsDropdown(props) {
             </DropdownItem>
             <DropdownItem onClick={props.openFind}>
                 <FaSearchLocation />
+            </DropdownItem>
+            <DropdownItem onClick={LOG.info("Where Is Button Clicked.")}>
+                <FaQuestion />
             </DropdownItem>
         </ActionsDropdown>
     );
