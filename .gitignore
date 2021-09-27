@@ -33,7 +33,7 @@ server/*.iml
 # Coverage Files, Bundled Files, Dependencies
 
 client/dist
-client/dist/
+*/client/dist/
 */node_modules
 */node_modules/
 */package-lock.json
