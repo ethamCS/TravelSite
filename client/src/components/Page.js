@@ -39,6 +39,7 @@ export default function Page(props) {
 function useServerSettings(showMessage) {
 	const [serverUrl, setServerUrl] = useState(getOriginalServerUrl());
 	const [serverConfig, setServerConfig] = useState(null);
+	const [serverFeatures, setServerFeatures] = useState(null);
 
 	useEffect(() => {
 		sendConfigRequest();
@@ -48,6 +49,7 @@ function useServerSettings(showMessage) {
 		LOG.info("Switching to Server:", url);
 		setServerConfig(config);
 		setServerUrl(url);
+		setServerFeatures(config);
 	}
 
 	async function sendConfigRequest() {
@@ -60,5 +62,5 @@ function useServerSettings(showMessage) {
 		}
 	}
 
-	return [{ serverUrl: serverUrl, serverConfig: serverConfig }, processServerConfigSuccess];
+	return [{ serverUrl: serverUrl, serverConfig: serverConfig, serverFeatures: serverFeatures }, processServerConfigSuccess];
 }
