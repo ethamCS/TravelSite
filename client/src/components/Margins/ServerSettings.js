@@ -40,14 +40,14 @@ function getCurrentServerName(config, serverSettings) {
 
 function getCurrentServerFeatures(config, serverSettings){
     if (config){
-        return config.features;      
+        return config.features.join(", ");      
     }
 
     else if (serverSettings.serverConfig) {
         return serverSettings.serverConfig.features;
     }
 
-    return ",";
+    return "";
 }
 
 function Header(props) {
@@ -73,7 +73,7 @@ function Body(props) {
             <Container>
                 <SettingsRow label="Name" value={props.serverName} />
                 <SettingsRow label="URL" value={urlInput} />
-                <SettingsRow label="Supported Features" value={props.features} />
+                <SettingsRow label="Supported Features" value={props["features"]} />
             </Container>
         </ModalBody>
     );
