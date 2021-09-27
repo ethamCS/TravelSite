@@ -10,7 +10,7 @@
 			"name": "config",
 			"item": [
 				{
-					"name": "Config Post",
+					"name": "Config POST",
 					"event": [
 						{
 							"listen": "test",
@@ -24,7 +24,7 @@
 									"pm.test(\"Server-side team name is correct\", () => {",
 									"    const response = pm.response.json();",
 									"    const expectedTeamName = pm.collectionVariables.get(\"TEAM_NAME\");",
-									"    pm.expect(response.serverName).to.eql(expectedTeamName);",
+									"    pm.expect(response[\"serverName\"].serverName).to.eql(expectedTeamName);",
 									"});"
 								],
 								"type": "text/javascript"
@@ -53,7 +53,60 @@
 								"config"
 							]
 						},
-						"description": "Testing the result of Config Post requests."
+						"description": "Testing the result of Config POST requests."
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "find",
+			"item": [
+				{
+					"name": "Find POST",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is HTTP200 status\", () => {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Server-side team name is correct\", () => {",
+									"    const response = pm.response.json();",
+									"    const expectedTeamName = pm.collectionVariables.get(\"TEAM_NAME\");",
+									"    pm.expect(response.serverName).to.eql(expectedTeamName);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"find": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"requestType\": \"find\",\n    \"match\": \"\",\n    \"limit\":   \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/find",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"find"
+							]
+						},
+						"description": "Testing the result of Find POST requests."
 					},
 					"response": []
 				}
