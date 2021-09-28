@@ -40,11 +40,13 @@ function getCurrentServerName(config, serverSettings) {
 
 function getCurrentServerFeatures(config, serverSettings){
     if (config){
-        return config.features.join(", ");      
+        return config["features"].join(", ");      
     }
 
     else if (serverSettings.serverConfig) {
-        return serverSettings.serverConfig.features;
+        // if features array is unpopulated it will not be able to split
+        // this is needed.
+        return serverSettings["serverConfig"]["features"] && serverSettings["serverConfig"]["features"].join(", "); 
     }
 
     return "";
