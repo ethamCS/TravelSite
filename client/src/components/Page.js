@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Collapse } from 'reactstrap';
+import { Collapse, Modal } from 'reactstrap';
 import Header from './Margins/Header';
 import Footer from './Margins/Footer';
 import About from './About/About';
 import Find from './Find/Find';
+import WhereIs from './WhereIs/WhereIs';
 import Planner from './Trip/Planner';
 import { useToggle } from '../hooks/useToggle';
 import { LOG } from '../utils/constants';
@@ -13,20 +14,24 @@ export default function Page(props) {
 	const [showAbout, toggleAbout] = useToggle(false);
 	const [serverSettings, processServerConfigSuccess] = useServerSettings(props.showMessage);
 	const [showFind, toggleFind] = useToggle(false);
+	const [showWhereIs, toggleWhereIs] = useToggle(false);
 
 	return (
 		<>
-			<Header toggleAbout={toggleAbout} closeFind={showFind}/>
+			<Header toggleAbout={toggleAbout} closeFind={showFind} closeWhereIs={showWhereIs} />
 			<div className="body">
 				<Collapse isOpen={showAbout && !showFind}>
 					<About closePage={toggleAbout} />
 				</Collapse>
 				<Collapse isOpen={!showAbout && !showFind} data-testid="planner-collapse">
-					<Planner showMessage={props.showMessage} openFind={toggleFind} />
+					<Planner showMessage={props.showMessage} openFind={toggleFind} openWhereIs={toggleWhereIs} />
 				</Collapse>
 				<Collapse isOpen={showFind} data-testid="find-collapse">
-					<Find closePage={toggleFind}/>
+					<Find closePage={toggleFind} />
 				</Collapse>
+				<Modal isOpen={showWhereIs} data-testid="whereis-modal">
+					<WhereIs closeWhereIs={toggleWhereIs} />
+				</Modal>
 			</div>
 			<Footer
 				serverSettings={serverSettings}
@@ -39,7 +44,6 @@ export default function Page(props) {
 function useServerSettings(showMessage) {
 	const [serverUrl, setServerUrl] = useState(getOriginalServerUrl());
 	const [serverConfig, setServerConfig] = useState(null);
-	const [serverFeatures, setServerFeatures] = useState(null);
 
 	useEffect(() => {
 		sendConfigRequest();
@@ -47,9 +51,8 @@ function useServerSettings(showMessage) {
 
 	function processServerConfigSuccess(config, url) {
 		LOG.info("Switching to Server:", url);
-		setServerConfig(config);
-		setServerUrl(url);
-		setServerFeatures(config);
+			setServerConfig(config);
+			setServerUrl(url);
 	}
 
 	async function sendConfigRequest() {
@@ -62,5 +65,5 @@ function useServerSettings(showMessage) {
 		}
 	}
 
-	return [{ serverUrl: serverUrl, serverConfig: serverConfig, serverFeatures: serverFeatures }, processServerConfigSuccess];
+	return [{ serverUrl: serverUrl, serverConfig: serverConfig }, processServerConfigSuccess];
 }

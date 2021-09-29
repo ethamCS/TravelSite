@@ -19,7 +19,7 @@ export function ItineraryActionsDropdown(props) {
             <DropdownItem onClick={props.openFind}>
                 <FaSearchLocation />
             </DropdownItem>
-            <DropdownItem onClick={LOG.info("Where Is Button Clicked.")}>
+            <DropdownItem onClick={props.openWhereIs}>
                 <FaQuestion />
             </DropdownItem>
         </ActionsDropdown>
