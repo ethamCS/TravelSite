@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Input, Container, Button, Col, Row } from 'reactstrap';
+import { usePlaces } from '../../hooks/usePlaces';
 
 export default function Find(props) {
+    const {places, selectedIndex, placeActions} = usePlaces();
+    const context = { places, selectedIndex, placeActions };
+
     return (
         <Container>
-            <FindHeader closePage={props.closePage}/>
-            <FindBody />
+            <FindHeader closePage={props.closePage} />
+            <FindBody context={context}/>
         </Container>
     );
 }
@@ -26,9 +30,19 @@ function FindHeader(props) {
 }
 
 function FindBody(props) {
+    const [ userValue, setUserValue ] = useState("");
+
+    function handleChange(e, context) {
+        e.preventDefault();
+        setUserValue(e.target.value);
+    }
+    
     return (
         <Container>
-            <Input placeholder="Enter Location" />
+            <Input type="text"
+                    placeholder="Enter Location" 
+                    value={userValue}
+                    onChange={handleChange}/>
         </Container>
     );
 }
