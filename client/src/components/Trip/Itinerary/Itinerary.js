@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Table } from 'reactstrap';
 import { ItineraryActionsDropdown, PlaceActionsDropdown } from './actions.js';
 import { latLngToText } from '../../../utils/transformers';
+import { selectIndex, usePlaces } from '../../../hooks/usePlaces';
 
 export default function Itinerary(props) {
     return (
@@ -30,7 +31,7 @@ function Body(props) {
     return (
         <tbody>
             {props.places.map((place, index) => 
-                <TableRow 
+                <TableRow
                     key={`table-${JSON.stringify(place)}-${index}`}
                     place={place}
                     placeActions={props.placeActions}
@@ -46,9 +47,9 @@ function TableRow(props) {
     const location = latLngToText(props.place);
 
     return (
-        <tr>
+        <tr>    
             <th scope="row">{props.index + 1}</th>
-            <td>
+            <td onClick={() => props.placeActions.selectIndex(props.index, props.place)}>
                 {name}
                 <br/>
                 <small className="text-muted">{location}</small>
