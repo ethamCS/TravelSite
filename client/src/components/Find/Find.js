@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Input, Container, Button, Col, Row } from 'reactstrap';
 import { usePlaces } from '../../hooks/usePlaces';
+import { useFind } from '../../hooks/useFind';
 
 export default function Find(props) {
     const {places, selectedIndex, placeActions} = usePlaces();
@@ -31,10 +32,13 @@ function FindHeader(props) {
 
 function FindBody(props) {
     const [ userValue, setUserValue ] = useState("");
+    const [ matchString, sendFindRequest ] = useFind(userValue);
 
     function handleChange(e, context) {
         e.preventDefault();
         setUserValue(e.target.value);
+        //console.log(matchString);
+        //console.log(sendFindRequest(matchString, 0))
     }
     
     return (
