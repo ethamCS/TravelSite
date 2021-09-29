@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Table } from 'reactstrap';
 import { ItineraryActionsDropdown, PlaceActionsDropdown } from './actions.js';
 import { latLngToText } from '../../../utils/transformers';
@@ -29,7 +29,7 @@ function Header(props) {
 function Body(props) {
     return (
         <tbody>
-            {props.places.map((place, index) =>
+            {props.places.map((place, index) => 
                 <TableRow
                     key={`table-${JSON.stringify(place)}-${index}`}
                     place={place}
@@ -46,9 +46,9 @@ function TableRow(props) {
     const location = latLngToText(props.place);
 
     return (
-        <tr>
+        <tr>    
             <th scope="row">{props.index + 1}</th>
-            <td>
+            <td onClick={() => props.placeActions.selectIndex(props.index, props.place)}>
                 {name}
                 <br />
                 <small className="text-muted">{location}</small>
