@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Table } from 'reactstrap';
 import { ItineraryActionsDropdown, PlaceActionsDropdown } from './actions.js';
 import { latLngToText } from '../../../utils/transformers';
-import { selectIndex, usePlaces } from '../../../hooks/usePlaces';
 
 export default function Itinerary(props) {
     return (
