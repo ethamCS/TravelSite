@@ -5,9 +5,9 @@ export default function WhereIs(props) {
 
     return (
         <Container>
-            <WhereIsHeader closeWhereIs={props.closeWhereIs} context={context} />
-            <WhereIsBody context={context} />
-            <WhereIsFooter closeWhereIs={props.closeWhereIs} context={context} />
+            <WhereIsHeader />
+            <WhereIsBody />
+            <WhereIsFooter />
         </Container>
     );
 }
