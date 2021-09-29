@@ -1,5 +1,7 @@
+
 import React, { useState } from 'react';
 import { Input, Container, Button, Col, Row } from 'reactstrap';
+import Results from './Results.js'
 import { usePlaces } from '../../hooks/usePlaces';
 import { useFind } from '../../hooks/useFind';
 
@@ -43,10 +45,9 @@ function FindBody(props) {
     
     return (
         <Container>
-            <Input type="text"
-                    placeholder="Enter Location" 
-                    value={userValue}
-                    onChange={handleChange}/>
+            <Input placeholder="Enter Location" />
+            <Results />
         </Container>
+
     );
 }
