@@ -5,9 +5,9 @@ export default function WhereIs(props) {
 
     return (
         <Container>
-            <WhereIsHeader />
+            <WhereIsHeader closeWhereIs={props.closeWhereIs} />
             <WhereIsBody />
-            <WhereIsFooter />
+            <WhereIsFooter closeWhereIs={props.closeWhereIs} />
         </Container>
     );
 }
@@ -15,6 +15,14 @@ export default function WhereIs(props) {
 function WhereIsHeader(props) {
     return (
         <Container style={{ paddingTop: '10px' }}>
+            <Row>
+                <Col>
+                    <h3>Where Are These Coords?</h3>
+                </Col>
+                <Col xs="auto">
+                    <Button name="closeWhereIs" color="primary" onClick={props.closeWhereIs}>Exit</Button>
+                </Col>
+            </Row>
         </Container>
     );
 }
@@ -22,7 +30,16 @@ function WhereIsHeader(props) {
 function WhereIsBody(props) {
     return (
         <InputGroup className="mt-4">
-
+            <InputGroupAddon addonType="prepend">
+                <InputGroupText>Coordinates</InputGroupText>
+            </InputGroupAddon>
+            <Input
+                placeholder="Latitude, Longitude"
+            //onChange={e => processCoordinatesInput(e.target.value, props.context)}
+            //value={coordinatesInputText}
+            //valid={validCoordinates}
+            //invalid={!inputBoxEmpty && !validCoordinates}
+            />
         </InputGroup>
     );
 }
@@ -30,6 +47,11 @@ function WhereIsBody(props) {
 function WhereIsFooter(props) {
     return (
         <Container style={{ paddingTop: '10px', paddingBottom: '10px' }}>
+            <Row>
+                <Col xs="auto">
+                    <Button name="whereIsFind" color="primary" onClick={props.closeWhereIs}>Find</Button>
+                </Col>
+            </Row>
         </Container>
     );
 }
