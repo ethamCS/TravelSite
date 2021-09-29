@@ -1,5 +1,6 @@
 import React from 'react';
-import { Input, Container, Button, Col, Row } from 'reactstrap';
+import { Input, Container, Button, Col, Row, Table} from 'reactstrap';
+import Results from './Results.js'
 
 export default function Find(props) {
     return (
@@ -29,6 +30,7 @@ function FindBody(props) {
     return (
         <Container>
             <Input placeholder="Enter Location" />
+            <Results />
         </Container>
     );
 }
