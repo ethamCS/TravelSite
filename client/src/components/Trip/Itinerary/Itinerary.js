@@ -6,7 +6,7 @@ import { latLngToText } from '../../../utils/transformers';
 export default function Itinerary(props) {
     return (
         <Table responsive striped>
-            <Header placeActions={props.placeActions} openFind={props.openFind} />
+            <Header placeActions={props.placeActions} openFind={props.openFind} openWhereIs={props.openWhereIs} />
             <Body places={props.places} placeActions={props.placeActions} />
         </Table>
     );
@@ -16,10 +16,10 @@ function Header(props) {
     return (
         <thead>
             <tr>
-                <th/>
+                <th />
                 <th>My Trip</th>
                 <th>
-                    <ItineraryActionsDropdown placeActions={props.placeActions} openFind={props.openFind}/>
+                    <ItineraryActionsDropdown placeActions={props.placeActions} openFind={props.openFind} openWhereIs={props.openWhereIs} />
                 </th>
             </tr>
         </thead>
@@ -29,8 +29,8 @@ function Header(props) {
 function Body(props) {
     return (
         <tbody>
-            {props.places.map((place, index) => 
-                <TableRow 
+            {props.places.map((place, index) =>
+                <TableRow
                     key={`table-${JSON.stringify(place)}-${index}`}
                     place={place}
                     placeActions={props.placeActions}
@@ -50,7 +50,7 @@ function TableRow(props) {
             <th scope="row">{props.index + 1}</th>
             <td>
                 {name}
-                <br/>
+                <br />
                 <small className="text-muted">{location}</small>
             </td>
             <td>
