@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container, Row, Col, Table} from 'reactstrap';
+import { Container, Row, Col, Table } from 'reactstrap';
 import { latLngToText, placeToLatLng } from '../../utils/transformers';
 import { useState } from 'react';
 
@@ -9,7 +9,7 @@ export default function Results(props) {
     return (
         <Table responsive striped>
             <ResultHeader />
-            <ResultBody places={props.places} selectedIndex={props.selectedIndex} placeActions={props.placeActions} placesList={props.placesList}/>
+            <ResultBody places={props.places} selectedIndex={props.selectedIndex} placeActions={props.placeActions} placesList={props.placesList} />
         </Table>
     );
 }
@@ -26,10 +26,10 @@ function ResultHeader(props) {
 }
 
 function ResultBody(props) {
-    
+
     return (
         <tbody>
-            {props.placesList.map((place, index) => 
+            {props.placesList.map((place, index) =>
                 <TableRow
                     key={`table-${JSON.stringify(place)}-${index}`}
                     place={place}
@@ -46,9 +46,10 @@ function TableRow(props) {
     const name = props.place.name ? props.place.name : "-";
     const location = placeToLatLng(props.place);
     const newLocation = latLngToText(location);
+    const place = props.place;
 
     return (
-        <tr onClick={() => props.placeActions.selectIndex(props.index)}>    
+        <tr onClick={() => props.placeActions.append(place)}>
             <th scope="row">{props.index + 1} </th>
             <td>
                 {name}
