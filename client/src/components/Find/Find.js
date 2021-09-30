@@ -1,18 +1,15 @@
 
-import React, { useState } from 'react';
-import { Input, Container, Button, Col, Row } from 'reactstrap';
+import React, { useCallback, useEffect, useState } from 'react';
+import { Input, Container, Button, Col, Row, TableRow } from 'reactstrap';
 import Results from './Results.js'
 import { usePlaces } from '../../hooks/usePlaces';
 import { useFind } from '../../hooks/useFind';
 
 export default function Find(props) {
-    const {places, selectedIndex, placeActions} = usePlaces();
-    const context = { places, selectedIndex, placeActions };
-
     return (
         <Container>
             <FindHeader closePage={props.closePage} />
-            <FindBody context={context}/>
+            <FindBody />
         </Container>
     );
 }
@@ -33,20 +30,31 @@ function FindHeader(props) {
 }
 
 function FindBody(props) {
-    const [ userValue, setUserValue ] = useState("");
-    const [ matchString, sendFindRequest ] = useFind(userValue);
+    const [ matchString, setMatchValue, getPlaces ] = useFind("");
+    const [list, setList] = useState([]);
 
-    function handleChange(e, context) {
+    function handleChange(e) {
         e.preventDefault();
-        setUserValue(e.target.value);
-        //console.log(matchString);
-        //console.log(sendFindRequest(matchString, 0))
+        setMatchValue(e.target.value);
     }
+    
+    const fetchPlaces = useCallback(async () => {
+        const placeList = await getPlaces(matchString);
+        setList(placeList);
+    }, [matchString]);
+
+    useEffect(() => {
+        fetchPlaces();
+    }, [fetchPlaces]);
     
     return (
         <Container>
-            <Input placeholder="Enter Location" />
-            <Results />
+            <Input type="text"
+                    placeholder="Enter Location"
+                    value={matchString}
+                    onChange={handleChange} />
+            <div>
+            </div>
         </Container>
 
     );
