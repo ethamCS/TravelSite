@@ -5,7 +5,7 @@ export default function Results(props) {
     return (
         <Container>
             <ResultHeader />
-            <ResultBody />
+            <ResultBody places={props.places} selectedIndex={props.selectedIndex} placeActions={props.placeActions} list={props.list} />
         </Container>
     );
 }
