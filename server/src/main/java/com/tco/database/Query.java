@@ -74,7 +74,7 @@ public class Query {
                                     + " OR country.name LIKE \'%"+this.match+"%\')"
                                     + " GROUP BY world.latitude";
 
-            selectStatement += (limit == 0) ? ";" : (" LIMIT " + this.limit + ";");
+            selectStatement += (limit == 0) ? " LIMIT 100;" : (" LIMIT " + this.limit + ";");
             
             PreparedStatement stmt = DatabaseConnection.con.prepareStatement(selectStatement);                                       
             ResultSet rs =  stmt.executeQuery();
