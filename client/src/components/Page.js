@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { usePlaces } from '../hooks/usePlaces';
 import { Collapse, Modal } from 'reactstrap';
 import Header from './Margins/Header';
 import Footer from './Margins/Footer';
@@ -15,6 +16,7 @@ export default function Page(props) {
 	const [serverSettings, processServerConfigSuccess] = useServerSettings(props.showMessage);
 	const [showFind, toggleFind] = useToggle(false);
 	const [showWhereIs, toggleWhereIs] = useToggle(false);
+	const { places, selectedIndex, placeActions } = usePlaces();
 
 	return (
 		<>
@@ -24,13 +26,13 @@ export default function Page(props) {
 					<About closePage={toggleAbout} />
 				</Collapse>
 				<Collapse isOpen={!showAbout && !showFind} data-testid="planner-collapse">
-					<Planner showMessage={props.showMessage} openFind={toggleFind} openWhereIs={toggleWhereIs} />
+					<Planner showMessage={props.showMessage} openFind={toggleFind} openWhereIs={toggleWhereIs} places={places} selectedIndex={selectedIndex} placeActions={placeActions} />
 				</Collapse>
 				<Collapse isOpen={showFind} data-testid="find-collapse">
 					<Find closePage={toggleFind} />
 				</Collapse>
 				<Modal isOpen={showWhereIs} data-testid="whereis-modal">
-					<WhereIs closeWhereIs={toggleWhereIs} />
+					<WhereIs closeWhereIs={toggleWhereIs} placeActions={placeActions} />
 				</Modal>
 			</div>
 			<Footer
@@ -51,8 +53,8 @@ function useServerSettings(showMessage) {
 
 	function processServerConfigSuccess(config, url) {
 		LOG.info("Switching to Server:", url);
-			setServerConfig(config);
-			setServerUrl(url);
+		setServerConfig(config);
+		setServerUrl(url);
 	}
 
 	async function sendConfigRequest() {

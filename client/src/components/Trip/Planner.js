@@ -5,15 +5,14 @@ import Itinerary from './Itinerary/Itinerary';
 import { usePlaces } from '../../hooks/usePlaces';
 
 export default function Planner(props) {
-    const { places, selectedIndex, placeActions } = usePlaces();
 
     return (
         <Container>
             <Section>
-                <Map places={places} selectedIndex={selectedIndex} placeActions={placeActions} />
+                <Map places={props.places} selectedIndex={props.selectedIndex} placeActions={props.placeActions} />
             </Section>
             <Section>
-                <Itinerary places={places} selectedIndex={selectedIndex} placeActions={placeActions} openFind={props.openFind} openWhereIs={props.openWhereIs} />
+                <Itinerary places={props.places} selectedIndex={props.selectedIndex} placeActions={props.placeActions} openFind={props.openFind} openWhereIs={props.openWhereIs} />
             </Section>
         </Container>
     );
