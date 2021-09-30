@@ -9,7 +9,7 @@ export default function Find(props) {
     return (
         <Container>
             <FindHeader closePage={props.closePage} />
-            <FindBody />
+            <FindBody places={props.places} selectedIndex={props.selectedIndex} placeActions={props.placeActions} />
         </Container>
     );
 }
