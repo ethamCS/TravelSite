@@ -29,7 +29,7 @@ export default function Page(props) {
 					<Planner showMessage={props.showMessage} openFind={toggleFind} openWhereIs={toggleWhereIs} places={places} selectedIndex={selectedIndex} placeActions={placeActions} />
 				</Collapse>
 				<Collapse isOpen={showFind} data-testid="find-collapse">
-					<Find closePage={toggleFind} places={places} selectedIndex={selectedIndex} placeActions={placeActions}/>
+					<Find closePage={toggleFind} places={places} selectedIndex={selectedIndex} placeActions={placeActions} />
 				</Collapse>
 				<Modal isOpen={showWhereIs} data-testid="whereis-modal">
 					<WhereIs closeWhereIs={toggleWhereIs} placeActions={placeActions} />

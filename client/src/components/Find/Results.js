@@ -1,13 +1,15 @@
 import React from 'react';
 import {Container, Row, Col, Table} from 'reactstrap';
 import { latLngToText, placeToLatLng } from '../../utils/transformers';
+import { useState } from 'react';
+
 
 export default function Results(props) {
 
     return (
         <Table responsive striped>
             <ResultHeader />
-            <ResultBody placesList={props.placesList}/>
+            <ResultBody places={props.places} selectedIndex={props.selectedIndex} placeActions={props.placeActions} placesList={props.placesList}/>
         </Table>
     );
 }
@@ -39,6 +41,7 @@ function ResultBody(props) {
     );
 }
 
+
 function TableRow(props) {
     const name = props.place.name ? props.place.name : "-";
     const location = placeToLatLng(props.place);
@@ -53,5 +56,6 @@ function TableRow(props) {
                 <small className="text-muted">{newLocation}</small>
             </td>
         </tr>
+
     );
 }
