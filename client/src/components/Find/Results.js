@@ -1,12 +1,16 @@
 import React from 'react';
-import {Container, Row, Col} from 'reactstrap';
+import {Container, Row, Col, Table} from 'reactstrap';
+import { useState } from 'react';
 
 export default function Results(props) {
     return (
+        <Table responsive striped>
         <Container>
             <ResultHeader />
-            <ResultBody places={props.places} selectedIndex={props.selectedIndex} placeActions={props.placeActions} list={props.list} />
+            <ResultBody  places={props.places} selectedIndex={props.selectedIndex} placeActions={props.placeActions} list={props.list}/>
         </Container>
+        </Table>
+
     );
 }
 
@@ -21,7 +25,7 @@ function ResultHeader(props) {
     );
 }
 
-unction ResultBody(props) {
+function ResultBody(props) {
 
     return (
         <tbody>
