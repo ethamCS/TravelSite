@@ -37,15 +37,14 @@ function FindBody(props) {
         setMatchValue(e.target.value);
     }
     
-    const fetchPlaces = useCallback(async () => {
-        const placeList = await getPlaces(matchString);
-        setList(placeList);
-    }, [matchString]);
-
     useEffect(() => {
-        fetchPlaces();
-    }, [fetchPlaces]);
-    
+        async function fetchPlaces(matchString) {
+            const placeList = await getPlaces(matchString);
+            setList(placeList);
+        }
+        fetchPlaces(matchString);
+    }, [matchString, foundList.length]);
+
     return (
         <Container>
             <Input type="text"
