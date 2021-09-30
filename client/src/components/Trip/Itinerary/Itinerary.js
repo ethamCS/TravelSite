@@ -44,11 +44,12 @@ function Body(props) {
 function TableRow(props) {
     const name = props.place.name ? props.place.name : "-";
     const location = latLngToText(props.place);
+    console.log(props.key);
 
     return (
-        <tr>    
-            <th scope="row">{props.index + 1}</th>
-            <td onClick={() => props.placeActions.selectIndex(props.index, props.place)}>
+        <tr onClick={() => props.placeActions.selectIndex(props.index)}>    
+            <th scope="row">{props.index + 1} </th>
+            <td>
                 {name}
                 <br />
                 <small className="text-muted">{location}</small>
