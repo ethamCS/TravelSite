@@ -21,26 +21,36 @@ function ResultHeader(props) {
     );
 }
 
-function ResultBody(props) {
+unction ResultBody(props) {
+
     return (
         <tbody>
             <br/>
             <h5>Locations Found</h5>
-            <TableRow />
+            {props.list.map((place, index) => 
+                <TableRow
+                    key={`table-${JSON.stringify(place)}-${index}`}
+                    place={place}
+                    index={index}
+                />
+            )}
         </tbody>
     );
 }
 
 function TableRow(props){
+    const name = props.place.name
     return (
-        <Container> 
-            <Row>
-                <Col>1</Col>
-                <Col>name</Col>  
-                <Col>region</Col>
-                <Col>country</Col>
-                <Col>lat/lng</Col>        
-            </Row>
-        </Container>
+        <tr>    
+            <th scope="row">{props.index + 1}</th>
+            <td >
+                {name}
+                <br />
+                <small className="text-muted">{location}</small>
+            </td>
+            <td>   
+            </td>
+        </tr>
+     
     );
 }
