@@ -1,8 +1,7 @@
 
 import React, { useCallback, useEffect, useState } from 'react';
-import { Input, Container, Button, Col, Row, TableRow } from 'reactstrap';
+import { Input, Container, Button, Col, Row } from 'reactstrap';
 import Results from './Results.js'
-import { usePlaces } from '../../hooks/usePlaces';
 import { useFind } from '../../hooks/useFind';
 
 export default function Find(props) {
@@ -31,7 +30,7 @@ function FindHeader(props) {
 
 function FindBody(props) {
     const [ matchString, setMatchValue, getPlaces ] = useFind("");
-    const [list, setList] = useState([]);
+    const [foundList, setList] = useState([]);
 
     function handleChange(e) {
         e.preventDefault();
@@ -53,8 +52,7 @@ function FindBody(props) {
                     placeholder="Enter Location"
                     value={matchString}
                     onChange={handleChange} />
-            <div>
-            </div>
+            <Results placesList={foundList} places={props.places} selectedIndex={props.selectedIndex} placeActions={props.placeActions} />
         </Container>
 
     );

@@ -44,7 +44,6 @@ function Body(props) {
 function TableRow(props) {
     const name = props.place.name ? props.place.name : "-";
     const location = latLngToText(props.place);
-    console.log(props.key);
 
     return (
         <tr onClick={() => props.placeActions.selectIndex(props.index)}>    
