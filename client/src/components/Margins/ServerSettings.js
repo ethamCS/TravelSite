@@ -64,7 +64,7 @@ function Body(props) {
     const urlInput =
         <Input
             value={props.serverInput}
-            placeholder={props.serverSettings.serverUrl}
+            placeholder={"Enter server URL here"}
             onChange={(e) => { props.setServerInput(e.target.value) }}
             valid={props.validServer}
             invalid={!props.validServer}
@@ -102,7 +102,7 @@ function Footer(props) {
                 props.processServerConfigSuccess(props.config, props.serverInput);
                 props.resetModal(props.serverInput);
             }}
-                disabled={!props.validServer}
+                disabled={!props.config && props.serverInput}
             >
                 Save
             </Button>
