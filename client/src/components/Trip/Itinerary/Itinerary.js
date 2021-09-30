@@ -47,8 +47,8 @@ function TableRow(props) {
     console.log(props.key);
 
     return (
-        <tr>    
-            <th scope="row">{props.index + 1} onClick={() => props.placeActions.selectIndex(props.index)}</th>
+        <tr onClick={() => props.placeActions.selectIndex(props.index)}>    
+            <th scope="row">{props.index + 1} </th>
             <td>
                 {name}
                 <br/>

@@ -8,7 +8,7 @@ import Itinerary from '../../../src/components/Trip/Itinerary/Itinerary.js';
 
 describe('Itinerary', () => {
     beforeEach(() => {
-        render(<Itinerary places={MOCK_PLACES} placeActions={{append: jest.fn(), selectedIndex: jest.fn()}} />);
+        render(<Itinerary places={MOCK_PLACES} placeActions={{append: jest.fn(), selectIndex: jest.fn()}} />);
     });
 
     it('renders a cell with given place expected', () => {
