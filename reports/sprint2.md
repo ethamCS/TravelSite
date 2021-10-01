@@ -49,9 +49,9 @@ The last epic that we hope to complete is the "Where is?" epic.  The purpose beh
 
 | Statistic | # Planned | # Completed |
 | --- | ---: | ---: |
-| Epics | *5* | *0* |
-| Tasks |  *6*   | *0* | 
-| Story Points |  *7*  | *0* | 
+| Epics | *5* | *4* |
+| Tasks |  *6*   | *67* | 
+| Story Points |  *7*  | *74* | 
 
 <p>We feel confident in getting all of these tasks completed. Based on the last sprint, we were able to get all tasks done within the 2 week period. Judging by the extra week for this sprint, and not having to spend a week setting up VS Code, we should be able to complete all of the tasks we selected.</p>
 
@@ -68,8 +68,10 @@ The last epic that we hope to complete is the "Where is?" epic.  The purpose beh
 ## Review
 
 ### Epics completed  
+As a team we were able to complete 4 out of our 5 planned epics. The epics completed were the Find Places Epic, Where Am I Epic, Highlight Place Epic, and the Where Is? Epic. For the Find Places Epic, we implemented a live search feature on a drop down page that allows the user to see their results be refined as they search. For the Where Am I epic we ask the user for their location and then add their location as a place on the map and in the itinerary. For the Highlight places epic, we allow the user to click on specific places in their trip and it will send them to that specified location on the map. For the Where Is? epic, we open a modal for user to allow them to input a latitude,longitude string in order to find that place on the map. 
 
 ### Epics not completed 
+As a team we failed to complete the Interoperability epic.
 
 ## Retrospective
 
