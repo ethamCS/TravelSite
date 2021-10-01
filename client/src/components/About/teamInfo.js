@@ -1,4 +1,3 @@
-import memberPic from "../../static/images/Placeholder.jpg";
 import christianImage from "../../static/images/ChristianImage.jpg";
 import farhanPic from "../../static/images/farhan.jpg";
 import DylanImage from "../../static/images/dylanImage.jpg";
