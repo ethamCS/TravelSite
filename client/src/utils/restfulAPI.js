@@ -8,8 +8,8 @@ const SCHEMAS = {
     find: findSchema
 }
 
-export async function sendAPIRequest(requestBody, serverUrl) {
-    const response = await sendRequest(requestBody, serverUrl);
+export async function sendAPIRequest(requestBody, serverUrl, controllerSignal) {
+    const response = await sendRequest(requestBody, serverUrl, controllerSignal);
 
     if (!Object.keys(SCHEMAS).includes(requestBody.requestType)) {
         throw new Error(`sendAPIRequest() does not have support for type: ${requestBody.requestType}. Please add the schema to 'SCHEMAS'.`);
@@ -21,10 +21,11 @@ export async function sendAPIRequest(requestBody, serverUrl) {
     return null;
 }
 
-async function sendRequest(requestBody, serverUrl) {
+async function sendRequest(requestBody, serverUrl, controllerSignal) {
     const fetchOptions = {
         method: "POST",
-        body: JSON.stringify(requestBody)
+        body: JSON.stringify(requestBody),
+        signal: controllerSignal
     };
 
     try {
