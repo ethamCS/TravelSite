@@ -2,9 +2,6 @@ import React from 'react';
 import { ButtonGroup, DropdownItem, DropdownMenu, DropdownToggle, UncontrolledDropdown } from 'reactstrap';
 import { BiDotsVerticalRounded } from 'react-icons/bi';
 import { FaHome, FaTrash, FaTrashAlt, FaSearchLocation, FaQuestion } from 'react-icons/fa';
-import { DEFAULT_STARTING_PLACE } from '../../../utils/constants';
-import { moveToHome } from '../../../hooks/usePlaces';
-import { LOG } from '../../../utils/constants';
 
 export function ItineraryActionsDropdown(props) {
     return (
