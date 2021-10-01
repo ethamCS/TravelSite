@@ -2,7 +2,6 @@ import React from 'react';
 import { Col, Container, Row } from 'reactstrap';
 import Map from './Map/Map';
 import Itinerary from './Itinerary/Itinerary';
-import { usePlaces } from '../../hooks/usePlaces';
 
 export default function Planner(props) {
 

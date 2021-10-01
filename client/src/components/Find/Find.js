@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Input, Container, Button, Col, Row } from 'reactstrap';
 import Results from './Results.js'
 import { useFind } from '../../hooks/useFind';
