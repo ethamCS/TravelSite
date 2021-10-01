@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Table } from 'reactstrap';
+import { Table } from 'reactstrap';
 import { latLngToText, placeToLatLng } from '../../utils/transformers';
 import { useState } from 'react';
 
