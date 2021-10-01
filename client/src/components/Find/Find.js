@@ -4,15 +4,25 @@ import Results from './Results.js'
 import { useFind } from '../../hooks/useFind';
 
 export default function Find(props) {
+    const [matchString, setMatchValue, getPlaces] = useFind("");
+    const [foundList, setList] = useState([]);
+    const context = { matchString, setMatchValue, getPlaces, foundList, setList };
     return (
         <Container>
-            <FindHeader closePage={props.closePage} />
-            <FindBody places={props.places} selectedIndex={props.selectedIndex} placeActions={props.placeActions} />
+            <FindHeader closePage={props.closePage} context={context} />
+            <FindBody places={props.places} selectedIndex={props.selectedIndex} placeActions={props.placeActions} context={context} />
         </Container>
     );
 }
 
 function FindHeader(props) {
+    const { setMatchValue, setList } = props.context;
+
+    const clearFind = () => {
+        setMatchValue("");
+        setList([]);
+    }
+
     return (
         <Container>
             <Row>
@@ -20,22 +30,23 @@ function FindHeader(props) {
                     <h3>Find Locations</h3>
                 </Col>
                 <Col xs="auto">
-                    <Button name="closeFind" color="primary" onClick={props.closePage}>Exit</Button>
-                </Col> 
+                    <Button name="closeFind" color="primary" onMouseDown={clearFind} onMouseUp={props.closePage}>Exit</Button>
+                </Col>
             </Row>
         </Container>
     );
 }
 
 function FindBody(props) {
-    const [ matchString, setMatchValue, getPlaces ] = useFind("");
-    const [foundList, setList] = useState([]);
+
+    const { matchString, setMatchValue, getPlaces, foundList, setList } = props.context;
+
 
     function handleChange(e) {
         e.preventDefault();
         setMatchValue(e.target.value);
     }
-    
+
     useEffect(() => {
         const controller = new AbortController();
         async function fetchPlaces(matchString) {
@@ -52,9 +63,9 @@ function FindBody(props) {
     return (
         <Container>
             <Input type="text"
-                    placeholder="Enter Location"
-                    value={matchString}
-                    onChange={handleChange} />
+                placeholder="Enter Location"
+                value={matchString}
+                onChange={handleChange} />
             <Results placesList={foundList} places={props.places} selectedIndex={props.selectedIndex} placeActions={props.placeActions} />
         </Container>
 
