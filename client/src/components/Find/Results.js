@@ -7,7 +7,7 @@ import { useState } from 'react';
 export default function Results(props) {
 
     return (
-        <Table responsive striped>
+        <Table responsive hover>
             <ResultHeader />
             <ResultBody places={props.places} selectedIndex={props.selectedIndex} placeActions={props.placeActions} placesList={props.placesList} />
         </Table>
