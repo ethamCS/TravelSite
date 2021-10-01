@@ -144,7 +144,7 @@ Only minor changes to text constants are required.
 
 ### User Interface
 - Find Location UI element
-![findLocations](images/findLocations.png)
+![findLocations](images/findLocations2.png)
 - Select Location UI element
 ![selectLocation](images/selectLocation.png)
 
