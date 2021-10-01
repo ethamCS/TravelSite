@@ -38,11 +38,16 @@ function FindBody(props) {
     }
     
     useEffect(() => {
+        const controller = new AbortController();
         async function fetchPlaces(matchString) {
-            const placeList = await getPlaces(matchString);
+            const placeList = await getPlaces(matchString, controller.signal);
             setList(placeList);
         }
         fetchPlaces(matchString);
+
+        return () => {
+            controller.abort();
+        }
     }, [matchString, foundList.length]);
 
     return (
