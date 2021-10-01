@@ -5,7 +5,7 @@ import { latLngToText } from '../../../utils/transformers';
 
 export default function Itinerary(props) {
     return (
-        <Table responsive striped>
+        <Table responsive hover>
             <Header placeActions={props.placeActions} openFind={props.openFind} openWhereIs={props.openWhereIs} />
             <Body places={props.places} placeActions={props.placeActions} />
         </Table>
@@ -55,13 +55,14 @@ function TableRow(props) {
         });
     }
 
-    const handleClick = () => {
+    const handleClick = (e) => {
+        e.target.style = 'green';
         props.placeActions.selectIndex(props.index);
         changeCursor();
     }
 
     return (
-        <tr style={{ cursor: cursor }} onMouseDown={handleClick} onMouseUp={changeCursor}>    
+        <tr style={{cursor: cursor }} onMouseDown={handleClick} onMouseUp={changeCursor}>    
             <th scope="row">{props.index + 1} </th>
             <td>
                 {name}
