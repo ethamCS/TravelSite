@@ -44,9 +44,24 @@ function Body(props) {
 function TableRow(props) {
     const name = props.place.name ? props.place.name : "-";
     const location = latLngToText(props.place);
+    const [cursor, setCursor] = useState('pointer');
+
+    const changeCursor = () => {
+        setCursor(prevState => {
+            if (prevState === 'pointer') {
+                return 'grabbing';
+            }
+            return 'pointer';
+        });
+    }
+
+    const handleClick = () => {
+        props.placeActions.selectIndex(props.index);
+        changeCursor();
+    }
 
     return (
-        <tr onClick={() => props.placeActions.selectIndex(props.index)}>    
+        <tr style={{ cursor: cursor }} onMouseDown={handleClick} onMouseUp={changeCursor}>    
             <th scope="row">{props.index + 1} </th>
             <td>
                 {name}
