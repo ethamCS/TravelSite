@@ -74,7 +74,10 @@ The last epic that we hope to complete is the "Where is?" epic.  The purpose beh
 ## Retrospective
 
 ### Things that went well
+Our team was able to grow a lot clsoer and learn how to work together a lot better during this sprint. At the beginning we were storming but now I think we are in a much better place as a team. Everyone in the team was able to learn about the client side of things and learn a bit of javascript and react. We did a very good job of planning enough work for ourselves, we did not have too much work or too little work. 
 
 ### Things we need to improve
+As a team we need to be better about communicating what we are working on. We had multiple people in the middle of the sprint working on the same thing which lead to us making less progress than we would have had everyone been working on other things. Another issue we ran into was that not everybody has a grasp on the workings of the server side of the project.  
 
 ### One thing we will change next time
+Next time we are going to work on making tests before we build things. We are also going to work on doing a better job of getting out of the storming phase earlier in the sprint, we were in that phase for a little bit too long this semester. 
