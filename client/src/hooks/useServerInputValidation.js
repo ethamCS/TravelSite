@@ -1,10 +1,12 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { sendAPIRequest } from '../utils/restfulAPI';
+import { SERVER_FEATURES } from '../utils/constants';
 
 export function useServerInputValidation(serverUrl, close) {
     const [serverInput, setServerInput] = useState(serverUrl);
     const [validServer, setValidServer] = useState(false);
     const [config, setConfig] = useState(null);
+    const [features, setFeatures] = useState();
 
     const inputUrl = useRef();
     const context = { serverInput, setServerInput, validServer, setValidServer, config, setConfig, inputUrl };
@@ -14,9 +16,10 @@ export function useServerInputValidation(serverUrl, close) {
 
     useEffect(() => {
         updateServerInput(serverUrl);
+        // getFeatures();
     }, []);
 
-    return [serverInput, updateServerInput, config, validServer, resetModal];
+    return [serverInput, updateServerInput, config, validServer, resetModal, features, setFeatures];
 }
 
 function updateServerInputImpl(newUrl, context) {
@@ -32,18 +35,40 @@ function updateServerInputImpl(newUrl, context) {
     }
 }
 
-async function sendConfigRequest(serverURL, context) {
+ const sendConfigRequest = async (serverURL, context) => {
     const { setValidServer, setConfig, inputUrl } = context;
 
     setValidServer(false);
     const requestBody = { requestType: "config" };
     const configResponse = await sendAPIRequest(requestBody, serverURL);
 
-    if (configResponse && serverURL === inputUrl.current) {
+    var is_same = (configResponse && SERVER_FEATURES.length === configResponse.features.length) && SERVER_FEATURES.every(function(element, index) {
+        return element === configResponse.features[index]; 
+    });
+
+    if (configResponse && is_same && serverURL === inputUrl.current) {
         setConfig(configResponse);
         setValidServer(true);
     }
+
 }
+
+
+// const getFeatures = async () => {
+//     try{
+//        const features = await sendConfigRequest(serverURL, context);
+//        console.log("tsadadaest  " + features);
+//        if (features  !== null){
+//            console.log("sdada  " + features);
+//        }
+//     }
+
+//     catch(e){
+
+//     }
+
+// };
+
 
 function resetModalImpl(serverUrl, close, context) {
     const { setServerInput, setValidServer, setConfig } = context;
