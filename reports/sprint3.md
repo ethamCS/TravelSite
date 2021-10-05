@@ -39,6 +39,8 @@
 
 The first epic that we have planned is more of a half epic.  We need to finish the Interoperability epic from Sprint 2.  This shouldn't take too long, because we got a lot of it done in Sprint 2.  All we have left to do is implement the functionality for the Save button in the Server Settings Modal.  It should be unclickable when the provided server does not support the features necessary to run our website, and it should be clickable when the provided server does support the necessary features.  We also need to update our tests to ensure that the new features work as they should.  
 
+The next epic that we intend to complete is the Distances epic.  This involves implementing a new protocol for our website.  The main focus of this epic will be to allow the user to find distances between places on their trip.  The user will also be able to see the total distance for their entire trip.  This epic will consist of both client side changes as well as server side changes, so it should be a relatively involved epic.  We will follow the provided protocol in order to maintain interoperability with all of the servers in the class.  
+
 
 
 ## Metrics
