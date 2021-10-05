@@ -16,7 +16,6 @@ export function useServerInputValidation(serverUrl, close) {
 
     useEffect(() => {
         updateServerInput(serverUrl);
-        // getFeatures();
     }, []);
 
     return [serverInput, updateServerInput, config, validServer, resetModal, features, setFeatures];
@@ -35,6 +34,7 @@ function updateServerInputImpl(newUrl, context) {
     }
 }
 
+// change to arrow function so it is not global
  const sendConfigRequest = async (serverURL, context) => {
     const { setValidServer, setConfig, inputUrl } = context;
 
@@ -42,6 +42,8 @@ function updateServerInputImpl(newUrl, context) {
     const requestBody = { requestType: "config" };
     const configResponse = await sendAPIRequest(requestBody, serverURL);
 
+
+    // checking if same or not
     var is_same = (configResponse && SERVER_FEATURES.length === configResponse.features.length) && SERVER_FEATURES.every(function(element, index) {
         return element === configResponse.features[index]; 
     });
@@ -52,23 +54,6 @@ function updateServerInputImpl(newUrl, context) {
     }
 
 }
-
-
-// const getFeatures = async () => {
-//     try{
-//        const features = await sendConfigRequest(serverURL, context);
-//        console.log("tsadadaest  " + features);
-//        if (features  !== null){
-//            console.log("sdada  " + features);
-//        }
-//     }
-
-//     catch(e){
-
-//     }
-
-// };
-
 
 function resetModalImpl(serverUrl, close, context) {
     const { setServerInput, setValidServer, setConfig } = context;
