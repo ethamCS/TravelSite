@@ -41,6 +41,7 @@ The first epic that we have planned is more of a half epic.  We need to finish t
 
 The next epic that we intend to complete is the Distances epic.  This involves implementing a new protocol for our website.  The main focus of this epic will be to allow the user to find distances between places on their trip.  The user will also be able to see the total distance for their entire trip.  This epic will consist of both client side changes as well as server side changes, so it should be a relatively involved epic.  We will follow the provided protocol in order to maintain interoperability with all of the servers in the class.  
 
+The third epic that we plan on completing is the load trip epic.  This epic has one main focus: to allow the user to bring up a previously made trip.  This epic will tie in closely with the next epic (save trip), and will be relatively useless without that epic.
 
 
 ## Metrics
