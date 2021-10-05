@@ -37,6 +37,9 @@
 
 ## Planned Epics
 
+The first epic that we have planned is more of a half epic.  We need to finish the Interoperability epic from Sprint 2.  This shouldn't take too long, because we got a lot of it done in Sprint 2.  All we have left to do is implement the functionality for the Save button in the Server Settings Modal.  It should be unclickable when the provided server does not support the features necessary to run our website, and it should be clickable when the provided server does support the necessary features.  We also need to update our tests to ensure that the new features work as they should.  
+
+
 
 ## Metrics
 
