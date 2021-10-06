@@ -163,5 +163,10 @@ Other minor tweaks to the client side will include:
 We will be adding a new server class that extends the Request class.  The new class will be called FindRequest, and it will allow find requests and responses that follow the proper protocol.  This will ensure that we maintain interoperability with other servers.
 
 # Sprint 3
+
+### User Interface
+- Change Trip Name UI element
+![tripName](images/tripName.png)
+
 # Sprint 4 
 # Sprint 5
