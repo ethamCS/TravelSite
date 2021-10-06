@@ -45,6 +45,7 @@ The third epic that we plan on completing is the load trip epic.  This epic has 
 
 The fourth epic that we want to complete is the save trip epic.  As stated in the previous paragraph, this epic will tie in very closely with the load trip epic.  This will allow the user to create a trip and save it to be added to or viewed at a later time.  The user will be able to save their trip in multiple formats that allow it to be opened in other applications as well. They will be able to choose a default format as well, instead of having to specify the type every time they wish to save a trip.  Files will be saved in the local filesystem.
 
+The last epic that we plan to complete will be the Trip name epic.  This will allow the user to set a name for each trip that they create.  We plan to implement this as a small button to enable a text box that the user can enter a name into.  
 
 ## Metrics
 
