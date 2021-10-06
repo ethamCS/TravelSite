@@ -4,6 +4,12 @@ export const VALID_CONFIG_RESPONSE = JSON.stringify({
     features: ['config', 'find']
 });
 
+export const INCOMPATIBLE_FEATURES = JSON.stringify({
+    requestType: 'config',
+    serverName: 't99',
+    features: ['config']
+});
+
 export const INVALID_REQUEST = JSON.stringify({
     invalid: 'this is an invalid response to fail the schema'
 });
