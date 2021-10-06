@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Table } from 'reactstrap';
-import { ItineraryActionsDropdown, PlaceActionsDropdown } from './actions.js';
+import { ItineraryActionsDropdown, PlaceActionsDropdown, EditTripName } from './actions.js';
 import { latLngToText } from '../../../utils/transformers';
 
 export default function Itinerary(props) {
@@ -17,7 +17,9 @@ function Header(props) {
         <thead>
             <tr>
                 <th />
-                <th>My Trip</th>
+                <th>
+                    My Trip <EditTripName/>
+                </th>
                 <th>
                     <ItineraryActionsDropdown placeActions={props.placeActions} openFind={props.openFind} openWhereIs={props.openWhereIs} />
                 </th>
