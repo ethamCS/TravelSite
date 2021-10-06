@@ -43,6 +43,8 @@ The next epic that we intend to complete is the Distances epic.  This involves i
 
 The third epic that we plan on completing is the load trip epic.  This epic has one main focus: to allow the user to bring up a previously made trip.  This epic will tie in closely with the next epic (save trip), and will be relatively useless without that epic.
 
+The fourth epic that we want to complete is the save trip epic.  As stated in the previous paragraph, this epic will tie in very closely with the load trip epic.  This will allow the user to create a trip and save it to be added to or viewed at a later time.  The user will be able to save their trip in multiple formats that allow it to be opened in other applications as well. They will be able to choose a default format as well, instead of having to specify the type every time they wish to save a trip.  Files will be saved in the local filesystem.
+
 
 ## Metrics
 
