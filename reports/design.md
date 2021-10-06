@@ -163,5 +163,13 @@ Other minor tweaks to the client side will include:
 We will be adding a new server class that extends the Request class.  The new class will be called FindRequest, and it will allow find requests and responses that follow the proper protocol.  This will ensure that we maintain interoperability with other servers.
 
 # Sprint 3
+
+### User Interface
+
+- Distances, Load trip, Save Trip
+![distanceLoadSave](images/distanceLoadSave.jpg)
+
+The user interface is going to largely stay the same as it was at the end of sprint 2. Firstly, we are going to add distances to all of the places that have been added to the itinerary so you can see how far the place is from the previous place in the trip. Secondly, We are going to work on making our user interface consistent as we continue to scale it and add more features. We are going to give the users the ability to change the name of The trip they are creating. Along with allowing the user to change the name of their trip we are also going to allow the users to load and save trips. 
+
 # Sprint 4 
 # Sprint 5
