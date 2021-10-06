@@ -2,7 +2,7 @@ import React from 'react';
 import { act, render, screen, waitFor } from '@testing-library/react';
 import user from '@testing-library/user-event';
 import { expect, it } from '@jest/globals';
-import { VALID_CONFIG_RESPONSE, INVALID_REQUEST } from '../../sharedMocks';
+import { VALID_CONFIG_RESPONSE, INVALID_REQUEST, INCOMPATIBLE_FEATURES } from '../../sharedMocks';
 import { LOG } from '../../../src/utils/constants';
 import ServerSettings from '../../../src/components/Margins/ServerSettings';
 
@@ -66,10 +66,29 @@ describe('Server Settings Modal', () => {
         await waitFor(() => {
             expect(saveButton.classList.contains('disabled')).toBe(true);
         });
-        expect(LOG.error.mock.calls.length).toBeGreaterThanOrEqual(1);
+        expect(LOG.error.mock.calls.length).toBeGreaterThanOrEqual(2);
+    });
+
+    it('disables save button on incompatible features', async () => {
+        fetch.mockResponseOnce(INCOMPATIBLE_FEATURES);
+
+        user.type(inputBox, validUrl);
+
+        await waitFor(() => {
+            expect(saveButton.classList.contains('disabled')).toBe(true);
+        });
+        expect(LOG.error.mock.calls.length).toBeGreaterThanOrEqual(0);
     });
 
     it('save button is enabled with valid url', async () => {
+        user.type(inputBox, validUrl);
+
+        await waitFor(() => {
+            expect(saveButton.classList.contains('disabled')).toBeFalsy();
+        });
+    });
+
+    it('save button is enabled with valid url and compatible features', async () => {
         user.type(inputBox, validUrl);
 
         await waitFor(() => {
