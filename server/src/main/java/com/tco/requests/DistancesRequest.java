@@ -8,8 +8,17 @@ public class DistancesRequest extends Request{
     private Places places; 
     private Double earthRadius;
     private Integer[] distances; 
+    private String match; 
+    private Integer limit; 
  
     @Override
     public void buildResponse() {
+    }
+
+    public DistancesRequest() {
+        this.requestType = "distances";
+        this.earthRadius = 6371.0;
+        this.match = "";
+        this.limit = 0;
     }
 }
