@@ -13,6 +13,9 @@ public class DistancesRequest extends Request{
  
     @Override
     public void buildResponse() {
+        Query query = new Query(this.match, this.limit);
+        this.places = query.selectAll();
+        log.trace("buildResponse -> {}", this);
     }
 
     public DistancesRequest() {
