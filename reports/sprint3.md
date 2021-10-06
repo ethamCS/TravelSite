@@ -55,6 +55,7 @@ The last epic that we plan to complete will be the Trip name epic.  This will al
 | Tasks |  *30*   | *count* | 
 | Story Points |  *69*  | *sum* | 
 
+We completed 4 epics in Sprint 2, and almost completed one more.  We also completed 74 story points.  We had to spend a lot of time in Sprint 2 learning Javascript and React, so we couldn't finish as much as we had hoped.  We hopefully won't have to do as much learning this sprint, so we will be able to more productive.  On top of that, one of the planned epics is left over from last sprint and is mostly complete already.  
 
 ## Scrums
 
