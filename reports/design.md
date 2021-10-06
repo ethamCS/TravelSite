@@ -90,7 +90,7 @@ We do not show the many ReactStrap components in this hierarchy, even though the
 ### Class Diagram
 The class diagram for the base application depicted below shows the basic structure of the web server application.
 
-![class diagram](images/SP3uml.png)
+![class diagram](images/Sprint3UML.png)
 
 The classes in blue represent the classes specific to this application.  
 * WebApplication processes command line parameters and creates MicroServer.
