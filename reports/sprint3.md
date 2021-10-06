@@ -51,9 +51,9 @@ The last epic that we plan to complete will be the Trip name epic.  This will al
 
 | Statistic | # Planned | # Completed |
 | --- | ---: | ---: |
-| Epics | *count* | *count* |
-| Tasks |  *count*   | *count* | 
-| Story Points |  *sum*  | *sum* | 
+| Epics | *5* | *count* |
+| Tasks |  *30*   | *count* | 
+| Story Points |  *69*  | *sum* | 
 
 
 ## Scrums
