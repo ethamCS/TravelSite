@@ -10,6 +10,7 @@ public class DistancesRequest extends Request{
     private Integer[] distances; 
     private String match; 
     private Integer limit; 
+    private final transient Logger log = LoggerFactory.getLogger(FindRequest.class);
  
     @Override
     public void buildResponse() {
