@@ -102,7 +102,7 @@ function Footer(props) {
                 props.processServerConfigSuccess(props.config, props.serverInput);
                 props.resetModal(props.serverInput);
             }}
-                disabled={!props.config}
+                disabled={!props.config || !props.validServer}
             >
                 Save
             </Button>

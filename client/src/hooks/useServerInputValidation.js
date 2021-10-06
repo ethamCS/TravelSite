@@ -42,15 +42,14 @@ function updateServerInputImpl(newUrl, context) {
     const requestBody = { requestType: "config" };
     const configResponse = await sendAPIRequest(requestBody, serverURL);
 
-
     // checking if same or not
     var is_same = (configResponse && SERVER_FEATURES.length === configResponse.features.length) && SERVER_FEATURES.every(function(element, index) {
         return element === configResponse.features[index]; 
     });
 
-    if (configResponse && is_same && serverURL === inputUrl.current) {
+    if (configResponse && serverURL === inputUrl.current) {
         setConfig(configResponse);
-        setValidServer(true);
+        (is_same) ? setValidServer(true) : setValidServer(false);
     }
 
 }
@@ -60,7 +59,7 @@ function resetModalImpl(serverUrl, close, context) {
 
     setServerInput(serverUrl);
     setConfig(null);
-    setValidServer(true);
+    setValidServer(false);
     close();
 }
 
