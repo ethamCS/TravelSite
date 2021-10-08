@@ -55,7 +55,7 @@ export function EditTripName(props){
     return(
         <th>
             <Collapse isOpen={!collapse}>
-                Trip Name <FaPencilAlt style={{cursor: cursor }} onMouseDown={handleClick} onMouseUp={changeCursor} onClick={toggle}/>
+                My Trip <FaPencilAlt style={{cursor: cursor }} onMouseDown={handleClick} onMouseUp={changeCursor} onClick={toggle}/>
             </Collapse>
             <Collapse isOpen={collapse}>
                 <InputGroup>
