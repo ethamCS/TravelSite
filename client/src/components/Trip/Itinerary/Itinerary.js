@@ -17,9 +17,7 @@ function Header(props) {
         <thead>
             <tr>
                 <th />
-                <th>
-                    My Trip <EditTripName/>
-                </th>
+                <EditTripName/>
                 <th>
                     <ItineraryActionsDropdown placeActions={props.placeActions} openFind={props.openFind} openWhereIs={props.openWhereIs} />
                 </th>
