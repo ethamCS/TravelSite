@@ -37,6 +37,7 @@ public class Query {
                                                                             + " JOIN world ON region.id = world.iso_region"
                                                                             + " WHERE (world.municipality LIKE ?"
                                                                             + " OR world.name LIKE ?"
+                                                                            + " OR world.id LIKE ?"
                                                                             + " OR continent.name LIKE ?"
                                                                             + " OR region.name LIKE ?"
                                                                             + " OR country.name LIKE ?)");
@@ -45,6 +46,7 @@ public class Query {
             stmt.setString(3,"%"+this.match+"%"); 
             stmt.setString(4,"%"+this.match+"%"); 
             stmt.setString(5,"%"+this.match+"%"); 
+            stmt.setString(6,"%"+this.match+"%"); 
             
             ResultSet rs =  stmt.executeQuery(); 
             if (!rs.next()) {
@@ -66,28 +68,30 @@ public class Query {
         try {
            DatabaseConnection.connect();
 
-             PreparedStatement stmt = DatabaseConnection.con.prepareStatement("SELECT world.name, world.continent, world.latitude,"
-                                    + " world.longitude, world.municipality, region.name"
-                                    + " FROM continent" 
-                                    + " JOIN country ON continent.id = country.continent"
-                                    + " JOIN region ON country.id = region.iso_country"
-                                    + " JOIN world ON region.id = world.iso_region"
-                                    + " WHERE (world.municipality LIKE ?"
-                                    + " OR world.name LIKE ?"
-                                    + " OR continent.name LIKE ?"
-                                    + " OR region.name LIKE ?"
-                                    + " OR country.name LIKE ?)"
-                                    + " GROUP BY world.latitude"
-                                    + " LIMIT ?;");
-            
+             PreparedStatement stmt = DatabaseConnection.con.prepareStatement("SELECT world.name, world.continent, world.latitude, world.id"
+                                                                                + " world.longitude, world.municipality, region.name"
+                                                                                + " FROM continent" 
+                                                                                + " JOIN country ON continent.id = country.continent"
+                                                                                + " JOIN region ON country.id = region.iso_country"
+                                                                                + " JOIN world ON region.id = world.iso_region"
+                                                                                + " WHERE (world.municipality LIKE ?"
+                                                                                + " OR world.name LIKE ?"
+                                                                                + " OR world.id LIKE ?"
+                                                                                + " OR continent.name LIKE ?"
+                                                                                + " OR region.name LIKE ?"
+                                                                                + " OR country.name LIKE ?)"
+                                                                                + " GROUP BY world.latitude"
+                                                                                + " LIMIT ?;");
+
             stmt.setString(1,"%"+this.match+"%"); 
             stmt.setString(2,"%"+this.match+"%"); 
             stmt.setString(3,"%"+this.match+"%"); 
             stmt.setString(4,"%"+this.match+"%"); 
-            stmt.setString(5,"%"+this.match+"%"); 
+            stmt.setString(5,"%"+this.match+"%");
+            stmt.setString(6,"%"+this.match+"%"); 
             
-            if(limit==0) stmt.setInt(6, 100);
-            else stmt.setInt(6, this.limit);
+            if(limit==0) stmt.setInt(7, 100);
+            else stmt.setInt(7, this.limit);
                                   
             ResultSet rs =  stmt.executeQuery();
 
