@@ -1,14 +1,18 @@
 import React from 'react';
-import { Button, Col, Container, Input, Modal, ModalBody, ModalFooter, ModalHeader, Row } from 'reactstrap';
+import { Button, Col, Container, Input, Modal, ModalBody, ModalFooter, ModalHeader, Row, FormFeedback } from 'reactstrap';
 import { useServerInputValidation } from '../../hooks/useServerInputValidation';
 
 export default function ServerSettings(props) {
     const [serverInput, setServerInput, config, validServer, resetModal]
         = useServerInputValidation(props.serverSettings.serverUrl, props.toggleOpen);
 
+        function closeModalWithoutSaving(){
+            resetModal(props.serverSettings.serverUrl);
+        }
+
     return (
-        <Modal isOpen={props.isOpen} toggle={props.toggleOpen}>
-            <Header toggleOpen={props.toggleOpen} />
+        <Modal isOpen={props.isOpen} toggle={closeModalWithoutSaving}>
+            <Header toggleOpen={closeModalWithoutSaving} />
             <Body
                 serverInput={serverInput}
                 setServerInput={setServerInput}
@@ -22,6 +26,7 @@ export default function ServerSettings(props) {
                 serverInput={serverInput}
                 validServer={validServer}
                 resetModal={resetModal}
+                closeModalWithoutSaving={closeModalWithoutSaving}
                 processServerConfigSuccess={props.processServerConfigSuccess}
             />
         </Modal>
@@ -62,13 +67,13 @@ function Header(props) {
 
 function Body(props) {
     const urlInput =
-        <Input
-            value={props.serverInput}
-            placeholder={"Enter server URL here"}
-            onChange={(e) => { props.setServerInput(e.target.value) }}
-            valid={props.validServer}
-            invalid={!props.validServer}
-        />;
+        <><Input
+                value={props.serverInput}
+                placeholder={"Enter server URL here"}
+                onChange={(e) => { props.setServerInput(e.target.value); } }
+                valid={props.validServer}
+                invalid={!props.validServer} />
+            <FormFeedback invalid>Error: Invalid Server or Incompatible Features.</FormFeedback></>;
 
     return (
         <ModalBody>
@@ -97,7 +102,7 @@ function SettingsRow({label, value}) {
 function Footer(props) {
     return (
         <ModalFooter>
-            <Button color="secondary" onClick={props.resetModal}>Cancel</Button>
+            <Button color="secondary" onClick={props.closeModalWithoutSaving}>Cancel</Button>
             <Button color="primary" onClick={() => {
                 props.processServerConfigSuccess(props.config, props.serverInput);
                 props.resetModal(props.serverInput);
