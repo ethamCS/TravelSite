@@ -59,9 +59,9 @@ public class Query {
     public Places selectAll(){
         int result = 0;
         try {
-            DatabaseConnection.connect();
+           DatabaseConnection.connect();
 
-            String selectStatement = "SELECT world.name, world.continent, world.latitude,"
+            PreparedStatement stmt = DatabaseConnection.con.prepareStatement("SELECT world.name, world.continent, world.latitude,"
                                     + " world.longitude, world.municipality, region.name"
                                     + " FROM continent" 
                                     + " JOIN country ON continent.id = country.continent"
@@ -72,11 +72,9 @@ public class Query {
                                     + " OR continent.name LIKE \'%"+this.match+"%\'"
                                     + " OR region.name LIKE \'%"+this.match+"%\'"
                                     + " OR country.name LIKE \'%"+this.match+"%\')"
-                                    + " GROUP BY world.latitude";
-
-            selectStatement += (limit == 0) ? " LIMIT 100;" : (" LIMIT " + this.limit + ";");
-            
-            PreparedStatement stmt = DatabaseConnection.con.prepareStatement(selectStatement);                                       
+                                    + " GROUP BY world.latitude"
+                                    + " LIMIT ?;");
+                                  
             ResultSet rs =  stmt.executeQuery();
 
             if (!rs.next()) {
