@@ -6,9 +6,13 @@ export default function ServerSettings(props) {
     const [serverInput, setServerInput, config, validServer, resetModal]
         = useServerInputValidation(props.serverSettings.serverUrl, props.toggleOpen);
 
+        function closeModalWithoutSaving(){
+            resetModal(props.serverSettings.serverUrl);
+        }
+
     return (
-        <Modal isOpen={props.isOpen} toggle={props.toggleOpen}>
-            <Header toggleOpen={props.toggleOpen} />
+        <Modal isOpen={props.isOpen} toggle={closeModalWithoutSaving}>
+            <Header toggleOpen={closeModalWithoutSaving} />
             <Body
                 serverInput={serverInput}
                 setServerInput={setServerInput}
@@ -22,6 +26,7 @@ export default function ServerSettings(props) {
                 serverInput={serverInput}
                 validServer={validServer}
                 resetModal={resetModal}
+                closeModalWithoutSaving={closeModalWithoutSaving}
                 processServerConfigSuccess={props.processServerConfigSuccess}
             />
         </Modal>
@@ -97,7 +102,7 @@ function SettingsRow({label, value}) {
 function Footer(props) {
     return (
         <ModalFooter>
-            <Button color="secondary" onClick={props.resetModal}>Cancel</Button>
+            <Button color="secondary" onClick={props.closeModalWithoutSaving}>Cancel</Button>
             <Button color="primary" onClick={() => {
                 props.processServerConfigSuccess(props.config, props.serverInput);
                 props.resetModal(props.serverInput);
