@@ -68,7 +68,7 @@ public class Query {
         try {
            DatabaseConnection.connect();
 
-             PreparedStatement stmt = DatabaseConnection.con.prepareStatement("SELECT world.name, world.continent, world.latitude, world.id"
+             PreparedStatement stmt = DatabaseConnection.con.prepareStatement("SELECT world.name, world.continent, world.latitude, world.id,"
                                                                                 + " world.longitude, world.municipality, region.name"
                                                                                 + " FROM continent" 
                                                                                 + " JOIN country ON continent.id = country.continent"
