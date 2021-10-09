@@ -35,12 +35,17 @@ public class Query {
                                                                             + " JOIN country ON continent.id = country.continent"
                                                                             + " JOIN region ON country.id = region.iso_country"
                                                                             + " JOIN world ON region.id = world.iso_region"
-                                                                            + " WHERE (world.municipality LIKE \'%"+this.match+"%\'"
-                                                                            + " OR world.name LIKE \'%"+this.match+"%\'" 
-                                                                            + " OR continent.name LIKE \'%"+this.match+"%\'"
-                                                                            + " OR region.name LIKE \'%"+this.match+"%\'" 
-                                                                            + " OR country.name LIKE \'%"+this.match+"%\')");
-
+                                                                            + " WHERE (world.municipality LIKE ?"
+                                                                            + " OR world.name LIKE ?"
+                                                                            + " OR continent.name LIKE ?"
+                                                                            + " OR region.name LIKE ?"
+                                                                            + " OR country.name LIKE ?)");
+            stmt.setString(1,"%"+this.match+"%"); 
+            stmt.setString(2,"%"+this.match+"%"); 
+            stmt.setString(3,"%"+this.match+"%"); 
+            stmt.setString(4,"%"+this.match+"%"); 
+            stmt.setString(5,"%"+this.match+"%"); 
+            
             ResultSet rs =  stmt.executeQuery(); 
             if (!rs.next()) {
                 result = -1;
