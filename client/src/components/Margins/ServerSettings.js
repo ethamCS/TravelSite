@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Col, Container, Input, Modal, ModalBody, ModalFooter, ModalHeader, Row } from 'reactstrap';
+import { Button, Col, Container, Input, Modal, ModalBody, ModalFooter, ModalHeader, Row, FormFeedback } from 'reactstrap';
 import { useServerInputValidation } from '../../hooks/useServerInputValidation';
 
 export default function ServerSettings(props) {
@@ -67,13 +67,13 @@ function Header(props) {
 
 function Body(props) {
     const urlInput =
-        <Input
-            value={props.serverInput}
-            placeholder={"Enter server URL here"}
-            onChange={(e) => { props.setServerInput(e.target.value) }}
-            valid={props.validServer}
-            invalid={!props.validServer}
-        />;
+        <><Input
+                value={props.serverInput}
+                placeholder={"Enter server URL here"}
+                onChange={(e) => { props.setServerInput(e.target.value); } }
+                valid={props.validServer}
+                invalid={!props.validServer} />
+            <FormFeedback invalid>Error: Invalid Server or Incompatible Features.</FormFeedback></>;
 
     return (
         <ModalBody>
