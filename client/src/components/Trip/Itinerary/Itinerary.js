@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Table } from 'reactstrap';
-import { ItineraryActionsDropdown, PlaceActionsDropdown, EditTripName } from './actions.js';
+import { Container, Row, Table, Col } from 'reactstrap';
+import { ItineraryActionsDropdown, PlaceActionsDropdown, EditTripName, LoadTripButton } from './actions.js';
 import { latLngToText } from '../../../utils/transformers';
 
 export default function Itinerary(props) {
@@ -17,7 +17,7 @@ function Header(props) {
         <thead>
             <tr>
                 <th />
-                <EditTripName/>
+                <EditTripName />
                 <th>
                     <ItineraryActionsDropdown placeActions={props.placeActions} openFind={props.openFind} openWhereIs={props.openWhereIs} />
                 </th>
@@ -29,7 +29,7 @@ function Header(props) {
 function Body(props) {
     return (
         <tbody>
-            {props.places.map((place, index) => 
+            {props.places.map((place, index) =>
                 <TableRow
                     key={`table-${JSON.stringify(place)}-${index}`}
                     place={place}
@@ -62,7 +62,7 @@ function TableRow(props) {
     }
 
     return (
-        <tr style={{cursor: cursor }} onMouseDown={handleClick} onMouseUp={changeCursor}>    
+        <tr style={{ cursor: cursor }} onMouseDown={handleClick} onMouseUp={changeCursor}>
             <th scope="row">{props.index + 1} </th>
             <td>
                 {name}
