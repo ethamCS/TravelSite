@@ -7,7 +7,18 @@ export function useDistances(placesList) {
 
 }
 
+async function getDistances(placesList) {
+    if (placesList.length < 2) {
+        return [];
+    }
+    const responseBody = await sendDistancesRequest(placesList);
 
+    if (responseBody) {
+        return responseBody.distances;
+    }
+
+    return [];
+}
 
 async function sendDistancesRequest(placesList) {
     const url = getOriginalServerUrl();
