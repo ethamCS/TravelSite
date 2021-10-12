@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { getOriginalServerUrl, sendAPIRequest } from '../utils/restfulAPI';
 
-export function useDistances(placesList) {
+export function useDistances() {
     const [distancesList, setDistancesList] = useState([]);
-    setDistancesList(getDistances(placesList));
+    
+    function updateDistances(newPlaces) {
+        return setDistancesList(getDistances(newPlaces));
+    }
 
-    return [distancesList, getDistances];
+    return [distancesList, updateDistances];
 
 }
 
