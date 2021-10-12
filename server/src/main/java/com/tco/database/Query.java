@@ -111,10 +111,9 @@ public class Query {
         try {
             do {
                 Place place = new Place();
-                for (Map.Entry<String, String> entry : place.entrySet()) {
-                    String key = entry.getKey();
-                    place.put(key, results.getString(key));
-                }
+                place.put("name", results.getString("name"));
+                place.put("latitude", results.getString("latitude"));
+                place.put("longitude", results.getString("longitude"));
                 places.add(place);
             }
             while (results.next());
