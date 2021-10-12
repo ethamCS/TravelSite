@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { ButtonGroup, DropdownItem, DropdownMenu, DropdownToggle, UncontrolledDropdown, Collapse, Input, InputGroup, InputGroupAddon, InputGroupText, Button } from 'reactstrap';
+import React from 'react';
+import { ButtonGroup, DropdownItem, DropdownMenu, DropdownToggle, UncontrolledDropdown } from 'reactstrap';
 import { BiDotsVerticalRounded } from 'react-icons/bi';
-import { FaHome, FaTrash, FaTrashAlt, FaSearchLocation, FaQuestion, FaPencilAlt, FaFileUpload, FaSave } from 'react-icons/fa';
+import { FaHome, FaTrash, FaTrashAlt, FaSearchLocation, FaQuestion } from 'react-icons/fa';
 
 export function ItineraryActionsDropdown(props) {
     return (
@@ -30,63 +30,6 @@ export function PlaceActionsDropdown(props) {
                 <FaTrash />
             </DropdownItem>
         </ActionsDropdown>
-    );
-}
-
-export function EditTripName(props) {
-    const [cursor, setCursor] = useState('pointer');
-    const [collapse, setCollapse] = useState(false);
-
-
-    const changeCursor = () => {
-        setCursor(prevState => {
-            if (prevState === 'pointer') {
-                return 'grabbing';
-            }
-            return 'pointer';
-        });
-    }
-
-    const handleClick = (e) => {
-        changeCursor();
-    }
-
-    const toggle = () => setCollapse(!collapse);
-
-    return (
-        <th>
-            <Collapse isOpen={!collapse}>
-                My Trip <FaPencilAlt style={{ cursor: cursor }} onMouseDown={handleClick} onMouseUp={changeCursor} onClick={toggle} />
-                <LoadTripButton cursor={cursor} handleClick={handleClick} changeCursor={changeCursor} />
-                <SaveTripButton cursor={cursor} handleClick={handleClick} changeCursor={changeCursor} />
-            </Collapse>
-            <Collapse isOpen={collapse}>
-                <InputGroup>
-                    <Input
-                        placeholder="new trip name"
-                    />
-                    <InputGroupAddon>
-                        <InputGroupText style={{ cursor: cursor }} onMouseDown={handleClick} onMouseUp={changeCursor} onClick={toggle}>
-                            Done
-                        </InputGroupText>
-                    </InputGroupAddon>
-                </InputGroup>
-            </Collapse>
-        </th>
-    );
-}
-
-export function LoadTripButton(props) {
-
-    return (
-        <FaFileUpload style={{ cursor: props.cursor, marginLeft: '10px' }} onMouseDown={props.handleClick} onMouseUp={props.changeCursor} />
-    );
-}
-
-export function SaveTripButton(props) {
-
-    return (
-        <FaSave style={{ cursor: props.cursor, marginLeft: '10px' }} onMouseDown={props.handleClick} onMouseUp={props.changeCursor} />
     );
 }
 
