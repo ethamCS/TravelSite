@@ -3,7 +3,9 @@ import { getOriginalServerUrl, sendAPIRequest } from '../utils/restfulAPI';
 
 export function useDistances(placesList) {
     const [distancesList, setDistancesList] = useState([]);
+    setDistancesList(getDistances(placesList));
 
+    return [distancesList, getDistances];
 
 }
 
