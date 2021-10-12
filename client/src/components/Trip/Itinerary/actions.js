@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ButtonGroup, DropdownItem, DropdownMenu, DropdownToggle, UncontrolledDropdown, Collapse, Input, InputGroup, InputGroupAddon, InputGroupText, Button } from 'reactstrap';
 import { BiDotsVerticalRounded } from 'react-icons/bi';
-import { FaHome, FaTrash, FaTrashAlt, FaSearchLocation, FaQuestion, FaPencilAlt, FaFileUpload } from 'react-icons/fa';
+import { FaHome, FaTrash, FaTrashAlt, FaSearchLocation, FaQuestion, FaPencilAlt, FaFileUpload, FaSave } from 'react-icons/fa';
 
 export function ItineraryActionsDropdown(props) {
     return (
@@ -58,6 +58,7 @@ export function EditTripName(props) {
             <Collapse isOpen={!collapse}>
                 My Trip <FaPencilAlt style={{ cursor: cursor }} onMouseDown={handleClick} onMouseUp={changeCursor} onClick={toggle} />
                 <LoadTripButton cursor={cursor} handleClick={handleClick} changeCursor={changeCursor} />
+                <SaveTripButton cursor={cursor} handleClick={handleClick} changeCursor={changeCursor} />
             </Collapse>
             <Collapse isOpen={collapse}>
                 <InputGroup>
@@ -79,6 +80,13 @@ export function LoadTripButton(props) {
 
     return (
         <FaFileUpload style={{ cursor: props.cursor, marginLeft: '10px' }} onMouseDown={props.handleClick} onMouseUp={props.changeCursor} />
+    );
+}
+
+export function SaveTripButton(props) {
+
+    return (
+        <FaSave style={{ cursor: props.cursor, marginLeft: '10px' }} onMouseDown={props.handleClick} onMouseUp={props.changeCursor} />
     );
 }
 
