@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Container, Row, Table, Col } from 'reactstrap';
-import { ItineraryActionsDropdown, PlaceActionsDropdown, EditTripName, LoadTripButton } from './actions.js';
+import { Table } from 'reactstrap';
+import { ItineraryActionsDropdown, PlaceActionsDropdown } from './actions.js';
+import { EditTripName } from './TripName.js';
 import { latLngToText } from '../../../utils/transformers';
 
 export default function Itinerary(props) {
