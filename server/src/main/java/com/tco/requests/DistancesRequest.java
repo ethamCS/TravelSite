@@ -30,7 +30,7 @@ public class DistancesRequest extends Request{
 
     public DistancesRequest() {
         this.requestType = "distances";
-        this.earthRadius = 6371.0;
+        this.earthRadius = 3959.0;
     
     }
 }
