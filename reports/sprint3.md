@@ -61,7 +61,7 @@ We completed 4 epics in Sprint 2, and almost completed one more.  We also comple
 
 | Date | Tasks closed  | Tasks in progress | Impediments |
 | :--- | :--- | :--- | :--- |
-| *date* | *#task, ...* | *#task, ...* |  | 
+| *10/5/21* | *#331, #336, #337, #338, #345, #347, #348, #350, #354, #356, #382, #383, #386* | *#335, #355, #363, #389, #393, #396, #397, #401, #403, #404, #405* |  We are waiting on more information for file IO in order to start the save and load epics| 
 
 
 ## Review
