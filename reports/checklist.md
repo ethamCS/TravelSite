@@ -4,6 +4,9 @@ The goal of an Inspection is to file defects.
 This checklist is our guide to help us look for defects.
 The checklist will be updated as we identify new faults in our code that we wish to prevent in future inspections.
 
+### Specification / Design
+* Is the functionality described in the specification fully implemented by the code?
+* Is there any excess functionality in the code but not described in the specification? 
 
 ### Data faults
 * Are all program variables initialized before their values are used?
