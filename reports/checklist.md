@@ -40,6 +40,7 @@ The checklist will be updated as we identify new faults in our code that we wish
 * Are all return values used appropriately?
 * Is the export keyword applied only where necessary?
 * Have all print/console.log statements been removed?
+* Are all the access modifiers correct?
 
 ### Storage faults
 * If a linked structure is modified, have all links been correctly diagnosed?
