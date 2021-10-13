@@ -10,6 +10,7 @@ The checklist will be updated as we identify new faults in our code that we wish
 * Are functions broken up such that each function has one purpose?
 * Are classes broken up by functionality?
 * Are descriptive method names used in accordence to naming conventions?
+* Is code commented where appropriate?
 
 ### Data faults
 * Are all program variables initialized before their values are used?
@@ -53,6 +54,8 @@ The checklist will be updated as we identify new faults in our code that we wish
 * Is the export keyword applied only where necessary?
 * Have all print/console.log statements been removed?
 * Are all the access modifiers correct?
+* Is there any Global Code? 
+* Is all code in the proper namespace?
 
 ### Storage faults
 * If a linked structure is modified, have all links been correctly diagnosed?
