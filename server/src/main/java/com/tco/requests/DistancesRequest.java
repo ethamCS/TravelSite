@@ -18,7 +18,7 @@ public class DistancesRequest extends Request{
         for(int i = 0; i < doubleArray.length; i++){
             distances[i] = doubleArray[i].intValue();
         }
-        return distancesI;    
+        return distances;    
     }
  
     @Override
