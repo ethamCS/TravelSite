@@ -16,6 +16,10 @@ public class Calculate {
   private Double thetaBBy;
   
   
+   public long arctan(Double radius, Double centrelAngle){
+        return Math.round(centrelAngle * radius);
+   }
+  
    public Double degree2Rad(Double degree){
        Double radians = (degree * (Math.PI/180));
        return radians; 
@@ -55,7 +59,7 @@ public class Calculate {
    
       thetaBBy = Math.atan2(numeratorFinal, dFinal);
 
-      //foundDistance = arctan(radius, thetaBBy);
+      foundDistance = arctan(radius, thetaBBy);
       return foundDistance; 
 
     }
