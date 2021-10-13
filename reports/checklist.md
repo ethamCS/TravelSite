@@ -29,6 +29,8 @@ The checklist will be updated as we identify new faults in our code that we wish
 * Do formal and actual parameter types match?
 * Are the parameters in the right order?
 * Do all components use a consistent model for shared memory structure?
+* Are all props being passed?
+* Are all imports and hooks being used?
 
 ### Storage faults
 * If a linked structure is modified, have all links been correctly diagnosed?
