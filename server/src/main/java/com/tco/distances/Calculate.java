@@ -26,5 +26,10 @@ public class Calculate {
         difference = Math.abs(num1-num2);
         return difference;
     }
+  
+  public Double circleDistance(Place p1, Place p2, Double radius){
+       return 0.0;
+
+    }
 
 }
