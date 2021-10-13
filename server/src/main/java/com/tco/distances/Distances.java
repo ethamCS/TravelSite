@@ -2,6 +2,7 @@ package com.tco.distances;
 import java.util.ArrayList;
 import com.tco.requests.Places;
 import com.tco.requests.Place;
+import com.tco.distances.Calculate; 
 
 
 public class Distances{
@@ -23,6 +24,22 @@ public class Distances{
         this.distances = new Double[places.size()-1];
     } 
 
+    public Double[] SendInfoForCalculations(){
+        System.out.println(this.places);
+        Calculate calculate = new Calculate();
+        double distanceFound = 0;
+        
+        for(int i = 0; i < places.size()-1; i++){
+            System.out.println(places.get(i));
+            System.out.println(places.get(i+1));
+            distanceFound = calculate.circleDistance(places.get(i), places.get(i+1), earthRadius);
+            System.out.println(distanceFound);
+            this.distances[i] = distanceFound;
+        }
+
+        return this.distances; 
+    }
+    
 }
 
 
