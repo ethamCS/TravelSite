@@ -14,6 +14,9 @@ The checklist will be updated as we identify new faults in our code that we wish
 * Should the upper bound of arrays be equal to the size of the array or size-1?
 * If character strings are used, is a delimiter explicitly assigned?
 * Is there any possibility of a buffer overflow?
+* Are there literal constants that should be named constants?
+* Is it possible to overflow a numeric type?
+* Are all variables scoped to the most restrictive scope possible?
 
 ### Control faults
 * For each conditional statement, is the condition correct?
@@ -34,6 +37,9 @@ The checklist will be updated as we identify new faults in our code that we wish
 * Do all components use a consistent model for shared memory structure?
 * Are all props being passed?
 * Are all imports and hooks being used?
+* Are all return values used appropriately?
+* Is the export keyword applied only where necessary?
+* Have all print/console.log statements been removed?
 
 ### Storage faults
 * If a linked structure is modified, have all links been correctly diagnosed?
@@ -41,3 +47,4 @@ The checklist will be updated as we identify new faults in our code that we wish
 * Is space explicitly deallocated after it is no longer required?
 
 ### Exception faults
+* Are there catch statements for all possible exceptions?
