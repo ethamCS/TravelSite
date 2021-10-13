@@ -4,7 +4,16 @@ import com.tco.requests.Place;
 import java.lang.Math.*;
 
 public class Calculate {
-
+  
+  private String place1Name;
+  private Double place1Longitude;
+  private Double place1Latitude;
+  private String place2Name;
+  private Double place2Longitude;
+  private Double place2Latitude;
+  private Double absoluteDifferenceLongitude;
+  private Double absoluteDifferenceLatitude;
+  private Double thetaBBy;
 
 
 }
