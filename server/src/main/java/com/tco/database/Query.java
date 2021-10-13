@@ -27,6 +27,7 @@ public class Query {
        this.places = new Places();
        this.result = 0;
    }
+
     public Integer selectCount() {
         try {
             DatabaseConnection.connect();
@@ -41,12 +42,10 @@ public class Query {
                                                                             + " OR continent.name LIKE ?"
                                                                             + " OR region.name LIKE ?"
                                                                             + " OR country.name LIKE ?)");
-            stmt.setString(1,"%"+this.match+"%"); 
-            stmt.setString(2,"%"+this.match+"%"); 
-            stmt.setString(3,"%"+this.match+"%"); 
-            stmt.setString(4,"%"+this.match+"%"); 
-            stmt.setString(5,"%"+this.match+"%"); 
-            stmt.setString(6,"%"+this.match+"%"); 
+
+            for (int i = 1; i <= 6; i++) {
+                stmt.setString(i, "%" + this.match + "%");
+            }
             
             ResultSet rs =  stmt.executeQuery(); 
             if (!rs.next()) {
@@ -67,8 +66,7 @@ public class Query {
         int result = 0;
         try {
            DatabaseConnection.connect();
-
-             PreparedStatement stmt = DatabaseConnection.con.prepareStatement("SELECT world.name, world.continent, world.latitude, world.id,"
+           PreparedStatement stmt = DatabaseConnection.con.prepareStatement("SELECT world.name, world.continent, world.latitude, world.id,"
                                                                                 + " world.longitude, world.municipality, region.name"
                                                                                 + " FROM continent" 
                                                                                 + " JOIN country ON continent.id = country.continent"
@@ -83,12 +81,9 @@ public class Query {
                                                                                 + " GROUP BY world.latitude"
                                                                                 + " LIMIT ?;");
 
-            stmt.setString(1,"%"+this.match+"%"); 
-            stmt.setString(2,"%"+this.match+"%"); 
-            stmt.setString(3,"%"+this.match+"%"); 
-            stmt.setString(4,"%"+this.match+"%"); 
-            stmt.setString(5,"%"+this.match+"%");
-            stmt.setString(6,"%"+this.match+"%"); 
+            for (int i = 1; i <= 6; i++) {
+                stmt.setString(i, "%" + this.match + "%");
+            }
             
             if(limit==0) stmt.setInt(7, 100);
             else stmt.setInt(7, this.limit);

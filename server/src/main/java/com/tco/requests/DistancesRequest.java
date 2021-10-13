@@ -12,7 +12,7 @@ public class DistancesRequest extends Request{
     private Double[] distances; 
     private String match; 
     private Integer limit; 
-    private final transient Logger log = LoggerFactory.getLogger(FindRequest.class);
+    private final transient Logger log = LoggerFactory.getLogger(DistancesRequest.class);
     
      public Integer[] doubleToIntegerArray(Double[] doubleArray){
         distancesI = new Integer[doubleArray.length];
