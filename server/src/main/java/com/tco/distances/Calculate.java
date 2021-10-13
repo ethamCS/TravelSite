@@ -22,7 +22,9 @@ public class Calculate {
     }
   
     public Double absoluteDifferences(Double num1, Double num2){
-       return 0.0;
+        double difference = 0; 
+        difference = Math.abs(num1-num2);
+        return difference;
     }
 
 }
