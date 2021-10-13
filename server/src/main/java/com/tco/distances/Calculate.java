@@ -16,6 +16,10 @@ public class Calculate {
   private Double thetaBBy;
   
   
+   public long arctan(Double radius, Double centrelAngle){
+        return Math.round(centrelAngle * radius);
+   }
+  
    public Double degree2Rad(Double degree){
        Double radians = (degree * (Math.PI/180));
        return radians; 
