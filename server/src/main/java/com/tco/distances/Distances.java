@@ -21,22 +21,25 @@ public class Distances{
         this.earthRadius = earthRadius;
         this.destination = null; 
         this.origin = null; 
-        this.distances = new Double[places.size()-1];
     } 
 
     public Double[] SendInfoForCalculations(){
-        System.out.println(this.places);
+        
+        if(this.places.isEmpty()){
+            this.distances = new Double[]{};
+            return this.distances;
+        }
+
+        this.distances = new Double[places.size()];   
         Calculate calculate = new Calculate();
         double distanceFound = 0;
         
-        for(int i = 0; i < places.size()-1; i++){
-            System.out.println(places.get(i));
-            System.out.println(places.get(i+1));
-            distanceFound = calculate.circleDistance(places.get(i), places.get(i+1), earthRadius);
-            System.out.println(distanceFound);
+        for(int i = 0; i < places.size()-1; i++){  
+            distanceFound = calculate.circleDistance(places.get(i), places.get(i+1), earthRadius);    
             this.distances[i] = distanceFound;
         }
-
+        distanceFound = calculate.circleDistance(places.get(0), places.get(places.size()-1), earthRadius);
+        this.distances[places.size()-1] = distanceFound;
         return this.distances; 
     }
     
