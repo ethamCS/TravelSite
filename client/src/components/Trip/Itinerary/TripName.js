@@ -5,7 +5,7 @@ import { FaPencilAlt, FaFileUpload, FaSave } from 'react-icons/fa';
 export function EditTripName() {
     const [cursor, setCursor] = useState('pointer');
     const [collapse, setCollapse] = useState(false);
-
+    const [tripName, setName] = useState("My Trip");
 
     const changeCursor = () => {
         setCursor(prevState => {
@@ -25,24 +25,37 @@ export function EditTripName() {
     return (
         <th>
             <Collapse isOpen={!collapse}>
-                My Trip <FaPencilAlt style={{ cursor: cursor }} onMouseDown={handleClick} onMouseUp={changeCursor} onClick={toggle} />
+                {tripName} <FaPencilAlt style={{ cursor: cursor }} onMouseDown={handleClick} onMouseUp={changeCursor} onClick={toggle} />
                 <LoadTripButton cursor={cursor} handleClick={handleClick} changeCursor={changeCursor} />
                 <SaveTripButton cursor={cursor} handleClick={handleClick} changeCursor={changeCursor} />
             </Collapse>
             <Collapse isOpen={collapse}>
-                <InputGroup>
-                    <Input
-                        placeholder="new trip name"
-                    />
-                    <InputGroupAddon>
-                        <InputGroupText style={{ cursor: cursor }} onMouseDown={handleClick} onMouseUp={changeCursor} onClick={toggle}>
-                            Done
-                        </InputGroupText>
-                    </InputGroupAddon>
-                </InputGroup>
+                <TripInput cursor={cursor} tripName={tripName} setName={setName} handleClick={handleClick} changeCursor={changeCursor} toggle={toggle}/>
             </Collapse>
         </th>
     );
+}
+
+function TripInput(props){
+    return(
+        <InputGroup>
+            <Input
+                placeholder={props.tripName}
+                onChange={e => props.setName(e.target.value)}
+                valid={nameValid(props.tripName)}
+                invalid={!nameValid(props.tripName)}
+            />
+            <InputGroupAddon>
+                <InputGroupText style={{ cursor : props.cursor}} onMouseDown={props.handleClick} onMouseUp={props.changeCursor} onClick={props.toggle}>
+                    Done
+                </InputGroupText>
+            </InputGroupAddon>
+        </InputGroup>
+    );
+}
+
+function nameValid(props){
+    return true;
 }
 
 export function LoadTripButton(props) {
@@ -53,7 +66,6 @@ export function LoadTripButton(props) {
 }
 
 export function SaveTripButton(props) {
-
     return (
         <FaSave style={{ cursor: props.cursor, marginLeft: '10px' }} onMouseDown={props.handleClick} onMouseUp={props.changeCursor} />
     );
