@@ -7,6 +7,8 @@ The checklist will be updated as we identify new faults in our code that we wish
 ### Specification / Design
 * Is the functionality described in the specification fully implemented by the code?
 * Is there any excess functionality in the code but not described in the specification? 
+* Are functions broken up such that each function has one purpose?
+* Are classes broken up by functionality?
 
 ### Data faults
 * Are all program variables initialized before their values are used?
@@ -17,6 +19,10 @@ The checklist will be updated as we identify new faults in our code that we wish
 * Are there literal constants that should be named constants?
 * Is it possible to overflow a numeric type?
 * Are all variables scoped to the most restrictive scope possible?
+* Is there any unintended integer division?
+* Are the correct logical operators used (e.g. === instead of ==, or && instead of &)?
+* Do boolean expressions evaluate to the intended value?
+* Are there any unused variables?
 
 ### Control faults
 * For each conditional statement, is the condition correct?
@@ -24,6 +30,8 @@ The checklist will be updated as we identify new faults in our code that we wish
 * Are compound statements correctly bracketed?
 * In case statements, are all possible cases accounted for?
 * If a break is required after each case in case statements, has it been included?
+* Are parentheses used to ensure the correct order of operations?
+* Is each function guaranteed to return?
 
 ### Parameter faults
 * Are all input variables used?
