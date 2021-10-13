@@ -14,7 +14,11 @@ public class DistancesRequest extends Request{
     private final transient Logger log = LoggerFactory.getLogger(FindRequest.class);
     
      public Integer[] doubleToIntegerArray(Double[] doubleArray){
-       
+        distancesI = new Integer[doubleArray.length];
+        for(int i = 0; i < doubleArray.length; i++){
+            distancesI[i] = doubleArray[i].intValue();
+        }
+        return distancesI;    
     }
  
     @Override
