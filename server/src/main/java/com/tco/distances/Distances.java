@@ -38,7 +38,8 @@ public class Distances{
             distanceFound = calculate.circleDistance(places.get(i), places.get(i+1), earthRadius);    
             this.distances[i] = distanceFound;
         }
-       
+        distanceFound = calculate.circleDistance(places.get(0), places.get(places.size()-1), earthRadius);
+        this.distances[places.size()-1] = distanceFound;
         return this.distances; 
     }
     
