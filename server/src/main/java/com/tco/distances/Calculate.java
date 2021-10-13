@@ -59,7 +59,7 @@ public class Calculate {
    
       thetaBBy = Math.atan2(numeratorFinal, dFinal);
 
-      //foundDistance = arctan(radius, thetaBBy);
+      foundDistance = arctan(radius, thetaBBy);
       return foundDistance; 
 
     }
