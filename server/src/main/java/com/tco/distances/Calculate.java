@@ -14,6 +14,12 @@ public class Calculate {
   private Double absoluteDifferenceLongitude;
   private Double absoluteDifferenceLatitude;
   private Double thetaBBy;
+  
+  
+   public Double degree2Rad(Double degree){
+       Double radians = (degree * (Math.PI/180));
+       return radians; 
+    }
 
 
 }
