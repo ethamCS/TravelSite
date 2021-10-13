@@ -8,16 +8,15 @@ import com.tco.distances.Calculate;
 public class DistancesRequest extends Request{
     private Places places; 
     private Double earthRadius;
-    private Integer[] distancesI; 
-    private Double[] distances; 
+    private Integer[] distances;  
     private String match; 
     private Integer limit; 
     private final transient Logger log = LoggerFactory.getLogger(FindRequest.class);
     
      public Integer[] doubleToIntegerArray(Double[] doubleArray){
-        distancesI = new Integer[doubleArray.length];
+        distances = new Integer[doubleArray.length];
         for(int i = 0; i < doubleArray.length; i++){
-            distancesI[i] = doubleArray[i].intValue();
+            distances[i] = doubleArray[i].intValue();
         }
         return distancesI;    
     }
@@ -25,7 +24,7 @@ public class DistancesRequest extends Request{
     @Override
     public void buildResponse() {
         Distances distance = new Distances(this.places, this.earthRadius);
-        this.distancesI = doubleToIntegerArray(distance.SendInfoForCalculations());
+        this.distances = doubleToIntegerArray(distance.SendInfoForCalculations());
         log.trace("buildResponse -> {}", this);
     }
 
