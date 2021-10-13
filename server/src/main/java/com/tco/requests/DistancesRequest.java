@@ -7,10 +7,15 @@ import com.tco.database.Query;
 public class DistancesRequest extends Request{
     private Places places; 
     private Double earthRadius;
-    private Integer[] distances; 
+    private Integer[] distancesI; 
+    private Double[] distances; 
     private String match; 
     private Integer limit; 
     private final transient Logger log = LoggerFactory.getLogger(FindRequest.class);
+    
+     public Integer[] doubleToIntegerArray(Double[] doubleArray){
+       
+    }
  
     @Override
     public void buildResponse() {
@@ -22,7 +27,6 @@ public class DistancesRequest extends Request{
     public DistancesRequest() {
         this.requestType = "distances";
         this.earthRadius = 6371.0;
-        this.match = "";
-        this.limit = 0;
+    
     }
 }
