@@ -20,6 +20,9 @@ public class Calculate {
        Double radians = (degree * (Math.PI/180));
        return radians; 
     }
-
+  
+    public Double absoluteDifferences(Double num1, Double num2){
+       return 0.0;
+    }
 
 }
