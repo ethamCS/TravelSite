@@ -1,4 +1,5 @@
 package com.tco.requests;
+
 import java.util.ArrayList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,9 +29,31 @@ public class DistancesRequest extends Request{
         log.trace("buildResponse -> {}", this);
     }
 
+    /* The following methods exist only for testing purposes and are not used
+    during normal execution, including the constructor. */
     public DistancesRequest() {
         this.requestType = "distances";
+        this.places = new Places();
+
+        Place place1 = new Place();
+        place1.put("name", "place A");
+        place1.put("latitude", "40.589");
+        place1.put("longitude", "-105.046");
+
+        Place place2 = new Place();
+        place2.put("name", "place B");
+        place2.put("latitude", "40.589");
+        place2.put("longitude", "-105.045");
+
+        this.places.add(place1);
+        this.places.add(place2);
         this.earthRadius = 3959.0;
-    
     }
+
+    public Places getPlaces(){ return this.places; }
+
+    public Double getEarthRadius() { return this.earthRadius; }
+
+    public Integer[] getDistances() { return this.distances; }
+
 }
