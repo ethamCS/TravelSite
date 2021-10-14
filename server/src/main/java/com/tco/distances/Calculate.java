@@ -16,18 +16,11 @@ public class Calculate {
   private Double thetaBBy;
   
   
-   public long arctan(Double radius, Double centralAngle){
-        return Math.round(centralAngle * radius);
-   }
+   public long arctan(Double radius, Double centralAngle){ return Math.round(centralAngle * radius); }
 
+   public Double absoluteDifferences(Double num1, Double num2) { return Math.abs(num1-num2); }
   
-    public Double absoluteDifferences(Double num1, Double num2){
-        double difference = 0; 
-        difference = Math.abs(num1-num2);
-        return difference;
-    }
-  
-  public Double circleDistance(Place p1, Place p2, Double radius){
+   public Double circleDistance(Place p1, Place p2, Double radius){
        
       double foundDistance = 0; 
 
@@ -57,8 +50,5 @@ public class Calculate {
 
       foundDistance = arctan(radius, thetaBBy);
       return foundDistance;
-
     }
-    
-
 }
