@@ -34,7 +34,7 @@ public class TestDistanceRequest {
     }
 
     @Test
-    @DisplayName("Distances found is \"98, 69, 69\"")
+    @DisplayName("Places is \"[{name=place A, latitude=0, longitude=1}, {name=place B, latitude=1, longitude=0}, {name=place C, latitude=1, longitude=1}]\"")
     public void testPlaces() {
         String equals = "[{name=place A, latitude=0, longitude=1}, {name=place B, latitude=1, longitude=0}, {name=place C, latitude=1, longitude=1}]";
         Places result = dist.getPlaces();
