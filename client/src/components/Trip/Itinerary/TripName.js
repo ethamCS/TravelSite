@@ -63,7 +63,7 @@ function readFile(fileName, fileObject) {
     reader.readAsText(fileObject, "UTF-8");
     reader.onload = event => {
         const file = { name: fileName, text: event.target.result };
-        console.log(file);
+        var obj = JSON.parse(file.text);
     }
 }
 
