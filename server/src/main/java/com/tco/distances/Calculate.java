@@ -43,7 +43,7 @@ public class Calculate {
       absoluteDifferenceLatitude = absoluteDifferences(place1Latitude, place2Latitude);
 
 
-      Double numerator1 = Math.pow( (Math.cos(place1Latitude) * Math.sin(absoluteDifferenceLongitude)), 2);
+      Double numerator1 = Math.pow( (Math.cos(place2Latitude) * Math.sin(absoluteDifferenceLongitude)), 2);
       Double numerator2 = Math.cos(place1Latitude) * Math.sin(place2Latitude);
       Double numerator3 = Math.sin(place1Latitude) * Math.cos(place2Latitude) * Math.cos(absoluteDifferenceLongitude);
       Double numerator4 = numerator2 - numerator3;
