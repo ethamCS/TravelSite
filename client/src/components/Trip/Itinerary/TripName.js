@@ -58,8 +58,22 @@ function TripInput(props) {
     );
 }
 
+function readFile(fileName, fileObject) {
+    const reader = new FileReader();
+    reader.readAsText(fileObject, "UTF-8");
+    reader.onload = event => {
+        const file = { name: fileName, text: event.target.result };
+        console.log(file);
+    }
+}
 
 export function LoadTripButton(props) {
+
+    function handleFileUpload(event) {
+        const fileName = event.target.files[0].name;
+        const fileObject = event.target.files[0];
+        readFile(fileName, fileObject)
+    }
 
     const onIconClick = () => {
         const input = document.getElementById('file-input');
@@ -71,8 +85,8 @@ export function LoadTripButton(props) {
 
     return (
         <React.Fragment>
-            <FaFileUpload onClick={onIconClick} type="file" accept={FILE_FORMATS} style={{ cursor: props.cursor, marginLeft: '10px' }} onMouseDown={props.handleClick} onMouseUp={props.changeCursor} />
-            <Input style={{ display: 'none' }} id="file-input" type="file" accept={FILE_FORMATS} />
+            <FaFileUpload onClick={onIconClick} style={{ cursor: props.cursor, marginLeft: '10px' }} onMouseDown={props.handleClick} onMouseUp={props.changeCursor} />
+            <Input style={{ display: 'none' }} id="file-input" type="file" accept={FILE_FORMATS} onChange={handleFileUpload} />
         </React.Fragment>
     );
 }
