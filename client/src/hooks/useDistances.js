@@ -1,35 +1,50 @@
+import { control } from 'leaflet';
 import React, { useState } from 'react';
 import { getOriginalServerUrl, sendAPIRequest } from '../utils/restfulAPI';
 
 export function useDistances() {
     const [distancesList, setDistancesList] = useState([]);
-    
-    function updateDistances(newPlaces) {
-        return setDistancesList(getDistances(newPlaces));
-    }
+    const [totalDistance, setTotalDistance] = useState(0);
 
-    return [distancesList, updateDistances];
+    const context = { distancesList, setDistancesList, totalDistance, setTotalDistance };
+
+    const distanceActions = {
+        getDistances: async (placesList, controllerSignal) => getDistances(placesList, controllerSignal, context),
+        getTotalDistance: () => getTotalDistance(context)
+    };
+
+    return {distancesList, totalDistance, distanceActions};
 
 }
 
-async function getDistances(placesList) {
-    if (placesList.length < 2) {
-        return [];
+function getTotalDistance(context) {
+    const {distancesList, totalDistance, setTotalDistance} = context;
+
+    if (distancesList.length > 0) {
+        setTotalDistance(distancesList.reduce((a, b) => a + b));
     }
-    const responseBody = await sendDistancesRequest(placesList);
+    else {
+        setTotalDistance(0);
+    }
+}
+
+async function getDistances(placesList, controllerSignal, context) {
+    const {distancesList, setDistancesList} = context;
+    const responseBody = await sendDistancesRequest(placesList, controllerSignal);
 
     if (responseBody) {
-        return responseBody.distances;
+        setDistancesList(responseBody.distances);
     }
-
-    return [];
+    else {
+        setDistancesList([]);
+    }
 }
 
-async function sendDistancesRequest(placesList) {
+async function sendDistancesRequest(placesList, controllerSignal) {
     const url = getOriginalServerUrl();
     const requestBody = {requestType: "distances", places: placesList, earthRadius: 6371};
 
-    const distancesResponse = await sendAPIRequest(requestBody, url);
+    const distancesResponse = await sendAPIRequest(requestBody, url, controllerSignal);
 
     return distancesResponse;
 }
