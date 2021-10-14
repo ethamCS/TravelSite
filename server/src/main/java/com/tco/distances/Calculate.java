@@ -16,8 +16,8 @@ public class Calculate {
   private Double thetaBBy;
   
   
-   public long arctan(Double radius, Double centrelAngle){
-        return Math.round(centrelAngle * radius);
+   public long arctan(Double radius, Double centralAngle){
+        return Math.round(centralAngle * radius);
    }
 
   
