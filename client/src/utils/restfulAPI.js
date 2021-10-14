@@ -1,13 +1,13 @@
 import Ajv from 'ajv';
 import * as configSchema from '../../schemas/ConfigResponse';
 import * as findSchema from '../../schemas/FindResponse';
-import * as distanceSchema from '../../schemas/DistancesResponse';
+import * as distancesSchema from '../../schemas/DistancesResponse';
 import { LOG } from './constants';
 
 const SCHEMAS = {
     config: configSchema,
     find: findSchema,
-    distance: distanceSchema
+    distances: distancesSchema
 }
 
 export async function sendAPIRequest(requestBody, serverUrl, controllerSignal) {
