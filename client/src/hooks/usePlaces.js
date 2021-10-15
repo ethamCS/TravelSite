@@ -16,7 +16,8 @@ export function usePlaces() {
         removeAtIndex: (index) => removeAtIndex(index, context),
         removeAll: () => removeAll(context),
         selectIndex: (index) => selectIndex(index, context),
-        moveToHome: async () => moveToHome(context)
+        moveToHome: async () => moveToHome(context),
+        readFile: (fileName, fileObject) => readFile(fileName, fileObject, context)
     };
 
     return { places, selectedIndex, placeActions };
@@ -85,4 +86,68 @@ function selectIndex(index, context) {
         return;
     }
     setSelectedIndex(index);
+}
+
+function csvToJson(string, headers, quoteChar = '"', delimiter = ',') {
+    const regex = new RegExp(`\\s*(${quoteChar})?(.*?)\\1\\s*(?:${delimiter}|$)`, 'gs');
+    const match = string => [...string.matchAll(regex)].map(match => match[2])
+        .filter((_, i, a) => i < a.length - 1); // cut off blank match at end
+
+    const lines = string.split('\n');
+    const heads = headers || match(lines.splice(0, 1)[0]);
+
+    return lines.map(line => match(line).reduce((acc, cur, i) => ({
+        ...acc,
+        [heads[i] || `extra_${i}`]: (cur.length > 0) ? (Number(cur) || cur) : null
+    }), {}));
+}
+
+async function parseFile(file, context) {
+    const { setPlaces, setSelectedIndex } = context;
+
+    const extension = file.name.split('.').pop();
+    if (extension === "json") {
+        console.log(file.text);
+        var obj = JSON.parse(file.text);
+        const newPlaces = [];
+
+        for (var i = 0; i < obj.places.length; i++) {
+            if (obj.places[i].name) {
+                var place = { lat: parseFloat(obj.places[i].latitude), lng: parseFloat(obj.places[i].longitude), name: obj.places[i].name }
+                newPlaces.push(place);
+            } else {
+                const fullPlace = await reverseGeocode(placeToLatLng(obj.places[i]));
+                newPlaces.push(fullPlace);
+            }
+        }
+
+        setPlaces(newPlaces);
+        setSelectedIndex(newPlaces.length - 1);
+
+    } else if (extension === "csv") {
+        var csv = csvToJson(file.text);
+        const newPlaces = [];
+
+        for (var i = 0; i < csv.length; i++) {
+            if (csv[i].name) {
+                var place = { lat: parseFloat(csv[i].latitude), lng: parseFloat(csv[i].longitude), name: csv[i].name }
+                newPlaces.push(place);
+            } else {
+                const fullPlace = await reverseGeocode(placeToLatLng(csv[i]));
+                newPlaces.push(fullPlace);
+            }
+        }
+
+        setPlaces(newPlaces);
+        setSelectedIndex(newPlaces.length - 1);
+    }
+}
+
+function readFile(fileName, fileObject, context) {
+    const reader = new FileReader();
+    reader.readAsText(fileObject, "UTF-8");
+    reader.onload = event => {
+        const file = { name: fileName, text: event.target.result };
+        parseFile(file, context);
+    }
 }
