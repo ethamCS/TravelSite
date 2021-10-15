@@ -10,26 +10,15 @@ export function useDistances() {
 
     const distanceActions = {
         getDistances: async (placesList, controllerSignal) => getDistances(placesList, controllerSignal, context),
-        getTotalDistance: () => getTotalDistance(context)
     };
 
     return {distancesList, totalDistance, distanceActions};
 
 }
 
-function getTotalDistance(context) {
-    const {distancesList, totalDistance, setTotalDistance} = context;
-
-    if (distancesList.length > 0) {
-        setTotalDistance(distancesList.reduce((a, b) => a + b));
-    }
-    else {
-        setTotalDistance(0);
-    }
-}
 
 async function getDistances(placesList, controllerSignal, context) {
-    const {distancesList, setDistancesList} = context;
+    const {distancesList, setDistancesList, setTotalDistance} = context;
     const responseBody = await sendDistancesRequest(placesList, controllerSignal);
 
     if (responseBody) {
@@ -38,7 +27,19 @@ async function getDistances(placesList, controllerSignal, context) {
     else {
         setDistancesList([]);
     }
+    getTotalDistance(context)
 }
+
+function getTotalDistance(context) {
+    const {distancesList, setTotalDistance} = context;
+    if (distancesList.length > 0) {
+        setTotalDistance(distancesList.reduce((a, b) => a + b));
+    }
+    else {
+        setTotalDistance(0);
+    }
+}
+
 
 async function sendDistancesRequest(placesList, controllerSignal) {
     const url = getOriginalServerUrl();
