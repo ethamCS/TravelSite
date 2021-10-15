@@ -88,59 +88,58 @@ function selectIndex(index, context) {
     setSelectedIndex(index);
 }
 
-function csvJSON(csv) {
+function csvToJson(string, headers, quoteChar = '"', delimiter = ',') {
+    const regex = new RegExp(`\\s*(${quoteChar})?(.*?)\\1\\s*(?:${delimiter}|$)`, 'gs');
+    const match = string => [...string.matchAll(regex)].map(match => match[2])
+        .filter((_, i, a) => i < a.length - 1); // cut off blank match at end
 
-    var lines = csv.split("\n");
+    const lines = string.split('\n');
+    const heads = headers || match(lines.splice(0, 1)[0]);
 
-    var result = [];
-
-    var headers = lines[0].split(",");
-
-    for (var i = 1; i < lines.length; i++) {
-
-        var obj = {};
-        var currentline = lines[i].split(",");
-
-        for (var j = 0; j < headers.length; j++) {
-            obj[headers[j]] = currentline[j];
-        }
-
-        result.push(obj);
-
-    }
-
-    //return result; //JavaScript object
-    return JSON.stringify(result); //JSON
+    return lines.map(line => match(line).reduce((acc, cur, i) => ({
+        ...acc,
+        [heads[i] || `extra_${i}`]: (cur.length > 0) ? (Number(cur) || cur) : null
+    }), {}));
 }
 
-function parseFile(file, context) {
+async function parseFile(file, context) {
     const { setPlaces, setSelectedIndex } = context;
 
     const extension = file.name.split('.').pop();
     if (extension === "json") {
+        console.log(file.text);
         var obj = JSON.parse(file.text);
-        //console.log(obj.places);
-        //const newPlaces = obj.places;
+        const newPlaces = [];
 
-        /*
-        Possibly create a loop here where we go through each place and check if it is a full place or just a latitude
-        and longitude. If it is not a full place, do reverse geocoding on that object. While looping through, add each full
-        place to an array we are building.
-        */
+        for (var i = 0; i < obj.places.length; i++) {
+            if (obj.places[i].name) {
+                var place = { lat: parseFloat(obj.places[i].latitude), lng: parseFloat(obj.places[i].longitude), name: obj.places[i].name }
+                newPlaces.push(place);
+            } else {
+                const fullPlace = await reverseGeocode(placeToLatLng(obj.places[i]));
+                newPlaces.push(fullPlace);
+            }
+        }
 
-        //setPlaces(newPlaces);
-        //setSelectedIndex(newPlaces.length - 1);
+        setPlaces(newPlaces);
+        setSelectedIndex(newPlaces.length - 1);
 
-        /* 
-            You might check against the TripFile schema using
-            isJSONResponseValid(JSON.parse(file.text), tripFileSchema)
-            This function is in the base code. Import tripFileSchema (TripFile.json schema). 
-            Look at restfulAPI.js for reference.
-          */
     } else if (extension === "csv") {
-        var csv = csvJSON(file.text);
-        var csvParsed = JSON.parse(csv);
-        console.log(csvParsed);
+        var csv = csvToJson(file.text);
+        const newPlaces = [];
+
+        for (var i = 0; i < csv.length; i++) {
+            if (csv[i].name) {
+                var place = { lat: parseFloat(csv[i].latitude), lng: parseFloat(csv[i].longitude), name: csv[i].name }
+                newPlaces.push(place);
+            } else {
+                const fullPlace = await reverseGeocode(placeToLatLng(csv[i]));
+                newPlaces.push(fullPlace);
+            }
+        }
+
+        setPlaces(newPlaces);
+        setSelectedIndex(newPlaces.length - 1);
     }
 }
 
