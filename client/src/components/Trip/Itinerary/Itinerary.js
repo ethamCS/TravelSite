@@ -3,12 +3,15 @@ import { Table } from 'reactstrap';
 import { ItineraryActionsDropdown, PlaceActionsDropdown } from './actions.js';
 import { EditTripName } from './TripName.js';
 import { latLngToText } from '../../../utils/transformers';
+import { useDistances } from '../../../hooks/useDistances';
 
 export default function Itinerary(props) {
+    const {distancesList, totalDistance, distanceActions} = useDistances();
+
     return (
         <Table responsive hover>
-            <Header placeActions={props.placeActions} openFind={props.openFind} openWhereIs={props.openWhereIs} />
-            <Body places={props.places} placeActions={props.placeActions} />
+            <Header places={props.places} placeActions={props.placeActions} openFind={props.openFind} openWhereIs={props.openWhereIs} totalDistance={totalDistance} distanceActions={distanceActions}/>
+            <Body places={props.places} placeActions={props.placeActions} distancesList={distancesList} distanceActions={distanceActions}/>
         </Table>
     );
 }
@@ -19,6 +22,9 @@ function Header(props) {
             <tr>
                 <th />
                 <EditTripName />
+                <th>
+                    Total Trip Distance: {props.totalDistance}
+                </th>
                 <th>
                     <ItineraryActionsDropdown placeActions={props.placeActions} openFind={props.openFind} openWhereIs={props.openWhereIs} />
                 </th>
