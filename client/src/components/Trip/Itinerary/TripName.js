@@ -4,7 +4,7 @@ import { FaPencilAlt, FaFileUpload, FaSave, FaLessThanEqual } from 'react-icons/
 
 const FILE_FORMATS = ".json, .csv, application/json, text/csv";
 
-export function EditTripName() {
+export function EditTripName(props) {
     const [cursor, setCursor] = useState('pointer');
     const [collapse, setCollapse] = useState(false);
     const [tripName, setName] = useState("My Trip");
@@ -28,7 +28,7 @@ export function EditTripName() {
         <th>
             <Collapse isOpen={!collapse}>
                 {tripName} <FaPencilAlt style={{ cursor: cursor }} onMouseDown={handleClick} onMouseUp={changeCursor} onClick={toggle} />
-                <LoadTripButton cursor={cursor} handleClick={handleClick} changeCursor={changeCursor} />
+                <LoadTripButton cursor={cursor} handleClick={handleClick} changeCursor={changeCursor} placeActions={props.placeActions} />
                 <SaveTripButton cursor={cursor} handleClick={handleClick} changeCursor={changeCursor} />
             </Collapse>
             <Collapse isOpen={collapse}>
@@ -58,21 +58,12 @@ function TripInput(props) {
     );
 }
 
-function readFile(fileName, fileObject) {
-    const reader = new FileReader();
-    reader.readAsText(fileObject, "UTF-8");
-    reader.onload = event => {
-        const file = { name: fileName, text: event.target.result };
-        var obj = JSON.parse(file.text);
-    }
-}
-
 export function LoadTripButton(props) {
 
     function handleFileUpload(event) {
         const fileName = event.target.files[0].name;
         const fileObject = event.target.files[0];
-        readFile(fileName, fileObject)
+        props.placeActions.readFile(fileName, fileObject)
     }
 
     const onIconClick = () => {

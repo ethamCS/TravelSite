@@ -16,7 +16,8 @@ export function usePlaces() {
         removeAtIndex: (index) => removeAtIndex(index, context),
         removeAll: () => removeAll(context),
         selectIndex: (index) => selectIndex(index, context),
-        moveToHome: async () => moveToHome(context)
+        moveToHome: async () => moveToHome(context),
+        readFile: (fileName, fileObject) => readFile(fileName, fileObject, context)
     };
 
     return { places, selectedIndex, placeActions };
@@ -85,4 +86,69 @@ function selectIndex(index, context) {
         return;
     }
     setSelectedIndex(index);
+}
+
+function csvJSON(csv) {
+
+    var lines = csv.split("\n");
+
+    var result = [];
+
+    var headers = lines[0].split(",");
+
+    for (var i = 1; i < lines.length; i++) {
+
+        var obj = {};
+        var currentline = lines[i].split(",");
+
+        for (var j = 0; j < headers.length; j++) {
+            obj[headers[j]] = currentline[j];
+        }
+
+        result.push(obj);
+
+    }
+
+    //return result; //JavaScript object
+    return JSON.stringify(result); //JSON
+}
+
+function parseFile(file, context) {
+    const { setPlaces, setSelectedIndex } = context;
+
+    const extension = file.name.split('.').pop();
+    if (extension === "json") {
+        var obj = JSON.parse(file.text);
+        //console.log(obj.places);
+        //const newPlaces = obj.places;
+
+        /*
+        Possibly create a loop here where we go through each place and check if it is a full place or just a latitude
+        and longitude. If it is not a full place, do reverse geocoding on that object. While looping through, add each full
+        place to an array we are building.
+        */
+
+        //setPlaces(newPlaces);
+        //setSelectedIndex(newPlaces.length - 1);
+
+        /* 
+            You might check against the TripFile schema using
+            isJSONResponseValid(JSON.parse(file.text), tripFileSchema)
+            This function is in the base code. Import tripFileSchema (TripFile.json schema). 
+            Look at restfulAPI.js for reference.
+          */
+    } else if (extension === "csv") {
+        var csv = csvJSON(file.text);
+        var csvParsed = JSON.parse(csv);
+        console.log(csvParsed);
+    }
+}
+
+function readFile(fileName, fileObject, context) {
+    const reader = new FileReader();
+    reader.readAsText(fileObject, "UTF-8");
+    reader.onload = event => {
+        const file = { name: fileName, text: event.target.result };
+        parseFile(file, context);
+    }
 }
