@@ -5,9 +5,9 @@ We first identify the code we wish to inspect, determine the time we wish to mee
 
 |  | Details |
 | ----- | ----- |
-| Subject | *file and methods/line range to review for meeting* |
-| Meeting | *date, time, location* |
-| Checklist | *reference, URL, etc.* |
+| Subject | *tripName.js* |
+| Meeting | *10/51/21, 5pm, Biological Sciences Building* |
+| Checklist | *t17/reports/checklist.md* |
 
 ### Roles
 
@@ -15,7 +15,7 @@ We note the amount of time each person spent reviewing the code in preparation f
 
 | Name | Preparation Time |
 | ---- | ---- |
-|  |  |
+| Christian | 40 min |
 
 
 ### Problems found
