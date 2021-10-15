@@ -1,13 +1,13 @@
-# Inspection - Team *T##* 
+# Inspection - Team *T17* 
 
 The goal of an Inspection is to find defects.
 We first identify the code we wish to inspect, determine the time we wish to meet, and determine the checklist we will use to find faults in our code during the preparation before the meeting.
 
 |  | Details |
 | ----- | ----- |
-| Subject | *file and methods/line range to review for meeting* |
-| Meeting | *date, time, location* |
-| Checklist | *reference, URL, etc.* |
+| Subject | *tripName.js* |
+| Meeting | *10/15/21, 5pm, Microsoft Teams* |
+| Checklist | *t17/reports/checklist.md* |
 
 ### Roles
 
@@ -15,7 +15,7 @@ We note the amount of time each person spent reviewing the code in preparation f
 
 | Name | Preparation Time |
 | ---- | ---- |
-|  |  |
+| Christian | 40 min |
 
 
 ### Problems found
