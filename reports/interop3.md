@@ -11,7 +11,7 @@ This table lists each student in the team, the team they verified interoperabili
 
 | Name | Team | Time |
 | ---- | ---- | ---- |
-|  |  | |
+| Evan | t25 | 45 minutes |
 
 
 ### Client Problems found
@@ -20,7 +20,7 @@ We found these problems when connecting our client to another team's server.
 
 | team | problem | github# |
 | :--- |  :--- | --- |
-|  |  |  |
+| 25 | Distances aren't rendered yet in Itinerary | #439 |
 
 
 ### Server Problems found
@@ -29,4 +29,4 @@ We found these problems when connecting the other team's client to our server.
 
 | team |  problem | github# |
 | :--- |  :--- | --- |
-|  |  |  |
+| 25 | Random doesn't return random results | #492 |
