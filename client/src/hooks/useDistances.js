@@ -16,10 +16,10 @@ export function useDistances() {
 
 }
 
-
 async function getDistances(placesList, controllerSignal, context) {
     const {distancesList, setDistancesList, setTotalDistance} = context;
-    const responseBody = await sendDistancesRequest(placesList, controllerSignal);
+    const places = massagePlaces(placesList);
+    const responseBody = await sendDistancesRequest(places, controllerSignal);
 
     if (responseBody) {
         setDistancesList(responseBody.distances);
@@ -28,12 +28,23 @@ async function getDistances(placesList, controllerSignal, context) {
         setDistancesList([]);
     }
     getTotalDistance(context)
+    console.log(distancesList); 
+    return distancesList;
+}
+
+function massagePlaces(placesList) {
+    let tempPlaces = [];
+    placesList.map((place) => {
+        const tempPlace = {"latitude": place['lat'].toString(), "longitude": place['lng'].toString(), "name": place['name']}
+        tempPlaces.push(tempPlace)
+    });
+    return tempPlaces;
 }
 
 function getTotalDistance(context) {
     const {distancesList, setTotalDistance} = context;
     if (distancesList.length > 0) {
-        setTotalDistance(distancesList.reduce((a, b) => a + b));
+        setTotalDistance(distancesList.reduce((a, b) => a + b, 0));
     }
     else {
         setTotalDistance(0);
