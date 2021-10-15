@@ -23,4 +23,4 @@ export const EARTH_RADIUS_UNITS_DEFAULT = { "miles": 3959 };
 
 export const DEFAULT_STARTING_PLACE = { latitude: 40.5764, longitude: -105.0807 }; //originally 40.5734, -105.0865 reverseGeocode({lat: 40.5764, lng: -105.0807});
 
-export const SERVER_FEATURES = ["config", "find", "distance"];
+export const SERVER_FEATURES = ["config", "find", "distances"];
