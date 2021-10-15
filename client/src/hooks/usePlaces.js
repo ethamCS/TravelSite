@@ -3,6 +3,8 @@ import { placeToLatLng } from '../utils/transformers';
 import { reverseGeocode } from '../utils/reverseGeocode';
 import { LOG } from '../utils/constants';
 import { DEFAULT_STARTING_PLACE } from '../utils/constants';
+import * as tripSchema from '../../schemas/TripFile.json';
+import { isJsonResponseValid } from '../utils/restfulAPI';
 
 
 export function usePlaces() {
@@ -107,22 +109,23 @@ async function parseFile(file, context) {
 
     const extension = file.name.split('.').pop();
     if (extension === "json") {
-        console.log(file.text);
-        var obj = JSON.parse(file.text);
-        const newPlaces = [];
+        if (isJsonResponseValid(JSON.parse(file.text), tripSchema)) {
+            var obj = JSON.parse(file.text);
+            const newPlaces = [];
 
-        for (var i = 0; i < obj.places.length; i++) {
-            if (obj.places[i].name) {
-                var place = { lat: parseFloat(obj.places[i].latitude), lng: parseFloat(obj.places[i].longitude), name: obj.places[i].name }
-                newPlaces.push(place);
-            } else {
-                const fullPlace = await reverseGeocode(placeToLatLng(obj.places[i]));
-                newPlaces.push(fullPlace);
+            for (var i = 0; i < obj.places.length; i++) {
+                if (obj.places[i].name) {
+                    var place = { lat: parseFloat(obj.places[i].latitude), lng: parseFloat(obj.places[i].longitude), name: obj.places[i].name }
+                    newPlaces.push(place);
+                } else {
+                    const fullPlace = await reverseGeocode(placeToLatLng(obj.places[i]));
+                    newPlaces.push(fullPlace);
+                }
             }
-        }
 
-        setPlaces(newPlaces);
-        setSelectedIndex(newPlaces.length - 1);
+            setPlaces(newPlaces);
+            setSelectedIndex(newPlaces.length - 1);
+        }
 
     } else if (extension === "csv") {
         var csv = csvToJson(file.text);
