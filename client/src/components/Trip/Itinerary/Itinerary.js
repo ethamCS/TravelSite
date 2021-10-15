@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Table } from 'reactstrap';
 import { ItineraryActionsDropdown, PlaceActionsDropdown } from './actions.js';
 import { EditTripName } from './TripName.js';
@@ -10,8 +10,8 @@ export default function Itinerary(props) {
 
     return (
         <Table responsive hover>
-            <Header places={props.places} placeActions={props.placeActions} openFind={props.openFind} openWhereIs={props.openWhereIs} totalDistance={totalDistance} distanceActions={distanceActions}/>
-            <Body places={props.places} placeActions={props.placeActions} distancesList={distancesList} distanceActions={distanceActions}/>
+            <Header placeActions={props.placeActions} openFind={props.openFind} openWhereIs={props.openWhereIs} totalDistance={totalDistance} />
+            <Body places={props.places} placeActions={props.placeActions} distancesList={distancesList} distanceActions={distanceActions} />
         </Table>
     );
 }
@@ -34,6 +34,18 @@ function Header(props) {
 }
 
 function Body(props) {
+    useEffect(() => {
+        const controller = new AbortController();
+        function fetchDistances() {
+            props.distanceActions.getDistances(props.places, controller.signal);
+        }
+        fetchDistances();
+
+        return () => {
+            controller.abort();
+        }
+    }, [props.places]);
+
     return (
         <tbody>
             {props.places.map((place, index) =>
@@ -42,6 +54,7 @@ function Body(props) {
                     place={place}
                     placeActions={props.placeActions}
                     index={index}
+                    distance={(index == 0 ? 0 : props.distancesList[index - 1])}
                 />
             )}
         </tbody>
@@ -75,6 +88,10 @@ function TableRow(props) {
                 {name}
                 <br />
                 <small className="text-muted">{location}</small>
+            </td>
+            <td>
+                <small className="text-muted">Distance:</small>
+                <small className="text-muted"> {props.distance}</small>
             </td>
             <td>
                 <PlaceActionsDropdown placeActions={props.placeActions} index={props.index} />
