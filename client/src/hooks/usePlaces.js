@@ -97,8 +97,7 @@ function csvToJson(file) {
         header: true,
         skipEmptyLines: true,
         complete: function(results) {
-        console.log(results);
-
+        
     }
     });
     return output;
