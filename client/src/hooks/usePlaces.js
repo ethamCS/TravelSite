@@ -90,18 +90,17 @@ function selectIndex(index, context) {
     setSelectedIndex(index);
 }
 
-function csvToJson(string, headers, quoteChar = '"', delimiter = ',') {
-    const regex = new RegExp(`\\s*(${quoteChar})?(.*?)\\1\\s*(?:${delimiter}|$)`, 'gs');
-    const match = string => [...string.matchAll(regex)].map(match => match[2])
-        .filter((_, i, a) => i < a.length - 1); // cut off blank match at end
-
-    const lines = string.split('\n');
-    const heads = headers || match(lines.splice(0, 1)[0]);
-
-    return lines.map(line => match(line).reduce((acc, cur, i) => ({
-        ...acc,
-        [heads[i] || `extra_${i}`]: (cur.length > 0) ? (Number(cur) || cur) : null
-    }), {}));
+function csvToJson(file) {
+    var output=[]
+    const papa = require('papaparse');
+    output = papa.parse(file.text, {
+        header: true,
+        skipEmptyLines: true,
+        complete: function(results) {
+        
+    }
+    });
+    return output;
 }
 
 async function parseFile(file, context) {
@@ -128,18 +127,19 @@ async function parseFile(file, context) {
         }
 
     } else if (extension === "csv") {
-        var csv = csvToJson(file.text);
+        var csv = csvToJson(file);
         const newPlaces = [];
 
-        for (var i = 0; i < csv.length; i++) {
-            if (csv[i].name) {
-                var place = { lat: parseFloat(csv[i].latitude), lng: parseFloat(csv[i].longitude), name: csv[i].name }
-                newPlaces.push(place);
-            } else {
-                const fullPlace = await reverseGeocode(placeToLatLng(csv[i]));
-                newPlaces.push(fullPlace);
+        for (var i = 0; i < csv.data.length; i++) {
+                if (csv.data[i].name) {
+                    var place = { lat: parseFloat(csv.data[i].latitude), lng: parseFloat(csv.data[i].longitude), name: csv.data[i].name }
+                    newPlaces.push(place);
+                } else {
+                    
+                    const fullPlace = await reverseGeocode(placeToLatLng(csv.data[i]));
+                    newPlaces.push(fullPlace);
+                }
             }
-        }
 
         setPlaces(newPlaces);
         setSelectedIndex(newPlaces.length - 1);
