@@ -101,6 +101,7 @@ function csvToJson(file) {
 
     }
     });
+    return output;
 }
 
 async function parseFile(file, context) {
@@ -127,18 +128,19 @@ async function parseFile(file, context) {
         }
 
     } else if (extension === "csv") {
-        var csv = csvToJson(file.text);
+        var csv = csvToJson(file);
         const newPlaces = [];
 
-        for (var i = 0; i < csv.length; i++) {
-            if (csv[i].name) {
-                var place = { lat: parseFloat(csv[i].latitude), lng: parseFloat(csv[i].longitude), name: csv[i].name }
-                newPlaces.push(place);
-            } else {
-                const fullPlace = await reverseGeocode(placeToLatLng(csv[i]));
-                newPlaces.push(fullPlace);
+        for (var i = 0; i < csv.data.length; i++) {
+                if (csv.data[i].name) {
+                    var place = { lat: parseFloat(csv.data[i].latitude), lng: parseFloat(csv.data[i].longitude), name: csv.data[i].name }
+                    newPlaces.push(place);
+                } else {
+                    
+                    const fullPlace = await reverseGeocode(placeToLatLng(csv.data[i]));
+                    newPlaces.push(fullPlace);
+                }
             }
-        }
 
         setPlaces(newPlaces);
         setSelectedIndex(newPlaces.length - 1);
