@@ -16,6 +16,7 @@ We note the amount of time each person spent reviewing the code in preparation f
 | Name | Preparation Time |
 | ---- | ---- |
 | Christian | 40 min |
+| Evan | 35 min |
 
 
 ### Problems found
