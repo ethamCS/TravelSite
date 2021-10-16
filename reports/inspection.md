@@ -16,6 +16,7 @@ We note the amount of time each person spent reviewing the code in preparation f
 | Name | Preparation Time |
 | ---- | ---- |
 | Christian | 40 min |
+| Ethan | 30 min |
 
 
 ### Problems found
@@ -25,4 +26,4 @@ We add a GitHub issue for each defect that requires a modification to the system
 
 | file:line | problem | hi/med/low | who found | github#  |
 | --- | --- | :---: | :---: | --- |
-|  | | | | |
+|  TripName.js:41 | Move TripInput function to own file | med | Christian (carnhy) | #501 |
