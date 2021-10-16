@@ -19,6 +19,7 @@ We note the amount of time each person spent reviewing the code in preparation f
 | Evan | 35 min |
 | Ethan | 30 min |
 | Dylan | 30 min |
+| Farhan | 25 min |
 
 
 
