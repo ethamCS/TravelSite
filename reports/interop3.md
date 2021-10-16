@@ -15,6 +15,7 @@ This table lists each student in the team, the team they verified interoperabili
 | Evan | t25 | 45 minutes |
 | Ethan | t21 | 30 minutes |
 | Dylan | t15 | 30 minutes |
+| Farhan | t14 | 30 minutes |
 
 
 ### Client Problems found
@@ -27,6 +28,7 @@ We found these problems when connecting our client to another team's server.
 | 25 | Distances aren't rendered yet in Itinerary | #439 |
 | 21 | Itinerary has a null value every other table row | TBD |
 | 15 | No issues found | N/A |
+| 14 | No issues found | N/A |
 
 
 ### Server Problems found
@@ -39,3 +41,4 @@ We found these problems when connecting the other team's client to our server.
 | 25 | Random doesn't return random results | #492 |
 | 21 | Distances has a null value every other calculaton| N/A |
 | 15 | No issues found | N/A |
+| 14 | Our server wouldn't use their connection, this is problem in our end | N/A |
