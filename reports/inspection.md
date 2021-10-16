@@ -26,4 +26,4 @@ We add a GitHub issue for each defect that requires a modification to the system
 
 | file:line | problem | hi/med/low | who found | github#  |
 | --- | --- | :---: | :---: | --- |
-|  | | | | |
+| TripName.js:47,48,50 | Boolean operators should be !==/=== instead of !=/== | low | Evan | |
