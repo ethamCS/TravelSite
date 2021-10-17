@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 
+import com.tco.misc.BadRequestException;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestFindRequest {
@@ -11,7 +13,7 @@ public class TestFindRequest {
     private FindRequest find;
 
     @BeforeEach
-    public void createConfigurationForTestCases() {
+    public void createConfigurationForTestCases() throws BadRequestException {
         find = new FindRequest();
         find.buildResponse();
     }
