@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.tco.database.Query;
+import com.tco.misc.BadRequestException;
 
 public class FindRequest extends Request {
 
@@ -12,13 +13,22 @@ public class FindRequest extends Request {
     private Integer limit;
     private Integer found;
     private Places places;
+    private String[] where;
+    private String[] type;
+
     private final transient Logger log = LoggerFactory.getLogger(FindRequest.class);
 
     @Override
-    public void buildResponse(){
-        Query query = new Query(this.match, this.limit);
-        this.found = query.selectCount();
-        this.places = query.selectAll();
+    public void buildResponse() throws BadRequestException {
+        if (this.where != null || this.type != null) {
+            throw new BadRequestException();
+        }
+        else {
+            Query query = new Query(this.match, this.limit);
+            this.found = query.selectCount();
+            this.places = query.selectAll();
+        }
+
         log.trace("buildResponse -> {}", this);
     }
 
