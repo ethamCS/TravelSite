@@ -11,7 +11,7 @@ export default function Itinerary(props) {
     return (
         <Table responsive hover>
             <Header placeActions={props.placeActions} openFind={props.openFind} openWhereIs={props.openWhereIs} totalDistance={totalDistance} />
-            <Body places={props.places} placeActions={props.placeActions} distancesList={distancesList} distanceActions={distanceActions} />
+            <Body places={props.places} placeActions={props.placeActions} distancesList={distancesList} distanceActions={distanceActions} serverSettings={props.serverSettings}/>
         </Table>
     );
 }
@@ -50,7 +50,7 @@ function Body(props) {
     useLayoutEffect(() => {
         const controller = new AbortController();
         async function fetchDistances() {
-            props.distanceActions.getDistances(props.places, controller.signal);
+            props.distanceActions.getDistances(props.places, controller.signal, props.serverSettings);
         }
         fetchDistances();
         setRows(renderRows(props.places, props.placeActions, props.distancesList));

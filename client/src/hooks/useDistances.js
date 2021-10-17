@@ -9,17 +9,17 @@ export function useDistances() {
     const context = { distancesList, setDistancesList, totalDistance, setTotalDistance };
 
     const distanceActions = {
-        getDistances: async (placesList, controllerSignal) => getDistances(placesList, controllerSignal, context),
+        getDistances: async (placesList, controllerSignal, serverSettings) => getDistances(placesList, controllerSignal, serverSettings, context),
     };
 
     return {distancesList, totalDistance, distanceActions};
 
 }
 
-async function getDistances(placesList, controllerSignal, context) {
+async function getDistances(placesList, controllerSignal, serverSettings, context) {
     const {distancesList, setDistancesList, setTotalDistance} = context;
     const places = massagePlaces(placesList);
-    const responseBody = await sendDistancesRequest(places, controllerSignal);
+    const responseBody = await sendDistancesRequest(places, controllerSignal, serverSettings);
 
     if (responseBody) {
         setDistancesList(responseBody.distances)
@@ -49,9 +49,9 @@ function getTotalDistance(context) {
     }
 }
 
-async function sendDistancesRequest(placesList, controllerSignal) {
-    const url = getOriginalServerUrl();
-    const requestBody = {requestType: "distances", places: placesList, earthRadius: 6371};
+async function sendDistancesRequest(placesList, controllerSignal, serverSettings) {
+    const url = serverSettings.serverUrl;
+    const requestBody = {requestType: "distances", places: placesList, earthRadius: 3959};
 
     const distancesResponse = await sendAPIRequest(requestBody, url, controllerSignal);
 
