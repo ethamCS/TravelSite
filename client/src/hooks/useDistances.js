@@ -1,5 +1,5 @@
 import { control } from 'leaflet';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getOriginalServerUrl, sendAPIRequest } from '../utils/restfulAPI';
 
 export function useDistances() {
@@ -22,14 +22,12 @@ async function getDistances(placesList, controllerSignal, context) {
     const responseBody = await sendDistancesRequest(places, controllerSignal);
 
     if (responseBody) {
-        setDistancesList(responseBody.distances);
+        setDistancesList(responseBody.distances)
     }
     else {
         setDistancesList([]);
     }
-    getTotalDistance(context)
-    console.log(distancesList); 
-    return distancesList;
+    getTotalDistance(context);
 }
 
 function massagePlaces(placesList) {
@@ -43,14 +41,13 @@ function massagePlaces(placesList) {
 
 function getTotalDistance(context) {
     const {distancesList, setTotalDistance} = context;
-    if (distancesList.length > 0) {
+    if ( distancesList && distancesList.length > 0) {
         setTotalDistance(distancesList.reduce((a, b) => a + b, 0));
     }
     else {
         setTotalDistance(0);
     }
 }
-
 
 async function sendDistancesRequest(placesList, controllerSignal) {
     const url = getOriginalServerUrl();
