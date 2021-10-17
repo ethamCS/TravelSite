@@ -14,11 +14,11 @@ export function useFind(value) {
 
 }
 
-async function getPlaces(matchString, controllerSignal) {
+async function getPlaces(matchString, controllerSignal, serverSettings) {
     if (matchString === "") {
         return [];
     }
-    const responseBody = await sendFindRequest(matchString, 0, controllerSignal);
+    const responseBody = await sendFindRequest(matchString, 0, controllerSignal, serverSettings);
 
     if (responseBody) {
         return responseBody.places;
@@ -28,8 +28,8 @@ async function getPlaces(matchString, controllerSignal) {
 
 }
 
-async function sendFindRequest(matchString, searchLimit, controllerSignal) {
-    const url = getOriginalServerUrl();
+async function sendFindRequest(matchString, searchLimit, controllerSignal, serverSettings) {
+    const url = serverSettings.serverUrl;
     const requestBody = {requestType: "find", match: matchString, limit: searchLimit};
 
     const findResponse = await sendAPIRequest(requestBody, url, controllerSignal);
