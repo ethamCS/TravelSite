@@ -1,5 +1,5 @@
 import { control } from 'leaflet';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getOriginalServerUrl, sendAPIRequest } from '../utils/restfulAPI';
 
 export function useDistances() {
@@ -10,33 +10,42 @@ export function useDistances() {
 
     const distanceActions = {
         getDistances: async (placesList, controllerSignal) => getDistances(placesList, controllerSignal, context),
-        getTotalDistance: () => getTotalDistance(context)
     };
 
     return {distancesList, totalDistance, distanceActions};
 
 }
 
-function getTotalDistance(context) {
-    const {distancesList, totalDistance, setTotalDistance} = context;
-
-    if (distancesList.length > 0) {
-        setTotalDistance(distancesList.reduce((a, b) => a + b));
-    }
-    else {
-        setTotalDistance(0);
-    }
-}
-
 async function getDistances(placesList, controllerSignal, context) {
-    const {distancesList, setDistancesList} = context;
-    const responseBody = await sendDistancesRequest(placesList, controllerSignal);
+    const {distancesList, setDistancesList, setTotalDistance} = context;
+    const places = massagePlaces(placesList);
+    const responseBody = await sendDistancesRequest(places, controllerSignal);
 
     if (responseBody) {
-        setDistancesList(responseBody.distances);
+        setDistancesList(responseBody.distances)
     }
     else {
         setDistancesList([]);
+    }
+    getTotalDistance(context);
+}
+
+function massagePlaces(placesList) {
+    let tempPlaces = [];
+    placesList.map((place) => {
+        const tempPlace = {"latitude": place['lat'].toString(), "longitude": place['lng'].toString(), "name": place['name']}
+        tempPlaces.push(tempPlace)
+    });
+    return tempPlaces;
+}
+
+function getTotalDistance(context) {
+    const {distancesList, setTotalDistance} = context;
+    if ( distancesList && distancesList.length > 0) {
+        setTotalDistance(distancesList.reduce((a, b) => a + b, 0));
+    }
+    else {
+        setTotalDistance(0);
     }
 }
 

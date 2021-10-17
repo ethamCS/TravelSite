@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import { Table } from 'reactstrap';
 import { ItineraryActionsDropdown, PlaceActionsDropdown } from './actions.js';
 import { EditTripName } from './TripName.js';
 import { latLngToText } from '../../../utils/transformers';
+import { useDistances } from '../../../hooks/useDistances';
 
 export default function Itinerary(props) {
+    const {distancesList, totalDistance, distanceActions} = useDistances();
+
     return (
         <Table responsive hover>
-            <Header placeActions={props.placeActions} openFind={props.openFind} openWhereIs={props.openWhereIs} />
-            <Body places={props.places} placeActions={props.placeActions} />
+            <Header placeActions={props.placeActions} openFind={props.openFind} openWhereIs={props.openWhereIs} totalDistance={totalDistance} />
+            <Body places={props.places} placeActions={props.placeActions} distancesList={distancesList} distanceActions={distanceActions} />
         </Table>
     );
 }
@@ -20,6 +23,9 @@ function Header(props) {
                 <th />
                 <EditTripName placeActions={props.placeActions}/>
                 <th>
+                    Total Trip Distance: {props.totalDistance}
+                </th>
+                <th>
                     <ItineraryActionsDropdown placeActions={props.placeActions} openFind={props.openFind} openWhereIs={props.openWhereIs} />
                 </th>
             </tr>
@@ -27,17 +33,35 @@ function Header(props) {
     );
 }
 
-function Body(props) {
-    return (
-        <tbody>
-            {props.places.map((place, index) =>
+function renderRows(places, placeActions, distancesList) {
+    return (places.map((place, index) =>
                 <TableRow
                     key={`table-${JSON.stringify(place)}-${index}`}
                     place={place}
-                    placeActions={props.placeActions}
+                    placeActions={placeActions}
                     index={index}
+                    distance={(index == 0 ? 0 : distancesList[index - 1])}
                 />
-            )}
+            ));
+}
+
+function Body(props) {
+    const [rows, setRows] = useState([]);
+    useLayoutEffect(() => {
+        const controller = new AbortController();
+        async function fetchDistances() {
+            props.distanceActions.getDistances(props.places, controller.signal);
+        }
+        fetchDistances();
+        setRows(renderRows(props.places, props.placeActions, props.distancesList));
+        return () => {
+            controller.abort();
+        }
+    }, [props.places, props.distancesList.length]);
+
+    return (
+        <tbody>
+            {rows}
         </tbody>
     );
 }
@@ -69,6 +93,10 @@ function TableRow(props) {
                 {name}
                 <br />
                 <small className="text-muted">{location}</small>
+            </td>
+            <td>
+                <small className="text-muted">Distance:</small>
+                <small className="text-muted"> {props.distance}</small>
             </td>
             <td>
                 <PlaceActionsDropdown placeActions={props.placeActions} index={props.index} />
