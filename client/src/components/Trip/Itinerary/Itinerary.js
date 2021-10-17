@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import { Table } from 'reactstrap';
 import { ItineraryActionsDropdown, PlaceActionsDropdown } from './actions.js';
 import { EditTripName } from './TripName.js';
@@ -33,30 +33,35 @@ function Header(props) {
     );
 }
 
-function Body(props) {
-    useEffect(() => {
-        const controller = new AbortController();
-        function fetchDistances() {
-            props.distanceActions.getDistances(props.places, controller.signal);
-        }
-        fetchDistances();
-
-        return () => {
-            controller.abort();
-        }
-    }, [props.places]);
-
-    return (
-        <tbody>
-            {props.places.map((place, index) =>
+function renderRows(places, placeActions, distancesList) {
+    return (places.map((place, index) =>
                 <TableRow
                     key={`table-${JSON.stringify(place)}-${index}`}
                     place={place}
-                    placeActions={props.placeActions}
+                    placeActions={placeActions}
                     index={index}
-                    distance={(index == 0 ? 0 : props.distancesList[index - 1])}
+                    distance={(index == 0 ? 0 : distancesList[index - 1])}
                 />
-            )}
+            ));
+}
+
+function Body(props) {
+    const [rows, setRows] = useState([]);
+    useLayoutEffect(() => {
+        const controller = new AbortController();
+        async function fetchDistances() {
+            props.distanceActions.getDistances(props.places, controller.signal);
+        }
+        fetchDistances();
+        setRows(renderRows(props.places, props.placeActions, props.distancesList));
+        return () => {
+            controller.abort();
+        }
+    }, [props.places, props.distancesList.length]);
+
+    return (
+        <tbody>
+            {rows}
         </tbody>
     );
 }
