@@ -10,7 +10,7 @@ export default function Find(props) {
     return (
         <Container>
             <FindHeader closePage={props.closePage} context={context} />
-            <FindBody places={props.places} selectedIndex={props.selectedIndex} placeActions={props.placeActions} context={context} />
+            <FindBody places={props.places} selectedIndex={props.selectedIndex} placeActions={props.placeActions} context={context} serverSettings={props.serverSettings}/>
         </Container>
     );
 }
@@ -50,7 +50,7 @@ function FindBody(props) {
     useEffect(() => {
         const controller = new AbortController();
         async function fetchPlaces(matchString) {
-            const placeList = await getPlaces(matchString, controller.signal);
+            const placeList = await getPlaces(matchString, controller.signal, props.serverSettings);
             setList(placeList);
         }
         fetchPlaces(matchString);

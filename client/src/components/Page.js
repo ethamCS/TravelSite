@@ -26,10 +26,10 @@ export default function Page(props) {
 					<About closePage={toggleAbout} />
 				</Collapse>
 				<Collapse isOpen={!showAbout && !showFind} data-testid="planner-collapse">
-					<Planner showMessage={props.showMessage} openFind={toggleFind} openWhereIs={toggleWhereIs} places={places} selectedIndex={selectedIndex} placeActions={placeActions} />
+					<Planner showMessage={props.showMessage} openFind={toggleFind} openWhereIs={toggleWhereIs} places={places} selectedIndex={selectedIndex} placeActions={placeActions} serverSettings={serverSettings} />
 				</Collapse>
 				<Collapse isOpen={showFind} data-testid="find-collapse">
-					<Find closePage={toggleFind} places={places} selectedIndex={selectedIndex} placeActions={placeActions} />
+					<Find closePage={toggleFind} places={places} selectedIndex={selectedIndex} placeActions={placeActions} serverSettings={serverSettings} />
 				</Collapse>
 				<Modal isOpen={showWhereIs} data-testid="whereis-modal">
 					<WhereIs closeWhereIs={toggleWhereIs} placeActions={placeActions} />
