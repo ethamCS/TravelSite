@@ -177,5 +177,10 @@ The user interface is going to largely stay the same as it was at the end of spr
 ![sprint3Components](images/ComponentsSprint3.png)
 We are going to add a few new components: Save, Load, and Distances.  There will be a few common states that will be lifted to Itinerary.js, such as defaultFileType, distances, and filepointer.  Filepointer and defaultFileType will be passed as props to Save and Load, and distances will be passed to Distances.
 
+### Class Diagram
+The class diagram for the updated application depicted below shows the basic structure of the web server application.
+
+![class diagram](images/Sprint3UML.png)
+
 # Sprint 4 
 # Sprint 5
