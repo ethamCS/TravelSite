@@ -50,7 +50,7 @@ function TripInput(props) {
             />
             <Collapse isOpen={props.tripName != null && props.tripName != ""}>
                 <InputGroupAddon>
-                    <InputGroupText style={{ cursor: props.cursor }} onMouseDown={props.handleClick} onMouseUp={props.changeCursor} onClick={props.toggle} valid={props.tripName != null && props.tripName != ""} invalid={props.tripName == null || props.tripName == ""} data-testid="done-button">
+                    <InputGroupText style={{ cursor: props.cursor }} onMouseDown={props.handleClick} onMouseUp={props.changeCursor} onClick={props.toggle} valid={props.tripName != null && props.tripName != ""} invalid={props.tripName == null || props.tripName == ""}>
                         Done
                     </InputGroupText>
                 </InputGroupAddon>
