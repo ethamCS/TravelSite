@@ -81,6 +81,11 @@ function processCoordinatesInput(onChangeEvent, context) {
 
     setCoordiantesInputText(inputText);
     setConvertedLatLang(latLang);
+
+    if (latLang && (latLang.lat < -90 || latLang.lat > 90 || latLang.lng < -180 || latLang.lng > 180)) {
+        setConvertedLatLang(null);
+    }
+    
 }
 
 function getCoords(coordinateString) {
