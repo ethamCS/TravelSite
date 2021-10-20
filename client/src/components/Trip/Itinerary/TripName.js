@@ -27,8 +27,8 @@ export function EditTripName(props) {
         <th>
             <Collapse isOpen={!collapse}>
                 {tripName} <FaPencilAlt style={{ cursor: cursor }} onMouseDown={handleClick} onMouseUp={changeCursor} onClick={toggle} data-testid="edit-button" />
-                <LoadTripButton cursor={cursor} handleClick={handleClick} changeCursor={changeCursor} placeActions={props.placeActions} setName={setName}/>
-                <SaveTripButton cursor={cursor} handleClick={handleClick} changeCursor={changeCursor} tripName={tripName} placeActions={props.placeActions}/>
+                <LoadTripButton showMessage={props.showMessage} cursor={cursor} handleClick={handleClick} changeCursor={changeCursor} placeActions={props.placeActions} setName={setName} />
+                <SaveTripButton cursor={cursor} handleClick={handleClick} changeCursor={changeCursor} tripName={tripName} placeActions={props.placeActions} />
             </Collapse>
             <Collapse isOpen={collapse} data-testid="trip-collapse">
                 <TripInput cursor={cursor} tripName={tripName} setName={setName} handleClick={handleClick} changeCursor={changeCursor} toggle={toggle} />
@@ -87,6 +87,6 @@ export function SaveTripButton(props) {
         props.placeActions.saveFile(props);
     }
     return (
-        <FaSave style={{ cursor: props.cursor, marginLeft: '10px' }} onMouseDown={props.handleClick} onMouseUp={props.changeCursor} onClick={handleJSONSave}/>
+        <FaSave style={{ cursor: props.cursor, marginLeft: '10px' }} onMouseDown={props.handleClick} onMouseUp={props.changeCursor} onClick={handleJSONSave} />
     );
 }

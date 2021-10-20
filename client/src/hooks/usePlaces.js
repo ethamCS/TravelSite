@@ -134,6 +134,8 @@ function parseFile(file, context, props) {
                 setPlaces(newPlaces);
                 setSelectedIndex(newPlaces.length - 1);
             })()
+        } else {
+            props.showMessage("Invalid JSON File.", "error")
         }
     } else if (extension === "csv") {
         var csv = csvToJson(file);
@@ -144,6 +146,8 @@ function parseFile(file, context, props) {
                 setPlaces(newPlaces);
                 setSelectedIndex(newPlaces.length - 1);
             })()
+        } else {
+            props.showMessage("Invalid CSV File.", "error")
         }
     }
 }
