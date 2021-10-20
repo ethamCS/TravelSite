@@ -60,24 +60,10 @@ public class Query {
         return query;
     }
     public Integer selectCount() {
+        String selectCountStatement = buildSelectCountQuery();
         try {
-            PreparedStatement stmt = DatabaseConnection.con.prepareStatement("SELECT COUNT(*)"
-                                                                            + " FROM continent" 
-                                                                            + " JOIN country ON continent.id = country.continent"
-                                                                            + " JOIN region ON country.id = region.iso_country"
-                                                                            + " JOIN world ON region.id = world.iso_region"
-                                                                            + " WHERE (world.municipality LIKE ?"
-                                                                            + " OR world.name LIKE ?"
-                                                                            + " OR world.id LIKE ?"
-                                                                            + " OR continent.name LIKE ?"
-                                                                            + " OR region.name LIKE ?"
-                                                                            + " OR country.name LIKE ?)");
-
-            for (int i = 1; i <= 6; i++) {
-                stmt.setString(i, "%" + this.match + "%");
-            }
-            
-            ResultSet rs =  stmt.executeQuery(); 
+            Statement query = DatabaseConnection.con.createStatement();
+            ResultSet rs =  query.executeQuery(selectCountStatement);
             if (!rs.next()) {
                 result = -1;
             } 
