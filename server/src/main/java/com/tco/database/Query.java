@@ -31,7 +31,7 @@ public class Query {
     public String buildSelectAllQuery(){
         String query =  "SELECT world.name, world.latitude, world.longitude, world.municipality,"
                         + " region.name, country.name, continent.name, world.altitude"
-                        + " FROM world "
+                        + " FROM world"
                         + " INNER JOIN continent ON world.continent = continent.id"
                         + " INNER JOIN country ON world.iso_country = country.id"
                         + " INNER JOIN region ON world.iso_region = region.id"
@@ -42,6 +42,10 @@ public class Query {
                         + " OR region.name LIKE \'%" + this.match + "%\')"
                         + " LIMIT " + this.limit+ ";";
 
+        return query;
+    }
+    public String buildSelectCountQuery(){
+        String query = "";
         return query;
     }
     public Integer selectCount() {
