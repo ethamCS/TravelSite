@@ -82,30 +82,9 @@ public class Query {
         int result = 0;
         String selectAllStatement = buildSelectAllQuery(); 
         try {
-           PreparedStatement stmt = DatabaseConnection.con.prepareStatement("SELECT world.name, world.continent, world.latitude, world.id,"
-                                                                                + " world.longitude, world.municipality, region.name"
-                                                                                + " FROM continent" 
-                                                                                + " JOIN country ON continent.id = country.continent"
-                                                                                + " JOIN region ON country.id = region.iso_country"
-                                                                                + " JOIN world ON region.id = world.iso_region"
-                                                                                + " WHERE (world.municipality LIKE ?"
-                                                                                + " OR world.name LIKE ?"
-                                                                                + " OR world.id LIKE ?"
-                                                                                + " OR continent.name LIKE ?"
-                                                                                + " OR region.name LIKE ?"
-                                                                                + " OR country.name LIKE ?)"
-                                                                                + " GROUP BY world.latitude"
-                                                                                + " LIMIT ?;");
-
-            for (int i = 1; i <= 6; i++) {
-                stmt.setString(i, "%" + this.match + "%");
-            }
+            Statement query = DatabaseConnection.con.createStatement();
+            ResultSet rs =  query.executeQuery(selectAllStatement);
             
-            stmt.setInt(7, this.limit);
-            
-                                  
-            ResultSet rs =  stmt.executeQuery();
-
             if (!rs.next()) {
                 result = -1;
             }
