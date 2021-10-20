@@ -23,7 +23,7 @@ public class Query {
 
    public Query(String match, Integer limit){
        this.match = match;
-       this.limit = limit;
+       this.limit = (limit == 0) ? 100 : (limit);
        this.places = new Places();
        this.result = 0;
        DatabaseConnection.connect();
