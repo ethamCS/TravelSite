@@ -27,7 +27,7 @@ export function EditTripName(props) {
     return (
         <th>
             <Collapse isOpen={!collapse}>
-                {tripName} <FaPencilAlt style={{ cursor: cursor }} onMouseDown={handleClick} onMouseUp={changeCursor} onClick={toggle} data-testid="edit-button"/>
+                {tripName} <FaPencilAlt style={{ cursor: cursor }} onMouseDown={handleClick} onMouseUp={changeCursor} onClick={toggle} data-testid="edit-button" />
                 <LoadTripButton cursor={cursor} handleClick={handleClick} changeCursor={changeCursor} placeActions={props.placeActions} />
                 <SaveTripButton cursor={cursor} handleClick={handleClick} changeCursor={changeCursor} />
             </Collapse>
@@ -80,11 +80,5 @@ export function LoadTripButton(props) {
             <FaFileUpload onClick={onIconClick} style={{ cursor: props.cursor, marginLeft: '10px' }} onMouseDown={props.handleClick} onMouseUp={props.changeCursor} />
             <Input style={{ display: 'none' }} id="file-input" type="file" accept={FILE_FORMATS} onChange={handleFileUpload} />
         </React.Fragment>
-    );
-}
-
-export function SaveTripButton(props) {
-    return (
-        <FaSave style={{ cursor: props.cursor, marginLeft: '10px' }} onMouseDown={props.handleClick} onMouseUp={props.changeCursor} />
     );
 }
