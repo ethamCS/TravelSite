@@ -28,7 +28,9 @@ public class Query {
        this.result = 0;
        DatabaseConnection.connect();
    }
-
+    public String buildSelectAllQuery(){
+        return "";
+    }
     public Integer selectCount() {
         try {
             PreparedStatement stmt = DatabaseConnection.con.prepareStatement("SELECT COUNT(*)"
