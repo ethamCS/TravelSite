@@ -28,7 +28,22 @@ public class Query {
        this.result = 0;
        DatabaseConnection.connect();
    }
+    public String buildSelectAllQuery(){
+        String query =  "SELECT world.name, world.latitude, world.longitude, world.municipality,"
+                        + " region.name, country.name, continent.name, world.altitude"
+                        + " FROM world "
+                        + " INNER JOIN continent ON world.continent = continent.id"
+                        + " INNER JOIN country ON world.iso_country = country.id"
+                        + " INNER JOIN region ON world.iso_region = region.id"
+                        + " WHERE (world.name LIKE \'%" + this.match + "%\'"
+                        + " OR continent.name LIKE \'%" + this.match + "%\'"
+                        + " OR world.municipality LIKE \'%" + this.match + "%\'"
+                        + " OR country.name LIKE \'%" + this.match + "%\'"
+                        + " OR region.name LIKE \'%" + this.match + "%\')"
+                        + " LIMIT " + this.limit+ ";";
 
+        return query;
+    }
     public Integer selectCount() {
         try {
             PreparedStatement stmt = DatabaseConnection.con.prepareStatement("SELECT COUNT(*)"
