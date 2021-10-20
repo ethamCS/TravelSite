@@ -10,7 +10,7 @@ export default function Find(props) {
     return (
         <Container>
             <FindHeader closePage={props.closePage} context={context} />
-            <FindBody places={props.places} selectedIndex={props.selectedIndex} placeActions={props.placeActions} context={context} serverSettings={props.serverSettings}/>
+            <FindBody places={props.places} selectedIndex={props.selectedIndex} placeActions={props.placeActions} context={context} serverSettings={props.serverSettings} />
         </Container>
     );
 }
@@ -64,6 +64,7 @@ function FindBody(props) {
         <Container>
             <Input type="text"
                 placeholder="Enter Location"
+                data-testid="find-input"
                 value={matchString}
                 onChange={handleChange} />
             <Results placesList={foundList} places={props.places} selectedIndex={props.selectedIndex} placeActions={props.placeActions} />
