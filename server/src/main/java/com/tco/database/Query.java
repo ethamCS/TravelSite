@@ -38,6 +38,8 @@ public class Query {
                         + " WHERE (world.name LIKE \'%" + this.match + "%\'"
                         + " OR continent.name LIKE \'%" + this.match + "%\'"
                         + " OR world.municipality LIKE \'%" + this.match + "%\'"
+                        + " OR country.name LIKE \'%" + this.match + "%\'"
+                        + " OR region.name LIKE \'%" + this.match + "%\')"
                         + " LIMIT " + this.limit+ ";";
 
         return query;
