@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Collapse, Input, InputGroup, InputGroupAddon, InputGroupText } from 'reactstrap';
 import { FaPencilAlt, FaFileUpload, FaSave, FaLessThanEqual } from 'react-icons/fa';
-
-const FILE_FORMATS = ".json, .csv, application/json, text/csv";
+import { FILE_FORMATS } from '../../../utils/constants';
 
 export function EditTripName(props) {
     const [cursor, setCursor] = useState('pointer');
@@ -28,7 +27,8 @@ export function EditTripName(props) {
         <th>
             <Collapse isOpen={!collapse}>
                 {tripName} <FaPencilAlt style={{ cursor: cursor }} onMouseDown={handleClick} onMouseUp={changeCursor} onClick={toggle} data-testid="edit-button" />
-                <LoadTripButton cursor={cursor} handleClick={handleClick} changeCursor={changeCursor} placeActions={props.placeActions} />
+                <LoadTripButton cursor={cursor} handleClick={handleClick} changeCursor={changeCursor} placeActions={props.placeActions} setName={setName}/>
+                <SaveTripButton cursor={cursor} handleClick={handleClick} changeCursor={changeCursor} tripName={tripName} placeActions={props.placeActions}/>
             </Collapse>
             <Collapse isOpen={collapse} data-testid="trip-collapse">
                 <TripInput cursor={cursor} tripName={tripName} setName={setName} handleClick={handleClick} changeCursor={changeCursor} toggle={toggle} />
@@ -63,7 +63,7 @@ export function LoadTripButton(props) {
     function handleFileUpload(event) {
         const fileName = event.target.files[0].name;
         const fileObject = event.target.files[0];
-        props.placeActions.readFile(fileName, fileObject)
+        props.placeActions.readFile(fileName, fileObject, props)
     }
 
     const onIconClick = () => {
@@ -79,5 +79,14 @@ export function LoadTripButton(props) {
             <FaFileUpload onClick={onIconClick} style={{ cursor: props.cursor, marginLeft: '10px' }} onMouseDown={props.handleClick} onMouseUp={props.changeCursor} />
             <Input style={{ display: 'none' }} id="file-input" type="file" accept={FILE_FORMATS} onChange={handleFileUpload} />
         </React.Fragment>
+    );
+}
+
+export function SaveTripButton(props) {
+    function handleJSONSave() {
+        props.placeActions.saveFile(props);
+    }
+    return (
+        <FaSave style={{ cursor: props.cursor, marginLeft: '10px' }} onMouseDown={props.handleClick} onMouseUp={props.changeCursor} onClick={handleJSONSave}/>
     );
 }

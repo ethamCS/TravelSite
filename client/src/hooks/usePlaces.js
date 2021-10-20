@@ -6,6 +6,7 @@ import { DEFAULT_STARTING_PLACE } from '../utils/constants';
 import * as tripSchema from '../../schemas/TripFile.json';
 import * as csvSchema from '../../schemas/csvSchema.json';
 import { isJsonResponseValid } from '../utils/restfulAPI';
+import { MIME_TYPE } from '../utils/constants';
 
 
 export function usePlaces() {
@@ -20,7 +21,8 @@ export function usePlaces() {
         removeAll: () => removeAll(context),
         selectIndex: (index) => selectIndex(index, context),
         moveToHome: async () => moveToHome(context),
-        readFile: (fileName, fileObject) => readFile(fileName, fileObject, context)
+        readFile: (fileName, fileObject, props) => readFile(fileName, fileObject, props, context),
+        saveFile: (props) => saveFile(props, context)
     };
 
     return { places, selectedIndex, placeActions };
@@ -119,12 +121,13 @@ async function appendPlaces(obj) {
     return array;
 }
 
-function parseFile(file, context) {
+function parseFile(file, context, props) {
     const { setPlaces, setSelectedIndex } = context;
 
     const extension = file.name.split('.').pop();
     if (extension === "json") {
         if (isJsonResponseValid(JSON.parse(file.text), tripSchema)) {
+            props.setName(file.name.split('.')[0]);
             var obj = JSON.parse(file.text);
             (async () => {
                 let newPlaces = await appendPlaces(obj.places);
@@ -135,6 +138,7 @@ function parseFile(file, context) {
     } else if (extension === "csv") {
         var csv = csvToJson(file);
         if (isJsonResponseValid(csv, csvSchema)) {
+            props.setName(file.name.split('.')[0]);
             (async () => {
                 let newPlaces = await appendPlaces(csv.data);
                 setPlaces(newPlaces);
@@ -144,11 +148,46 @@ function parseFile(file, context) {
     }
 }
 
-function readFile(fileName, fileObject, context) {
+function readFile(fileName, fileObject, props, context) {
     const reader = new FileReader();
     reader.readAsText(fileObject, "UTF-8");
     reader.onload = event => {
         const file = { name: fileName, text: event.target.result };
-        parseFile(file, context);
+        parseFile(file, context, props);
     }
+}
+
+function saveFile(props, context) {
+    const tripJSON = buildJSON(context);
+    const fileName = props.tripName.replace(/ /g, "_").toLowerCase();
+    downloadFile(fileName + ".json", MIME_TYPE.JSON, tripJSON);
+}
+
+function buildJSON(context) {
+    const { places } = context;
+    let newPlaces = [];
+    for (var i = 0; i < places.length; i++) {
+        var place = { name: places[i].name, latitude: places[i].lat.toString(), longitude: places[i].lng.toString() };
+        newPlaces.push(place);
+    }
+
+    const tripJSON = {
+        places: newPlaces
+    };
+
+    return JSON.stringify(tripJSON, null, 2);
+}
+
+function downloadFile(fileNameWithExtension, mimeType, fileText) {
+    const file = new Blob([fileText], { type: mimeType });
+    const link = document.createElement("a");
+    const url = URL.createObjectURL(file);
+    link.href = url;
+    link.download = fileNameWithExtension;
+    document.body.appendChild(link);
+    link.click();
+    setTimeout(function () {
+        document.body.removeChild(link);
+        window.URL.revokeObjectURL(url);
+    }, 0);
 }
