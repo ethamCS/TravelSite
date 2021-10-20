@@ -7,6 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import com.tco.misc.BadRequestException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class TestFindRequest {
 
@@ -26,10 +27,10 @@ public class TestFindRequest {
     }
 
     @Test
-    @DisplayName("Match is \"\"")
+    @DisplayName("Match is \"#1\"")
     public void testMatch() {
         String match = find.getMatch();
-        assertEquals("", match);
+        assertEquals("#1", match);
     }
 
     @Test
@@ -41,10 +42,23 @@ public class TestFindRequest {
 
 
     @Test
-    @DisplayName("Query found is \"50427\"")
+    @DisplayName("Query found is \"2\"")
     public void testFound() {
         Integer found = find.getFound();
-        assertEquals(50427, found); 
+        assertEquals(2, found); 
     }
 
+    @Test
+    @DisplayName("Where throws exception")
+    public void testWhere() {
+        find.setWhere();
+        BadRequestException e = assertThrows(BadRequestException.class, () -> {find.buildResponse();});
+    }
+
+    @Test
+    @DisplayName("Type throws exception")
+    public void testTypeProperty() {
+        find.setType();
+        BadRequestException e = assertThrows(BadRequestException.class, () -> {find.buildResponse();});
+    }
 }
