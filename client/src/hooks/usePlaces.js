@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { placeToLatLng } from '../utils/transformers';
+import { placeToLatLng, validateLatLng } from '../utils/transformers';
 import { reverseGeocode } from '../utils/reverseGeocode';
 import { LOG } from '../utils/constants';
 import { DEFAULT_STARTING_PLACE } from '../utils/constants';
@@ -32,6 +32,8 @@ async function append(place, context) {
     const { places, setPlaces, setSelectedIndex } = context;
 
     const newPlaces = [...places];
+
+    validateLatLng(place);
 
     const fullPlace = await reverseGeocode(placeToLatLng(place));
     newPlaces.push(fullPlace);
