@@ -84,7 +84,7 @@ public class Query {
                 stmt.setString(i, "%" + this.match + "%");
             }
             
-            stmt.setInt(7, 100);
+            stmt.setInt(7, this.limit);
             
                                   
             ResultSet rs =  stmt.executeQuery();
