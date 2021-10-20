@@ -1,5 +1,5 @@
 import React, { useState, useLayoutEffect } from 'react';
-import { Table } from 'reactstrap';
+import { Collapse, Table, Fade } from 'reactstrap';
 import { ItineraryActionsDropdown, PlaceActionsDropdown } from './actions.js';
 import { EditTripName } from './TripName.js';
 import { latLngToText } from '../../../utils/transformers';
@@ -10,7 +10,7 @@ export default function Itinerary(props) {
 
     return (
         <Table responsive hover>
-            <Header showMessage={props.showMessage} placeActions={props.placeActions} openFind={props.openFind} openWhereIs={props.openWhereIs} totalDistance={totalDistance} />
+            <Header places={props.places} showMessage={props.showMessage} placeActions={props.placeActions} openFind={props.openFind} openWhereIs={props.openWhereIs} totalDistance={totalDistance} />
             <Body places={props.places} placeActions={props.placeActions} distancesList={distancesList} distanceActions={distanceActions} serverSettings={props.serverSettings} />
         </Table>
     );
@@ -23,7 +23,9 @@ function Header(props) {
                 <th />
                 <EditTripName placeActions={props.placeActions} showMessage={props.showMessage} />
                 <th>
-                    Round Trip Distance: <br />{props.totalDistance} mi
+                    <Fade in={props.places.length > 1}>
+                        Round Trip Distance: <br />{props.totalDistance} mi
+                    </Fade>
                 </th>
                 <th>
                     <ItineraryActionsDropdown placeActions={props.placeActions} openFind={props.openFind} openWhereIs={props.openWhereIs} />
@@ -95,9 +97,11 @@ function TableRow(props) {
                 <small className="text-muted">{location}</small>
             </td>
             <td>
-                <small className="text-muted">Distance from last stop:</small>
-                <br />
-                <small className="text-muted"> {props.distance} mi</small>
+                <Fade in={props.index > 0}>
+                    <small className="text-muted">Distance from last stop:</small>
+                    <br />
+                    <small className="text-muted"> {props.distance} mi</small>
+                </Fade>
             </td>
             <td>
                 <PlaceActionsDropdown placeActions={props.placeActions} index={props.index} />
