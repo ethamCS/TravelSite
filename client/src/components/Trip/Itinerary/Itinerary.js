@@ -23,7 +23,7 @@ function Header(props) {
                 <th />
                 <EditTripName placeActions={props.placeActions}/>
                 <th>
-                    Total Trip Distance: {props.totalDistance}
+                    Round Trip Distance: <br />{props.totalDistance} mi
                 </th>
                 <th>
                     <ItineraryActionsDropdown placeActions={props.placeActions} openFind={props.openFind} openWhereIs={props.openWhereIs} />
@@ -95,8 +95,9 @@ function TableRow(props) {
                 <small className="text-muted">{location}</small>
             </td>
             <td>
-                <small className="text-muted">Distance:</small>
-                <small className="text-muted"> {props.distance}</small>
+                <small className="text-muted">Distance from last stop:</small>
+                <br />
+                <small className="text-muted"> {props.distance} mi</small>
             </td>
             <td>
                 <PlaceActionsDropdown placeActions={props.placeActions} index={props.index} />
