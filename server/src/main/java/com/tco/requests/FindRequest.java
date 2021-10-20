@@ -37,7 +37,7 @@ public class FindRequest extends Request {
 during normal execution, including the constructor. */
     public FindRequest() {
         this.requestType = "find";
-        this.match = "";
+        this.match = "#1";
         this.limit = 0;
     }
 
@@ -52,5 +52,12 @@ during normal execution, including the constructor. */
     public Integer getFound(){
         return this.found;
     }
+
+    public void setWhere() {
+        this.where = new String[]{"United States"};
+    }
     
+    public void setType() {
+        this.type = new String[]{"heliport"};
+    }
 }
