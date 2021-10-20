@@ -4,6 +4,7 @@ import { reverseGeocode } from '../utils/reverseGeocode';
 import { LOG } from '../utils/constants';
 import { DEFAULT_STARTING_PLACE } from '../utils/constants';
 import * as tripSchema from '../../schemas/TripFile.json';
+import * as csvSchema from '../../schemas/csvSchema.json';
 import { isJsonResponseValid } from '../utils/restfulAPI';
 
 
@@ -133,11 +134,13 @@ function parseFile(file, context) {
         }
     } else if (extension === "csv") {
         var csv = csvToJson(file);
-        (async () => {
-            let newPlaces = await appendPlaces(csv.data);
-            setPlaces(newPlaces);
-            setSelectedIndex(newPlaces.length - 1);
-        })()
+        if (isJsonResponseValid(csv, csvSchema)) {
+            (async () => {
+                let newPlaces = await appendPlaces(csv.data);
+                setPlaces(newPlaces);
+                setSelectedIndex(newPlaces.length - 1);
+            })()
+        }
     }
 }
 
