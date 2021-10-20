@@ -1,6 +1,6 @@
 import React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
-import user from '@testing-library/user-event';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it } from '@jest/globals';
 import WhereIs from '../../../src/components/WhereIs/WhereIs';
 
@@ -16,5 +16,11 @@ describe('WhereIs', () => {
         const collapse = screen.getByRole('textbox');
         expect(collapse.classList.contains('value')).toBeFalsy();
 
+    });
+
+    it('mocks user input in the WhereIs Modal', () => {
+        const inputBox = screen.getByTestId('whereis-input');
+        userEvent.type(inputBox, '0,0')
+        expect(inputBox.value).toBe('0,0');
     });
 });
