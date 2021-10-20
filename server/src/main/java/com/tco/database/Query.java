@@ -80,6 +80,7 @@ public class Query {
 
     public Places selectAll(){
         int result = 0;
+        String selectAllStatement = buildSelectAllQuery(); 
         try {
            PreparedStatement stmt = DatabaseConnection.con.prepareStatement("SELECT world.name, world.continent, world.latitude, world.id,"
                                                                                 + " world.longitude, world.municipality, region.name"
