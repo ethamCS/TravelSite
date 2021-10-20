@@ -27,11 +27,11 @@ export function EditTripName(props) {
     return (
         <th>
             <Collapse isOpen={!collapse}>
-                {tripName} <FaPencilAlt style={{ cursor: cursor }} onMouseDown={handleClick} onMouseUp={changeCursor} onClick={toggle} />
+                {tripName} <FaPencilAlt style={{ cursor: cursor }} onMouseDown={handleClick} onMouseUp={changeCursor} onClick={toggle} data-testid="edit-button"/>
                 <LoadTripButton cursor={cursor} handleClick={handleClick} changeCursor={changeCursor} placeActions={props.placeActions} />
                 <SaveTripButton cursor={cursor} handleClick={handleClick} changeCursor={changeCursor} />
             </Collapse>
-            <Collapse isOpen={collapse}>
+            <Collapse isOpen={collapse} data-testid="trip-collapse">
                 <TripInput cursor={cursor} tripName={tripName} setName={setName} handleClick={handleClick} changeCursor={changeCursor} toggle={toggle} />
             </Collapse>
         </th>
@@ -46,10 +46,11 @@ function TripInput(props) {
                 onChange={e => props.setName(e.target.value)}
                 valid={props.tripName != null && props.tripName != ""}
                 invalid={props.tripName == null || props.tripName == ""}
+                data-testid="trip-input"
             />
             <Collapse isOpen={props.tripName != null && props.tripName != ""}>
                 <InputGroupAddon>
-                    <InputGroupText style={{ cursor: props.cursor }} onMouseDown={props.handleClick} onMouseUp={props.changeCursor} onClick={props.toggle} valid={props.tripName != null && props.tripName != ""} invalid={props.tripName == null || props.tripName == ""}>
+                    <InputGroupText style={{ cursor: props.cursor }} onMouseDown={props.handleClick} onMouseUp={props.changeCursor} onClick={props.toggle} valid={props.tripName != null && props.tripName != ""} invalid={props.tripName == null || props.tripName == ""} data-testid="done-button">
                         Done
                     </InputGroupText>
                 </InputGroupAddon>
