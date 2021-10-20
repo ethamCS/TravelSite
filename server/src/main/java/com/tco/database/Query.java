@@ -26,11 +26,11 @@ public class Query {
        this.limit = limit;
        this.places = new Places();
        this.result = 0;
+       DatabaseConnection.connect();
    }
 
     public Integer selectCount() {
         try {
-            DatabaseConnection.connect();
             PreparedStatement stmt = DatabaseConnection.con.prepareStatement("SELECT COUNT(*)"
                                                                             + " FROM continent" 
                                                                             + " JOIN country ON continent.id = country.continent"
@@ -65,7 +65,6 @@ public class Query {
     public Places selectAll(){
         int result = 0;
         try {
-           DatabaseConnection.connect();
            PreparedStatement stmt = DatabaseConnection.con.prepareStatement("SELECT world.name, world.continent, world.latitude, world.id,"
                                                                                 + " world.longitude, world.municipality, region.name"
                                                                                 + " FROM continent" 
