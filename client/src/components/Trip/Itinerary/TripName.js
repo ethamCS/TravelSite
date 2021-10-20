@@ -29,7 +29,6 @@ export function EditTripName(props) {
             <Collapse isOpen={!collapse}>
                 {tripName} <FaPencilAlt style={{ cursor: cursor }} onMouseDown={handleClick} onMouseUp={changeCursor} onClick={toggle} data-testid="edit-button" />
                 <LoadTripButton cursor={cursor} handleClick={handleClick} changeCursor={changeCursor} placeActions={props.placeActions} />
-                <SaveTripButton cursor={cursor} handleClick={handleClick} changeCursor={changeCursor} />
             </Collapse>
             <Collapse isOpen={collapse} data-testid="trip-collapse">
                 <TripInput cursor={cursor} tripName={tripName} setName={setName} handleClick={handleClick} changeCursor={changeCursor} toggle={toggle} />
