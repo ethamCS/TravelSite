@@ -6,12 +6,12 @@ import { latLngToText } from '../../../utils/transformers';
 import { useDistances } from '../../../hooks/useDistances';
 
 export default function Itinerary(props) {
-    const {distancesList, totalDistance, distanceActions} = useDistances();
+    const { distancesList, totalDistance, distanceActions } = useDistances();
 
     return (
         <Table responsive hover>
-            <Header placeActions={props.placeActions} openFind={props.openFind} openWhereIs={props.openWhereIs} totalDistance={totalDistance} />
-            <Body places={props.places} placeActions={props.placeActions} distancesList={distancesList} distanceActions={distanceActions} serverSettings={props.serverSettings}/>
+            <Header showMessage={props.showMessage} placeActions={props.placeActions} openFind={props.openFind} openWhereIs={props.openWhereIs} totalDistance={totalDistance} />
+            <Body places={props.places} placeActions={props.placeActions} distancesList={distancesList} distanceActions={distanceActions} serverSettings={props.serverSettings} />
         </Table>
     );
 }
@@ -21,7 +21,7 @@ function Header(props) {
         <thead>
             <tr>
                 <th />
-                <EditTripName placeActions={props.placeActions}/>
+                <EditTripName placeActions={props.placeActions} showMessage={props.showMessage} />
                 <th>
                     Round Trip Distance: <br />{props.totalDistance} mi
                 </th>
@@ -35,14 +35,14 @@ function Header(props) {
 
 function renderRows(places, placeActions, distancesList) {
     return (places.map((place, index) =>
-                <TableRow
-                    key={`table-${JSON.stringify(place)}-${index}`}
-                    place={place}
-                    placeActions={placeActions}
-                    index={index}
-                    distance={(index == 0 ? 0 : distancesList[index - 1])}
-                />
-            ));
+        <TableRow
+            key={`table-${JSON.stringify(place)}-${index}`}
+            place={place}
+            placeActions={placeActions}
+            index={index}
+            distance={(index == 0 ? 0 : distancesList[index - 1])}
+        />
+    ));
 }
 
 function Body(props) {

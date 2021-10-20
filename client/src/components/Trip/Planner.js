@@ -11,7 +11,7 @@ export default function Planner(props) {
                 <Map places={props.places} selectedIndex={props.selectedIndex} placeActions={props.placeActions} />
             </Section>
             <Section>
-                <Itinerary places={props.places} selectedIndex={props.selectedIndex} placeActions={props.placeActions} openFind={props.openFind} openWhereIs={props.openWhereIs} serverSettings={props.serverSettings}/>
+                <Itinerary showMessage={props.showMessage} places={props.places} selectedIndex={props.selectedIndex} placeActions={props.placeActions} openFind={props.openFind} openWhereIs={props.openWhereIs} serverSettings={props.serverSettings} />
             </Section>
         </Container>
     );
