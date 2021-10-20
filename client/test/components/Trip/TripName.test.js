@@ -10,10 +10,6 @@ describe('TripName', () => {
         render(<EditTripName/>);
     });
 
-    it('renders original trip name', () => {
-        screen.getByText('My Trip');
-    });
-
     it('renders text box', async () =>{
         const collapse = screen.getByTestId('trip-collapse');
         expect(collapse.classList.contains('show')).toBe(false);
