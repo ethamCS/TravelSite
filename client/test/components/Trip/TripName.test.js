@@ -1,8 +1,9 @@
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import user from '@testing-library/user-event';
-import { beforeEach, describe, it } from '@jest/globals';
+import { beforeEach, describe, expect, it } from '@jest/globals';
 import { EditTripName } from '../../../src/components/Trip/Itinerary/TripName';
+import userEvent from '@testing-library/user-event';
 
 describe('TripName', () => {
     beforeEach(() => {
@@ -22,5 +23,13 @@ describe('TripName', () => {
         await waitFor(() => {
             expect(collapse.classList.contains('show')).toBe(true);
         });
+    });
+
+    it('updates trip name', async () =>{
+        const tripinput = screen.getByTestId('trip-input');
+        
+        userEvent.type(tripinput, 'new trip');
+        
+        expect(tripinput.value).toEqual("new trip")
     });
 });
