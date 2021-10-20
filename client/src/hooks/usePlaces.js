@@ -125,22 +125,19 @@ function parseFile(file, context) {
     if (extension === "json") {
         if (isJsonResponseValid(JSON.parse(file.text), tripSchema)) {
             var obj = JSON.parse(file.text);
-            let newPlaces = [];
-
-            newPlaces = appendPlaces(obj.places);
-
-            setPlaces(newPlaces);
-            setSelectedIndex(newPlaces.length - 1);
+            (async () => {
+                let newPlaces = await appendPlaces(obj.places);
+                setPlaces(newPlaces);
+                setSelectedIndex(newPlaces.length - 1);
+            })()
         }
-
     } else if (extension === "csv") {
         var csv = csvToJson(file);
-        let newPlaces = [];
-
-        newPlaces = appendPlaces(csv.data);
-
-        setPlaces(newPlaces);
-        setSelectedIndex(newPlaces.length - 1);
+        (async () => {
+            let newPlaces = await appendPlaces(csv.data);
+            setPlaces(newPlaces);
+            setSelectedIndex(newPlaces.length - 1);
+        })()
     }
 }
 
