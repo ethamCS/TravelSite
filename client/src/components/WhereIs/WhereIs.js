@@ -50,6 +50,7 @@ function WhereIsBody(props) {
                 value={coordinatesInputText}
                 valid={validCoordinates}
                 invalid={!inputBoxEmpty && !validCoordinates}
+                data-testid="whereis-input"
             />
         </InputGroup>
     );
