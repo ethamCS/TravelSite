@@ -91,58 +91,53 @@ function selectIndex(index, context) {
 }
 
 function csvToJson(file) {
-    var output=[]
+    var output = []
     const papa = require('papaparse');
     output = papa.parse(file.text, {
         header: true,
         skipEmptyLines: true,
-        complete: function(results) {
-        
-    }
+        complete: function (results) {
+
+        }
     });
     return output;
 }
 
-async function parseFile(file, context) {
+async function appendPlaces(obj) {
+    let array = [];
+    for (var i = 0; i < obj.length; i++) {
+        if (obj[i].name) {
+            var place = { lat: parseFloat(obj[i].latitude), lng: parseFloat(obj[i].longitude), name: obj[i].name }
+            array.push(place);
+        } else {
+            const fullPlace = await reverseGeocode(placeToLatLng(obj[i]));
+            array.push(fullPlace);
+        }
+    }
+
+    return array;
+}
+
+function parseFile(file, context) {
     const { setPlaces, setSelectedIndex } = context;
 
     const extension = file.name.split('.').pop();
     if (extension === "json") {
         if (isJsonResponseValid(JSON.parse(file.text), tripSchema)) {
             var obj = JSON.parse(file.text);
-            const newPlaces = [];
-
-            for (var i = 0; i < obj.places.length; i++) {
-                if (obj.places[i].name) {
-                    var place = { lat: parseFloat(obj.places[i].latitude), lng: parseFloat(obj.places[i].longitude), name: obj.places[i].name }
-                    newPlaces.push(place);
-                } else {
-                    const fullPlace = await reverseGeocode(placeToLatLng(obj.places[i]));
-                    newPlaces.push(fullPlace);
-                }
-            }
-
-            setPlaces(newPlaces);
-            setSelectedIndex(newPlaces.length - 1);
+            (async () => {
+                let newPlaces = await appendPlaces(obj.places);
+                setPlaces(newPlaces);
+                setSelectedIndex(newPlaces.length - 1);
+            })()
         }
-
     } else if (extension === "csv") {
         var csv = csvToJson(file);
-        const newPlaces = [];
-
-        for (var i = 0; i < csv.data.length; i++) {
-                if (csv.data[i].name) {
-                    var place = { lat: parseFloat(csv.data[i].latitude), lng: parseFloat(csv.data[i].longitude), name: csv.data[i].name }
-                    newPlaces.push(place);
-                } else {
-                    
-                    const fullPlace = await reverseGeocode(placeToLatLng(csv.data[i]));
-                    newPlaces.push(fullPlace);
-                }
-            }
-
-        setPlaces(newPlaces);
-        setSelectedIndex(newPlaces.length - 1);
+        (async () => {
+            let newPlaces = await appendPlaces(csv.data);
+            setPlaces(newPlaces);
+            setSelectedIndex(newPlaces.length - 1);
+        })()
     }
 }
 

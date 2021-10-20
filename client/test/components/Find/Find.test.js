@@ -7,11 +7,6 @@ import Find from '../../../src/components/Find/Find';
 describe('Find', () => {
     let showFind = true;
 
-    /*beforeEach(() => {
-        fetch.resetMocks();
-        render(<Find closeFind={() => { return !showFind }} />);
-    });*/
-
     test('opens the Find Collapse', () => {
         render(<Find closeFind={() => { return !showFind }} />);
         const collapse = screen.getByRole('textbox');
