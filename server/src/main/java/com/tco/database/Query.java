@@ -60,6 +60,7 @@ public class Query {
         return query;
     }
     public Integer selectCount() {
+        String selectCountStatement = buildSelectCountQuery();
         try {
             PreparedStatement stmt = DatabaseConnection.con.prepareStatement("SELECT COUNT(*)"
                                                                             + " FROM continent" 
