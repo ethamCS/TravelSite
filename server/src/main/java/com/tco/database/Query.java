@@ -29,7 +29,8 @@ public class Query {
        DatabaseConnection.connect();
    }
     public String buildSelectAllQuery(){
-        return "";
+        String query = "";
+        return query;
     }
     public Integer selectCount() {
         try {
