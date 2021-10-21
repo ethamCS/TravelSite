@@ -10,7 +10,7 @@ export default function Itinerary(props) {
 
     return (
         <Table responsive hover>
-            <Header showMessage={props.showMessage} placeActions={props.placeActions} openFind={props.openFind} openWhereIs={props.openWhereIs} totalDistance={totalDistance} />
+            <Header places={props.places} showMessage={props.showMessage} placeActions={props.placeActions} openFind={props.openFind} openWhereIs={props.openWhereIs} totalDistance={totalDistance} />
             <Body places={props.places} placeActions={props.placeActions} distancesList={distancesList} distanceActions={distanceActions} serverSettings={props.serverSettings} />
         </Table>
     );
@@ -22,9 +22,11 @@ function Header(props) {
             <tr>
                 <th />
                 <EditTripName placeActions={props.placeActions} showMessage={props.showMessage} />
-                <th>
-                    Round Trip Distance: <br />{props.totalDistance} mi
-                </th>
+                {props.places.length > 1 ? (
+                    <th>
+                        Round Trip Distance: <br />{props.totalDistance} mi
+                    </th>) : (<th></th>)
+                }
                 <th>
                     <ItineraryActionsDropdown placeActions={props.placeActions} openFind={props.openFind} openWhereIs={props.openWhereIs} />
                 </th>
@@ -94,11 +96,14 @@ function TableRow(props) {
                 <br />
                 <small className="text-muted">{location}</small>
             </td>
-            <td>
-                <small className="text-muted">Distance from last stop:</small>
-                <br />
-                <small className="text-muted"> {props.distance} mi</small>
-            </td>
+            {props.index > 0 ? (
+                <td>
+                    <small className="text-muted">Distance from last stop:</small>
+                    <br />
+                    <small className="text-muted"> {props.distance} mi</small>
+                </td>
+                ) : (<td></td>)
+            }
             <td>
                 <PlaceActionsDropdown placeActions={props.placeActions} index={props.index} />
             </td>
