@@ -1,5 +1,5 @@
 import React, { useState, useLayoutEffect } from 'react';
-import { Collapse, Table, Fade } from 'reactstrap';
+import { Table } from 'reactstrap';
 import { ItineraryActionsDropdown, PlaceActionsDropdown } from './actions.js';
 import { EditTripName } from './TripName.js';
 import { latLngToText } from '../../../utils/transformers';
@@ -22,11 +22,11 @@ function Header(props) {
             <tr>
                 <th />
                 <EditTripName placeActions={props.placeActions} showMessage={props.showMessage} />
-                <th>
-                    <Fade in={props.places.length > 1}>
+                {props.places.length > 1 ? (
+                    <th>
                         Round Trip Distance: <br />{props.totalDistance} mi
-                    </Fade>
-                </th>
+                    </th>) : (<th></th>)
+                }
                 <th>
                     <ItineraryActionsDropdown placeActions={props.placeActions} openFind={props.openFind} openWhereIs={props.openWhereIs} />
                 </th>
@@ -96,13 +96,14 @@ function TableRow(props) {
                 <br />
                 <small className="text-muted">{location}</small>
             </td>
-            <td>
-                <Fade in={props.index > 0}>
+            {props.index > 0 ? (
+                <td>
                     <small className="text-muted">Distance from last stop:</small>
                     <br />
                     <small className="text-muted"> {props.distance} mi</small>
-                </Fade>
-            </td>
+                </td>
+                ) : (<td></td>)
+            }
             <td>
                 <PlaceActionsDropdown placeActions={props.placeActions} index={props.index} />
             </td>
