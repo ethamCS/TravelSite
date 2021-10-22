@@ -180,7 +180,7 @@ We are going to add a few new components: Save, Load, and Distances.  There will
 ### Class Diagram
 The class diagram for the updated application depicted below shows the basic structure of the web server application.
 
-![class diagram](images/Screen Shot 2021-10-21 at 9.37.22 PM.png)
+![class diagram](images/Screen Shot 2021-10-21 at 9.46.14 PM.png)
 
 # Sprint 4 
 # Sprint 5
