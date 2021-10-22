@@ -51,9 +51,9 @@ The last epic that we plan to complete will be the Trip name epic.  This will al
 
 | Statistic | # Planned | # Completed |
 | --- | ---: | ---: |
-| Epics | *5* | *count* |
-| Tasks |  *30*   | *count* | 
-| Story Points |  *69*  | *sum* | 
+| Epics | *5* | *4* |
+| Tasks |  *140*   | *131* | 
+| Story Points |  *172*  | *166* | 
 
 We completed 4 epics in Sprint 2, and almost completed one more.  We also completed 74 story points.  We had to spend a lot of time in Sprint 2 learning Javascript and React, so we couldn't finish as much as we had hoped.  We hopefully won't have to do as much learning this sprint, so we will be able to more productive.  On top of that, one of the planned epics is left over from last sprint and is mostly complete already.  
 
@@ -62,7 +62,10 @@ We completed 4 epics in Sprint 2, and almost completed one more.  We also comple
 | Date | Tasks closed  | Tasks in progress | Impediments |
 | :--- | :--- | :--- | :--- |
 | *10/5/21* | *#331, #336, #337, #338, #345, #347, #348, #350, #354, #356, #382, #383, #386* | *#335, #355, #363, #389, #393, #396, #397, #401, #403, #404, #405* |  We are waiting on more information for file IO in order to start the save and load epics| 
-
+| 10/12/21 | *#332, #333, #335, #355, #358, #363, #379, #389, #393, #396, #397, #401, #403, #404, #405, #409, #410, #118, #406, #407, #408, #412, #413, #414, #415, #416*| *#434, #435, #436, #437, #440, #444, #448, #450* | Our test coverage is falling a little bit, and Dylan's computer always breaks.|
+| 10/14/21| *#434, #435, #436, #437, #440, #444, #448, #450, #451, #461, #465, #466, #467, #468, #469, #470*, #475| *#380, #476, #477, #478, #479, #481, #484, #486*| Our test coverage is still going down, and our maintainability needs to get better.|
+| 10/19/21 | *#380, #439, #471, #476, #477, #478, #479, #481, #484, #486, #488, #490, #491, #493, #508, #526, #520, #526, #527, #528* | *#349, #366, #368, #534, #536, #537, #538, #540* | None |
+| 10/20/21 | *#349, #366, #368, #428, #522, #534, #536, #537, #538, #540, #541, #542, #545, #548, #550, #552, #557, #560, #561, #562, #565, #567, #569, #570, #571, #572, #573, #574, #578, #580*| *#559* | None |
 
 ## Review
 
