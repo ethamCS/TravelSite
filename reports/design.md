@@ -174,7 +174,7 @@ We will be adding a new server class that extends the Request class.  The new cl
 The user interface is going to largely stay the same as it was at the end of sprint 2. Firstly, we are going to add distances to all of the places that have been added to the itinerary so you can see how far the place is from the previous place in the trip. Secondly, We are going to work on making our user interface consistent as we continue to scale it and add more features. We are going to give the users the ability to change the name of The trip they are creating. Along with allowing the user to change the name of their trip we are also going to allow the users to load and save trips.
 
 - Changes to Components
-![sprint3Components](images/ComponentsSprint3.png)
+![sprint3Components](images/UpdatedComponentsSprint3.png)
 We are going to add a few new components: Save, Load, and Distances.  There will be a few common states that will be lifted to Itinerary.js, such as defaultFileType, distances, and filepointer.  Filepointer and defaultFileType will be passed as props to Save and Load, and distances will be passed to Distances.
 
 ### Class Diagram
