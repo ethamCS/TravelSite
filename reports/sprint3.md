@@ -70,13 +70,19 @@ We completed 4 epics in Sprint 2, and almost completed one more.  We also comple
 ## Review
 
 ### Epics completed  
+We were able to totally complete 4 out of the 5 epics that we planned for Sprint 3: Interoperability, Distances, Load Trip, and Trip Name.  For Interoperability, we ensured that our client and server work with other team's clients and servers that support the same features as us.  The Distances epic entailed implementing a protocol to get the distances between places in the Itinerary on the server side, and rendering the distance on the client. To complete the Load Trip epic, we implemented the ability for the user to upload a json or csv file that populates the Itinerary on our client.  Finally, completing the Trip Name epic allowed a user to change the name of the trip that they are planning.  
 
 ### Epics not completed 
+The one epic that we planned but failed to complete was the Save Trip epic.  We implemented the ability for the user to save a trip in the .json file format, but the specifications of the epic say that the user should be able to pick the file format.  Unfortunately, we weren't able to complete that portion of the Save Trip epic. 
 
 ## Retrospective
 
 ### Things that went well
+We feel that our team did very well for this sprint.  We implemented a lot of new functionality while keeping our user interface sleek, intuitive, and clean.  We also improved our Find API to execute database queries much faster than in the last sprint.  We were able to complete almost all of the epics that we planned, and we feel that we have gotten proficient at planning and breaking tasks down into smaller tasks.
 
 ### Things we need to improve
+The biggest improvement that we need to make is ensuring that our test coverage stays high throughout the sprint.  Ours dipped down below a point that we were happy with, so we had to focus solely on testing for a little bit.  Thankfully we had already completed most of the planned epics, but we need to do a better job of keeping test coverage high during the whole sprint.
+
 
 ### One thing we will change next time
+We plan to write tests as we implement new functionality rather than after we add features.
