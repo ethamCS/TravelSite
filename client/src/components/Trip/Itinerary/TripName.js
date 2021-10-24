@@ -4,34 +4,20 @@ import { FaPencilAlt, FaFileUpload, FaSave, FaLessThanEqual } from 'react-icons/
 import { FILE_FORMATS } from '../../../utils/constants';
 
 export function EditTripName(props) {
-    const [cursor, setCursor] = useState('pointer');
     const [collapse, setCollapse] = useState(false);
     const [tripName, setName] = useState("My Trip");
-
-    const changeCursor = () => {
-        setCursor(prevState => {
-            if (prevState === 'pointer') {
-                return 'grabbing';
-            }
-            return 'pointer';
-        });
-    }
-
-    const handleClick = (e) => {
-        changeCursor();
-    }
 
     const toggle = () => setCollapse(!collapse);
 
     return (
         <th>
             <Collapse isOpen={!collapse}>
-                {tripName} <FaPencilAlt style={{ cursor: cursor }} onMouseDown={handleClick} onMouseUp={changeCursor} onClick={toggle} data-testid="edit-button" />
-                <LoadTripButton showMessage={props.showMessage} cursor={cursor} handleClick={handleClick} changeCursor={changeCursor} placeActions={props.placeActions} setName={setName} />
-                <SaveTripButton cursor={cursor} handleClick={handleClick} changeCursor={changeCursor} tripName={tripName} placeActions={props.placeActions} />
+                {tripName} <FaPencilAlt style={{ cursor: 'pointer' }} onClick={toggle} data-testid="edit-button" />
+                <LoadTripButton showMessage={props.showMessage} placeActions={props.placeActions} setName={setName} />
+                <SaveTripButton tripName={tripName} placeActions={props.placeActions} />
             </Collapse>
             <Collapse isOpen={collapse} data-testid="trip-collapse">
-                <TripInput cursor={cursor} tripName={tripName} setName={setName} handleClick={handleClick} changeCursor={changeCursor} toggle={toggle} />
+                <TripInput tripName={tripName} setName={setName} toggle={toggle} />
             </Collapse>
         </th>
     );
@@ -49,7 +35,7 @@ function TripInput(props) {
             />
             <Collapse isOpen={props.tripName != null && props.tripName != ""}>
                 <InputGroupAddon>
-                    <InputGroupText style={{ cursor: props.cursor }} onMouseDown={props.handleClick} onMouseUp={props.changeCursor} onClick={props.toggle} valid={props.tripName != null && props.tripName != ""} invalid={props.tripName == null || props.tripName == ""}>
+                    <InputGroupText style={{ cursor: 'pointer' }} onClick={props.toggle} valid={props.tripName != null && props.tripName != ""} invalid={props.tripName == null || props.tripName == ""}>
                         Done
                     </InputGroupText>
                 </InputGroupAddon>
@@ -76,7 +62,7 @@ export function LoadTripButton(props) {
 
     return (
         <React.Fragment>
-            <FaFileUpload onClick={onIconClick} style={{ cursor: props.cursor, marginLeft: '10px' }} onMouseDown={props.handleClick} onMouseUp={props.changeCursor} />
+            <FaFileUpload onClick={onIconClick} style={{ cursor: 'pointer', marginLeft: '10px' }} />
             <Input style={{ display: 'none' }} id="file-input" type="file" accept={FILE_FORMATS} onChange={handleFileUpload} />
         </React.Fragment>
     );
@@ -87,6 +73,6 @@ export function SaveTripButton(props) {
         props.placeActions.saveFile(props);
     }
     return (
-        <FaSave style={{ cursor: props.cursor, marginLeft: '10px' }} onMouseDown={props.handleClick} onMouseUp={props.changeCursor} onClick={handleJSONSave} />
+        <FaSave style={{ cursor: 'pointer', marginLeft: '10px' }} onClick={handleJSONSave} />
     );
 }

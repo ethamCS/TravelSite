@@ -71,25 +71,13 @@ function Body(props) {
 function TableRow(props) {
     const name = props.place.name ? props.place.name : "-";
     const location = latLngToText(props.place);
-    const [cursor, setCursor] = useState('pointer');
 
-    const changeCursor = () => {
-        setCursor(prevState => {
-            if (prevState === 'pointer') {
-                return 'grabbing';
-            }
-            return 'pointer';
-        });
-    }
-
-    const handleClick = (e) => {
-        e.target.style = 'green';
+    const handleClick = () => {
         props.placeActions.selectIndex(props.index);
-        changeCursor();
     }
 
     return (
-        <tr style={{ cursor: cursor }} onMouseDown={handleClick} onMouseUp={changeCursor}>
+        <tr style={{ cursor: 'pointer' }} onMouseDown={handleClick}>
             <th scope="row">{props.index + 1} </th>
             <td>
                 {name}
@@ -102,7 +90,7 @@ function TableRow(props) {
                     <br />
                     <small className="text-muted"> {props.distance} mi</small>
                 </td>
-                ) : (<td></td>)
+            ) : (<td></td>)
             }
             <td>
                 <PlaceActionsDropdown placeActions={props.placeActions} index={props.index} />

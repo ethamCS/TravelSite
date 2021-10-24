@@ -47,25 +47,13 @@ function TableRow(props) {
     const location = placeToLatLng(props.place);
     const newLocation = latLngToText(location);
     const place = props.place;
-    const [cursor, setCursor] = useState('pointer');
-
-
-    const changeCursor = () => {
-        setCursor(prevState => {
-            if (prevState === 'pointer') {
-                return 'grabbing';
-            }
-            return 'pointer';
-        });
-    }
 
     const handleClick = () => {
         props.placeActions.append(place);
-        changeCursor();
     }
 
     return (
-        <tr style={{ cursor: cursor }} onMouseDown={handleClick} onMouseUp={changeCursor}>
+        <tr style={{ cursor: 'pointer' }} onMouseDown={handleClick}>
             <th scope="row">{props.index + 1} </th>
             <td >
                 {name}
