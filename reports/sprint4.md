@@ -38,7 +38,7 @@
 
 ## Planned Epics
 
-In this Sprint, we are going to picked up the `Save Trips` epics that at its current state, working minimally. We still need to add support for `.csv` files. As we already have `.json` save supported, this should not take too much time and should not be that hard to implement them.
+In this Sprint, The `Save Trips` epics will be carried forward from Sprint 3, we still need to add support for `.csv` files, at its current state, we already have `.json` working for both save and load and `.csv` for load, as such, We think that, this should not take us too much time to implement them and it should not detract us from our main goal.
 
 
 ## Metrics
