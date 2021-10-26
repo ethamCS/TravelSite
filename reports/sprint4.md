@@ -38,14 +38,20 @@
 
 ## Planned Epics
 
-In this Sprint, The `Save Trips` epics will be carried forward from Sprint 3, we still need to add support for `.csv` files, at its current state, we already have `.json` working for both save and load and `.csv` for load, as such, We think that, this should not take us too much time to implement them and it should not detract us from our main goal.
+In this Sprint, The first epic we are deciding to complete is the `Save Trips` epic from Sprint 3, we still need to add support for `.csv` files, at its current state, we already have `.json` working for both save and load and `.csv` for load, as such, We think that, this should not take us too much time to implement them and it should not detract us from our main goal.
+
+The second epic that we are looking at completing is going to be the `Shorter Trip` epic. This a new epic introducted to us in sprint 4. This epic is going to be biggest obstacle that we are going to face this sprint. This epic requires the implementation of an algorithm that will optimize trips to make them shorter. We believe that this is going to take the majority of our time this sprint.
+
+The third epic that we are looking at completing is going to be the `User Experience` epic. This is also a new epic that was introduced to us in sprint 4. This epic requires us to get real users on our site and to see what they struggle with in order to improve the functionality and usabiity of our site. Ths epic hopefully is going to be quite simple for us. The entire time we have been designing our website we have been trying to keep functionality and usability in mind.
+
+Lastly, the fourth epic that we are looking at completing is going to be the `Random Places` epic. This epic was introducted to us in sprint 2 however we did not have the time for it until now. This epic will allow the user to click a button and recieve a list of random places they can add to their trip if they would like to do so.
 
 
 ## Metrics
 
 | Statistic | # Planned | # Completed |
 | --- | ---: | ---: |
-| Epics | *count* | *count* |
+| Epics | *4* | *count* |
 | Tasks |  *count*   | *count* | 
 | Story Points |  *sum*  | *sum* | 
 
