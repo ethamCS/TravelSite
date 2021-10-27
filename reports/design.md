@@ -183,8 +183,24 @@ The class diagram for the updated application depicted below shows the basic str
 ![class diagram](images/Sprint3UML.png)
 
 # Sprint 4 
+### User Interface
+We are making two big changes to the UI: we are adding a random button on the Find page, and we are adding an optimize trip button to the home page.
+
+#### Random Button:
+![randomButton](images/RandomPlaces.png)
+
+#### Short Trip:
+This optimize trip button will open a collapse that will have radio buttons that allow the user to display either their original trip, or the newly optimized trip on the map and in the places list.  There will also be a button that allows the user to save the optimized trip in place of the original trip.
+![shortTrip](images/ShortTrip.png)
+
 ### Class Diagram
 The class diagram for the updated application depicted below shows the updated structure of the web server application.
 
 ![class diagram](images/spaUML.png)
+
+### Component Diagram
+The biggest change we are making is adding a ShortTrip.js component.  This will update the places list with the most optimal itinerary, and renders it to the user if the user wants to see it.
+
+![component diagram sprint4](images/314Components.png)
+
 # Sprint 5
