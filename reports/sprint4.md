@@ -52,8 +52,8 @@ Lastly, the fourth epic that we are looking at completing is going to be the `Ra
 | Statistic | # Planned | # Completed |
 | --- | ---: | ---: |
 | Epics | *4* | *count* |
-| Tasks |  *36*  | *count* | 
-| Story Points |  *65*  | *sum* | 
+| Tasks |  *43*  | *count* | 
+| Story Points |  *79*  | *sum* | 
 
 
 ## Scrums
