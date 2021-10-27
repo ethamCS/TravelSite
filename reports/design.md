@@ -183,4 +183,8 @@ The class diagram for the updated application depicted below shows the basic str
 ![class diagram](images/Sprint3UML.png)
 
 # Sprint 4 
+### Class Diagram
+The class diagram for the updated application depicted below shows the updated structure of the web server application.
+
+![class diagram](images/sp4UML.png)
 # Sprint 5
