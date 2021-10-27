@@ -42,7 +42,7 @@ In this Sprint, The first epic we are deciding to complete is the `Save Trips` e
 
 The second epic that we are looking at completing is going to be the `Shorter Trip` epic. This a new epic introducted to us in sprint 4. This epic is going to be biggest obstacle that we are going to face this sprint. This epic requires the implementation of an algorithm that will optimize trips to make them shorter. We believe that this is going to take the majority of our time this sprint.
 
-The third epic that we are looking at completing is going to be the `User Experience` epic. This is also a new epic that was introduced to us in sprint 4. This epic requires us to get real users on our site and to see what they struggle with in order to improve the functionality and usabiity of our site. Ths epic hopefully is going to be quite simple for us. The entire time we have been designing our website we have been trying to keep functionality and usability in mind.
+The third epic that we are looking at completing is going to be the `User Experience` epic. This is also a new epic that was introduced to us in sprint 4. This epic requires us to get real users on our site and to see what they struggle and give us feedback so in order for us to improve the functionality and usabiity of our site. Ths epic hopefully is going to be quite simple for us. The entire time we have been designing our website we have been trying to keep functionality and usability in mind.
 
 Lastly, the fourth epic that we are looking at completing is going to be the `Random Places` epic. This epic was introducted to us in sprint 2 however we did not have the time for it until now. This epic will allow the user to click a button and recieve a list of random places they can add to their trip if they would like to do so.
 
@@ -52,8 +52,8 @@ Lastly, the fourth epic that we are looking at completing is going to be the `Ra
 | Statistic | # Planned | # Completed |
 | --- | ---: | ---: |
 | Epics | *4* | *count* |
-| Tasks |  *count*   | *count* | 
-| Story Points |  *sum*  | *sum* | 
+| Tasks |  *36*  | *count* | 
+| Story Points |  *65*  | *sum* | 
 
 
 ## Scrums
