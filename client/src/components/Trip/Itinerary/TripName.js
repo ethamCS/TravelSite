@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Collapse, Input, InputGroup, InputGroupAddon, InputGroupText, Button } from 'reactstrap';
-import { FaPencilAlt, FaFileUpload, FaSave } from 'react-icons/fa';
+import { FaFileUpload, FaSave } from 'react-icons/fa';
 import { FILE_FORMATS } from '../../../utils/constants';
 
 export function EditTripName(props) {
