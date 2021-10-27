@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Collapse, Input, InputGroup, InputGroupAddon, InputGroupText } from 'reactstrap';
-import { FaPencilAlt, FaFileUpload, FaSave, FaLessThanEqual } from 'react-icons/fa';
+import { Collapse, Input, InputGroup, InputGroupAddon, InputGroupText, Button } from 'reactstrap';
+import { FaFileUpload, FaSave } from 'react-icons/fa';
 import { FILE_FORMATS } from '../../../utils/constants';
 
 export function EditTripName(props) {
@@ -12,7 +12,7 @@ export function EditTripName(props) {
     return (
         <th>
             <Collapse isOpen={!collapse}>
-                {tripName} <FaPencilAlt style={{ cursor: 'pointer' }} onClick={toggle} data-testid="edit-button" />
+                <Button color="none" style={{ cursor: 'pointer'}} onClick={toggle} data-testid="edit-button">{tripName}</Button>
                 <LoadTripButton showMessage={props.showMessage} placeActions={props.placeActions} setName={setName} />
                 <SaveTripButton tripName={tripName} placeActions={props.placeActions} />
             </Collapse>
@@ -34,7 +34,7 @@ function TripInput(props) {
                 data-testid="trip-input"
             />
             <Collapse isOpen={props.tripName != null && props.tripName != ""}>
-                <InputGroupAddon>
+                <InputGroupAddon addonType="append">
                     <InputGroupText style={{ cursor: 'pointer' }} onClick={props.toggle} valid={props.tripName != null && props.tripName != ""} invalid={props.tripName == null || props.tripName == ""}>
                         Done
                     </InputGroupText>
