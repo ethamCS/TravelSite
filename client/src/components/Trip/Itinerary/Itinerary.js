@@ -10,7 +10,7 @@ export default function Itinerary(props) {
 
     return (
         <Table responsive hover>
-            <Header places={props.places} showMessage={props.showMessage} placeActions={props.placeActions} openFind={props.openFind} openWhereIs={props.openWhereIs} totalDistance={totalDistance} />
+            <Header places={props.places} showMessage={props.showMessage} placeActions={props.placeActions} openFind={props.openFind} openWhereIs={props.openWhereIs} totalDistance={totalDistance} toggleShorter={props.toggleShorter}/>
             <Body places={props.places} placeActions={props.placeActions} distancesList={distancesList} distanceActions={distanceActions} serverSettings={props.serverSettings} />
         </Table>
     );
@@ -21,7 +21,7 @@ function Header(props) {
         <thead>
             <tr>
                 <th />
-                <EditTripName placeActions={props.placeActions} showMessage={props.showMessage} />
+                <EditTripName placeActions={props.placeActions} showMessage={props.showMessage} toggleShorter={props.toggleShorter} />
                 {props.places.length > 1 ? (
                     <th>
                         Round Trip Distance: <br />{props.totalDistance} mi
