@@ -25,8 +25,16 @@ public class Distances{
     } 
 
     public Integer[] doubleToIntegerArray(Double[] doubleArray){
-      return distance;   
-    }
+        distance = new Integer[doubleArray.length];
+
+        if(doubleArray.length <= 0) return distance;
+
+        for(int i = 0; i < doubleArray.length; i++){
+            distance[i] = doubleArray[i].intValue();
+        }
+        return distance;    
+        } 
+    
 
     public Double[] SendInfoForCalculations(){
         
