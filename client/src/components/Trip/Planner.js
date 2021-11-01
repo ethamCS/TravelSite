@@ -14,7 +14,7 @@ export default function Planner(props) {
                 <Map places={props.places} selectedIndex={props.selectedIndex} placeActions={props.placeActions} />
             </Section>
             <Collapse isOpen={showShorter}>
-					<Shorter />
+					<Shorter toggleShorter={toggleShorter}/>
 			</Collapse>
             <Section>
                 <Itinerary showMessage={props.showMessage} places={props.places} selectedIndex={props.selectedIndex} placeActions={props.placeActions} openFind={props.openFind} openWhereIs={props.openWhereIs} serverSettings={props.serverSettings} toggleShorter={toggleShorter} />
