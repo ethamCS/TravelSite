@@ -36,25 +36,27 @@ public class Distances{
         } 
     
 
-    public Double[] SendInfoForCalculations(){
-        
-        if(this.places.isEmpty()){
-            this.distances = new Double[]{};
-            return this.distances;
-        }
+        public Integer[] SendInfoForCalculations(){
 
-        this.distances = new Double[places.size()];   
-        Calculate calculate = new Calculate();
-        double distanceFound = 0;
-        
-        for(int i = 0; i < places.size()-1; i++){  
-            distanceFound = calculate.circleDistance(places.get(i), places.get(i+1), earthRadius);    
-            this.distances[i] = distanceFound;
-        }
-        distanceFound = calculate.circleDistance(places.get(0), places.get(places.size()-1), earthRadius);
-        this.distances[places.size()-1] = distanceFound;
-        return this.distances; 
-    }
+
+            if(this.places.isEmpty()){
+                this.distances = new Double[]{};
+                return this.distances;
+                return distance;
+            }
+    
+            this.distances = new Double[places.size()];   
+            Calculate calculate = new Calculate();
+            double distanceFound = 0;
+            
+            for(int i = 0; i < places.size()-1; i++){  
+                distanceFound = calculate.circleDistance(places.get(i), places.get(i+1), earthRadius);    
+                this.distances[i] = distanceFound;
+            }
+            distanceFound = calculate.circleDistance(places.get(0), places.get(places.size()-1), earthRadius);
+            this.distances[places.size()-1] = distanceFound;
+            return this.distances; 
+            return doubleToIntegerArray(this.distances);
     
 }
 
