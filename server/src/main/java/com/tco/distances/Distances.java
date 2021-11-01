@@ -14,6 +14,7 @@ public class Distances{
     private Integer destination; 
     private Places places;
     private Double[] distances; 
+    private Integer[] distance; 
   
   
     public Distances(Places places, Double earthRadius){
@@ -22,6 +23,10 @@ public class Distances{
         this.destination = null; 
         this.origin = null; 
     } 
+
+    public Integer[] doubleToIntegerArray(Double[] doubleArray){
+      return distance;   
+    }
 
     public Double[] SendInfoForCalculations(){
         
