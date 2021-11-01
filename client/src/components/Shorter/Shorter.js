@@ -31,7 +31,7 @@ export default function Shorter(props) {
                     </Button>
                 </ButtonGroup>
                 <Col>
-                    <FaCheck id="accept-tooltip"/>
+                    <FaCheck id="accept-tooltip" onClick={props.toggleShorter} style={{ cursor: 'pointer' }}/>
                     <Tooltip delay={{ show:500, hide: 100 }} flip isOpen={tooltipOpen} toggle={() => {setToolTipOpen(!tooltipOpen)}} target="accept-tooltip" >Keep Trip</Tooltip>
                 </Col>
             </Row>
