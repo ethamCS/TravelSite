@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Collapse, Input, InputGroup, InputGroupAddon, InputGroupText, Button } from 'reactstrap';
-import { FaFileUpload, FaSave } from 'react-icons/fa';
+import { Collapse, Input, InputGroup, InputGroupAddon, InputGroupText, Button, Tooltip } from 'reactstrap';
+import { FaFileUpload, FaSave, FaStopwatch } from 'react-icons/fa';
 import { FILE_FORMATS } from '../../../utils/constants';
 
 export function EditTripName(props) {
     const [collapse, setCollapse] = useState(false);
     const [tripName, setName] = useState("My Trip");
+    const [tooltipOpen, setToolTipOpen] = useState(false);
 
     const toggle = () => setCollapse(!collapse);
 
@@ -13,6 +14,8 @@ export function EditTripName(props) {
         <th>
             <Collapse isOpen={!collapse}>
                 <Button color="none" style={{ cursor: 'pointer'}} onClick={toggle} data-testid="edit-button">{tripName}</Button>
+                <FaStopwatch onClick={props.toggleShorter} style={{ cursor: 'pointer' }} id="tooltip-optimize"/>
+                <Tooltip delay={{ show:500, hide: 100 }} flip isOpen={tooltipOpen} toggle={() => {setToolTipOpen(!tooltipOpen)}} target="tooltip-optimize" >Optimize Trip!</Tooltip>
                 <LoadTripButton showMessage={props.showMessage} placeActions={props.placeActions} setName={setName} />
                 <SaveTripButton tripName={tripName} placeActions={props.placeActions} />
             </Collapse>

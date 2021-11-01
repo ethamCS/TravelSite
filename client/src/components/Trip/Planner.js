@@ -1,17 +1,23 @@
 import React from 'react';
-import { Col, Container, Row } from 'reactstrap';
+import { Col, Container, Row, Collapse } from 'reactstrap';
+import { useToggle } from '../../hooks/useToggle';
 import Map from './Map/Map';
+import Shorter from '../Shorter/Shorter';
 import Itinerary from './Itinerary/Itinerary';
 
 export default function Planner(props) {
+    const [showShorter, toggleShorter] = useToggle(false);
 
     return (
         <Container>
             <Section>
                 <Map places={props.places} selectedIndex={props.selectedIndex} placeActions={props.placeActions} />
             </Section>
+            <Collapse isOpen={showShorter}>
+					<Shorter toggleShorter={toggleShorter}/>
+			</Collapse>
             <Section>
-                <Itinerary showMessage={props.showMessage} places={props.places} selectedIndex={props.selectedIndex} placeActions={props.placeActions} openFind={props.openFind} openWhereIs={props.openWhereIs} serverSettings={props.serverSettings} />
+                <Itinerary showMessage={props.showMessage} places={props.places} selectedIndex={props.selectedIndex} placeActions={props.placeActions} openFind={props.openFind} openWhereIs={props.openWhereIs} serverSettings={props.serverSettings} toggleShorter={toggleShorter} />
             </Section>
         </Container>
     );
