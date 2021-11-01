@@ -14,18 +14,12 @@ public class DistancesRequest extends Request{
     private Integer limit; 
     private final transient Logger log = LoggerFactory.getLogger(DistancesRequest.class);
     
-     public Integer[] doubleToIntegerArray(Double[] doubleArray){
-        distances = new Integer[doubleArray.length];
-        for(int i = 0; i < doubleArray.length; i++){
-            distances[i] = doubleArray[i].intValue();
-        }
-        return distances;    
-    }
+   
  
     @Override
     public void buildResponse() {
         Distances distance = new Distances(this.places, this.earthRadius);
-        this.distances = doubleToIntegerArray(distance.SendInfoForCalculations());
+        this.distances = distance.SendInfoForCalculations();
         log.trace("buildResponse -> {}", this);
     }
 
