@@ -8,6 +8,8 @@ public class Tour {
     private Places places; 
     private Double earthRadius;
     public Integer[] distances;  
-    
 
+    public Tour(Double earthRadius, Places places){
+        
+    }
 }
