@@ -14,6 +14,7 @@ public class Distances{
     private Integer destination; 
     private Places places;
     private Double[] distances; 
+    private Integer[] distance; 
   
   
     public Distances(Places places, Double earthRadius){
@@ -23,11 +24,23 @@ public class Distances{
         this.origin = null; 
     } 
 
-    public Double[] SendInfoForCalculations(){
-        
+    public Integer[] doubleToIntegerArray(Double[] doubleArray){
+        distance = new Integer[doubleArray.length];
+
+        if(doubleArray.length <= 0) return distance;
+
+        for(int i = 0; i < doubleArray.length; i++){
+            distance[i] = doubleArray[i].intValue();
+        }
+        return distance;    
+    } 
+    
+
+    public Integer[] SendInfoForCalculations(){
+
+
         if(this.places.isEmpty()){
-            this.distances = new Double[]{};
-            return this.distances;
+            return distance;
         }
 
         this.distances = new Double[places.size()];   
@@ -40,9 +53,9 @@ public class Distances{
         }
         distanceFound = calculate.circleDistance(places.get(0), places.get(places.size()-1), earthRadius);
         this.distances[places.size()-1] = distanceFound;
-        return this.distances; 
+        return doubleToIntegerArray(this.distances);
+
     }
-    
 }
 
 
