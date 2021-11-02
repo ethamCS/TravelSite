@@ -9,6 +9,14 @@ public class Tour {
     private Double earthRadius;
     public Integer[] distances;  
 
+    public Integer[] doubleToIntegerArray(Double[] doubleArray){
+        distances = new Integer[doubleArray.length];
+        for(int i = 0; i < doubleArray.length; i++){
+            distances[i] = doubleArray[i].intValue();
+        }
+        return distances;    
+    }
+
     public Tour(Double earthRadius, Places places){
         this.earthRadius = earthRadius; 
         this.places = places;
