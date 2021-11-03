@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Input, InputGroup, Container, Button, Col, Row } from 'reactstrap';
 import Results from './Results.js'
 import { useFind } from '../../hooks/useFind';
+import { FaDice, FaTimes } from 'react-icons/fa';
 
 export default function Find(props) {
     const [matchString, setMatchValue, getPlaces] = useFind("");
@@ -30,7 +31,7 @@ function FindHeader(props) {
                     <h3>Find Locations</h3>
                 </Col>
                 <Col xs="auto">
-                    <Button name="closeFind" color="primary" onMouseDown={clearFind} onMouseUp={props.closePage}>Exit</Button>
+                    <FaTimes name="closeFind" color="primary" onMouseDown={clearFind} onMouseUp={props.closePage} style={{ cursor: 'pointer' }}/>
                 </Col>
             </Row>
         </Container>
@@ -63,10 +64,10 @@ function FindBody(props) {
     return (
         <Container>
             <InputGroup>
-                <Button color="primary">
-                    Show Random Places
-                </Button>
                 <Input type="text" placeholder="Enter Location" data-testid="find-input" value={matchString} onChange={handleChange} />
+                <Button color="primary">
+                    <FaDice />
+                </Button>
             </InputGroup>
             <Results placesList={foundList} places={props.places} selectedIndex={props.selectedIndex} placeActions={props.placeActions} />
         </Container>
