@@ -1,23 +1,27 @@
 import React, { useState } from 'react';
+import { useToggle } from '../../../hooks/useToggle';
 import { Collapse, Input, InputGroup, InputGroupAddon, InputGroupText, Button, Tooltip } from 'reactstrap';
 import { FaFileUpload, FaSave, FaStopwatch } from 'react-icons/fa';
 import { FILE_FORMATS } from '../../../utils/constants';
+import SaveTripModal from '../../SaveTripModal/SaveTripModal';
 
 export function EditTripName(props) {
     const [collapse, setCollapse] = useState(false);
     const [tripName, setName] = useState("My Trip");
     const [tooltipOpen, setToolTipOpen] = useState(false);
+    const [showSaveFile, toggleSaveFile] = useToggle(false);
 
     const toggle = () => setCollapse(!collapse);
 
     return (
         <th>
             <Collapse isOpen={!collapse}>
-                <Button color="none" style={{ cursor: 'pointer'}} onClick={toggle} data-testid="edit-button">{tripName}</Button>
-                <FaStopwatch onClick={props.toggleShorter} style={{ cursor: 'pointer' }} id="tooltip-optimize"/>
-                <Tooltip delay={{ show:500, hide: 100 }} flip isOpen={tooltipOpen} toggle={() => {setToolTipOpen(!tooltipOpen)}} target="tooltip-optimize" >Optimize Trip!</Tooltip>
+                <Button color="none" style={{ cursor: 'pointer' }} onClick={toggle} data-testid="edit-button">{tripName}</Button>
+                <FaStopwatch onClick={props.toggleShorter} style={{ cursor: 'pointer' }} id="tooltip-optimize" />
+                <Tooltip delay={{ show: 500, hide: 100 }} flip isOpen={tooltipOpen} toggle={() => { setToolTipOpen(!tooltipOpen) }} target="tooltip-optimize" >Optimize Trip!</Tooltip>
                 <LoadTripButton showMessage={props.showMessage} placeActions={props.placeActions} setName={setName} />
-                <SaveTripButton tripName={tripName} placeActions={props.placeActions} />
+                <SaveTripButton tripName={tripName} placeActions={props.placeActions} toggleSaveFile={toggleSaveFile} />
+                <SaveTripModal isOpen={showSaveFile} closeSaveTrip={toggleSaveFile} />
             </Collapse>
             <Collapse isOpen={collapse} data-testid="trip-collapse">
                 <TripInput tripName={tripName} setName={setName} toggle={toggle} />
@@ -76,6 +80,6 @@ export function SaveTripButton(props) {
         props.placeActions.saveFile(props);
     }
     return (
-        <FaSave style={{ cursor: 'pointer', marginLeft: '10px' }} onClick={handleJSONSave} />
+        <FaSave style={{ cursor: 'pointer', marginLeft: '10px' }} onClick={props.toggleSaveFile} />
     );
 }
