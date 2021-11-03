@@ -11,7 +11,7 @@ This table lists each student in the team, the team they verified interoperabili
 
 | Name | Team | Time |
 | ---- | ---- | ---- |
-| Christian Carnahan | 18 | |
+| Christian Carnahan | 18 | 15 min |
 | Evan Ide | 12 | |
 | Dylan Armstrong | 11 | |
 
