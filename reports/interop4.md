@@ -1,4 +1,4 @@
-# Interop for t##
+# Interop for t17
 
 Interoperability testing allows us to verify correct operation when connected to another team's client or server.
 Each team member must verify interoperability with the client and server from another team.
@@ -13,7 +13,7 @@ This table lists each student in the team, the team they verified interoperabili
 | ---- | ---- | ---- |
 | Christian Carnahan | 18 | |
 | Evan Ide | 12 | |
-| Dylan Armstrong | 11 | |
+| Dylan Armstrong | 11 | 15 |
 
 
 ### Client Problems found
@@ -31,5 +31,5 @@ We found these problems when connecting the other team's client to our server.
 
 | team |  problem | github# |
 | :--- |  :--- | --- |
-|  |  |  |
+| 11 | none | N/A |
 
