@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Input, Container, Button, Col, Row } from 'reactstrap';
+import { Input, InputGroup, Container, Button, Col, Row } from 'reactstrap';
 import Results from './Results.js'
 import { useFind } from '../../hooks/useFind';
 
@@ -62,13 +62,13 @@ function FindBody(props) {
 
     return (
         <Container>
-            <Input type="text"
-                placeholder="Enter Location"
-                data-testid="find-input"
-                value={matchString}
-                onChange={handleChange} />
+            <InputGroup>
+                <Button color="primary">
+                    Show Random Places
+                </Button>
+                <Input type="text" placeholder="Enter Location" data-testid="find-input" value={matchString} onChange={handleChange} />
+            </InputGroup>
             <Results placesList={foundList} places={props.places} selectedIndex={props.selectedIndex} placeActions={props.placeActions} />
         </Container>
-
     );
 }
