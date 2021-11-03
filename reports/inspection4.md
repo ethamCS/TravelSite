@@ -28,5 +28,6 @@ We add a GitHub issue for each defect that requires a modification to the system
 | --- | --- | :---: | :---: | --- |
 | Shorter.js:21,38 | don't need Container, can be removed | low | Dylan |  |
 | Shorter.js:10,18 | These functions can be moved into their own functions for more modularity | medium | Evan |
+| Shorter.js:35 | The tooltip can be made into its own component for better reuseability | medium | Evan |
 
 
