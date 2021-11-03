@@ -64,10 +64,10 @@ function FindBody(props) {
     return (
         <Container>
             <InputGroup>
-                <Button color="primary">
-                    Show Random Places
-                </Button>
                 <Input type="text" placeholder="Enter Location" data-testid="find-input" value={matchString} onChange={handleChange} />
+                <Button color="primary">
+                    <FaDice />
+                </Button>
             </InputGroup>
             <Results placesList={foundList} places={props.places} selectedIndex={props.selectedIndex} placeActions={props.placeActions} />
         </Container>
