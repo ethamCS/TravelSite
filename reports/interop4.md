@@ -12,6 +12,7 @@ This table lists each student in the team, the team they verified interoperabili
 | Name | Team | Time |
 | ---- | ---- | ---- |
 | Christian Carnahan | 18 | |
+| Evan Ide | 12 | |
 
 
 ### Client Problems found
