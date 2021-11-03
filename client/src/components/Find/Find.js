@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Input, InputGroup, Container, Button, Col, Row } from 'reactstrap';
 import Results from './Results.js'
 import { useFind } from '../../hooks/useFind';
+import { FaDice, FaTimes } from 'react-icons/fa';
 
 export default function Find(props) {
     const [matchString, setMatchValue, getPlaces] = useFind("");
