@@ -22,7 +22,7 @@ We found these problems when connecting our client to another team's server.
 
 | team | problem | github# |
 | :--- |  :--- | --- |
-|  |  |  |
+| 11 | Can't connect to their server because they have tour implemented. |  |
 
 
 ### Server Problems found
