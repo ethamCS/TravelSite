@@ -15,7 +15,7 @@ We note the amount of time each person spent reviewing the code in preparation f
 
 | Name | Preparation Time |
 | ---- | ---- |
-|  |  |
+| Dylan Armstrong | 28 |
 
 
 ### Problems found
@@ -25,4 +25,4 @@ We add a GitHub issue for each defect that requires a modification to the system
 
 | file:line | problem | hi/med/low | who found | github#  |
 | --- | --- | :---: | :---: | --- |
-|  | | | | |
+| Shorter.js:21,38 | don't need Container, can be removed | low | Dylan |  |
