@@ -14,8 +14,12 @@ Each user should complete the following tasks in 10 minutes.
 Developers should not guide the user, but the user may ask for help as a last resort.  
 Consider this a failure when it happens.  
 
-1. 
-1. 
+1. Find a place of your choosing (heliports, airports). 
+2. Go to your current location.
+3. Load a File (provided).
+4. Save a File.
+5. Change Trip Name
+6. Go to any place in the itinerary of your choosing. 
 
 ### Demographics
 
@@ -23,16 +27,17 @@ Age, nationality, and other background information can sometimes be helpful unde
 
 | Pseudonym | Demographics |
 | :--- | :--- |
-|  |  |
+| Carnhy's Father | Software Engineer, 50 Years Old, Does Android App Development |
 
 
 ### Observations
 
 Note the users interactions with the system for each of the tasks.
 Record the success, failures, and problems the user encountered for each task.
-Note any aid that wass given along with anything you notice from their use of the application.
+Note any aid that was given along with anything you notice from their use of the application.
 Add issues to GitHub for any changes necessary to the system.
 
 | Task | problem, aid, observation | hi/med/low | github#  |
 | :--- | :--- | :---: | :---: | 
-| | | | | 
+| 1 | Had trouble with knowing that a place was added to the itinerary in our find page. I had to tell them to stop clicking the place and that it had been added to the itinerary. They ended up adding the place of their choosing over 10 times because they were not able to understand a place had been added | med | N/A |
+| 5 | Had trouble finding the edit trip name button, they first tried to just click on the text to edit it, after that did not work they were at a loss. I had to tell them they were very close the first time after roughly 20 seconds of looking elsewehere. They felt dumb for not seeing the pencil icon and said it was obvious, however it still took them time to find the feature. | low | N/A |
