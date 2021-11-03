@@ -13,6 +13,7 @@ This table lists each student in the team, the team they verified interoperabili
 | ---- | ---- | ---- |
 | Christian Carnahan | 18 | |
 | Evan Ide | 12 | |
+| Dylan Armstrong | 11 | |
 
 
 ### Client Problems found
