@@ -37,6 +37,10 @@ export function SaveTripBody(props) {
                 placeholder="This Will Be TripName Prop"
                 data-testid="saveTripModal-input"
             />
+            <Input style={{ marginLeft: '5px', marginRight: '5px' }} type="select" name="select" id="exampleSelect">
+                <option>JSON</option>
+                <option>CSV</option>
+            </Input>
         </InputGroup>
     );
 }
