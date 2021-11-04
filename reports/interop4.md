@@ -35,5 +35,6 @@ We found these problems when connecting the other team's client to our server.
 | :--- |  :--- | --- |
 | 11 | none | N/A |
 | [06](https://black-bottle.cs.colostate.edu:31406) | None found. |  |
+| 12 | None Found | |
 
 
