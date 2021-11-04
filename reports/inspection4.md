@@ -18,7 +18,7 @@ We note the amount of time each person spent reviewing the code in preparation f
 | Dylan Armstrong | 28 |
 | Evan Ide | 30 |
 | Farhan Haziq | 25 |
-
+| Christian Carnahan | 20 |
 
 ### Problems found
 
@@ -31,4 +31,5 @@ We add a GitHub issue for each defect that requires a modification to the system
 | Shorter.js:10,18 | These functions can be moved into their own functions for more modularity | medium | Evan |
 | Shorter.js:35 | The tooltip can be made into its own component for better reuseability | medium | Evan |
 | [Shorter.js:35](https://github.com/CSU-CS-314-Fall-2021/t17/blob/e5e7744b686cf2d83a22a3604b28d5c10d47363c/client/src/components/Shorter/Shorter.js#L35) | Similar as mentioned above, the tooltip can be made function so it can be reuse again and improve redability of the code | medium | Farhan |
+| Shorter.js:25-32 | ButtonGroup could be put in its own File | low | Christian |
 
