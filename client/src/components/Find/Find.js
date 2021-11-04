@@ -65,11 +65,22 @@ function FindBody(props) {
         <Container>
             <InputGroup>
                 <Input type="text" placeholder="Enter Location" data-testid="find-input" value={matchString} onChange={handleChange} />
-                <Button color="primary">
+                <Button color="primary" onClick={async () => showRandom(props.context, props.serverSettings)}>
                     <FaDice />
                 </Button>
             </InputGroup>
             <Results placesList={foundList} places={props.places} selectedIndex={props.selectedIndex} placeActions={props.placeActions} />
         </Container>
     );
+}
+
+async function showRandom(context, serverSettings) {
+    const { getPlaces, setList } = context;
+    const controller = new AbortController();
+
+    const allPlaces = await getPlaces("_", controller.signal, serverSettings);
+    let randPlaces = [];
+    for (let i = 0; i < 5; ++i) {
+        randPlaces.push(allPlaces[Math.floor(Math.random() * (100))])
+    }
 }
