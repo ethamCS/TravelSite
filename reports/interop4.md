@@ -12,7 +12,7 @@ This table lists each student in the team, the team they verified interoperabili
 | Name | Team | Time |
 | ---- | ---- | ---- |
 | Christian Carnahan | 18 | 15 min |
-| Evan Ide | 12 | |
+| Evan Ide | 12 | 25 |
 | Dylan Armstrong | 11 | 15 |
 | Farhan Haziq | [06](https://black-bottle.cs.colostate.edu:31406) | 15 |
 
@@ -25,7 +25,7 @@ We found these problems when connecting our client to another team's server.
 | :--- |  :--- | --- |
 | 11 | Can't connect to their server because they have tour implemented. |  |
 | [06](https://black-bottle.cs.colostate.edu:31406) | None found. |  |
-
+| 12 | None Found | |
 
 ### Server Problems found
 
@@ -35,4 +35,5 @@ We found these problems when connecting the other team's client to our server.
 | :--- |  :--- | --- |
 | 11 | none | N/A |
 | [06](https://black-bottle.cs.colostate.edu:31406) | None found. |  |
+
 
