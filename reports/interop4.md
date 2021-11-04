@@ -15,6 +15,7 @@ This table lists each student in the team, the team they verified interoperabili
 | Evan Ide | 12 | 25 |
 | Dylan Armstrong | 11 | 15 |
 | Farhan Haziq | [06](https://black-bottle.cs.colostate.edu:31406) | 15 |
+| Ethan | 25 | 20 min |
 
 
 ### Client Problems found
@@ -36,5 +37,6 @@ We found these problems when connecting the other team's client to our server.
 | 11 | none | N/A |
 | [06](https://black-bottle.cs.colostate.edu:31406) | None found. |  |
 | 12 | None Found | |
+| 25 | None Found | |
 
 
