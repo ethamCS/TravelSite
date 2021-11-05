@@ -2,6 +2,7 @@ import React from 'react';
 import { Table } from 'reactstrap';
 import { latLngToText, placeToLatLng } from '../../utils/transformers';
 import { useState } from 'react';
+import { FaCheck } from 'react-icons/fa';
 
 
 export default function Results(props) {
@@ -59,6 +60,9 @@ function TableRow(props) {
                 {name}
                 <br />
                 <small className="text-muted">{newLocation}</small>
+            </td>
+            <td>
+                <FaCheck/>
             </td>
         </tr>
 
