@@ -1,7 +1,8 @@
 import React from 'react';
-import { Table } from 'reactstrap';
+import { Table, Collapse } from 'reactstrap';
 import { latLngToText, placeToLatLng } from '../../utils/transformers';
 import { useState } from 'react';
+import { FaCheck } from 'react-icons/fa';
 
 
 export default function Results(props) {
@@ -43,6 +44,7 @@ function ResultBody(props) {
 
 
 function TableRow(props) {
+    const [open, setOpen] = useState(false);
     const name = props.place.name ? props.place.name : "-";
     const location = placeToLatLng(props.place);
     const newLocation = latLngToText(location);
@@ -50,6 +52,7 @@ function TableRow(props) {
 
     const handleClick = () => {
         props.placeActions.append(place);
+        setOpen(true);
     }
 
     return (
@@ -59,6 +62,11 @@ function TableRow(props) {
                 {name}
                 <br />
                 <small className="text-muted">{newLocation}</small>
+            </td>
+            <td>
+                <Collapse isOpen={open}>
+                    <FaCheck/>
+                </Collapse>
             </td>
         </tr>
 
