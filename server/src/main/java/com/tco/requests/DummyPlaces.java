@@ -1,3 +1,7 @@
+/**
+ * Dummy test case for places, only for test purposes.
+ */
+
 package com.tco.requests;
 
 public class DummyPlaces{
