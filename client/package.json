@@ -6,7 +6,8 @@
     "prodClient": "webpack -p --env.CLIENT_LOG_LEVEL=ERROR --env.BUILD_DIRECTORY_PREFIX=$BUILD_DIRECTORY_PREFIX",
     "devServer": "java -Dorg.slf4j.simpleLogger.log.com.tco=info -jar -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005 $BUILD_DIRECTORY_PREFIX/target/server-local.jar 8000",
     "server": "java -Dorg.slf4j.simpleLogger.log.com.tco=info -jar $BUILD_DIRECTORY_PREFIX/target/server-local.jar 8000",
-    "dev": "concurrently \"npm run devServer\" \"npm run devClient\""
+    "dev": "concurrently \"npm run devServer\" \"npm run devClient\"",
+    "build": "../bin/run.sh"
   },
   "dependencies": {
     "@material-ui/core": "^4.9.14",
