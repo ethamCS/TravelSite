@@ -28,6 +28,8 @@ Age, nationality, and other background information can sometimes be helpful unde
 | Pseudonym | Demographics |
 | :--- | :--- |
 | Carnhy's Father | Software Engineer, 50 Years Old, Does Android App Development |
+| Zane Ethan's Friend | Mechanic |
+
 
 
 ### Observations
@@ -41,3 +43,4 @@ Add issues to GitHub for any changes necessary to the system.
 | :--- | :--- | :---: | :---: | 
 | 1 | Had trouble with knowing that a place was added to the itinerary in our find page. I had to tell them to stop clicking the place and that it had been added to the itinerary. They ended up adding the place of their choosing over 10 times because they were not able to understand a place had been added | med | N/A |
 | 5 | Had trouble finding the edit trip name button, they first tried to just click on the text to edit it, after that did not work they were at a loss. I had to tell them they were very close the first time after roughly 20 seconds of looking elsewehere. They felt dumb for not seeing the pencil icon and said it was obvious, however it still took them time to find the feature. | low | N/A |
+| #*606* | Issue finding features such as find, home, or others features located in the hamburger menu on the main page. Find search format was hard to undersatnd at i tmes as well. Formatting such as 'sacromento, california' was used that resulted in 0 results becuase of how the match string has been implemented. The trip's name wasn't clear and was hard to find. Potential solutions, for hamburger we could have popups describing button use cases. The trip name could first be loaded with a deault name such as 'Trip name' and some way to make it clear it can be edited.  | low | N/A |
