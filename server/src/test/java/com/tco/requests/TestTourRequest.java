@@ -11,7 +11,7 @@ public class TestTourRequest {
     private TourRequest tour;
 
     @BeforeEach
-    public void createConfigurationForTestCases(){
+    public void createConfigurationForTestCases() throws BadRequestException {
         tour = new TourRequest();
         tour.buildResponse();
     }
