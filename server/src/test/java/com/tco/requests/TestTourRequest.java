@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
-public class TourRequest {
+public class TestTourRequest {
     private TourRequest tour;
 
     @BeforeEach
