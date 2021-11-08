@@ -44,6 +44,7 @@ public class Tour {
     public Tour(Double earthRadius, Places places){
         this.earthRadius = earthRadius; 
         this.places = places;
+        distancesMatrix();
        
         
     }
