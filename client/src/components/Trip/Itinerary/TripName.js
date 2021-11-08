@@ -21,7 +21,7 @@ export function EditTripName(props) {
                 <Tooltip delay={{ show: 500, hide: 100 }} flip isOpen={tooltipOpen} toggle={() => { setToolTipOpen(!tooltipOpen) }} target="tooltip-optimize" >Optimize Trip!</Tooltip>
                 <LoadTripButton showMessage={props.showMessage} placeActions={props.placeActions} setName={setName} />
                 <SaveTripButton tripName={tripName} placeActions={props.placeActions} toggleSaveFile={toggleSaveFile} />
-                <SaveTripModal isOpen={showSaveFile} closeSaveTrip={toggleSaveFile} />
+                <SaveTripModal isOpen={showSaveFile} closeSaveTrip={toggleSaveFile} placeActions={props.placeActions} tripName={tripName} />
             </Collapse>
             <Collapse isOpen={collapse} data-testid="trip-collapse">
                 <TripInput tripName={tripName} setName={setName} toggle={toggle} />

@@ -1,18 +1,18 @@
-import React from "react";
-import { Input, Container, Button, Col, Row, InputGroup, InputGroupAddon, InputGroupText, DropdownToggle, Dropdown, Modal, DropdownItem } from 'reactstrap';
+import React, { useState } from 'react';
+import { Input, Container, Button, Col, Row, InputGroup, InputGroupAddon, InputGroupText, Modal } from "reactstrap";
 
 export default function SaveTripModal(props) {
-
+    const [fileName, setFileName] = useState("My File");
     return (
         <Modal isOpen={props.isOpen}>
             <SaveTripHeader closeSaveTrip={props.closeSaveTrip} />
-            <SaveTripBody />
-            <SaveTripFooter />
+            <SaveTripBody fileName={fileName} setFileName={setFileName} />
+            <SaveTripFooter tripName={props.tripName} placeActions={props.placeActions} closeSaveTrip={props.closeSaveTrip} />
         </Modal>
     );
 }
 
-export function SaveTripHeader(props) {
+function SaveTripHeader(props) {
     return (
         <Container style={{ paddingTop: '10px' }}>
             <Row>
@@ -20,38 +20,49 @@ export function SaveTripHeader(props) {
                     <h3>Save Trip</h3>
                 </Col>
                 <Col xs="auto">
-                    <Button name="closeSaveTripModal" color="primary" onClick={props.closeSaveTrip}>Exit</Button>
+                    <Button name="closeSaveTripModal" color="primary" onClick={props.closeSaveTrip}>X</Button>
                 </Col>
             </Row>
         </Container>
     );
 }
 
-export function SaveTripBody(props) {
+function SaveTripBody(props) {
+
     return (
         <InputGroup className="SaveTripInput">
             <InputGroupAddon addonType="prepend">
                 <InputGroupText>File Name</InputGroupText>
             </InputGroupAddon>
             <Input
-                placeholder="This Will Be TripName Prop"
+                placeholder={props.tripName}
                 data-testid="saveTripModal-input"
             />
-            <Input style={{ marginLeft: '5px', marginRight: '5px' }} type="select" name="select" id="exampleSelect">
-                <option>JSON</option>
-                <option>CSV</option>
-            </Input>
         </InputGroup>
     );
 }
 
-export function SaveTripFooter(props) {
+function SaveTripFooter(props) {
+    const saveJSON = () => {
+        props.placeActions.saveFile(props)
+    };
+
+    const saveCSV = () => {
+        //do nothing
+    }
+
     return (
         <Container style={{ paddingTop: '10px', paddingBottom: '10px' }}>
-            <Row>
-                <Col xs="auto">
-                    <Button name="saveTripSave" color="primary" >Save</Button>
+            <Row xs="4">
+                <Col />
+                <Col>
+                    <Button color={"primary"} onClick={saveJSON} onMouseUp={props.closeSaveTrip}>.JSON</Button>
                 </Col>
+                <Col>
+                    <Button color={"primary"} onMouseDown={saveCSV} onMouseUp={props.closeSaveTrip}>.CSV</Button>
+                </Col>
+                <Col />
+
             </Row>
         </Container>
     );
