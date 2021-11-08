@@ -24,5 +24,12 @@ public class TestTourRequest {
         assertEquals("tour", type);
     }
 
+    @Test
+    @DisplayName("Response Time is \"0.0\"")
+    public void testResponseTime() {
+        Double responseTime = tour.getResponseTime();
+        assertEquals(0.0, responseTime);
+    }
+
     
 }

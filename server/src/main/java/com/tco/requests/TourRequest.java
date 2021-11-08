@@ -29,5 +29,9 @@ public class TourRequest extends Request {
         DummyPlaces place = new DummyPlaces();
         places = place.getDummyPlaces();
     }
+
+    public Double getResponseTime() {
+        return this.responseTime;
+    }
     
 }
