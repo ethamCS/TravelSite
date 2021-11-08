@@ -9,8 +9,8 @@ import com.tco.tour.Tour;
 
 public class TourRequest extends Request {
     private Places places; 
+    private Double responseTime;
     private Double earthRadius;
-    private Integer[] distances; 
     
     private final transient Logger log = LoggerFactory.getLogger(TourRequest.class); 
     
@@ -25,6 +25,7 @@ public class TourRequest extends Request {
     public TourRequest() {
         this.requestType = "tour";
         this.earthRadius = 3959.0;
+        this.responseTime = 0.0;
         DummyPlaces place = new DummyPlaces();
         places = place.getDummyPlaces();
     }
