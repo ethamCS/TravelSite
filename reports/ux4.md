@@ -28,7 +28,7 @@ Age, nationality, and other background information can sometimes be helpful unde
 | Pseudonym | Demographics |
 | :--- | :--- |
 | Carnhy's Father | Software Engineer, 50 Years Old, Does Android App Development |
-| Zane Ethan's Friend | Mechanic |
+| Zane Ethan's Friend | Mechanic, 21 years old |
 
 
 
