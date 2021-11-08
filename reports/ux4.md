@@ -29,6 +29,8 @@ Age, nationality, and other background information can sometimes be helpful unde
 | :--- | :--- |
 | Carnhy's Father | Software Engineer, 50 Years Old, Does Android App Development |
 | Zane Ethan's Friend | Mechanic, 21 years old |
+| Jake - Farhan's Friend | Musician, 27 years old |
+| Kush - Farhan's Friend | Software Engineer, 30 years old |
 
 
 
