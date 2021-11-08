@@ -16,6 +16,13 @@ public class Tour {
         }
         return distances;    
     }
+    public int[][] distancesMatrix(){
+        int size = this.places.size();
+        int distance[][] = new int[size][size];
+
+        return distance;             
+    }
+
 
     public Tour(Double earthRadius, Places places){
         this.earthRadius = earthRadius; 
