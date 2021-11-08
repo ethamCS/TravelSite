@@ -29,6 +29,8 @@ Age, nationality, and other background information can sometimes be helpful unde
 | :--- | :--- |
 | Carnhy's Father | Software Engineer, 50 Years Old, Does Android App Development |
 | Zane Ethan's Friend | Mechanic, 21 years old |
+| Jake - Farhan's Friend | Musician, 29 years old |
+| Kush - Farhan's Friend | Software Engineer, 31 years old |
 
 
 
@@ -46,4 +48,6 @@ Add issues to GitHub for any changes necessary to the system.
 | N/A | Issue finding features such as find, home, or others features located in the hamburger menu on the main page. Potential solutions include using popups to describe button use cases. | med | N/A |
 | N/A | Formatting such as 'sacromento, california' was used which had 0 results becuase of how the match string has been implemented/database contents. We could start with describing the search format in the find search bar.  | low | N/A |
 | N/A | The trip's name wasn't clear and was hard to find. There was also little indication it could be edited. The trip name could first be loaded with a default name such as 'Default Trip Name' and some way to make it clear it can be edited such as a edit button.  | low | N/A |
+| N/A | The coordinate button is a bit cryptic and wondering why its not integrated into one single unified search. - Jake | low | N/A |
+| N/A | Pressing the button after looking up for location will insert the location multiple time which resulted in duplicate location, not sure if that's intended - Kush | low | N/A |
 
