@@ -20,7 +20,7 @@ public class Calculate {
 
    public Double absoluteDifferences(Double num1, Double num2) { return Math.abs(num1-num2); }
   
-   public Double circleDistance(Place p1, Place p2, Double radius){
+   public int circleDistance(Place p1, Place p2, Double radius){
        
       double foundDistance = 0; 
 
@@ -49,6 +49,6 @@ public class Calculate {
       thetaBBy = Math.atan2(numeratorFinal, dFinal);
 
       foundDistance = arctan(radius, thetaBBy);
-      return foundDistance;
+      return (int)foundDistance;
     }
 }
