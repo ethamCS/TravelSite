@@ -48,8 +48,8 @@ function SaveTripFooter(props) {
     };
 
     const saveCSV = () => {
-        //do nothing
-    }
+        props.placeActions.saveCSV(props)
+    };
 
     return (
         <Container style={{ paddingTop: '10px', paddingBottom: '10px' }}>

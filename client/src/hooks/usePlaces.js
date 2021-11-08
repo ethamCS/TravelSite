@@ -22,7 +22,8 @@ export function usePlaces() {
         selectIndex: (index) => selectIndex(index, context),
         moveToHome: async () => moveToHome(context),
         readFile: (fileName, fileObject, props) => readFile(fileName, fileObject, props, context),
-        saveFile: (props) => saveFile(props, context)
+        saveFile: (props) => saveFile(props, context),
+        saveCSV: (props) => saveCSV(props, context)
     };
 
     return { places, selectedIndex, placeActions };
@@ -167,6 +168,22 @@ function saveFile(props, context) {
     const tripJSON = buildJSON(context);
     const fileName = props.tripName.replace(/ /g, "_").toLowerCase();
     downloadFile(fileName + ".json", MIME_TYPE.JSON, tripJSON);
+}
+
+function saveCSV(props, context) {
+    const { places } = context;
+    const fileName = props.tripName.replace(/ /g, "_").toLowerCase();
+    let csvText = "\"name\",\"latitude\",\"longitude\"\n";
+    for (var i = 0; i < places.length; i++) {
+        csvText += "\"" + places[i].name + "\","
+        csvText += "\"" + places[i].lat.toString() + "\","
+        if (i == places.length - 1) {
+            csvText += "\"" + places[i].lat.toString() + "\""
+        } else {
+            csvText += "\"" + places[i].lat.toString() + "\"\n"
+        }
+    }
+    downloadFile(fileName + ".csv", MIME_TYPE.CSV, csvText);
 }
 
 function buildJSON(context) {
