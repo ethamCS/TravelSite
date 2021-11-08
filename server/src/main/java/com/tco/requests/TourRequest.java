@@ -18,5 +18,14 @@ public class TourRequest extends Request {
         Tour tour = new Tour(this.earthRadius, this.places);
         log.trace("buildResponse -> {}", this);
     }
+
+     /* The following methods exist only for testing purposes and are not used
+    during normal execution, including the constructor. */
+    public TourRequest() {
+        this.requestType = "tour";
+        this.earthRadius = 3959.0;
+        DummyPlaces place = new DummyPlaces();
+        places = place.getDummyPlaces();
+    }
     
 }
