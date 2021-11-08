@@ -12,7 +12,7 @@ public class TourRequest extends Request {
     private Double earthRadius;
     private Integer[] distances; 
     
-    private final transient Logger log = LoggerFactory.getLogger(FindRequest.class); 
+    private final transient Logger log = LoggerFactory.getLogger(TourRequest.class); 
     
      public void buildResponse() throws BadRequestException {
         Tour tour = new Tour(this.earthRadius, this.places);
