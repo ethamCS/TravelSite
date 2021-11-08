@@ -30,6 +30,10 @@ public class TourRequest extends Request {
         places = place.getDummyPlaces();
     }
 
+    public Double getEarthRadius() {
+        return this.earthRadius;
+    }
+
     public Double getResponseTime() {
         return this.responseTime;
     }

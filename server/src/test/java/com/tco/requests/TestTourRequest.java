@@ -25,6 +25,13 @@ public class TestTourRequest {
     }
 
     @Test
+    @DisplayName("Earth Radius is \"3959.0\"")
+    public void testEarthRadius() {
+        Double earthRadius = tour.getEarthRadius();
+        assertEquals(3959.0, earthRadius);
+    }
+
+    @Test
     @DisplayName("Response Time is \"0.0\"")
     public void testResponseTime() {
         Double responseTime = tour.getResponseTime();
