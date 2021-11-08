@@ -20,8 +20,6 @@ public class Tour {
     public Tour(Double earthRadius, Places places){
         this.earthRadius = earthRadius; 
         this.places = places;
-        Distances distance = new Distances(this.places, this.earthRadius);
-        this.distances = distance.SendInfoForCalculations();
         
     }
 }
