@@ -27,7 +27,7 @@ public class DistancesRequest extends Request{
     during normal execution, including the constructor. */
     public DistancesRequest() {
         this.requestType = "distances";
-        DummyPlaces place = new DummyPlaces();
+        DummyPlaces place = new DummyPlaces("distances");
         places = place.getDummyPlaces();
         this.earthRadius = 3959.0;
     }
