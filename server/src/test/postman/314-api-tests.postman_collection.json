@@ -18,10 +18,8 @@
 							"",
 							"pm.test(\"Server-side team name is correct\", () => {",
 							"    const response = pm.response.json();",
-							"    const expectedTeamName = pm.collectionVariables.get(\"t17 We Commit To Main\");",
-							"    pm.expect(response.serverName).to.eql(expectedTeamName);",
+							"    pm.expect(response.serverName).to.eql(\"t17 We Push To Main\");",
 							"});",
-							"",
 							""
 						],
 						"type": "text/javascript"
@@ -33,7 +31,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"requestType\": \"find\", \n    \"match\": \"test\",\n    \"limit\": 0\n}",
+					"raw": "{\n    \"requestType\": \"config\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -41,18 +39,49 @@
 					}
 				},
 				"url": {
-					"raw": "{{BASE_URL}}/api/find",
+					"raw": "{{BASE_URL}}/api/config",
 					"host": [
 						"{{BASE_URL}}"
 					],
 					"path": [
 						"api",
-						"find"
+						"config"
 					]
 				},
-				"description": "Testing the result of Config POST requests."
+				"description": "Testing the result of config POST requests."
 			},
-			"response": []
+			"response": [
+				{
+					"name": "config",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"requestType\": \"config\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/config",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"config"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "find",
@@ -67,7 +96,7 @@
 							"",
 							"pm.test(\"Server-side team name is correct\", () => {",
 							"    const response = pm.response.json();",
-							"    const expectedTeamName = pm.collectionVariables.get(\"t17 We Commit To Main\");",
+							"    const expectedTeamName = pm.collectionVariables.get(\"t17 We Push To Main\");",
 							"    pm.expect(response.serverName).to.eql(expectedTeamName);",
 							"});",
 							"",
@@ -82,7 +111,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"requestType\": \"find\", \n    \"match\": \"test\",\n    \"limit\": 0\n}",
+					"raw": "{\n    \"requestType\": \"find\", \n    \"match\": \"\",\n    \"limit\": 0\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -99,9 +128,40 @@
 						"find"
 					]
 				},
-				"description": "Testing the result of Find POST requests."
+				"description": "Testing the result of find POST requests."
 			},
-			"response": []
+			"response": [
+				{
+					"name": "find",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"requestType\": \"find\", \n    \"match\": \"\",\n    \"limit\": 0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/find",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"find"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "distance",
@@ -116,7 +176,7 @@
 							"",
 							"pm.test(\"Server-side team name is correct\", () => {",
 							"    const response = pm.response.json();",
-							"    const expectedTeamName = pm.collectionVariables.get(\"t17 We Commit To Main\");",
+							"    const expectedTeamName = pm.collectionVariables.get(\"t17 We Push To Main\");",
 							"    pm.expect(response.serverName).to.eql(expectedTeamName);",
 							"});",
 							"",
@@ -131,7 +191,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"requestType\": \"distances\",\n    \"places\": [],\n    \"earthRadius\": 1\n}",
+					"raw": "{\n  \"requestType\"    : \"distances\",\n  \"places\"         : [{\"name\":\"place A\", \"latitude\":  \"39.73\",  \"longitude\": \"-104.046\"},\n                      {\"name\": \"place B\", \"latitude\":  \"40.589\", \"longitude\": \"-105.084\"}],\n  \"earthRadius\"    : 3959.0\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -150,7 +210,120 @@
 				},
 				"description": "Testing the result of distances POST requests."
 			},
-			"response": []
+			"response": [
+				{
+					"name": "distance",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"requestType\"    : \"distances\",\n  \"places\"         : [{\"name\":\"place A\", \"latitude\":  \"39.73\",  \"longitude\": \"-104.046\"},\n                      {\"name\": \"place B\", \"latitude\":  \"40.589\", \"longitude\": \"-105.084\"}],\n  \"earthRadius\"    : 3959.0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/distances",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"distances"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "tour",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response is HTTP200 status\", () => {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Server-side team name is correct\", () => {",
+							"    const response = pm.response.json();",
+							"    const expectedTeamName = pm.collectionVariables.get(\"t17 We Push To Main\");",
+							"    pm.expect(response.serverName).to.eql(expectedTeamName);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"requestType\"    : \"tour\",\n  \"response\" : 0.0,\n  \"places\"         : [{\"name\":\"place A\", \"latitude\":  \"39.73\",  \"longitude\": \"-104.046\"},\n                      {\"name\": \"place B\", \"latitude\":  \"40.589\", \"longitude\": \"-105.084\"}],\n  \"earthRadius\"    : 3959.0\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/api/tour",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"tour"
+					]
+				},
+				"description": "Testing the result of tour POST requests."
+			},
+			"response": [
+				{
+					"name": "tour",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"requestType\" : \"tour\",\n  \"response\"    : 0.0,\n  \"earthRadius\" : 3959.0,\n  \"places\"      :[{\"name\":\"place A\", \"latitude\":  \"39.73\",  \"longitude\": \"-104.046\"},\n                {\"name\": \"place B\", \"latitude\":  \"40.589\", \"longitude\": \"-105.084\"}]\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/distances",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"distances"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		}
 	],
 	"event": [
