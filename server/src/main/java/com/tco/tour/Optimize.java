@@ -6,4 +6,9 @@ public class Optimize{
     public int shortestTourDistance;
     
     
+    public Optimize(Tour tour){
+        this.tour = tour; 
+        this.shortestTourDistance = Integer.MAX_VALUE;
+    }
+
 }
