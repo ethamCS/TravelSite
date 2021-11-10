@@ -82,9 +82,11 @@ async function fetchPlaces(context, controller, serverSettings) {
 async function showRandom(context, serverSettings, setRandom) {
     const { getPlaces, setList } = context;
     const controller = new AbortController();
+    const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_';
+    const searchChar = alphabet[Math.floor(Math.random() * alphabet.length)];
     setRandom(true);
 
-    const allPlaces = await getPlaces("_", controller.signal, serverSettings);
+    const allPlaces = await getPlaces(searchChar, controller.signal, serverSettings);
     let randPlaces = [];
     for (let i = 0; i < 5; ++i) {
         randPlaces.push(allPlaces[Math.floor(Math.random() * (100))])
