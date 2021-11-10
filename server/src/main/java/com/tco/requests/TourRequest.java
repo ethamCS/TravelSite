@@ -15,7 +15,8 @@ public class TourRequest extends Request {
     
     private final transient Logger log = LoggerFactory.getLogger(TourRequest.class); 
     
-     public void buildResponse() throws BadRequestException {
+    @Override
+    public void buildResponse() throws BadRequestException {
         Tour tour = new Tour(this.earthRadius, this.places, this.responseTime);
         Countdown count = new Countdown(this.responseTime);
         log.trace("buildResponse -> {}", this);
