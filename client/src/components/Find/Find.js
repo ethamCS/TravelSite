@@ -74,6 +74,12 @@ function FindBody(props) {
     );
 }
 
+async function fetchPlaces(context, controller, serverSettings) {
+    const { matchString, getPlaces, setList } = context;
+    const placeList = await getPlaces(matchString, controller.signal, serverSettings);
+    setList(placeList);
+}
+
 async function showRandom(context, serverSettings) {
     const { getPlaces, setList } = context;
     const controller = new AbortController();
