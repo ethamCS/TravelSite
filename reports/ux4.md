@@ -31,6 +31,7 @@ Age, nationality, and other background information can sometimes be helpful unde
 | Zane Ethan's Friend | Mechanic, 21 years old |
 | Jake - Farhan's Friend | Musician, 29 years old |
 | Kush - Farhan's Friend | Software Engineer, 31 years old |
+| Dylan's Dad | Saleseman, 56 years old |
 
 
 
@@ -50,4 +51,5 @@ Add issues to GitHub for any changes necessary to the system.
 | N/A | The trip's name wasn't clear and was hard to find. There was also little indication it could be edited. The trip name could first be loaded with a default name such as 'Default Trip Name' and some way to make it clear it can be edited such as a edit button.  | low | N/A |
 | N/A | The coordinate button is a bit cryptic and wondering why its not integrated into one single unified search. - Jake | low | N/A |
 | N/A | Pressing the button after looking up for location will insert the location multiple time which resulted in duplicate location, not sure if that's intended - Kush | low | N/A |
-
+| N/A | It was hard to tell what exactly some of the buttons do, a solution would be to add small text under buttons, or add tooltips | low | N/A |
+| N/A | After clicking on something in the trip to highlight it, having to scroll back up to see it on the map was not ideal, make the page go back to the top | low | N/A |
