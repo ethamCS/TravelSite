@@ -80,13 +80,15 @@ async function fetchPlaces(context, controller, serverSettings) {
     setList(placeList);
 }
 
-async function showRandom(context, serverSettings) {
+async function showRandom(context, serverSettings, setRandom) {
     const { getPlaces, setList } = context;
     const controller = new AbortController();
+    setRandom(true);
 
     const allPlaces = await getPlaces("_", controller.signal, serverSettings);
     let randPlaces = [];
     for (let i = 0; i < 5; ++i) {
         randPlaces.push(allPlaces[Math.floor(Math.random() * (100))])
     }
+    setList(randPlaces);
 }
