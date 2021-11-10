@@ -2,12 +2,11 @@ import React, { useState } from 'react';
 import { Input, Container, Button, Col, Row, InputGroup, InputGroupAddon, InputGroupText, Modal } from "reactstrap";
 
 export default function SaveTripModal(props) {
-    const [fileName, setFileName] = useState("My File");
     return (
-        <Modal isOpen={props.isOpen}>
+        <Modal isOpen={props.isOpen} data-testid="save-modal">
             <SaveTripHeader closeSaveTrip={props.closeSaveTrip} />
-            <SaveTripBody fileName={fileName} setFileName={setFileName} />
-            <SaveTripFooter tripName={props.tripName} placeActions={props.placeActions} closeSaveTrip={props.closeSaveTrip} />
+            <SaveTripBody fileName={props.fileName} setFileName={props.setFileName} />
+            <SaveTripFooter fileName={props.fileName} placeActions={props.placeActions} closeSaveTrip={props.closeSaveTrip} />
         </Modal>
     );
 }
@@ -35,8 +34,11 @@ function SaveTripBody(props) {
                 <InputGroupText>File Name</InputGroupText>
             </InputGroupAddon>
             <Input
-                placeholder={props.tripName}
-                data-testid="saveTripModal-input"
+                placeholder={props.fileName}
+                onChange={e => props.setFileName(e.target.value)}
+                valid={props.fileName != null && props.fileName != ""}
+                invalid={props.fileName == null || props.fileName == ""}
+                data-testid="savetripmodal-input"
             />
         </InputGroup>
     );
@@ -59,7 +61,7 @@ function SaveTripFooter(props) {
                     <Button color={"primary"} onClick={saveJSON} onMouseUp={props.closeSaveTrip}>.JSON</Button>
                 </Col>
                 <Col>
-                    <Button color={"primary"} onMouseDown={saveCSV} onMouseUp={props.closeSaveTrip}>.CSV</Button>
+                    <Button color={"primary"} onClick={saveCSV} onMouseUp={props.closeSaveTrip}>.CSV</Button>
                 </Col>
                 <Col />
 
