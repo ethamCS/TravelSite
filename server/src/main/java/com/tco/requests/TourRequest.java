@@ -10,12 +10,13 @@ import com.tco.tour.Tour;
 public class TourRequest extends Request {
     private Places places; 
     private Double responseTime;
+    public Double response; 
     private Double earthRadius;
     
     private final transient Logger log = LoggerFactory.getLogger(TourRequest.class); 
     
      public void buildResponse() throws BadRequestException {
-        Tour tour = new Tour(this.earthRadius, this.places);
+        Tour tour = new Tour(this.earthRadius, this.places, this.response);
         log.trace("buildResponse -> {}", this);
     }
 
