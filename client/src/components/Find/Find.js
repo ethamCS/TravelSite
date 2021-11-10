@@ -63,8 +63,8 @@ function FindBody(props) {
     return (
         <Container>
             <InputGroup>
-                <Input type="text" placeholder="Enter Location" data-testid="find-input" value={matchString} onChange={handleChange} />
-                <Button color="primary" onClick={async () => showRandom(props.context, props.serverSettings)}>
+                <Input type="text" placeholder="Enter Location" data-testid="find-input" value={matchString} onChange={(e) => setMatchValue(e.target.value)} />
+                <Button color="primary" onClick={async () => showRandom(props.context, props.serverSettings, setRandom)}>
                     <FaDice />
                 </Button>
             </InputGroup>
