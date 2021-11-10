@@ -166,13 +166,13 @@ function readFile(fileName, fileObject, props, context) {
 
 function saveFile(props, context) {
     const tripJSON = buildJSON(context);
-    const fileName = props.tripName.replace(/ /g, "_").toLowerCase();
+    const fileName = props.fileName.replace(/ /g, "_").toLowerCase();
     downloadFile(fileName + ".json", MIME_TYPE.JSON, tripJSON);
 }
 
 function saveCSV(props, context) {
     const { places } = context;
-    const fileName = props.tripName.replace(/ /g, "_").toLowerCase();
+    const fileName = props.fileName.replace(/ /g, "_").toLowerCase();
     let csvText = "\"name\",\"latitude\",\"longitude\"\n";
     for (var i = 0; i < places.length; i++) {
         csvText += "\"" + places[i].name + "\","
