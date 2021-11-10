@@ -57,14 +57,20 @@ function FindBody(props) {
 
     return (
         <Container>
-            <InputGroup>
-                <Input type="text" placeholder="Enter Location" data-testid="find-input" value={matchString} onChange={(e) => setMatchValue(e.target.value)} />
-                <Button color="primary" onClick={async () => showRandom(props.context, props.serverSettings, setRandom)}>
-                    <FaDice />
-                </Button>
-            </InputGroup>
+            {renderInputGroup(props.context, props.serverSettings, matchString, setRandom, setMatchValue)}
             <Results placesList={foundList} places={props.places} selectedIndex={props.selectedIndex} placeActions={props.placeActions} />
         </Container>
+    );
+}
+
+function renderInputGroup(context, serverSettings, matchString, setRandom, setMatchValue) {
+    return (
+        <InputGroup>
+            <Input type="text" placeholder="Enter Location" data-testid="find-input" value={matchString} onChange={(e) => setMatchValue(e.target.value)} />
+            <Button color="primary" onClick={async () => showRandom(context, serverSettings, setRandom)}>
+                <FaDice />
+            </Button>
+        </InputGroup>
     );
 }
 
