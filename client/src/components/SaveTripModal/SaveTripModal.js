@@ -4,7 +4,7 @@ import { Input, Container, Button, Col, Row, InputGroup, InputGroupAddon, InputG
 export default function SaveTripModal(props) {
     const [fileName, setFileName] = useState("My File");
     return (
-        <Modal isOpen={props.isOpen}>
+        <Modal isOpen={props.isOpen} data-testid="save-modal">
             <SaveTripHeader closeSaveTrip={props.closeSaveTrip} />
             <SaveTripBody fileName={fileName} setFileName={setFileName} />
             <SaveTripFooter tripName={props.tripName} placeActions={props.placeActions} closeSaveTrip={props.closeSaveTrip} />
