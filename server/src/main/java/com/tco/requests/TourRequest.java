@@ -6,6 +6,7 @@ import com.tco.distances.Distances;
 import com.tco.distances.Calculate; 
 import com.tco.misc.BadRequestException;
 import com.tco.tour.Tour; 
+import com.tco.tour.Countdown; 
 
 public class TourRequest extends Request {
     private Places places; 
@@ -17,6 +18,8 @@ public class TourRequest extends Request {
     
      public void buildResponse() throws BadRequestException {
         Tour tour = new Tour(this.earthRadius, this.places, this.response);
+        //Countdown count = new Countdown(this.response);
+       
         log.trace("buildResponse -> {}", this);
     }
 
@@ -27,6 +30,7 @@ public class TourRequest extends Request {
         this.requestType = "tour";
         this.earthRadius = 3959.0;
         this.responseTime = 0.0;
+        //Countdown count = new Countdown(this.response);
         DummyPlaces place = new DummyPlaces();
         places = place.getDummyPlaces();
     }
