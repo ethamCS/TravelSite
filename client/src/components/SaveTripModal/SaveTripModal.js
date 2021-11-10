@@ -38,7 +38,7 @@ function SaveTripBody(props) {
                 onChange={e => props.setFileName(e.target.value)}
                 valid={props.fileName != null && props.fileName != ""}
                 invalid={props.fileName == null || props.fileName == ""}
-                data-testid="saveTripModal-input"
+                data-testid="savetripmodal-input"
             />
         </InputGroup>
     );
