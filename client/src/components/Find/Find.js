@@ -39,9 +39,8 @@ function FindHeader(props) {
 }
 
 function FindBody(props) {
-
-    const { matchString, setMatchValue, getPlaces, foundList, setList } = props.context;
-
+    const { matchString, setMatchValue, foundList } = props.context;
+    const  [ isRandom, setRandom ]  = useState(false);
 
     function handleChange(e) {
         e.preventDefault();
@@ -50,12 +49,12 @@ function FindBody(props) {
 
     useEffect(() => {
         const controller = new AbortController();
-        async function fetchPlaces(matchString) {
-            const placeList = await getPlaces(matchString, controller.signal, props.serverSettings);
-            setList(placeList);
+        if (!isRandom) {
+            fetchPlaces(props.context, controller, props.serverSettings);
         }
-        fetchPlaces(matchString);
-
+        else {
+            setRandom(false);
+        }
         return () => {
             controller.abort();
         }
@@ -64,8 +63,8 @@ function FindBody(props) {
     return (
         <Container>
             <InputGroup>
-                <Input type="text" placeholder="Enter Location" data-testid="find-input" value={matchString} onChange={handleChange} />
-                <Button color="primary" onClick={async () => showRandom(props.context, props.serverSettings)}>
+                <Input type="text" placeholder="Enter Location" data-testid="find-input" value={matchString} onChange={(e) => setMatchValue(e.target.value)} />
+                <Button color="primary" onClick={async () => showRandom(props.context, props.serverSettings, setRandom)}>
                     <FaDice />
                 </Button>
             </InputGroup>
@@ -74,13 +73,23 @@ function FindBody(props) {
     );
 }
 
-async function showRandom(context, serverSettings) {
+async function fetchPlaces(context, controller, serverSettings) {
+    const { matchString, getPlaces, setList } = context;
+    const placeList = await getPlaces(matchString, controller.signal, serverSettings);
+    setList(placeList);
+}
+
+async function showRandom(context, serverSettings, setRandom) {
     const { getPlaces, setList } = context;
     const controller = new AbortController();
+    const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_';
+    const searchChar = alphabet[Math.floor(Math.random() * alphabet.length)];
+    setRandom(true);
 
-    const allPlaces = await getPlaces("_", controller.signal, serverSettings);
+    const allPlaces = await getPlaces(searchChar, controller.signal, serverSettings);
     let randPlaces = [];
     for (let i = 0; i < 5; ++i) {
         randPlaces.push(allPlaces[Math.floor(Math.random() * (100))])
     }
+    setList(randPlaces);
 }
