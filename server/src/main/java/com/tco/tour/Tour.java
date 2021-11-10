@@ -1,8 +1,5 @@
 package com.tco.tour;
-import com.tco.distances.Distances; 
-import com.tco.distances.Calculate; 
 import com.tco.requests.Places;
-import com.tco.requests.Place;
 import java.util.Arrays;
 import java.util.ArrayList;
 
@@ -13,10 +10,11 @@ public class Tour {
     public boolean[] visited; 
     public int[] currentTour; 
 
-    public Tour(Double earthRadius, Places places){
+    public Tour(Double earthRadius, Places places, Double response){
+        this.response = response;
         this.earthRadius = earthRadius; 
         this.places = places;
-       
-        
+        this.visited = new boolean[this.places.size()];
+        this.currentTour = new int[this.places.size()];       
     }
 }
