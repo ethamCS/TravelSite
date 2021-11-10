@@ -42,11 +42,6 @@ function FindBody(props) {
     const { matchString, setMatchValue, foundList } = props.context;
     const  [ isRandom, setRandom ]  = useState(false);
 
-    function handleChange(e) {
-        e.preventDefault();
-        setMatchValue(e.target.value);
-    }
-
     useEffect(() => {
         const controller = new AbortController();
         if (!isRandom) {
