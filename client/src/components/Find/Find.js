@@ -90,7 +90,7 @@ async function showRandom(context, serverSettings, setRandom) {
     const allPlaces = await getPlaces(searchChar, controller.signal, serverSettings);
     let randPlaces = [];
     for (let i = 0; i < 5; ++i) {
-        randPlaces.push(allPlaces[Math.floor(Math.random() * (100))])
+        randPlaces.push(allPlaces[Math.floor(Math.random() * (100))]);
     }
     setList(randPlaces);
 }
