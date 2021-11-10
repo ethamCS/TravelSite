@@ -42,11 +42,6 @@ function FindBody(props) {
     const { matchString, setMatchValue, foundList } = props.context;
     const  [ isRandom, setRandom ]  = useState(false);
 
-    function handleChange(e) {
-        e.preventDefault();
-        setMatchValue(e.target.value);
-    }
-
     useEffect(() => {
         const controller = new AbortController();
         if (!isRandom) {
@@ -62,14 +57,20 @@ function FindBody(props) {
 
     return (
         <Container>
-            <InputGroup>
-                <Input type="text" placeholder="Enter Location" data-testid="find-input" value={matchString} onChange={(e) => setMatchValue(e.target.value)} />
-                <Button color="primary" onClick={async () => showRandom(props.context, props.serverSettings, setRandom)}>
-                    <FaDice />
-                </Button>
-            </InputGroup>
+            {renderInputGroup(props.context, props.serverSettings, matchString, setRandom, setMatchValue)}
             <Results placesList={foundList} places={props.places} selectedIndex={props.selectedIndex} placeActions={props.placeActions} />
         </Container>
+    );
+}
+
+function renderInputGroup(context, serverSettings, matchString, setRandom, setMatchValue) {
+    return (
+        <InputGroup>
+            <Input type="text" placeholder="Enter Location" data-testid="find-input" value={matchString} onChange={(e) => setMatchValue(e.target.value)} />
+            <Button color="primary" onClick={async () => showRandom(context, serverSettings, setRandom)}>
+                <FaDice />
+            </Button>
+        </InputGroup>
     );
 }
 
@@ -89,7 +90,7 @@ async function showRandom(context, serverSettings, setRandom) {
     const allPlaces = await getPlaces(searchChar, controller.signal, serverSettings);
     let randPlaces = [];
     for (let i = 0; i < 5; ++i) {
-        randPlaces.push(allPlaces[Math.floor(Math.random() * (100))])
+        randPlaces.push(allPlaces[Math.floor(Math.random() * (100))]);
     }
     setList(randPlaces);
 }
