@@ -39,9 +39,8 @@ function FindHeader(props) {
 }
 
 function FindBody(props) {
-
-    const { matchString, setMatchValue, getPlaces, foundList, setList } = props.context;
-
+    const { matchString, setMatchValue, foundList } = props.context;
+    const  [ isRandom, setRandom ]  = useState(false);
 
     function handleChange(e) {
         e.preventDefault();
