@@ -50,12 +50,12 @@ function FindBody(props) {
 
     useEffect(() => {
         const controller = new AbortController();
-        async function fetchPlaces(matchString) {
-            const placeList = await getPlaces(matchString, controller.signal, props.serverSettings);
-            setList(placeList);
+        if (!isRandom) {
+            fetchPlaces(props.context, controller, props.serverSettings);
         }
-        fetchPlaces(matchString);
-
+        else {
+            setRandom(false);
+        }
         return () => {
             controller.abort();
         }
