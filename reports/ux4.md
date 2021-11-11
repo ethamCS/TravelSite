@@ -32,6 +32,7 @@ Age, nationality, and other background information can sometimes be helpful unde
 | Jake - Farhan's Friend | Musician, 29 years old |
 | Kush - Farhan's Friend | Software Engineer, 31 years old |
 | Dylan's Dad | Saleseman, 56 years old |
+| Evan's Wife - Amy | Biologist, 28 years old |
 
 
 
@@ -53,3 +54,4 @@ Add issues to GitHub for any changes necessary to the system.
 | N/A | Pressing the button after looking up for location will insert the location multiple time which resulted in duplicate location, not sure if that's intended - Kush | low | N/A |
 | N/A | It was hard to tell what exactly some of the buttons do, a solution would be to add small text under buttons, or add tooltips | low | N/A |
 | N/A | After clicking on something in the trip to highlight it, having to scroll back up to see it on the map was not ideal, make the page go back to the top | low | N/A |
+
