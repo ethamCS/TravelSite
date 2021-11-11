@@ -104,6 +104,18 @@ public class Optimize{
         }
         return tourDistance;
     }
+    public Places updatePlaceOrder(){
+   
+        return tour.places;
+    }
+
+    public void updateShortestTourOrder(){
+      
+    }
+
+    public void updateShortestTour(int currentTourDistance){
+      
+    }
 
     public Places startTourFromCity(){
         for(int i = 0; i < tour.places.size(); i++){
