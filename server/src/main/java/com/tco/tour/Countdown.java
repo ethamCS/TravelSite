@@ -1,5 +1,5 @@
 package com.tco.tour;
-import com.tco.requests.Places;
+import com.tco.misc.Places;
 import java.util.Arrays;
 import java.util.ArrayList;
 

@@ -9,6 +9,9 @@ import com.tco.tour.Tour;
 import com.tco.tour.Optimize; 
 import com.tco.tour.Countdown; 
 
+import com.tco.misc.Places;
+import com.tco.misc.DummyPlaces;
+
 public class TourRequest extends Request {
     private Places places; 
     private Double response;
