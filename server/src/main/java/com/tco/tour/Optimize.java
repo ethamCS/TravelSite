@@ -65,9 +65,18 @@ public class Optimize{
         return tour.places.get(shortestDistance);
     }
 
+    public int calcNearestNeighborIndex(Place StartingCity){
+        return 0;
+    }
+
+    public int addFinalLegDistance(){
+        return distance[tour.currentTour[0]][tour.currentTour[tour.places.size()-1]];
+    }
+
+
     public int calcNearestNeighborDistance(Place StartingCity){
         resetVisited();
-        int tourDistance = 0; 
+        int tourDistance = 0;
         return tourDistance;
     }
 
