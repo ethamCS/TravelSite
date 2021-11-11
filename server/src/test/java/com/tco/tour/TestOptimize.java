@@ -19,6 +19,12 @@ public class TestOptimize{
 
     @Test
     public void testDistancesMatrix(){  
+        for(int i = 0; i < optimize.distance.length; i++){
+            for (int j = 0; j < optimize.distance.length; j++){
+                System.out.print(optimize.distance[i][j] + " ");
+            }
+        }
+        System.out.println("");
         optimize.distancesMatrix();
         for(int i = 0; i < optimize.distance.length; i++){
             for (int j = 0; j < optimize.distance.length; j++){
