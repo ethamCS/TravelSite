@@ -9,6 +9,76 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TestOptimize{
-    private Tour tour;
+
+
+
+    @BeforeEach
+    public void createConfigurationForTestCases() {
+
+    }
+
+    @Test
+    public void testDistancesMatrix(){  
+    }
+
+
+    @Test
+    public void testResetVisited(){
+
+    }
+
+    @Test
+    public void testFindIndexOfPlace(){
+    }
+
+    @Test
+    public void testUpdateVisitedByIndex(){
+    }
+
+    @Test
+    public void testUpdateVisitedByPlace(){
+
+    }
+
+    @Test
+    public void testIsvalidIndex(){
+    }
+
+
+    @Test
+    public void testCalcNearestNeighborIndex(){
+      
+    }
+
+    @Test
+    public void testAddFinalLegDistance(){
+        
+    }
+
+
+    @Test
+    public void testCalcNearestNeighborDistance(){
+     
+    }
+
+    @Test
+    public void testUpdatePlaceOrder(){
+     
+    }
+
+    @Test
+    public void testUpdateShortestTourOrder(){
+      
+    }
+
+    @Test
+    public void testUpdateShortestTour(){
+      
+    }
+
+    @Test
+    public void testStartTourFromCity(){
+       
+    }    
     
 }
