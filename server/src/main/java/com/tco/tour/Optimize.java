@@ -77,6 +77,21 @@ public class Optimize{
     public int calcNearestNeighborDistance(Place StartingCity){
         resetVisited();
         int tourDistance = 0;
+        for(int i = 0; i < tour.places.size(); i++){
+            updateVisitedByPlace(StartingCity);
+          
+            tour.currentTour[i] = findIndexOfPlace(StartingCity);
+            int shortestDistance=calcNearestNeighborIndex(StartingCity);
+  
+           switch(shortestDistance){
+               case -1: tourDistance += addFinalLegDistance();
+                        break;
+               default: tourDistance += distance[findIndexOfPlace(StartingCity)][shortestDistance];
+                        updateVisitedByIndex(shortestDistance); 
+                        StartingCity = updateStartingCity(shortestDistance);
+                        break;
+           }
+        }
         return tourDistance;
     }
 
