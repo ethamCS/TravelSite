@@ -18,16 +18,9 @@ public class TourRequest extends Request {
     
      public void buildResponse() throws BadRequestException {
         Tour tour = new Tour(this.earthRadius, this.places, this.response);
-        //Countdown count = new Countdown(this.response);
-        //if(this.response > 0.0){
-            Optimize knn = new Optimize(tour);
-            knn.distancesMatrix();
-            //see if times up
-           // while(count.runner()){
-                this.places = knn.startTourFromCity(); 
-            //}
-        //}    
-        
+        Countdown count = new Countdown(this.response);
+        Optimize knn = new Optimize(tour);
+        knn.distancesMatrix();
         log.trace("buildResponse -> {}", this);
     }
 
