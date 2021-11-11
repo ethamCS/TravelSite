@@ -25,6 +25,16 @@ public class TestOptimize{
         assertTrue(Arrays.deepEquals(result, expected));
     }
 
+    @Test
+    public void testStartTourFromCity(){
+       optimize.startTourFromCity();
+    }    
+
+
+    @Test
+    public void testCalcNearestNeighborDistance(){
+     
+    }
 
     @Test
     @DisplayName("Visited places is now \"false\"")
@@ -37,6 +47,7 @@ public class TestOptimize{
 
     @Test
     public void testFindIndexOfPlace(){
+        
     }
 
     @Test
@@ -64,10 +75,6 @@ public class TestOptimize{
     }
 
 
-    @Test
-    public void testCalcNearestNeighborDistance(){
-     
-    }
 
     @Test
     public void testUpdatePlaceOrder(){
@@ -84,9 +91,6 @@ public class TestOptimize{
       
     }
 
-    @Test
-    public void testStartTourFromCity(){
-       
-    }    
+  
     
 }

@@ -137,4 +137,8 @@ public class Optimize{
 
     /* This is for testing purposes only and will not run during normal instances */
     
+    public Places getPlaces(){
+        return tour.places;
+    }
+    
 }

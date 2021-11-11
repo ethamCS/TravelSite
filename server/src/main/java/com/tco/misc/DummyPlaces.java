@@ -39,19 +39,19 @@ public class DummyPlaces{
     public void createTourPlaces(){
         // Fort Collins
         Place place1 = new Place();
-        place1.put("name", "Start");
+        place1.put("name", "FOCO");
         place1.put("latitude", "40.5853");
         place1.put("longitude", "-105.0844");
 
         // Boulder
         Place place2 = new Place();
-        place2.put("name", "Middle");
+        place2.put("name", "BOUL");
         place2.put("latitude", "40.0150");
         place2.put("longitude", "-105.2705");
 
         // Denver
         Place place3 = new Place();
-        place3.put("name", "Dest");
+        place3.put("name", "KDEN");
         place3.put("latitude", "39.7392");
         place3.put("longitude", "-104.9903");
 
