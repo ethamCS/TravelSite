@@ -35,9 +35,7 @@ public class DummyPlaces{
         this.places.add(place3);
     }
 
-    // change places to tour specific place
     public void createTourPlaces(){
-
         // Fort Collins
         Place place1 = new Place();
         place1.put("name", "Start");
