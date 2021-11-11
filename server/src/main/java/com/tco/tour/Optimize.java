@@ -1,8 +1,10 @@
 package com.tco.tour;
 import com.tco.distances.Calculate; 
-import com.tco.requests.Places;
-import com.tco.requests.Place;
+
+import com.tco.misc.Places;
+import com.tco.misc.Place;
 import java.util.Arrays;
+
 
 public class Optimize{
 
@@ -131,4 +133,12 @@ public class Optimize{
         }
         return tour.places;
     }    
+
+
+    /* This is for testing purposes only and will not run during normal instances */
+    
+    public Places getPlaces(){
+        return tour.places;
+    }
+    
 }

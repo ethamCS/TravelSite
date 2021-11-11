@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.tco.distances.Distances; 
-import com.tco.distances.Calculate; 
+import com.tco.distances.Calculate;
+import com.tco.misc.Places;
+import com.tco.misc.DummyPlaces;
 
 public class DistancesRequest extends Request{
     private Places places; 
@@ -27,7 +29,7 @@ public class DistancesRequest extends Request{
     during normal execution, including the constructor. */
     public DistancesRequest() {
         this.requestType = "distances";
-        DummyPlaces place = new DummyPlaces();
+        DummyPlaces place = new DummyPlaces("distances");
         places = place.getDummyPlaces();
         this.earthRadius = 3959.0;
     }

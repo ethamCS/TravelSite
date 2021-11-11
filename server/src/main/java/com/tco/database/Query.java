@@ -7,8 +7,8 @@ import com.tco.database.DatabaseConnection;
 import java.sql.*;
 import java.util.Map;
 
-import com.tco.requests.Places;
-import com.tco.requests.Place;
+import com.tco.misc.Places;
+import com.tco.misc.Place;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

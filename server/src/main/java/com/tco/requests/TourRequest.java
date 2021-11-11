@@ -9,6 +9,9 @@ import com.tco.tour.Tour;
 import com.tco.tour.Optimize; 
 import com.tco.tour.Countdown; 
 
+import com.tco.misc.Places;
+import com.tco.misc.DummyPlaces;
+
 public class TourRequest extends Request {
     private Places places; 
     private Double response;
@@ -16,7 +19,8 @@ public class TourRequest extends Request {
     
     private final transient Logger log = LoggerFactory.getLogger(TourRequest.class); 
     
-     public void buildResponse() throws BadRequestException {
+    @Override
+    public void buildResponse() throws BadRequestException {
         Tour tour = new Tour(this.earthRadius, this.places, this.response);
         Countdown count = new Countdown(this.response);
         Optimize knn = new Optimize(tour);
@@ -32,7 +36,7 @@ public class TourRequest extends Request {
         this.earthRadius = 3959.0;
         this.response = 0.0;
         Countdown count = new Countdown(this.response);
-        DummyPlaces place = new DummyPlaces();
+        DummyPlaces place = new DummyPlaces(this.requestType);
         places = place.getDummyPlaces();
     }
 
