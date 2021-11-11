@@ -20,11 +20,11 @@ public class Tour {
         this.currentTour = new int[this.places.size()];       
     }
 
-    // /* For testing purposes only to ensure correct calculation, 
-    // response time doesnt matter here */
-    // Public Tour(){
-    //     DummyPlaces place = new DummyPlaces("tour");
-    //     this.places = place.getDummyPlaces();
-    //     Tour(3959.0, this.places, 1.0);
-    // }
+    /* For testing purposes only to ensure correct calculation, 
+    response time doesnt matter here */
+    Public Tour(){
+        DummyPlaces place = new DummyPlaces("tour");
+        this.places = place.getDummyPlaces();
+        Tour(3959.0, this.places, 1.0);
+    }
 }
