@@ -55,9 +55,10 @@ public class DummyPlaces{
         place3.put("latitude", "39.7392");
         place3.put("longitude", "-104.9903");
 
-        this.places.add(place1);
-        this.places.add(place2);
         this.places.add(place3);
+        this.places.add(place2);
+        this.places.add(place1);
+        
     }
 
 
