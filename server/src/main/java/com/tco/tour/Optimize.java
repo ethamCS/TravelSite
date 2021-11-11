@@ -61,9 +61,38 @@ public class Optimize{
     public boolean isvalidIndex(int indexOfCurrent, int currentDist, int shortest){
        return (!tour.visited[indexOfCurrent] && currentDist < shortest);
     }
+    public Place updateStartingCity(int shortestDistance){
+        return tour.places.get(shortestDistance);
+    }
+
+    public int calcNearestNeighborIndex(Place StartingCity){
+        return 0;
+    }
+
+    public int addFinalLegDistance(){
+        return distance[tour.currentTour[0]][tour.currentTour[tour.places.size()-1]];
+    }
+
 
     public int calcNearestNeighborDistance(Place StartingCity){
-        return 1;
+        resetVisited();
+        int tourDistance = 0;
+        for(int i = 0; i < tour.places.size(); i++){
+            updateVisitedByPlace(StartingCity);
+          
+            tour.currentTour[i] = findIndexOfPlace(StartingCity);
+            int shortestDistance=calcNearestNeighborIndex(StartingCity);
+  
+           switch(shortestDistance){
+               case -1: tourDistance += addFinalLegDistance();
+                        break;
+               default: tourDistance += distance[findIndexOfPlace(StartingCity)][shortestDistance];
+                        updateVisitedByIndex(shortestDistance); 
+                        StartingCity = updateStartingCity(shortestDistance);
+                        break;
+           }
+        }
+        return tourDistance;
     }
 
     public Places startTourFromCity(){
