@@ -37,7 +37,12 @@ public class Optimize{
         return distance;             
     }
 
+   
+
     public boolean[] resetVisited(){
+        for(int i = 0; i < tour.visited.length; i++){
+            tour.visited[i] = false;
+        }
         return tour.visited;
     }
 
@@ -47,11 +52,12 @@ public class Optimize{
     }
 
     public boolean[] updateVisitedByIndex(int index){
+        tour.visited[index] = true;
         return tour.visited;
     }
 
     public boolean[] updateVisitedByPlace(Place currentPlace){
- 
+        tour.visited[tour.places.indexOf(currentPlace)] = true;
         return tour.visited;
     }
 
