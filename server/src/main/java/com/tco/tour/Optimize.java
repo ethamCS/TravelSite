@@ -37,8 +37,6 @@ public class Optimize{
         return distance;             
     }
 
-   
-
     public boolean[] resetVisited(){
         for(int i = 0; i < tour.visited.length; i++){
             tour.visited[i] = false;
@@ -48,7 +46,6 @@ public class Optimize{
 
     public int findIndexOfPlace(Place targetCity){
         return tour.places.indexOf(targetCity);
-
     }
 
     public boolean[] updateVisitedByIndex(int index){
@@ -64,6 +61,7 @@ public class Optimize{
     public boolean isvalidIndex(int indexOfCurrent, int currentDist, int shortest){
        return (!tour.visited[indexOfCurrent] && currentDist < shortest);
     }
+
     public int calcNearestNeighborDistance(Place StartingCity){
         return 1;
     }
@@ -73,6 +71,5 @@ public class Optimize{
             int currentTourDistance = calcNearestNeighborDistance(tour.places.get(i));
         }
         return tour.places;
-    }
-     
+    }    
 }
