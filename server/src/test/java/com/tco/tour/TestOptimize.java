@@ -9,11 +9,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TestOptimize{
-
+    
+    private Optimize optimize;
 
 
     @BeforeEach
     public void createConfigurationForTestCases() {
+        Tour tour = new Tour();
 
     }
 
