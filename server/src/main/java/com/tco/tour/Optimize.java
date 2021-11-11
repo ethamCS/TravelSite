@@ -61,9 +61,12 @@ public class Optimize{
     public boolean isvalidIndex(int indexOfCurrent, int currentDist, int shortest){
        return (!tour.visited[indexOfCurrent] && currentDist < shortest);
     }
+    
 
     public int calcNearestNeighborDistance(Place StartingCity){
-        return 1;
+        resetVisited();
+        int tourDistance = 0; 
+        return tourDistance;
     }
 
     public Places startTourFromCity(){
