@@ -55,3 +55,5 @@ Add issues to GitHub for any changes necessary to the system.
 | N/A | It was hard to tell what exactly some of the buttons do, a solution would be to add small text under buttons, or add tooltips | low | N/A |
 | N/A | After clicking on something in the trip to highlight it, having to scroll back up to see it on the map was not ideal, make the page go back to the top | low | N/A |
 | N/A | Amy didn't have trouble doing any of the tasks, but she though that having tooltips on every icon would make the site much more intuitive.  She also thought that the home icon for adding your current location isn't the best choice, and suggested changing it to the gps pin icon. | low | N/A |
+| N/A | Amy also said that the find coordinate feature should be in the same location as the find location search bar | low | N/A |
+
