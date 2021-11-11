@@ -32,6 +32,7 @@ Age, nationality, and other background information can sometimes be helpful unde
 | Jake - Farhan's Friend | Musician, 29 years old |
 | Kush - Farhan's Friend | Software Engineer, 31 years old |
 | Dylan's Dad | Saleseman, 56 years old |
+| Evan's Wife - Amy | Biologist, 28 years old |
 
 
 
@@ -53,3 +54,7 @@ Add issues to GitHub for any changes necessary to the system.
 | N/A | Pressing the button after looking up for location will insert the location multiple time which resulted in duplicate location, not sure if that's intended - Kush | low | N/A |
 | N/A | It was hard to tell what exactly some of the buttons do, a solution would be to add small text under buttons, or add tooltips | low | N/A |
 | N/A | After clicking on something in the trip to highlight it, having to scroll back up to see it on the map was not ideal, make the page go back to the top | low | N/A |
+| N/A | Amy didn't have trouble doing any of the tasks, but she though that having tooltips on every icon would make the site much more intuitive.  She also thought that the home icon for adding your current location isn't the best choice, and suggested changing it to the gps pin icon. | low | N/A |
+| N/A | Amy also said that the find coordinate feature should be in the same location as the find location search bar | low | N/A |
+| N/A | Amy thinks that it's a little strange how some of the icons are in the hamburger menu, and some are on the main page.  | low | N/A |
+| N/A | Amy also thinks that the random button seems like an enter button due to its placement.  She said it would be more clear if it was in a different location on the same page | low | N/A |

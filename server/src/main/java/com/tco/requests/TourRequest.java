@@ -6,19 +6,22 @@ import com.tco.distances.Distances;
 import com.tco.distances.Calculate; 
 import com.tco.misc.BadRequestException;
 import com.tco.tour.Tour; 
+import com.tco.tour.Optimize; 
 import com.tco.tour.Countdown; 
 
 public class TourRequest extends Request {
     private Places places; 
-    private Double responseTime;
+    private Double response;
     private Double earthRadius;
     
     private final transient Logger log = LoggerFactory.getLogger(TourRequest.class); 
     
     @Override
     public void buildResponse() throws BadRequestException {
-        Tour tour = new Tour(this.earthRadius, this.places, this.responseTime);
-        Countdown count = new Countdown(this.responseTime);
+        Tour tour = new Tour(this.earthRadius, this.places, this.response);
+        Countdown count = new Countdown(this.response);
+        Optimize knn = new Optimize(tour);
+        knn.distancesMatrix();
         log.trace("buildResponse -> {}", this);
     }
 
@@ -28,8 +31,8 @@ public class TourRequest extends Request {
     public TourRequest() {
         this.requestType = "tour";
         this.earthRadius = 3959.0;
-        this.responseTime = 0.0;
-        Countdown count = new Countdown(this.responseTime);
+        this.response = 0.0;
+        Countdown count = new Countdown(this.response);
         DummyPlaces place = new DummyPlaces();
         places = place.getDummyPlaces();
     }
@@ -38,8 +41,8 @@ public class TourRequest extends Request {
         return this.earthRadius;
     }
 
-    public Double getResponseTime() {
-        return this.responseTime;
+    public Double getresponse() {
+        return this.response;
     }
     
 }

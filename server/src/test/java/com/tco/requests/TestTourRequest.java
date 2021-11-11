@@ -33,9 +33,9 @@ public class TestTourRequest {
 
     @Test
     @DisplayName("Response Time is \"0.0\"")
-    public void testResponseTime() {
-        Double responseTime = tour.getResponseTime();
-        assertEquals(0.0, responseTime);
+    public void testresponse() {
+        Double response = tour.getresponse();
+        assertEquals(0.0, response);
     }
 
     
