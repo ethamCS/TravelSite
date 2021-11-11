@@ -105,16 +105,24 @@ public class Optimize{
         return tourDistance;
     }
     public Places updatePlaceOrder(){
-   
+        Places updatedPlace = new Places();
+        for(int i = 0; i < tour.places.size(); i++){
+            updatedPlace.add(tour.places.get(shortestTour[i]));
+        }
+        tour.places=updatedPlace;
         return tour.places;
     }
 
     public void updateShortestTourOrder(){
-      
+        shortestTour = Arrays.copyOf(tour.currentTour, tour.currentTour.length);
+        updatePlaceOrder();
     }
 
     public void updateShortestTour(int currentTourDistance){
-      
+        if(currentTourDistance < shortestTourDistance){
+            shortestTourDistance = currentTourDistance;
+            updateShortestTourOrder();
+        }
     }
 
     public Places startTourFromCity(){
