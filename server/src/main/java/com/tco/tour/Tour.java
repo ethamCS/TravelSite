@@ -1,8 +1,9 @@
 package com.tco.tour;
 
-import com.tco.misc.Places;
+
 import java.util.Arrays;
 import java.util.ArrayList;
+import com.tco.misc.Places;
 import com.tco.misc.DummyPlaces; 
 
 public class Tour {
@@ -22,9 +23,7 @@ public class Tour {
 
     /* For testing purposes only to ensure correct calculation, 
     response time doesnt matter here */
-    Public Tour(){
-        DummyPlaces place = new DummyPlaces("tour");
-        this.places = place.getDummyPlaces();
-        Tour(3959.0, this.places, 1.0);
+    public Tour(){
+        this(3959.0, new DummyPlaces("tour").getDummyPlaces(), 1.0);
     }
 }
