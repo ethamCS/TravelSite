@@ -64,5 +64,9 @@ public class Optimize{
     public boolean isvalidIndex(int indexOfCurrent, int currentDist, int shortest){
        return (!tour.visited[indexOfCurrent] && currentDist < shortest);
     }
+
+    public Places startTourFromCity(){
+        return tour.places;
+    }
      
 }
