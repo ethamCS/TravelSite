@@ -19,12 +19,12 @@ async function getTour(placesList, controllerSignal, serverSettings, context) {
     const places = massagePlaces(placesList);
     const responseBody = await sendTourRequest(places, controllerSignal, serverSettings);
 
-    if (responseBody) {
-        setTourList(responseBody.places);
-    }
-    else {
-        setTourList(placesList);
-    }
+    // if (responseBody) {
+    //     setTourList(responseBody.places);
+    // }
+    // else {
+    //     setTourList(placesList);
+    // }
 }
 
 async function sendTourRequest(placesList, controllerSignal, serverSettings) {
