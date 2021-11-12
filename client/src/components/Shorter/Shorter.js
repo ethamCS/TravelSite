@@ -13,7 +13,6 @@ export default function Shorter(props) {
     const origClick = () => {
         setOrigTrip(true);
         setOptimizedTrip(false);
-        console.log(tempList);
         props.placeActions.setTour(tempList);
     };
 
@@ -22,7 +21,6 @@ export default function Shorter(props) {
         setOptimizedTrip(true);
         setOrigTrip(false);
         setTempList(props.places);
-        console.log(props.places);
         const list = await tourActions.getTour(props.places, props.serverSettings, controller.signal);
         props.placeActions.setTour(list);
     }
