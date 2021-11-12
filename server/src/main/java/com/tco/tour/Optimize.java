@@ -18,6 +18,7 @@ public class Optimize{
     public Optimize(Tour tour){
         this.tour = tour; 
         this.shortestTourDistance = Integer.MAX_VALUE;
+        this.shortestTour = new int[tour.places.size()];
     }
 
     public int[][] distancesMatrix(){
@@ -117,28 +118,26 @@ public class Optimize{
 
     public void updateShortestTourOrder(){
         shortestTour = Arrays.copyOf(tour.currentTour, tour.currentTour.length);
-        updatePlaceOrder();
     }
 
     public void updateShortestTour(int currentTourDistance){
+     
         if(currentTourDistance < shortestTourDistance){
             shortestTourDistance = currentTourDistance;
+           
             updateShortestTourOrder();
+           
         }
     }
 
     public Places startTourFromCity(){
         for(int i = 0; i < tour.places.size(); i++){
             int currentTourDistance = calcNearestNeighborDistance(tour.places.get(i));
+            System.out.println(Arrays.toString(shortestTour));
+            updateShortestTour(currentTourDistance);
+      
         }
+        updatePlaceOrder();
         return tour.places;
     }    
-
-
-    /* This is for testing purposes only and will not run during normal instances */
-    
-    public Places getPlaces(){
-        return tour.places;
-    }
-    
 }

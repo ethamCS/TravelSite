@@ -14,11 +14,11 @@ public class Countdown {
      public Countdown(double seconds){
          this.stop = 0; 
          this.seconds = seconds;
-         this.countdownStarter = ((seconds * 1000 ) /2.0);
+         this.countdownStarter = ((seconds * 1000 ) /3.0);
          this.startTime = System.currentTimeMillis();
          this.endTime = startTime + countdownStarter;
      }
-     public boolean runner(){
+     public boolean timer(){
         return System.currentTimeMillis() < endTime;
      }
 }

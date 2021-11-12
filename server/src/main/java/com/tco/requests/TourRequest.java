@@ -19,12 +19,18 @@ public class TourRequest extends Request {
     
     private final transient Logger log = LoggerFactory.getLogger(TourRequest.class); 
     
-    @Override
-    public void buildResponse() throws BadRequestException {
+     public void buildResponse() throws BadRequestException {
         Tour tour = new Tour(this.earthRadius, this.places, this.response);
         Countdown count = new Countdown(this.response);
-        Optimize knn = new Optimize(tour);
-        knn.distancesMatrix();
+        if(response > 0.0){
+            Optimize knn = new Optimize(tour);
+            knn.distancesMatrix();
+            //see if times up
+            while(count.timer()){
+                this.places = knn.startTourFromCity(); 
+                break;
+            }
+        }  
         log.trace("buildResponse -> {}", this);
     }
 
@@ -36,7 +42,7 @@ public class TourRequest extends Request {
         this.earthRadius = 3959.0;
         this.response = 0.0;
         Countdown count = new Countdown(this.response);
-        DummyPlaces place = new DummyPlaces(this.requestType);
+        DummyPlaces place = new DummyPlaces("tour");
         places = place.getDummyPlaces();
     }
 
