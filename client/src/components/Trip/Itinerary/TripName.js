@@ -5,6 +5,7 @@ import { FaStopwatch } from 'react-icons/fa';
 import LoadTripButton from './LoadTripButton';
 import SaveTripButton from './SaveTripButton';
 import SaveTripModal from '../../SaveTripModal/SaveTripModal';
+import TripInput from './TripInput';
 
 export function EditTripName(props) {
     const [collapse, setCollapse] = useState(false);
@@ -29,26 +30,5 @@ export function EditTripName(props) {
                 <TripInput tripName={tripName} setName={setName} toggle={toggle} />
             </Collapse>
         </th>
-    );
-}
-
-function TripInput(props) {
-    return (
-        <InputGroup>
-            <Input
-                placeholder={props.tripName}
-                onChange={e => props.setName(e.target.value)}
-                valid={props.tripName != null && props.tripName != ""}
-                invalid={props.tripName == null || props.tripName == ""}
-                data-testid="trip-input"
-            />
-            <Collapse isOpen={props.tripName != null && props.tripName != ""}>
-                <InputGroupAddon addonType="append">
-                    <InputGroupText style={{ cursor: 'pointer' }} onClick={props.toggle} valid={props.tripName != null && props.tripName != ""} invalid={props.tripName == null || props.tripName == ""}>
-                        Done
-                    </InputGroupText>
-                </InputGroupAddon>
-            </Collapse>
-        </InputGroup>
     );
 }
