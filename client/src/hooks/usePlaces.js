@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { placeToLatLng, validateLatLng } from '../utils/transformers';
 import { reverseGeocode } from '../utils/reverseGeocode';
 import { LOG } from '../utils/constants';

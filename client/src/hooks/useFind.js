@@ -1,5 +1,5 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { getOriginalServerUrl, sendAPIRequest } from '../utils/restfulAPI';
+import { useState } from 'react';
+import { sendAPIRequest } from '../utils/restfulAPI';
 
 
 
