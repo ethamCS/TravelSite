@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Input, Container, Button, Col, Row, InputGroup, InputGroupAddon, InputGroupText, Modal, Collapse } from "reactstrap";
 
 export default function SaveTripModal(props) {

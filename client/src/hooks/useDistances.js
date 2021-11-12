@@ -1,6 +1,5 @@
-import { control } from 'leaflet';
-import React, { useEffect, useState } from 'react';
-import { getOriginalServerUrl, sendAPIRequest } from '../utils/restfulAPI';
+import { useState } from 'react';
+import { sendAPIRequest } from '../utils/restfulAPI';
 import { massagePlaces } from '../utils/transformers';
 
 export function useDistances() {
