@@ -37,4 +37,9 @@ describe('TripName', () => {
             expect(optimizett.textContent).toEqual("Optimize Trip!");            
         })
     });
+
+    it('upload file', () =>{
+        const savebutton = screen.getByTestId('save-button');
+        user.click(savebutton);
+    });
 });

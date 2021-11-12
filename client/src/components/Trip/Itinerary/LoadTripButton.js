@@ -21,8 +21,8 @@ export default function LoadTripButton(props) {
 
     return (
         <React.Fragment>
-            <FaFileUpload onClick={onIconClick} style={{ cursor: 'pointer', marginLeft: '10px' }} />
-            <Input style={{ display: 'none' }} id="file-input" type="file" accept={FILE_FORMATS} onChange={handleFileUpload} />
+            <FaFileUpload onClick={onIconClick} data-testid="save-button" style={{ cursor: 'pointer', marginLeft: '10px' }} />
+            <Input style={{ display: 'none' }} id="file-input" type="file" accept={FILE_FORMATS} data-testid="file-input" onChange={handleFileUpload} />
         </React.Fragment>
     );
 }
