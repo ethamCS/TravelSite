@@ -1,6 +1,7 @@
 import { control } from 'leaflet';
 import React, { useEffect, useState } from 'react';
 import { getOriginalServerUrl, sendAPIRequest } from '../utils/restfulAPI';
+import { massagePlaces } from '../utils/transformers';
 
 export function useDistances() {
     const [distancesList, setDistancesList] = useState([]);
@@ -28,15 +29,6 @@ async function getDistances(placesList, controllerSignal, serverSettings, contex
         setDistancesList([]);
     }
     getTotalDistance(context);
-}
-
-function massagePlaces(placesList) {
-    let tempPlaces = [];
-    placesList.map((place) => {
-        const tempPlace = {"latitude": place['lat'].toString(), "longitude": place['lng'].toString(), "name": place['name']}
-        tempPlaces.push(tempPlace)
-    });
-    return tempPlaces;
 }
 
 function getTotalDistance(context) {
