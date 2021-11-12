@@ -7,29 +7,29 @@ export function useTour() {
     const context = { tourList, setTourList };
 
     const tourActions = {
-        getTour: async (placesList, controllerSignal, serverSettings) => getTour(placesList, controllerSignal, serverSettings, context),
+        getTour: async (placesList,  serverSettings, controllerSignal) => getTour(placesList,  serverSettings, controllerSignal, context),
     };
 
     return { tourList, tourActions };
 
 }
 
-async function getTour(placesList, controllerSignal, serverSettings, context) {
+async function getTour(placesList,  serverSettings, controllerSignal, context) {
     const { tourList, setTourList } = context;
     const places = massagePlaces(placesList);
-    const responseBody = await sendTourRequest(places, controllerSignal, serverSettings);
+    const responseBody = await sendTourRequest(places, serverSettings, controllerSignal);
 
-    // if (responseBody) {
-    //     setTourList(responseBody.places);
-    // }
-    // else {
-    //     setTourList(placesList);
-    // }
+    if (responseBody) {
+        setTourList(responseBody.places);
+    }
+    else {
+        setTourList(placesList);
+    }
 }
 
-async function sendTourRequest(placesList, controllerSignal, serverSettings) {
+async function sendTourRequest(placesList, serverSettings, controllerSignal) {
     const url = serverSettings.serverUrl;
-    const requestBody = {requestType: "tour", places: placesList, earthRadius: 3959, reponse: 1};
+    const requestBody = {requestType: "tour", places: placesList, earthRadius: 3959, response: 1};
 
     const tourResponse = await sendAPIRequest(requestBody, url, controllerSignal);
 
