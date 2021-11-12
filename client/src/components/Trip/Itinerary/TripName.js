@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useToggle } from '../../../hooks/useToggle';
 import { Collapse, Input, InputGroup, InputGroupAddon, InputGroupText, Button, Tooltip } from 'reactstrap';
-import { FaFileUpload, FaSave, FaStopwatch } from 'react-icons/fa';
-import { FILE_FORMATS } from '../../../utils/constants';
+import { FaStopwatch } from 'react-icons/fa';
+import LoadTripButton from './LoadTripButton';
+import SaveTripButton from './SaveTripButton';
 import SaveTripModal from '../../SaveTripModal/SaveTripModal';
 
 export function EditTripName(props) {
@@ -49,38 +50,5 @@ function TripInput(props) {
                 </InputGroupAddon>
             </Collapse>
         </InputGroup>
-    );
-}
-
-export function LoadTripButton(props) {
-
-    function handleFileUpload(event) {
-        const fileName = event.target.files[0].name;
-        const fileObject = event.target.files[0];
-        props.placeActions.readFile(fileName, fileObject, props)
-    }
-
-    const onIconClick = () => {
-        const input = document.getElementById('file-input');
-
-        if (input) {
-            input.click();
-        }
-    };
-
-    return (
-        <React.Fragment>
-            <FaFileUpload onClick={onIconClick} style={{ cursor: 'pointer', marginLeft: '10px' }} />
-            <Input style={{ display: 'none' }} id="file-input" type="file" accept={FILE_FORMATS} onChange={handleFileUpload} />
-        </React.Fragment>
-    );
-}
-
-export function SaveTripButton(props) {
-    function handleJSONSave() {
-        props.placeActions.saveFile(props);
-    }
-    return (
-        <FaSave style={{ cursor: 'pointer', marginLeft: '10px' }} onClick={props.toggleSaveFile} />
     );
 }

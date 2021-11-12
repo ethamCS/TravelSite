@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Input, Container, Button, Col, Row, InputGroup, InputGroupAddon, InputGroupText, Modal } from "reactstrap";
+import { Input, Container, Button, Col, Row, InputGroup, InputGroupAddon, InputGroupText, Modal, Collapse } from "reactstrap";
 
 export default function SaveTripModal(props) {
     return (
@@ -55,17 +55,18 @@ function SaveTripFooter(props) {
 
     return (
         <Container style={{ paddingTop: '10px', paddingBottom: '10px' }}>
-            <Row xs="4">
-                <Col />
-                <Col>
-                    <Button color={"primary"} onClick={saveJSON} onMouseUp={props.closeSaveTrip}>.JSON</Button>
-                </Col>
-                <Col>
-                    <Button color={"primary"} onClick={saveCSV} onMouseUp={props.closeSaveTrip}>.CSV</Button>
-                </Col>
-                <Col />
-
-            </Row>
+            <Collapse isOpen={props.fileName != null && props.fileName != ""}>
+                <Row xs="4">
+                    <Col />
+                    <Col>
+                        <Button color={"primary"} onClick={saveJSON} onMouseUp={props.closeSaveTrip}>.JSON</Button>
+                    </Col>
+                    <Col>
+                        <Button color={"primary"} onClick={saveCSV} onMouseUp={props.closeSaveTrip}>.CSV</Button>
+                    </Col>
+                    <Col />
+                </Row>
+            </Collapse>
         </Container>
     );
 }
