@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import user from '@testing-library/user-event';
-import { beforeEach, describe, expect, it, test } from '@jest/globals';
+import { describe, expect, test } from '@jest/globals';
 import Find from '../../../src/components/Find/Find';
 
 describe('Find', () => {
