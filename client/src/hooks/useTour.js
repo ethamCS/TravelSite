@@ -1,18 +1,30 @@
 import React, { useState } from 'react';
 import { sendAPIRequest } from '../utils/restfulAPI';
+import { massagePlaces } from '../utils/transformers';
 
 export function useTour() {
+    const [tourList, setTourList] = useState([]);
+    const context = { tourList, setTourList };
 
     const tourActions = {
-        getDistances: async (placesList, controllerSignal, serverSettings) => getDistances(placesList, controllerSignal, serverSettings, context),
+        getTour: async (placesList, controllerSignal, serverSettings) => getTour(placesList, controllerSignal, serverSettings, context),
     };
 
-    return {distancesList, totalDistance, distanceActions};
+    return { tourList, tourActions };
 
 }
 
-async function getTour() {
+async function getTour(placesList, controllerSignal, serverSettings, context) {
+    const { tourList, setTourList } = context;
+    const places = massagePlaces(placesList);
+    const responseBody = await sendTourRequest(places, controllerSignal, serverSettings);
 
+    if (responseBody) {
+        setTourList(responseBody.places);
+    }
+    else {
+        setTourList(placesList);
+    }
 }
 
 async function sendTourRequest(placesList, controllerSignal, serverSettings) {
