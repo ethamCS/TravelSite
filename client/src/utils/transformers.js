@@ -22,3 +22,12 @@ function checkLong(place) {
         place.longitude = 360 - (place.longitude * -1);
     }
 }
+
+export function massagePlaces(placesList) {
+    let tempPlaces = [];
+    placesList.map((place) => {
+        const tempPlace = {"latitude": place['lat'].toString(), "longitude": place['lng'].toString(), "name": place['name']}
+        tempPlaces.push(tempPlace)
+    });
+    return tempPlaces;
+}
