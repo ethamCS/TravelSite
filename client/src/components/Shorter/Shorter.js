@@ -7,8 +7,10 @@ export default function Shorter(props) {
     const [tooltipOpen, setToolTipOpen] = useState(false);
     const [optimizedTrip, setOptimizedTrip] = useState(false);
     const [origTrip, setOrigTrip] = useState(true);
+    const {tourList, tourActions} = useTour();
 
     const origClick = () => {
+        const controller = new AbortController();
         setOrigTrip(true);
         setOptimizedTrip(false);
     };
@@ -16,6 +18,7 @@ export default function Shorter(props) {
     const optClick = () => {
         setOptimizedTrip(true);
         setOrigTrip(false);
+        tourActions.getTour(props.places, props.serverSettings, controller.signal);
     }
 
     return (
