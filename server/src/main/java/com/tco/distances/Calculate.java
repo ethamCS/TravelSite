@@ -1,5 +1,4 @@
 package com.tco.distances;
-import com.tco.misc.Places;
 import com.tco.misc.Place;
 import java.lang.Math.*;
 
