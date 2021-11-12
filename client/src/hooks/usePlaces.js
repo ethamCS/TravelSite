@@ -7,6 +7,7 @@ import * as tripSchema from '../../schemas/TripFile.json';
 import * as csvSchema from '../../schemas/csvSchema.json';
 import { isJsonResponseValid } from '../utils/restfulAPI';
 import { MIME_TYPE } from '../utils/constants';
+import { massagePlaces } from '../utils/transformers';
 
 
 export function usePlaces() {
@@ -23,7 +24,8 @@ export function usePlaces() {
         moveToHome: async () => moveToHome(context),
         readFile: (fileName, fileObject, props) => readFile(fileName, fileObject, props, context),
         saveFile: (props) => saveFile(props, context),
-        saveCSV: (props) => saveCSV(props, context)
+        saveCSV: (props) => saveCSV(props, context),
+        setTour: async (placesList) => setTour(placesList, context)
     };
 
     return { places, selectedIndex, placeActions };
@@ -213,4 +215,16 @@ function downloadFile(fileNameWithExtension, mimeType, fileText) {
         document.body.removeChild(link);
         window.URL.revokeObjectURL(url);
     }, 0);
+}
+
+async function setTour(placesList, context) {
+    const { setPlaces, setSelectedIndex } = context;
+    let formattedList = placesList;
+    if (placesList[0].lat != null) {
+        formattedList = massagePlaces(placesList);
+        
+    }
+    const tempList = await appendPlaces(formattedList);
+    setPlaces(tempList);
+    setSelectedIndex(tempList.length - 1);
 }
