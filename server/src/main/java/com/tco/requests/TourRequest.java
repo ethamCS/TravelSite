@@ -42,7 +42,7 @@ public class TourRequest extends Request {
         this.earthRadius = 3959.0;
         this.response = 0.0;
         Countdown count = new Countdown(this.response);
-        DummyPlaces place = new DummyPlaces();
+        DummyPlaces place = new DummyPlaces("tour");
         places = place.getDummyPlaces();
     }
 
