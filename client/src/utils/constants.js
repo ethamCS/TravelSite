@@ -1,5 +1,4 @@
 import ulog from 'ulog';
-import { reverseGeocode } from './reverseGeocode';
 
 export function setLogLevelIfDefault() {
     const urlString = window.location.search;
