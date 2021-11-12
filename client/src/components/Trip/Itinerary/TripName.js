@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useToggle } from '../../../hooks/useToggle';
-import { Collapse, Input, InputGroup, InputGroupAddon, InputGroupText, Button, Tooltip } from 'reactstrap';
+import { Collapse, Input, InputGroup, Button, Tooltip } from 'reactstrap';
 import { FaStopwatch } from 'react-icons/fa';
 import LoadTripButton from './LoadTripButton';
 import SaveTripButton from './SaveTripButton';
