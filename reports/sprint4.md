@@ -67,11 +67,10 @@ Lastly, the fourth epic that we are looking at completing is going to be the `Ra
 ## Review
 
 ### Epics completed  
-In this epic, we managed to complete git() epics, first one is the `Save Trips` epics, this is, as previously mentioned before, were carry over, last time we weren't able to save `.csv` files but now it is supported, user are now able to support `.csv` files, as for the other task regarding the default, our design of the website conflicted with it as our website just present them the file option and they can choose the file option as they so desired. `Random Places` epic is also done and now the user can decide to plan a random trip if they don't have any specific trips in mind. `User Experience` epics are also completed where we ask an actual user for the feedback on our site, and we get the appropriate feedback and utilise it in our design decision going forward.
-
-
+In this epic, we managed to complete git() epics, first one is the `Save Trips` epics, this is, as previously mentioned before, were carry over, last time we weren't able to save `.csv` files but now it is supported, user are now able to support `.csv` files, as for the other task regarding the default, our design of the website conflicted with it as our website just present them the file option and they can choose the file option as they so desired. `Random Places` epic is also done and now the user can decide to plan a random trip if they don't have any specific trips in mind. `User Experience` epics are also completed where we ask an actual user for the feedback on our site, and we get the appropriate feedback and utilise it in our design decision going forward. Finally, the `Shorter Trips` epics, we <> and with this epic being done, user can now optimise the trip and make their trip shorter.
 
 ### Epics not completed 
+-TBD-
 
 ## Retrospective
 
