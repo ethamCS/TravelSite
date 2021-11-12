@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Container, Button, ButtonGroup, Row, Col, Tooltip } from 'reactstrap';
 import { FaCheck } from 'react-icons/fa';
+import { useTour } from '../../hooks/useTour';
 
 export default function Shorter(props) {
     const [tooltipOpen, setToolTipOpen] = useState(false);
