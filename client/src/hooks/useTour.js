@@ -21,9 +21,11 @@ async function getTour(placesList,  serverSettings, controllerSignal, context) {
 
     if (responseBody) {
         setTourList(responseBody.places);
+        return responseBody.places;
     }
     else {
         setTourList(placesList);
+        return placesList;
     }
 }
 
