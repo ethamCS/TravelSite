@@ -201,6 +201,6 @@ The class diagram for the updated application depicted below shows the updated s
 ### Component Diagram
 The biggest change we are making is adding a ShortTrip.js component.  This will update the places list with the most optimal itinerary, and renders it to the user if the user wants to see it.
 
-![component diagram sprint4](images/314Components.png)
+![component diagram sprint4](images/314ComponentsEndSprint4.png)
 
 # Sprint 5
