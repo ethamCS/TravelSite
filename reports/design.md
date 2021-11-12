@@ -196,7 +196,7 @@ This optimize trip button will open a collapse that will have radio buttons that
 ### Class Diagram
 The class diagram for the updated application depicted below shows the updated structure of the web server application.
 
-![class diagram](images/spaUML.png)
+![class diagram](images/uml4final.png)
 
 ### Component Diagram
 The biggest change we are making is adding a ShortTrip.js component.  This will update the places list with the most optimal itinerary, and renders it to the user if the user wants to see it.
