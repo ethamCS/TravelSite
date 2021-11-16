@@ -123,8 +123,7 @@ public class Optimize{
     public void updateShortestTour(int currentTourDistance){
      
         if(currentTourDistance < shortestTourDistance){
-            shortestTourDistance = currentTourDistance;
-           
+            shortestTourDistance = currentTourDistance;    
             updateShortestTourOrder();
            
         }
@@ -133,7 +132,6 @@ public class Optimize{
     public Places startTourFromCity(){
         for(int i = 0; i < tour.places.size(); i++){
             int currentTourDistance = calcNearestNeighborDistance(tour.places.get(i));
-            System.out.println(Arrays.toString(shortestTour));
             updateShortestTour(currentTourDistance);
       
         }
