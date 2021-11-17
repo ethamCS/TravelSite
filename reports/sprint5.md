@@ -45,9 +45,9 @@ The next epic that we have planned is carrying over from sprint 3, this epic is 
 
 | Statistic | # Planned | # Completed |
 | --- | ---: | ---: |
-| Epics | *count* | *count* |
-| Tasks |  *count*   | *count* | 
-| Story Points |  *sum*  | *sum* | 
+| Epics | *4* | *count* |
+| Tasks |  *36*   | *count* | 
+| Story Points |  *83*  | *sum* | 
 
 
 ## Scrums
