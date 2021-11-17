@@ -37,7 +37,9 @@
 
 
 ## Planned Epics
+The first epic that we have planned is carrying over from sprint 4, this epic is the shorter trip epic. We finished the KNN algorithm for this epic last sprint however we have a bug that causes our server to chew through our alloted CPU time. The main goal is to find this bug and fix it, if we have left over time in the sprint our focus on this epic is going to shift over to implementing the 2opt algorithm.
 
+The next epic that we have planned is carrying over from sprint 3, this epic is the Save Trip epic. We currently have the Save Trip epic "complete". However, we only can currently save trips as a JSON and CSV file. We plan to implement the ability to save files as an SVG and KML along with the already current options.
 
 ## Metrics
 
