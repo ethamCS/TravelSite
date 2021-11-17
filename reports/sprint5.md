@@ -50,8 +50,8 @@ The fourth epic is User Experience epic, carying over from sprint 4. We gathered
 | Statistic | # Planned | # Completed |
 | --- | ---: | ---: |
 | Epics | *4* | *count* |
-| Tasks |  *43*   | *count* | 
-| Story Points |  *88*  | *sum* | 
+| Tasks |  *45*   | *count* | 
+| Story Points |  *91*  | *sum* | 
 
 
 ## Scrums
