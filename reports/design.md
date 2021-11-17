@@ -204,3 +204,7 @@ The biggest change we are making is adding a ShortTrip.js component.  This will 
 ![component diagram sprint4](images/314ComponentsEndSprint4.png)
 
 # Sprint 5
+
+### Server Classes
+// TODO:
+![Sprint 5 Server side](images/JavaCompSprint.png)
