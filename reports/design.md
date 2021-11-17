@@ -210,6 +210,10 @@ We will be moving the coordinate search from the "Where Is?" epic from the hambu
 
 ![whereis](images/Sprint5UX.png)
 
+We also plan to add tooltips to every button on our website.  Along with this, we will move the optimize trip icon into the hamburger menu.
+
+![tooltips](images/Tooltips.png)
+
 ### Server Classes
 // TODO:
 ![Sprint 5 Server side](images/JavaCompSprint.png)
