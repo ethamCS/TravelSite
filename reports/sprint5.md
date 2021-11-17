@@ -41,6 +41,8 @@ The first epic that we have planned is carrying over from sprint 4, this epic is
 
 The next epic that we have planned is carrying over from sprint 3, this epic is the Save Trip epic. We currently have the Save Trip epic "complete". However, we only can currently save trips as a JSON and CSV file. We plan to implement the ability to save files as an SVG and KML along with the already current options.
 
+The third epic we have planned is Types, which is not from a previous sprint. This epic is going to allow users to search for locations given a type, like heliport or airport. 
+
 ## Metrics
 
 | Statistic | # Planned | # Completed |
