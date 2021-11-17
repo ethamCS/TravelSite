@@ -221,7 +221,7 @@ The final big change that we are planning to make is adding a dropdown menu that
 
 ### Server Classes
 The implementation of type and where will change the flow of how we generate queries for find requests. This will result in additional functions to already exisiting classes such as Ctor's to support type and where.  
-![Sprint 5 Server side](images/JavaCompSprint.png)
+![Sprint 5 Server side](images/JavaCompSprint5.png)
 
 ### Component Diagram
 We are planning on having the same component structure that we had at the end of sprint 4.  
