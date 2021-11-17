@@ -220,7 +220,7 @@ The final big change that we are planning to make is adding a dropdown menu that
 
 
 ### Server Classes
-// TODO:
+The implementation of type and where will change the flow of how we generate queries for find requests. This will most likley be additonal functins to already exisiting classes. 
 ![Sprint 5 Server side](images/JavaCompSprint.png)
 
 ### Component Diagram
