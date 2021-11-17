@@ -204,7 +204,13 @@ The biggest change we are making is adding a ShortTrip.js component.  This will 
 ![component diagram sprint4](images/314ComponentsEndSprint4.png)
 
 # Sprint 5
+
 ### User Interface
 We will be moving the coordinate search from the "Where Is?" epic from the hamburger menu on the main page to the find page.  This will be implemented as a radio button that allows the user to toggle between searcing a location or searching for coordinates.  The user's current choice will be reflected in the default text of the input bar.
 
 ![whereis](images/Sprint5UX.png)
+
+### Server Classes
+// TODO:
+![Sprint 5 Server side](images/JavaCompSprint.png)
+
