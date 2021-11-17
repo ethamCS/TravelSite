@@ -214,6 +214,11 @@ We also plan to add tooltips to every button on our website.  Along with this, w
 
 ![tooltips](images/Tooltips.png)
 
+The final big change that we are planning to make is adding a dropdown menu that allows a user to filter the types of locations that are included in the search results.
+
+![types](images/Types.png)
+
+
 ### Server Classes
 // TODO:
 ![Sprint 5 Server side](images/JavaCompSprint.png)
