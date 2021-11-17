@@ -218,3 +218,7 @@ We also plan to add tooltips to every button on our website.  Along with this, w
 // TODO:
 ![Sprint 5 Server side](images/JavaCompSprint.png)
 
+### Component Diagram
+We are planning on having the same component structure that we had at the end of sprint 4.  
+
+![component diagram sprint5](images/314ComponentsEndSprint4.png)
