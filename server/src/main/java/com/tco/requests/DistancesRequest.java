@@ -23,9 +23,9 @@ public class DistancesRequest extends Request{
         if(this.places.isEmpty()){
             this.distances = new Integer[0];
         }else{
-        Distances distance = new Distances(this.places, this.earthRadius);
-        this.distances = distance.SendInfoForCalculations();
-        log.trace("buildResponse -> {}", this);
+            Distances distance = new Distances(this.places, this.earthRadius);
+            this.distances = distance.SendInfoForCalculations();
+            log.trace("buildResponse -> {}", this);
         }
     }
 
