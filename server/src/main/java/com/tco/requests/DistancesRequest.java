@@ -20,9 +20,13 @@ public class DistancesRequest extends Request{
  
     @Override
     public void buildResponse() {
+        if(this.places.isEmpty()){
+            this.distances = new Integer[0];
+        }else{
         Distances distance = new Distances(this.places, this.earthRadius);
         this.distances = distance.SendInfoForCalculations();
         log.trace("buildResponse -> {}", this);
+        }
     }
 
     /* The following methods exist only for testing purposes and are not used
