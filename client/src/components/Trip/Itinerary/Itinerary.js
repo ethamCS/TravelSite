@@ -74,6 +74,7 @@ function TableRow(props) {
 
     const handleClick = () => {
         props.placeActions.selectIndex(props.index);
+        window.scrollTo({top: 0, behavior: 'smooth'});
     }
 
     return (
