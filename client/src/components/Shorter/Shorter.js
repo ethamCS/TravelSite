@@ -49,3 +49,13 @@ export default function Shorter(props) {
         </Container>
     );
 }
+
+function origClick(placeActions, context) {
+    const {origTrip, setOrigTrip, setOptimizedTrip, tempList} = context;
+
+    if(!origTrip) {
+        setOrigTrip(true);
+        setOptimizedTrip(false);
+        placeActions.setTour(tempList);
+    }
+}
