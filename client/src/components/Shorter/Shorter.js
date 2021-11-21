@@ -4,7 +4,6 @@ import { FaCheck } from 'react-icons/fa';
 import { useTour } from '../../hooks/useTour';
 
 export default function Shorter(props) {
-    const [tooltipOpen, setToolTipOpen] = useState(false);
     const [optimizedTrip, setOptimizedTrip] = useState(false);
     const [origTrip, setOrigTrip] = useState(true);
     const {tourList, tourActions} = useTour();
@@ -25,12 +24,20 @@ export default function Shorter(props) {
                         Original Trip
                     </Button>
                 </ButtonGroup>
-                <Col>
-                    <FaCheck id="accept-tooltip" onClick={props.toggleShorter} style={{ cursor: 'pointer' }}/>
-                    <Tooltip delay={{ show:500, hide: 100 }} flip isOpen={tooltipOpen} toggle={() => {setToolTipOpen(!tooltipOpen)}} target="accept-tooltip" >Keep Trip</Tooltip>
-                </Col>
+                <CheckButton toggleShorter={props.toggleShorter} />
             </Row>
         </Container>
+    );
+}
+
+function CheckButton(props) {
+    const [tooltipOpen, setToolTipOpen] = useState(false);
+
+    return (
+        <Col>
+            <FaCheck id="accept-tooltip" onClick={props.toggleShorter} style={{ cursor: 'pointer' }}/>
+            <Tooltip delay={{ show:500, hide: 100 }} flip isOpen={tooltipOpen} toggle={() => {setToolTipOpen(!tooltipOpen)}} target="accept-tooltip" >Keep Trip</Tooltip>
+        </Col>
     );
 }
 
