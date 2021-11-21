@@ -18,7 +18,7 @@ export default function Shorter(props) {
                 <Col />
                 <Col>Pick a Trip to Display: </Col>
                 <ButtonGroup size='sm'>
-                    <Button color='primary' outline size='sm' active={optimizedTrip} onClick={}>
+                    <Button color='primary' outline size='sm' active={optimizedTrip} onClick={() => optClick(props.places, props.serverSettings, props.placeActions, context)}>
                         Optimized Trip
                     </Button>
                     <Button color='primary' outline size='sm' active={origTrip} onClick={() => origClick(props.placeActions, context)}>
@@ -41,5 +41,18 @@ function origClick(placeActions, context) {
         setOrigTrip(true);
         setOptimizedTrip(false);
         placeActions.setTour(tempList);
+    }
+}
+
+async function optClick(places, serverSettings, placeActions, context) {
+    const {optimizedTrip, setOrigTrip, setOptimizedTrip, setTempList, tourActions} = context;
+
+    if (!optimizedTrip) {
+        const controller = new AbortController();
+        setOptimizedTrip(true);
+        setOrigTrip(false);
+        setTempList(places);
+        const list = await tourActions.getTour(places, serverSettings, controller.signal);
+        placeActions.setTour(list);
     }
 }
