@@ -10,6 +10,9 @@ export default function Shorter(props) {
     const {tourList, tourActions} = useTour();
     const [tempList, setTempList] = useState(props.places);
 
+    const context = {setOptimizedTrip, optimizedTrip, origTrip, setOrigTrip, setTempList, tourActions, tempList};
+
+
     const origClick = () => {
         setOrigTrip(true);
         setOptimizedTrip(false);
