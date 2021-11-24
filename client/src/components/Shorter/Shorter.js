@@ -16,17 +16,25 @@ export default function Shorter(props) {
             <Row xs='4'>
                 <Col />
                 <Col>Pick a Trip to Display: </Col>
-                <ButtonGroup size='sm'>
-                    <Button color='primary' outline size='sm' active={optimizedTrip} onClick={() => optClick(props.places, props.serverSettings, props.placeActions, context)}>
-                        Optimized Trip
-                    </Button>
-                    <Button color='primary' outline size='sm' active={origTrip} onClick={() => origClick(props.placeActions, context)}>
-                        Original Trip
-                    </Button>
-                </ButtonGroup>
-                <CheckButton toggleShorter={props.toggleShorter} />
+                <OptRadioButtons places={props.places} placeActions={props.placeActions} serverSettings={props.serverSettings} context={context} />
+                <CheckButton toggleShorter={props.toggleShorter} context={context}/>
             </Row>
         </Container>
+    );
+}
+
+function OptRadioButtons(props) {
+    const {origTrip, optimizedTrip} = props.context;
+
+    return (
+        <ButtonGroup size='sm'>
+            <Button color='primary' outline size='sm' active={optimizedTrip} onClick={() => optClick(props.places, props.serverSettings, props.placeActions, props.context)}>
+                Optimized Trip
+            </Button>
+            <Button color='primary' outline size='sm' active={origTrip} onClick={() => origClick(props.placeActions, props.context)}>
+                Original Trip
+            </Button>
+        </ButtonGroup>
     );
 }
 
