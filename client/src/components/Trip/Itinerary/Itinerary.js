@@ -59,7 +59,7 @@ function Body(props) {
         return () => {
             controller.abort();
         }
-    }, [props.places, props.distancesList[props.distancesList.length-1], props.distancesList.length]);
+    }, [props.places, (props.distancesList[props.distancesList.length-1] + props.distancesList[1]), props.distancesList.length]);
 
     return (
         <tbody>
