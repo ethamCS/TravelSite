@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Input, InputGroup, Container, Button, Col, Row } from 'reactstrap';
+import { Input, InputGroup, Container, Button, Col, Row, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import Results from './Results.js'
 import { useFind } from '../../hooks/useFind';
 import { FaDice, FaTimes } from 'react-icons/fa';
@@ -7,6 +7,7 @@ import { FaDice, FaTimes } from 'react-icons/fa';
 export default function Find(props) {
     const [matchString, setMatchValue, getPlaces] = useFind("");
     const [foundList, setList] = useState([]);
+    const [dropDown, setDropDown] = useState();
     const context = { matchString, setMatchValue, getPlaces, foundList, setList };
     return (
         <Container>
@@ -70,6 +71,10 @@ function renderInputGroup(context, serverSettings, matchString, setRandom, setMa
             <Button color="primary" onClick={async () => showRandom(context, serverSettings, setRandom)}>
                 <FaDice />
             </Button>
+            <DropdownToggle caret>test</DropdownToggle>
+            <DropdownItem>
+                // somekind of state goes here
+            </DropdownItem>
         </InputGroup>
     );
 }
