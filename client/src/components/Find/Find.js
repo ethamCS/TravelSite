@@ -71,10 +71,12 @@ function renderInputGroup(context, serverSettings, matchString, setRandom, setMa
             <Button color="primary" onClick={async () => showRandom(context, serverSettings, setRandom)}>
                 <FaDice />
             </Button>
-            <DropdownToggle caret>test</DropdownToggle>
-            <DropdownItem>
-                // somekind of state goes here
-            </DropdownItem>
+            <DropdownToggle caret>where</DropdownToggle>
+            <DropdownMenu>
+                <DropdownItem name = "Type">Type</DropdownItem>
+                <DropdownItem name = "Where"> Where </DropdownItem>
+                <DropdownItem name = "Random"> Random </DropdownItem>
+            </DropdownMenu>
         </InputGroup>
     );
 }
