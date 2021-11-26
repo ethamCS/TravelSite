@@ -7,7 +7,7 @@ import { FaDice, FaTimes } from 'react-icons/fa';
 export default function Find(props) {
     const [matchString, setMatchValue, getPlaces] = useFind("");
     const [foundList, setList] = useState([]);
-    const [dropDown, setDropDown] = useState();
+    const [dropdownOpen, setDropdownOpen] = useState('false');
     const context = { matchString, setMatchValue, getPlaces, foundList, setList };
     return (
         <Container>
@@ -68,15 +68,16 @@ function renderInputGroup(context, serverSettings, matchString, setRandom, setMa
     return (
         <InputGroup>
             <Input type="text" placeholder="Enter Location" data-testid="find-input" value={matchString} onChange={(e) => setMatchValue(e.target.value)} />
-            <Button color="primary" onClick={async () => showRandom(context, serverSettings, setRandom)}>
-                <FaDice />
-            </Button>
             <DropdownToggle caret>where</DropdownToggle>
             <DropdownMenu>
                 <DropdownItem name = "Type">Type</DropdownItem>
                 <DropdownItem name = "Where"> Where </DropdownItem>
                 <DropdownItem name = "Random"> Random </DropdownItem>
             </DropdownMenu>
+            <Button color="primary" onClick={async () => showRandom(context, serverSettings, setRandom)}>
+                <FaDice />
+            </Button>
+      
         </InputGroup>
     );
 }
