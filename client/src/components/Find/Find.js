@@ -69,12 +69,13 @@ function renderInputGroup(context, serverSettings, matchString, setRandom, setMa
     return (
         <InputGroup>
             <Input type="search" placeholder="Enter Location" data-testid="find-input" value={matchString} onChange={(e) => setMatchValue(e.target.value)} /> 
-            <Dropdown isOpen={isDropdownOpen}>
+            <Dropdown isOpen={true}>
             <DropdownToggle caret>where</DropdownToggle>
             <DropdownMenu>
-                <DropdownItem name = "Type">Type</DropdownItem>
-                <DropdownItem name = "Where"> Where </DropdownItem>
-                <DropdownItem name = "Random"> Random </DropdownItem>
+                <DropdownItem name = "Airpot">Airpot</DropdownItem>
+                <DropdownItem name = "Balloonport"> Balloonport </DropdownItem>
+                <DropdownItem name = "Heliport"> Heliport </DropdownItem>
+                <DropdownItem name = "Other"> Other </DropdownItem>
             </DropdownMenu>
             </Dropdown>
             <Button color="primary" onClick={async () => showRandom(context, serverSettings, setRandom)}>
