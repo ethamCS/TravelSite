@@ -7,7 +7,6 @@ import { FaDice, FaTimes } from 'react-icons/fa';
 export default function Find(props) {
     const [matchString, setMatchValue, getPlaces] = useFind("");
     const [foundList, setList] = useState([]);
-    const [dropdownOpen, setDropdownOpen] = useState('false');
     const context = { matchString, setMatchValue, getPlaces, foundList, setList };
     return (
         <Container>
@@ -41,8 +40,9 @@ function FindHeader(props) {
 
 function FindBody(props) {
     const { matchString, setMatchValue, foundList } = props.context;
-    const  [ isRandom, setRandom ]  = useState(false);
-
+    const [isRandom, setRandom]  = useState(false);
+    const [isDropdownOpen, setDropdownOpen] = useState(false);
+ 
     useEffect(() => {
         const controller = new AbortController();
         if (!isRandom) {
@@ -58,22 +58,25 @@ function FindBody(props) {
 
     return (
         <Container>
-            {renderInputGroup(props.context, props.serverSettings, matchString, setRandom, setMatchValue)}
+            {renderInputGroup(props.context, props.serverSettings, matchString, setRandom, setMatchValue, isDropdownOpen, setDropdownOpen)}
             <Results placesList={foundList} places={props.places} selectedIndex={props.selectedIndex} placeActions={props.placeActions} />
         </Container>
     );
 }
 
-function renderInputGroup(context, serverSettings, matchString, setRandom, setMatchValue) {
+
+function renderInputGroup(context, serverSettings, matchString, setRandom, setMatchValue, isDropdownOpen, setDropdownOpen) {
     return (
         <InputGroup>
-            <Input type="text" placeholder="Enter Location" data-testid="find-input" value={matchString} onChange={(e) => setMatchValue(e.target.value)} />
+            <Input type="search" placeholder="Enter Location" data-testid="find-input" value={matchString} onChange={(e) => setMatchValue(e.target.value)} /> 
+            <Dropdown isOpen={isDropdownOpen}>
             <DropdownToggle caret>where</DropdownToggle>
             <DropdownMenu>
                 <DropdownItem name = "Type">Type</DropdownItem>
                 <DropdownItem name = "Where"> Where </DropdownItem>
                 <DropdownItem name = "Random"> Random </DropdownItem>
             </DropdownMenu>
+            </Dropdown>
             <Button color="primary" onClick={async () => showRandom(context, serverSettings, setRandom)}>
                 <FaDice />
             </Button>
