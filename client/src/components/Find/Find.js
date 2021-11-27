@@ -41,7 +41,8 @@ function FindHeader(props) {
 function FindBody(props) {
     const { matchString, setMatchValue, foundList } = props.context;
     const [isRandom, setRandom]  = useState(false);
-    const [isDropdownOpen, setDropdownOpen] = useState(false);
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+    const toggleOpen = () => setDropdown(!dropdownOpen);
  
     useEffect(() => {
         const controller = new AbortController();
@@ -54,29 +55,29 @@ function FindBody(props) {
         return () => {
             controller.abort();
         }
-    }, [matchString, foundList.length]);
+    }, [matchString, foundList.length], toggleOpen);
 
     return (
         <Container>
-            {renderInputGroup(props.context, props.serverSettings, matchString, setRandom, setMatchValue, isDropdownOpen, setDropdownOpen)}
+            {renderInputGroup(props.context, props.serverSettings, matchString, setRandom, setMatchValue, dropdownOpen, setDropdownOpen)}
             <Results placesList={foundList} places={props.places} selectedIndex={props.selectedIndex} placeActions={props.placeActions} />
         </Container>
     );
 }
 
 
-function renderInputGroup(context, serverSettings, matchString, setRandom, setMatchValue, isDropdownOpen, setDropdownOpen) {
+function renderInputGroup(context, serverSettings, matchString, setRandom, setMatchValue, dropdownOpen, setDropdownOpen) {
     return (
         <InputGroup>
             <Input type="search" placeholder="Enter Location" data-testid="find-input" value={matchString} onChange={(e) => setMatchValue(e.target.value)} /> 
-            <Dropdown isOpen={true}>
+            <Dropdown isOpen={dropdownOpen}>
             <DropdownToggle caret>where</DropdownToggle>
-            <DropdownMenu>
-                <DropdownItem name = "Airpot">Airpot</DropdownItem>
-                <DropdownItem name = "Balloonport"> Balloonport </DropdownItem>
-                <DropdownItem name = "Heliport"> Heliport </DropdownItem>
-                <DropdownItem name = "Other"> Other </DropdownItem>
-            </DropdownMenu>
+                <DropdownMenu>
+                    <DropdownItem name = "Airpot">Airpot</DropdownItem>
+                    <DropdownItem name = "Balloonport"> Balloonport </DropdownItem>
+                    <DropdownItem name = "Heliport"> Heliport </DropdownItem>
+                    <DropdownItem name = "Other"> Other </DropdownItem>
+                </DropdownMenu>
             </Dropdown>
             <Button color="primary" onClick={async () => showRandom(context, serverSettings, setRandom)}>
                 <FaDice />
