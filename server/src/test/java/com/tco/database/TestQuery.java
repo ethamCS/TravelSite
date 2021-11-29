@@ -36,4 +36,10 @@ public class TestQuery {
         String result = query.getPlaces().toString();
         assertEquals("[{name=Sembawang Air Base, latitude=1.4252599477767944, longitude=103.81300354003906}]", result);
     }
+    @Test
+    @DisplayName("Testing selectAll with match \"DJJ\", found: \"1\"")
+    public void testAirportCode() {
+        int found = query.selectCount();
+        assertEquals(1, found);
+    }
 }
