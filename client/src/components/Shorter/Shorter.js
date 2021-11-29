@@ -17,7 +17,7 @@ export default function Shorter(props) {
                 <Col />
                 <Col>Pick a Trip to Display: </Col>
                 <OptRadioButtons places={props.places} placeActions={props.placeActions} serverSettings={props.serverSettings} context={context} />
-                <CheckButton toggleShorter={props.toggleShorter} context={context}/>
+                <CheckButton places={props.places} toggleShorter={props.toggleShorter} context={context}/>
             </Row>
         </Container>
     );
@@ -43,10 +43,18 @@ function CheckButton(props) {
 
     return (
         <Col>
-            <FaCheck id="accept-tooltip" onClick={props.toggleShorter} style={{ cursor: 'pointer' }}/>
+            <FaCheck id="accept-tooltip" onClick={() => checkClick(props.places, props.toggleShorter, props.context)} style={{ cursor: 'pointer' }}/>
             <Tooltip delay={{ show:500, hide: 100 }} flip isOpen={tooltipOpen} toggle={() => {setToolTipOpen(!tooltipOpen)}} target="accept-tooltip" >Keep Trip</Tooltip>
         </Col>
     );
+}
+
+function checkClick(places, toggleShorter, context) {
+    const {setOrigTrip, setOptimizedTrip, setTempList} = context;
+    toggleShorter();
+    setOrigTrip(true);
+    setOptimizedTrip(false);
+    setTempList(places);
 }
 
 function origClick(placeActions, context) {
