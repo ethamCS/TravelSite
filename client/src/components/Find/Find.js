@@ -59,27 +59,17 @@ function FindBody(props) {
 
     return (
         <Container>
-            {renderInputGroup(props.context, props.serverSettings, matchString, setRandom, setMatchValue, dropdownOpen, setDropdownOpen)}
+            <FindInputGroup context={props.context} serverSettings={props.serverSettings} matchString={matchString} setRandom={setRandom} setMatchValue={setMatchValue} />
             <Results placesList={foundList} places={props.places} selectedIndex={props.selectedIndex} placeActions={props.placeActions} />
         </Container>
     );
 }
 
-
-function renderInputGroup(context, serverSettings, matchString, setRandom, setMatchValue, dropdownOpen, setDropdownOpen) {
+function FindInputGroup(props) {
     return (
         <InputGroup>
-            <Input type="search" placeholder="Enter Location" data-testid="find-input" value={matchString} onChange={(e) => setMatchValue(e.target.value)} /> 
-            <Dropdown isOpen={dropdownOpen}>
-            <DropdownToggle caret>where</DropdownToggle>
-                <DropdownMenu>
-                    <DropdownItem name = "Airpot">Airpot</DropdownItem>
-                    <DropdownItem name = "Balloonport"> Balloonport </DropdownItem>
-                    <DropdownItem name = "Heliport"> Heliport </DropdownItem>
-                    <DropdownItem name = "Other"> Other </DropdownItem>
-                </DropdownMenu>
-            </Dropdown>
-            <Button color="primary" onClick={async () => showRandom(context, serverSettings, setRandom)}>
+            <Input type="text" placeholder="Enter Location" data-testid="find-input" value={props.matchString} onChange={(e) => props.setMatchValue(e.target.value)} />
+            <Button color="primary" onClick={async () => showRandom(props.context, props.serverSettings, props.setRandom)}>
                 <FaDice />
             </Button>
       
