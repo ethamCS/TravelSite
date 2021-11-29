@@ -69,6 +69,15 @@ function FindInputGroup(props) {
     return (
         <InputGroup>
             <Input type="text" placeholder="Enter Location" data-testid="find-input" value={props.matchString} onChange={(e) => props.setMatchValue(e.target.value)} />
+            <Dropdown isOpen={dropdownOpen}>
+            <DropdownToggle caret>where</DropdownToggle>
+                <DropdownMenu>
+                    <DropdownItem name = "Airpot">Airpot</DropdownItem>
+                    <DropdownItem name = "Balloonport"> Balloonport </DropdownItem>
+                    <DropdownItem name = "Heliport"> Heliport </DropdownItem>
+                    <DropdownItem name = "Other"> Other </DropdownItem>
+                </DropdownMenu>
+            </Dropdown>
             <Button color="primary" onClick={async () => showRandom(props.context, props.serverSettings, props.setRandom)}>
                 <FaDice />
             </Button>
