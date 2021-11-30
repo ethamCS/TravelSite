@@ -42,7 +42,6 @@ function FindBody(props) {
     const { matchString, setMatchValue, foundList } = props.context;
     const [isRandom, setRandom]  = useState(false);
     const [dropdownOpen, setDropdownOpen] = useState(false);
-    // const toggleOpen = () => setDropdown(!dropdownOpen);
  
     useEffect(() => {
         const controller = new AbortController();
@@ -65,40 +64,31 @@ function FindBody(props) {
     );
 }
 
-const DropdownType = () => {
-    return(
-        <Dropdown isOpen={props.dropDownOpen}  toggle={() => props.setDropdownOpen(!props.dropDownOpen)}>
-        <DropdownToggle caret >where</DropdownToggle>
-            <DropdownMenu>
-                <DropdownItem name = "Airpot">Airpot</DropdownItem>
-                <DropdownItem name = "Balloonport"> Balloonport </DropdownItem>
-                <DropdownItem name = "Heliport"> Heliport </DropdownItem>
-                <DropdownItem name = "Other"> Other </DropdownItem>
-            </DropdownMenu>
-        </Dropdown>
-    )
-}
-
 
 function FindInputGroup(props) {
     return (
         <InputGroup>
             <Input type="search" placeholder="Enter Location" data-testid="find-input" value={props.matchString} onChange={(e) => props.setMatchValue(e.target.value)} />
-            <Dropdown isOpen={props.dropdownOpen}  toggle={() => props.setDropdownOpen(!props.dropdownOpen)}>
-            <DropdownToggle caret >where</DropdownToggle>
-                <DropdownMenu>
-                    <DropdownItem name = "Airpot">Airpot</DropdownItem>
-                    <DropdownItem name = "Balloonport"> Balloonport </DropdownItem>
-                    <DropdownItem name = "Heliport"> Heliport </DropdownItem>
-                    <DropdownItem name = "Other"> Other </DropdownItem>
-                </DropdownMenu>
-            </Dropdown>
+            {dropdownType(props)}
             <Button color="primary" onClick={async () => showRandom(props.context, props.serverSettings, props.setRandom)}>
                 <FaDice />
             </Button>
       
         </InputGroup>
     );
+}
+
+
+function dropdownType(props) {
+    return <Dropdown isOpen={props.dropdownOpen} toggle={() => props.setDropdownOpen(!props.dropdownOpen)}>
+        <DropdownToggle caret>where</DropdownToggle>
+        <DropdownMenu>
+            <DropdownItem name="Airpot">Airpot</DropdownItem>
+            <DropdownItem name="Balloonport"> Balloonport </DropdownItem>
+            <DropdownItem name="Heliport"> Heliport </DropdownItem>
+            <DropdownItem name="Other"> Other </DropdownItem>
+        </DropdownMenu>
+    </Dropdown>;
 }
 
 async function fetchPlaces(context, controller, serverSettings) {
