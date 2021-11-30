@@ -69,7 +69,7 @@ function FindInputGroup(props) {
     return (
         <InputGroup>
             <Input type="text" placeholder="Enter Location" data-testid="find-input" value={props.matchString} onChange={(e) => props.setMatchValue(e.target.value)} />
-            <Dropdown isOpen={props.dropDownOpen}  toggle={() => props.setDropdownOpen(props.dropdownOpen)}>
+            <Dropdown isOpen={props.dropDownOpen}  toggle={() => props.setDropdownOpen(!props.dropdownOpen)}>
             <DropdownToggle caret>where</DropdownToggle>
                 <DropdownMenu>
                     <DropdownItem name = "Airpot">Airpot</DropdownItem>
