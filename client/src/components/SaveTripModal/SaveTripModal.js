@@ -56,13 +56,16 @@ function SaveTripFooter(props) {
     return (
         <Container style={{ paddingTop: '10px', paddingBottom: '10px' }}>
             <Collapse isOpen={props.fileName != null && props.fileName != ""}>
-                <Row xs="4">
+                <Row xs="5">
                     <Col />
                     <Col>
                         <Button color={"primary"} onClick={saveJSON} onMouseUp={props.closeSaveTrip}>.JSON</Button>
                     </Col>
                     <Col>
                         <Button color={"primary"} onClick={saveCSV} onMouseUp={props.closeSaveTrip}>.CSV</Button>
+                    </Col>
+                    <Col>
+                        <Button color={"primary"} onMouseUp={props.closeSaveTrip}>.SVG</Button>
                     </Col>
                     <Col />
                 </Row>
