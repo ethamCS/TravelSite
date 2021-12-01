@@ -61,7 +61,7 @@ function FindBody(props) {
     return (
         <Container>
             <FindInputGroup context={props.context} serverSettings={props.serverSettings} matchString={matchString} setRandom={setRandom} setMatchValue={setMatchValue} />
-            <Button onClick={() => setFilterOpen(!filterOpen)} aria-controls="example-collapse-text" aria-expanded={filterOpen}><FaFilter/></Button>
+            <Button onClick={() => setFilterOpen(!filterOpen)} aria-expanded={filterOpen}><FaFilter/></Button>
                 <Collapse isOpen={filterOpen}>
                 {dropdownType(dropdownOpen, setDropdownOpen)}
                 </Collapse>
