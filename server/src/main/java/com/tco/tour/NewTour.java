@@ -24,7 +24,6 @@ public class NewTour {
         this.size = placesList.size();
         this.earthRadius = earthRadius;
         this.currentTour = new int[this.size];
-        this.shortestTour = new int[this.size];
         this.visited = new boolean[this.size];
         this.originalDistance = 0;
         createDistancesMatrix();
@@ -59,11 +58,30 @@ public class NewTour {
         this.originalTour = new int[this.size];
         for (int i = 0; i < this.size; ++i)
             this.originalTour[i] = i;
+            this.shortestTour[i] = i;
     }
 
     public Places findBestKNNTour() {
+        for (int i = 0; i < this.size; ++i) {
+            createNearestNeighborTour(i);
+            if (this.currentTourDistance < this.shortestTourDistance) {
+                updateShortestTour();
+            }
+
+        }
+        // TODO: Rearrange places based on shortest tour and return the new places list
+    }
+
+    private void createNearestNeighborTour(int startCityIndex) {
         
     }
+
+    private void updateShortestTour() {
+        for (int i = 0; i < this.size; ++i) {
+            this.shortestTour[i] = this.currentTour[i];
+        }
+    }
+
 
 
 
