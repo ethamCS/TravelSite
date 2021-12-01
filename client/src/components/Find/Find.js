@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Input, InputGroup, Container, Button, Col, Row, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { Input, InputGroup, Container, Button, Col, Row, Collapse, Card, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import Results from './Results.js'
 import { useFind } from '../../hooks/useFind';
 import { FaDice, FaTimes } from 'react-icons/fa';
@@ -42,6 +42,7 @@ function FindBody(props) {
     const { matchString, setMatchValue, foundList } = props.context;
     const [isRandom, setRandom]  = useState(false);
     const [dropdownOpen, setDropdownOpen] = useState(false);
+    const [filterOpen, setFilterOpen] = useState(false);
  
     useEffect(() => {
         const controller = new AbortController();
@@ -58,18 +59,34 @@ function FindBody(props) {
 
     return (
         <Container>
-            <FindInputGroup context={props.context} serverSettings={props.serverSettings} matchString={matchString} setRandom={setRandom} setMatchValue={setMatchValue} dropdownOpen={dropdownOpen} setDropdownOpen={setDropdownOpen}/>
+            <FindInputGroup context={props.context} serverSettings={props.serverSettings} matchString={matchString} setRandom={setRandom} setMatchValue={setMatchValue} />
+            <Button onClick={() => setFilterOpen(!filterOpen)} aria-controls="example-collapse-text" aria-expanded={filterOpen}>Search Filter</Button>
+                <Collapse isOpen={filterOpen}>
+                {dropdownWhere(dropdownOpen, setDropdownOpen)}
+                </Collapse>
+
             <Results placesList={foundList} places={props.places} selectedIndex={props.selectedIndex} placeActions={props.placeActions} />
         </Container>
     );
 }
 
 
+function dropdownWhere(dropdownOpen, setDropdownOpen) {
+    return <Dropdown isOpen={dropdownOpen} toggle={() => setDropdownOpen(!dropdownOpen)}>
+        <DropdownToggle caret>where</DropdownToggle>
+        <DropdownMenu>
+            <DropdownItem name="Airpot">Airpot</DropdownItem>
+            <DropdownItem name="Balloonport"> Balloonport </DropdownItem>
+            <DropdownItem name="Heliport"> Heliport </DropdownItem>
+            <DropdownItem name="Other"> Other </DropdownItem>
+        </DropdownMenu>
+    </Dropdown>;
+}
+
 function FindInputGroup(props) {
     return (
         <InputGroup>
             <Input type="search" placeholder="Enter Location" data-testid="find-input" value={props.matchString} onChange={(e) => props.setMatchValue(e.target.value)} />
-            {dropdownType(props)}
             <Button color="primary" onClick={async () => showRandom(props.context, props.serverSettings, props.setRandom)}>
                 <FaDice />
             </Button>
@@ -80,7 +97,7 @@ function FindInputGroup(props) {
 
 
 function dropdownType(props) {
-    return <Dropdown isOpen={props.dropdownOpen} toggle={() => props.setDropdownOpen(!props.dropdownOpen)}>
+    return <Dropdown isOpen={dropdownOpen} toggle={() => setDropdownOpen(!dropdownOpen)}>
         <DropdownToggle caret>where</DropdownToggle>
         <DropdownMenu>
             <DropdownItem name="Airpot">Airpot</DropdownItem>
