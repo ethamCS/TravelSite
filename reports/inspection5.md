@@ -5,9 +5,9 @@ We first identify the code we wish to inspect, determine the time we wish to mee
 
 |  | Details |
 | ----- | ----- |
-| Subject | *file and methods/line range to review for meeting* |
-| Meeting | *date, time, location* |
-| Checklist | *reference, URL, etc.* |
+| Subject | *Optimize.java* |
+| Meeting | *12/1/21, 5:30pm, Biology 356* |
+| Checklist | [*t17/reports/checklist.md*](https://github.com/CSU-CS-314-Fall-2021/t17/blob/main/reports/checklist.md) |
 
 ### Roles
 
