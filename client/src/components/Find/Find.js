@@ -49,15 +49,19 @@ function FindBody(props) {
     const [active, setActive] = useState(WHERE_OPT[0]);
  
     useEffect(() => {
-        const controller = new AbortController();
-        if (!isRandom) {
-            fetchPlaces(props.context, controller, props.serverSettings);
-        }
-        else {
-            setRandom(false);
-        }
-        return () => {
-            controller.abort();
+        
+
+        return function newFunction() {
+            const controller = new AbortController();
+            if (!isRandom) {
+                fetchPlaces(props.context, controller, props.serverSettings);
+            }
+            else {
+                setRandom(false);
+            }
+            return () => {
+                controller.abort();
+            };
         }
     }, [matchString, foundList.length]);
 
