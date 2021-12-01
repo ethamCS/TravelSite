@@ -44,6 +44,7 @@ function FindBody(props) {
     const [isRandom, setRandom]  = useState(false);
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [filterOpen, setFilterOpen] = useState(false);
+    const [selectDrop, setSelectDrop] = useState([])
  
     useEffect(() => {
         const controller = new AbortController();
@@ -77,7 +78,7 @@ function dropdownType(dropdownOpen, setDropdownOpen) {
         <DropdownToggle caret>Type</DropdownToggle>
         <DropdownMenu>
         {WHERE_OPT.map((item, index) => { 
-            return <DropdownItem key={index} /*onClick={()=>setActive(item)}*/>{item}</DropdownItem>
+            return <DropdownItem key={index} OnClick={()=>setActive(WHERE_OPT)}>{item}</DropdownItem>
         })}
         </DropdownMenu>
     </Dropdown>;
