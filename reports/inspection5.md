@@ -15,7 +15,7 @@ We note the amount of time each person spent reviewing the code in preparation f
 
 | Name | Preparation Time |
 | ---- | ---- |
-|  |  |
+| Farhan | 30 minute  |
 
 
 ### Problems found
@@ -25,4 +25,4 @@ We add a GitHub issue for each defect that requires a modification to the system
 
 | file:line | problem | hi/med/low | who found | github#  |
 | --- | --- | :---: | :---: | --- |
-|  | | | | |
+| 24-171 | function seperated to too many function, not very readable and hard to follow and debug | hi | Farhan | TBD |
