@@ -46,16 +46,16 @@ function FindBody(props) {
     const [isRandom, setRandom]  = useState(false);
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [filterOpen, setFilterOpen] = useState(false);
-    const [active, setActive] = useState('');
+    const [active, setActive] = useState(WHERE_OPT[0]);
  
     useEffect(() => {
         const controller = new AbortController();
         
-        if (!isRandom) {
+        if (!isRandom || active === 'Any') {
             fetchPlaces(props.context, controller, props.serverSettings);
         }
 
-        if (active){
+        if (active !== 'Any'){
             console.log(active)
         }
 
