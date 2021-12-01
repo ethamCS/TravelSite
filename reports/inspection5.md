@@ -1,4 +1,4 @@
-# Inspection - Team *T##* 
+# Inspection - Team *T17* 
 
 The goal of an Inspection is to find defects.
 We first identify the code we wish to inspect, determine the time we wish to meet, and determine the checklist we will use to find faults in our code during the preparation before the meeting.
