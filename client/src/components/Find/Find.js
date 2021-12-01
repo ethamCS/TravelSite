@@ -46,22 +46,26 @@ function FindBody(props) {
     const [isRandom, setRandom]  = useState(false);
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [filterOpen, setFilterOpen] = useState(false);
-    const [active, setActive] = useState(WHERE_OPT[0]);
+    const [active, setActive] = useState('');
  
     useEffect(() => {
-        return function putPlaces() {
-            const controller = new AbortController();
-            if (!isRandom) {
-                fetchPlaces(props.context, controller, props.serverSettings);
-            }
-            else {
-                setRandom(false);
-            }
-            return () => {
-                controller.abort();
-            };
+        const controller = new AbortController();
+        
+        if (!isRandom) {
+            fetchPlaces(props.context, controller, props.serverSettings);
         }
-    }, [matchString, foundList.length]);
+
+        if (active){
+            console.log(active)
+        }
+
+        else {
+            setRandom(false);
+        }
+        return () => {
+            controller.abort();
+        }
+    }, [matchString, foundList.length, filterOpen, dropdownOpen]);
 
     return (
         <Container>
@@ -74,6 +78,7 @@ function FindBody(props) {
         </Container>
     );
 }
+
 
 function dropdownType(dropdownOpen, setDropdownOpen, active, setActive) {
     return <Dropdown isOpen={dropdownOpen} toggle={() => setDropdownOpen(!dropdownOpen)}>
