@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Input, InputGroup, Container, Button, Col, Row, Collapse, Card, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { Input, InputGroup, Container, Button, Col, Row, Collapse, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import Results from './Results.js'
 import { useFind } from '../../hooks/useFind';
 import { FaDice, FaTimes } from 'react-icons/fa';
@@ -62,7 +62,7 @@ function FindBody(props) {
             <FindInputGroup context={props.context} serverSettings={props.serverSettings} matchString={matchString} setRandom={setRandom} setMatchValue={setMatchValue} />
             <Button onClick={() => setFilterOpen(!filterOpen)} aria-controls="example-collapse-text" aria-expanded={filterOpen}>Search Filter</Button>
                 <Collapse isOpen={filterOpen}>
-                {dropdownWhere(dropdownOpen, setDropdownOpen)}
+                {dropdownType(dropdownOpen, setDropdownOpen)}
                 </Collapse>
 
             <Results placesList={foundList} places={props.places} selectedIndex={props.selectedIndex} placeActions={props.placeActions} />
@@ -71,7 +71,7 @@ function FindBody(props) {
 }
 
 
-function dropdownWhere(dropdownOpen, setDropdownOpen) {
+function dropdownType(dropdownOpen, setDropdownOpen) {
     return <Dropdown isOpen={dropdownOpen} toggle={() => setDropdownOpen(!dropdownOpen)}>
         <DropdownToggle caret>where</DropdownToggle>
         <DropdownMenu>
@@ -96,17 +96,7 @@ function FindInputGroup(props) {
 }
 
 
-function dropdownType(props) {
-    return <Dropdown isOpen={dropdownOpen} toggle={() => setDropdownOpen(!dropdownOpen)}>
-        <DropdownToggle caret>where</DropdownToggle>
-        <DropdownMenu>
-            <DropdownItem name="Airpot">Airpot</DropdownItem>
-            <DropdownItem name="Balloonport"> Balloonport </DropdownItem>
-            <DropdownItem name="Heliport"> Heliport </DropdownItem>
-            <DropdownItem name="Other"> Other </DropdownItem>
-        </DropdownMenu>
-    </Dropdown>;
-}
+
 
 async function fetchPlaces(context, controller, serverSettings) {
     const { matchString, getPlaces, setList } = context;
