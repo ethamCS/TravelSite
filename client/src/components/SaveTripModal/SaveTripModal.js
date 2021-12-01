@@ -53,6 +53,10 @@ function SaveTripFooter(props) {
         props.placeActions.saveCSV(props)
     };
 
+    const saveSVG = () => {
+        props.placeActions.saveSVG(props)
+    };
+
     return (
         <Container style={{ paddingTop: '10px', paddingBottom: '10px' }}>
             <Collapse isOpen={props.fileName != null && props.fileName != ""}>
@@ -65,7 +69,7 @@ function SaveTripFooter(props) {
                         <Button color={"primary"} onClick={saveCSV} onMouseUp={props.closeSaveTrip}>.CSV</Button>
                     </Col>
                     <Col>
-                        <Button color={"primary"} onMouseUp={props.closeSaveTrip}>.SVG</Button>
+                        <Button color={"primary"} onClick={saveSVG} onMouseUp={props.closeSaveTrip}>.SVG</Button>
                     </Col>
                     <Col />
                 </Row>
