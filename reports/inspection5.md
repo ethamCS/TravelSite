@@ -15,7 +15,7 @@ We note the amount of time each person spent reviewing the code in preparation f
 
 | Name | Preparation Time |
 | ---- | ---- |
-|  |  |
+|  Ethan Myers | 20 minutes |
 
 
 ### Problems found
@@ -25,4 +25,4 @@ We add a GitHub issue for each defect that requires a modification to the system
 
 | file:line | problem | hi/med/low | who found | github#  |
 | --- | --- | :---: | :---: | --- |
-|  | | | | |
+| Optimize.java:24-41| Code complexity is to high in distaceMatrix(). Split into two functions | med | Ethan Myers | #849 | 
