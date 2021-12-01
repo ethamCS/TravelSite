@@ -21,7 +21,7 @@ export function EditTripName(props) {
             <Collapse isOpen={!collapse}>
                 <Button color="none" style={{ cursor: 'pointer' }} onClick={toggle} data-testid="edit-button">{tripName}</Button>
                 <FaStopwatch onClick={props.toggleShorter} style={{ cursor: 'pointer' }} id="tooltip-optimize" data-testid="optimize" />
-                <Tooltip delay={{ show: 500, hide: 100 }} flip isOpen={tooltipOpen} toggle={() => { setToolTipOpen(!tooltipOpen) }} data-testid="tool-tip" target="tooltip-optimize">Optimize Trip!</Tooltip>
+                <Tooltip placement={'left'} delay={{ show: 500, hide: 100 }} flip isOpen={tooltipOpen} toggle={() => { setToolTipOpen(!tooltipOpen) }} data-testid="tool-tip" target="tooltip-optimize">Optimize Trip!</Tooltip>
                 <LoadTripButton showMessage={props.showMessage} placeActions={props.placeActions} setName={setName} tooltipOpen={tooltipOpen} setToolTipOpen={setToolTipOpen} />
                 <SaveTripButton tripName={tripName} placeActions={props.placeActions} toggleSaveFile={toggleSaveFile} />
                 <SaveTripModal isOpen={showSaveFile} closeSaveTrip={toggleSaveFile} placeActions={props.placeActions} fileName={fileName} setFileName={setFileName} />
