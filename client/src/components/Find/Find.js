@@ -76,15 +76,9 @@ function dropdownType(dropdownOpen, setDropdownOpen) {
     return <Dropdown isOpen={dropdownOpen} toggle={() => setDropdownOpen(!dropdownOpen)}>
         <DropdownToggle caret>Type</DropdownToggle>
         <DropdownMenu>
-        {WHERE_OPT.map((item, index) => {
-              return <DropdownItem key={index} /*onClick={()=>setActive(item)}*/>{item}</DropdownItem>
-            })}
-            
-
-            {/* // <DropdownItem name="Airpot">Airpot</DropdownItem>
-            // <DropdownItem name="Balloonport"> Balloonport </DropdownItem>
-            // <DropdownItem name="Heliport"> Heliport </DropdownItem>
-            // <DropdownItem name="Other"> Other </DropdownItem> */}
+        {WHERE_OPT.map((item, index) => { 
+            return <DropdownItem key={index} /*onClick={()=>setActive(item)}*/>{item}</DropdownItem>
+        })}
         </DropdownMenu>
     </Dropdown>;
 }
