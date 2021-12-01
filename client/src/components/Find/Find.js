@@ -109,7 +109,7 @@ async function fetchPlaces(context, controller, serverSettings) {
 async function showRandom(context, serverSettings, setRandom) {
     const { getPlaces, setList } = context;
     const controller = new AbortController();
-    const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_';
+    const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_';
     const searchChar = alphabet[Math.floor(Math.random() * alphabet.length)];
     setRandom(true);
 
