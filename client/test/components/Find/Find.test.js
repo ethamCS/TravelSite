@@ -21,5 +21,5 @@ describe('Find', () => {
         expect(findText.value).toEqual("Boise");
     })
 
-    test('Dropdown works', ()=>{})
+    test(' \`Where\` Dropdown Open', ()=>{})
 });
