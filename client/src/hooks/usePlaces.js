@@ -25,6 +25,7 @@ export function usePlaces() {
         readFile: (fileName, fileObject, props) => readFile(fileName, fileObject, props, context),
         saveFile: (props) => saveFile(props, context),
         saveCSV: (props) => saveCSV(props, context),
+        saveSVG: (props) => saveSVG(props, context),
         setTour: async (placesList) => setTour(placesList, context)
     };
 
@@ -180,12 +181,35 @@ function saveCSV(props, context) {
         csvText += "\"" + places[i].name + "\","
         csvText += "\"" + places[i].lat.toString() + "\","
         if (i == places.length - 1) {
-            csvText += "\"" + places[i].lat.toString() + "\""
+            csvText += "\"" + places[i].lng.toString() + "\""
         } else {
-            csvText += "\"" + places[i].lat.toString() + "\"\n"
+            csvText += "\"" + places[i].lng.toString() + "\"\n"
         }
     }
     downloadFile(fileName + ".csv", MIME_TYPE.CSV, csvText);
+}
+
+function saveSVG(props, context) {
+    const { places } = context;
+    const fileName = props.fileName.replace(/ /g, "_").toLowerCase();
+    let svgText = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
+    svgText += "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"1440\" height=\"720\"\n"
+    svgText += "viewBox=\"-180 -90 360 180\">"
+    svgText += "<image href=\"https://instructor-uploaded-content.s3.amazonaws.com/MAP.svg-6983777\" x=\"-180\" y=\"-90\" height=\"180\" width=\"360\" />\n"
+    svgText += "<g transform=\"scale(1,-1)\">\n"
+    svgText += "<polyline\n"
+    svgText += "points=\""
+    for (var i = 0; i < places.length; i++) {
+        svgText += places[i].lng.toString() + "," + places[i].lat.toString() + " "
+        if (i == places.length - 1) {
+            svgText += places[i].lng.toString() + "," + places[i].lat.toString() + "\"\n"
+        }
+    }
+    svgText += "style=\"fill:none; stroke:rgb(215, 42, 40); stroke-width:0.4\"\n"
+    svgText += "/>\n"
+    svgText += "</g>\n"
+    svgText += "</svg>"
+    downloadFile(fileName + ".svg", MIME_TYPE.SVG, svgText);
 }
 
 function buildJSON(context) {
@@ -222,7 +246,7 @@ async function setTour(placesList, context) {
     let formattedList = placesList;
     if (placesList[0].lat != null) {
         formattedList = massagePlaces(placesList);
-        
+
     }
     const tempList = await appendPlaces(formattedList);
     setPlaces(tempList);
