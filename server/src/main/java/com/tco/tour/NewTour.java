@@ -14,6 +14,7 @@ public class NewTour {
     private boolean[] visited;
     private int originalDistance;
     private int[][] distanceMatrix;
+    private int[] originalTour;
     private int currentTourDistance;
     private int shortestTourDistance;
     private Double endTime;
@@ -27,6 +28,7 @@ public class NewTour {
         this.visited = new boolean[this.size];
         this.originalDistance = 0;
         createDistancesMatrix();
+        createOriginalTour();
         this.shortestTourDistance = this.currentTourDistance;
         this.endTime = endTime;
     }
@@ -53,9 +55,14 @@ public class NewTour {
         this.originalDistance += calc.circleDistance(this.placesList.get(0), this.placesList.get(this.size - 1), this.earthRadius);
     }
 
-    public findBestKNNTour() {
+    private void createOriginalTour() {
+        this.originalTour = new int[this.size];
+        for (int i = 0; i < this.size; ++i)
+            this.originalTour[i] = i;
+    }
 
-
+    public Places findBestKNNTour() {
+        
     }
 
 
