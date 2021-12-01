@@ -9,7 +9,7 @@ import TripInput from './TripInput';
 
 export function EditTripName(props) {
     const [collapse, setCollapse] = useState(false);
-    const [tripName, setName] = useState("My Trip");
+    const [tripName, setName] = useState("Enter Trip Name");
     const [fileName, setFileName] = useState(tripName);
     const [tooltipOpen, setToolTipOpen] = useState(false);
     const [showSaveFile, toggleSaveFile] = useToggle(false);
