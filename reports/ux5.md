@@ -45,5 +45,7 @@ Add issues to GitHub for any changes necessary to the system.
 | 5 | had trouble realizing that the tripname was click to edit, had to tell her to hover the mouse and pointed out that it was clickable. | med | N/A |
 | 7 | had trouble realizing that random places was in the find menu, thougght it should be its own thing in the 3 dot menu. Once I pointed out that it was in the find she still had trouble finding the random places button becuase she could not tell that the icon was dice, she just thought it was the search button for out search even though it is progressive disclosure. Once I pointed out that it was in the find menu and the the icon was dice she had no issue. | med/high | N/A |
 | 8 | trip was taking an extremely long time to optimize, this lead to her wondering if it was working. Also did not realize that you had to click the check mark to save the trip (this is not much of an issue she just is bad with technology, however the optimization is a big issue), she suggested a spinning mouse icon if possible while the trip is optimizing if it is going to take forever. | HIGH | N/A |
-| 5 | It wasn't immediately apparent that the trip name was clickable | med | N/A |
+| 5 | It wasn't immediately apparent to Evan's mom that the trip name was clickable | med | N/A |
+| 8 | The icon for optimize could be a little more obvious | low | #625 |
+
 
