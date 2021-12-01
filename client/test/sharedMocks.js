@@ -1,7 +1,7 @@
 export const VALID_CONFIG_RESPONSE = JSON.stringify({
     requestType: 'config',
     serverName: 't17 We Push To Main',
-    features: ['config', 'find', 'distances', 'tour', 'type', 'where']
+    features: ['config', 'find', 'distances', 'tour', 'type']
 });
 
 export const INCOMPATIBLE_FEATURES = JSON.stringify({
