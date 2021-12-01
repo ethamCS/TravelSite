@@ -73,7 +73,7 @@ function FindBody(props) {
 
 function dropdownType(dropdownOpen, setDropdownOpen) {
     return <Dropdown isOpen={dropdownOpen} toggle={() => setDropdownOpen(!dropdownOpen)}>
-        <DropdownToggle caret>where</DropdownToggle>
+        <DropdownToggle caret>Type</DropdownToggle>
         <DropdownMenu>
             <DropdownItem name="Airpot">Airpot</DropdownItem>
             <DropdownItem name="Balloonport"> Balloonport </DropdownItem>
