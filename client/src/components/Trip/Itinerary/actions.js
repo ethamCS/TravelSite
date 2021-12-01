@@ -24,7 +24,8 @@ export function ItineraryActionsDropdown(props) {
                 <Tooltip placement={'left'} delay={{ show: 500, hide: 100 }} flip isOpen={tooltipOpenFind} toggle={() => { setToolTipOpenFind(!tooltipOpenFind) }} data-testid="tool-tip-find" target="tooltip-find">Find Places!</Tooltip>
             </DropdownItem>
             <DropdownItem onClick={props.openWhereIs}>
-                <FaQuestion />
+                <FaQuestion id="tooltip-whereis" />
+                <Tooltip placement={'left'} delay={{ show: 500, hide: 100 }} flip isOpen={tooltipOpenWhereIs} toggle={() => { setToolTipOpenWhereIs(!tooltipOpenWhereIs) }} data-testid="tool-tip-whereis" target="tooltip-whereis">Find Place By Coordinates!</Tooltip>
             </DropdownItem>
         </ActionsDropdown>
     );
