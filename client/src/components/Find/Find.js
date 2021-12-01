@@ -3,7 +3,7 @@ import { Input, InputGroup, Container, Button, Col, Row, Collapse, Dropdown, Dro
 import Results from './Results.js'
 import { useFind } from '../../hooks/useFind';
 import { FaDice, FaTimes, FaFilter } from 'react-icons/fa';
-import { WHERE_OPT } from '../utils/constants';
+import { WHERE_OPT } from '../../utils/constants';
 
 export default function Find(props) {
     const [matchString, setMatchValue, getPlaces] = useFind("");
@@ -76,10 +76,15 @@ function dropdownType(dropdownOpen, setDropdownOpen) {
     return <Dropdown isOpen={dropdownOpen} toggle={() => setDropdownOpen(!dropdownOpen)}>
         <DropdownToggle caret>Type</DropdownToggle>
         <DropdownMenu>
-            <DropdownItem name="Airpot">Airpot</DropdownItem>
-            <DropdownItem name="Balloonport"> Balloonport </DropdownItem>
-            <DropdownItem name="Heliport"> Heliport </DropdownItem>
-            <DropdownItem name="Other"> Other </DropdownItem>
+        {WHERE_OPT.map((item, index) => {
+              return <DropdownItem key={index} /*onClick={()=>setActive(item)}*/>{item}</DropdownItem>
+            })}
+            
+
+            {/* // <DropdownItem name="Airpot">Airpot</DropdownItem>
+            // <DropdownItem name="Balloonport"> Balloonport </DropdownItem>
+            // <DropdownItem name="Heliport"> Heliport </DropdownItem>
+            // <DropdownItem name="Other"> Other </DropdownItem> */}
         </DropdownMenu>
     </Dropdown>;
 }
