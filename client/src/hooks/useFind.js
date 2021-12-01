@@ -30,7 +30,12 @@ async function getPlaces(matchString, controllerSignal, serverSettings) {
 
 async function sendFindRequest(matchString, searchLimit, controllerSignal, serverSettings) {
     const url = serverSettings.serverUrl;
-    const requestBody = {requestType: "find", match: matchString, limit: searchLimit};
+    const requestBody = {
+        requestType: "find", 
+        match: matchString, 
+        type: [],
+        limit: searchLimit
+    };
 
     const findResponse = await sendAPIRequest(requestBody, url, controllerSignal);
 
