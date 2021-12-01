@@ -44,7 +44,7 @@ function FindBody(props) {
     const [isRandom, setRandom]  = useState(false);
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [filterOpen, setFilterOpen] = useState(false);
-    const [selectDrop, setSelectDrop] = useState([])
+    const [active, setActive] = useState('Where');
  
     useEffect(() => {
         const controller = new AbortController();
@@ -64,7 +64,7 @@ function FindBody(props) {
             <FindInputGroup context={props.context} serverSettings={props.serverSettings} matchString={matchString} setRandom={setRandom} setMatchValue={setMatchValue} />
             <Button onClick={() => setFilterOpen(!filterOpen)} aria-expanded={filterOpen}><FaFilter/></Button>
                 <Collapse isOpen={filterOpen}>
-                {dropdownType(dropdownOpen, setDropdownOpen)}
+                {dropdownType(dropdownOpen, setDropdownOpen, active, setActive)}
                 </Collapse>
 
             <Results placesList={foundList} places={props.places} selectedIndex={props.selectedIndex} placeActions={props.placeActions} />
@@ -73,12 +73,12 @@ function FindBody(props) {
 }
 
 
-function dropdownType(dropdownOpen, setDropdownOpen) {
+function dropdownType(dropdownOpen, setDropdownOpen, active, setActive) {
     return <Dropdown isOpen={dropdownOpen} toggle={() => setDropdownOpen(!dropdownOpen)}>
-        <DropdownToggle caret>Type</DropdownToggle>
+        <DropdownToggle caret>{active}</DropdownToggle>
         <DropdownMenu>
         {WHERE_OPT.map((item, index) => { 
-            return <DropdownItem key={index} OnClick={()=>setActive(WHERE_OPT)}>{item}</DropdownItem>
+            return <DropdownItem key={index} onClick={()=> setActive(item)}>{item}</DropdownItem>
         })}
         </DropdownMenu>
     </Dropdown>;
