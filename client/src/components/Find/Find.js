@@ -3,6 +3,7 @@ import { Input, InputGroup, Container, Button, Col, Row, Collapse, Dropdown, Dro
 import Results from './Results.js'
 import { useFind } from '../../hooks/useFind';
 import { FaDice, FaTimes, FaFilter } from 'react-icons/fa';
+import { WHERE_OPT } from '../utils/constants';
 
 export default function Find(props) {
     const [matchString, setMatchValue, getPlaces] = useFind("");
