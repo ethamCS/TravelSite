@@ -32,3 +32,5 @@ export const MIME_TYPE = {
     SVG: "image/svg+xml",
     KML: "application/vnd.google-earth.kml+xml"
 };
+
+export const WHERE_OPT = ['Airport', 'Heliport', 'Balloonport', 'Other']

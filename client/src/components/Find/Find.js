@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Input, InputGroup, Container, Button, Col, Row, Collapse, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { Input, InputGroup, Container, Button, 
+         Col, Row, Collapse, 
+         Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import Results from './Results.js'
 import { useFind } from '../../hooks/useFind';
 import { FaDice, FaTimes, FaFilter } from 'react-icons/fa';
+import { WHERE_OPT } from '../../utils/constants';
 
 export default function Find(props) {
     const [matchString, setMatchValue, getPlaces] = useFind("");
@@ -43,6 +46,7 @@ function FindBody(props) {
     const [isRandom, setRandom]  = useState(false);
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [filterOpen, setFilterOpen] = useState(false);
+    const [active, setActive] = useState(WHERE_OPT[0]);
  
     useEffect(() => {
         const controller = new AbortController();
@@ -60,9 +64,9 @@ function FindBody(props) {
     return (
         <Container>
             <FindInputGroup context={props.context} serverSettings={props.serverSettings} matchString={matchString} setRandom={setRandom} setMatchValue={setMatchValue} />
-            <Button onClick={() => setFilterOpen(!filterOpen)} aria-controls="example-collapse-text" aria-expanded={filterOpen}><FaFilter/></Button>
+            <Button onClick={() => setFilterOpen(!filterOpen)} aria-expanded={filterOpen}><FaFilter/></Button>
                 <Collapse isOpen={filterOpen}>
-                {dropdownType(dropdownOpen, setDropdownOpen)}
+                {dropdownType(dropdownOpen, setDropdownOpen, active, setActive)}
                 </Collapse>
 
             <Results placesList={foundList} places={props.places} selectedIndex={props.selectedIndex} placeActions={props.placeActions} />
@@ -71,14 +75,13 @@ function FindBody(props) {
 }
 
 
-function dropdownType(dropdownOpen, setDropdownOpen) {
+function dropdownType(dropdownOpen, setDropdownOpen, active, setActive) {
     return <Dropdown isOpen={dropdownOpen} toggle={() => setDropdownOpen(!dropdownOpen)}>
-        <DropdownToggle caret>Type</DropdownToggle>
+        <DropdownToggle caret>{active}</DropdownToggle>
         <DropdownMenu>
-            <DropdownItem name="Airpot">Airpot</DropdownItem>
-            <DropdownItem name="Balloonport"> Balloonport </DropdownItem>
-            <DropdownItem name="Heliport"> Heliport </DropdownItem>
-            <DropdownItem name="Other"> Other </DropdownItem>
+        {WHERE_OPT.map((item, index) => { 
+            return <DropdownItem key={index} onClick={()=> setActive(item)}>{item}</DropdownItem>
+        })}
         </DropdownMenu>
     </Dropdown>;
 }
@@ -87,16 +90,11 @@ function FindInputGroup(props) {
     return (
         <InputGroup>
             <Input type="search" placeholder="Enter Location" data-testid="find-input" value={props.matchString} onChange={(e) => props.setMatchValue(e.target.value)} />
-            <Button color="primary" onClick={async () => showRandom(props.context, props.serverSettings, props.setRandom)}>
-                <FaDice />
-            </Button>
+            <Button color="primary" onClick={async () => showRandom(props.context, props.serverSettings, props.setRandom)}><FaDice/></Button>
       
         </InputGroup>
     );
 }
-
-
-
 
 async function fetchPlaces(context, controller, serverSettings) {
     const { matchString, getPlaces, setList } = context;
