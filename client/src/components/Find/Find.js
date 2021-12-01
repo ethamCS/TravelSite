@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Input, InputGroup, Container, Button, Col, Row, Collapse, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import Results from './Results.js'
 import { useFind } from '../../hooks/useFind';
-import { FaDice, FaTimes } from 'react-icons/fa';
+import { FaDice, FaTimes, FaFilter } from 'react-icons/fa';
 
 export default function Find(props) {
     const [matchString, setMatchValue, getPlaces] = useFind("");
@@ -60,7 +60,7 @@ function FindBody(props) {
     return (
         <Container>
             <FindInputGroup context={props.context} serverSettings={props.serverSettings} matchString={matchString} setRandom={setRandom} setMatchValue={setMatchValue} />
-            <Button onClick={() => setFilterOpen(!filterOpen)} aria-controls="example-collapse-text" aria-expanded={filterOpen}>Search Filter</Button>
+            <Button onClick={() => setFilterOpen(!filterOpen)} aria-controls="example-collapse-text" aria-expanded={filterOpen}><FaFilter/></Button>
                 <Collapse isOpen={filterOpen}>
                 {dropdownType(dropdownOpen, setDropdownOpen)}
                 </Collapse>
