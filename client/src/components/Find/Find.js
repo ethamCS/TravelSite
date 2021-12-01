@@ -49,9 +49,7 @@ function FindBody(props) {
     const [active, setActive] = useState(WHERE_OPT[0]);
  
     useEffect(() => {
-        
-
-        return function newFunction() {
+        return function putPlaces() {
             const controller = new AbortController();
             if (!isRandom) {
                 fetchPlaces(props.context, controller, props.serverSettings);
@@ -72,12 +70,10 @@ function FindBody(props) {
                 <Collapse isOpen={filterOpen}>
                 {dropdownType(dropdownOpen, setDropdownOpen, active, setActive)}
                 </Collapse>
-
             <Results placesList={foundList} places={props.places} selectedIndex={props.selectedIndex} placeActions={props.placeActions} />
         </Container>
     );
 }
-
 
 function dropdownType(dropdownOpen, setDropdownOpen, active, setActive) {
     return <Dropdown isOpen={dropdownOpen} toggle={() => setDropdownOpen(!dropdownOpen)}>
