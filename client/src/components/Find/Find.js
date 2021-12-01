@@ -46,7 +46,7 @@ function FindBody(props) {
     const [isRandom, setRandom]  = useState(false);
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [filterOpen, setFilterOpen] = useState(false);
-    const [active, setActive] = useState('Where');
+    const [active, setActive] = useState(WHERE_OPT[0]);
  
     useEffect(() => {
         const controller = new AbortController();
