@@ -56,7 +56,9 @@ function FindBody(props) {
         }
 
         if (active !== 'Any'){
-            fetchPlaces(props.context, controller, props.serverSettings);
+            const typeArr = []
+            typeArr[0] = active
+            fetchPlaces(props.context, controller, props.serverSettings, typeArr);
         }
 
         else {
@@ -100,9 +102,9 @@ function FindInputGroup(props) {
     );
 }
 
-async function fetchPlaces(context, controller, serverSettings) {
+async function fetchPlaces(context, controller, serverSettings, typeArr) {
     const { matchString, getPlaces, setList } = context;
-    const placeList = await getPlaces(matchString, controller.signal, serverSettings);
+    const placeList = await getPlaces(matchString, controller.signal, serverSettings, typeArr);
     setList(placeList);
 }
 
