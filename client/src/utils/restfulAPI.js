@@ -9,7 +9,7 @@ const SCHEMAS = {
     config: configSchema,
     find: findSchema,
     distances: distancesSchema,
-    tour: tourSchema 
+    tour: tourSchema,
 }
 
 export async function sendAPIRequest(requestBody, serverUrl, controllerSignal) {

@@ -56,7 +56,7 @@ function FindBody(props) {
         }
 
         if (active !== 'Any'){
-            console.log(active)
+            fetchPlaces(props.context, controller, props.serverSettings);
         }
 
         else {
@@ -65,7 +65,7 @@ function FindBody(props) {
         return () => {
             controller.abort();
         }
-    }, [matchString, foundList.length, filterOpen, dropdownOpen]);
+    }, [matchString, foundList.length, filterOpen, dropdownOpen, active]);
 
     return (
         <Container>
@@ -105,6 +105,7 @@ async function fetchPlaces(context, controller, serverSettings) {
     const placeList = await getPlaces(matchString, controller.signal, serverSettings);
     setList(placeList);
 }
+
 
 async function showRandom(context, serverSettings, setRandom) {
     const { getPlaces, setList } = context;
