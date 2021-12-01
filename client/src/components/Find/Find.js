@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Input, InputGroup, Container, Button, Col, Row, Collapse, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { Input, InputGroup, Container, Button, 
+         Col, Row, Collapse, 
+         Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import Results from './Results.js'
 import { useFind } from '../../hooks/useFind';
 import { FaDice, FaTimes, FaFilter } from 'react-icons/fa';
