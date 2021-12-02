@@ -4,36 +4,38 @@ import { BiDotsVerticalRounded } from 'react-icons/bi';
 import { FaHome, FaTrash, FaTrashAlt, FaSearchLocation, FaQuestion, FaTachometerAlt } from 'react-icons/fa';
 
 export function ItineraryActionsDropdown(props) {
-    const [tooltipOpenHome, setToolTipOpenHome] = useState(false);
-    const [tooltipOpenRemove, setToolTipOpenRemove] = useState(false);
-    const [tooltipOpenFind, setToolTipOpenFind] = useState(false);
-    const [tooltipOpenWhereIs, setToolTipOpenWhereIs] = useState(false);
-    const [tooltipOpen, setToolTipOpen] = useState(false);
     return (
         <ActionsDropdown {...props}>
             <DropdownItem onClick={() =>
                 props.placeActions.moveToHome()} data-testid='home-button'>
                 <FaHome id="tooltip-home" />
-                <Tooltip placement={'left'} delay={{ show: 500, hide: 100 }} flip isOpen={tooltipOpenHome} toggle={() => { setToolTipOpenHome(!tooltipOpenHome) }} data-testid="tool-tip-home" target="tooltip-home">Current Location!</Tooltip>
+                <TooltipPreset id="tooltip-home" msg="Current Location!" />
             </DropdownItem>
             <DropdownItem onClick={() => props.placeActions.removeAll()} data-testid='delete-all-button'>
                 <FaTrashAlt id="tooltip-remove" />
-                <Tooltip placement={'left'} delay={{ show: 500, hide: 100 }} flip isOpen={tooltipOpenRemove} toggle={() => { setToolTipOpenRemove(!tooltipOpenRemove) }} data-testid="tool-tip-remove" target="tooltip-remove">Remove All Places!</Tooltip>
+                <TooltipPreset id="tooltip-remove" msg="Remove All Places!" />
             </DropdownItem>
             <DropdownItem onClick={props.openFind}>
                 <FaSearchLocation id="tooltip-find" />
-                <Tooltip placement={'left'} delay={{ show: 500, hide: 100 }} flip isOpen={tooltipOpenFind} toggle={() => { setToolTipOpenFind(!tooltipOpenFind) }} data-testid="tool-tip-find" target="tooltip-find">Find Places!</Tooltip>
+                <TooltipPreset id="tooltip-find" msg="Find Places!" />
             </DropdownItem>
             <DropdownItem onClick={props.openWhereIs}>
                 <FaQuestion id="tooltip-whereis" />
-                <Tooltip placement={'left'} delay={{ show: 500, hide: 100 }} flip isOpen={tooltipOpenWhereIs} toggle={() => { setToolTipOpenWhereIs(!tooltipOpenWhereIs) }} data-testid="tool-tip-whereis" target="tooltip-whereis">Find Place By Coordinates!</Tooltip>
+                <TooltipPreset id="tooltip-whereis" msg="Find Place By Coordinates!" />
             </DropdownItem>
-            <DropdownItem>
-            <FaTachometerAlt onClick={props.toggleShorter} style={{ cursor: 'pointer' }} id="tooltip-optimize" data-testid="optimize" />
-                <Tooltip placement={'left'} delay={{ show: 500, hide: 100 }} flip isOpen={tooltipOpen} toggle={() => { setToolTipOpen(!tooltipOpen) }} data-testid="tool-tip" target="tooltip-optimize">Optimize Trip!</Tooltip>
+            <DropdownItem onClick={props.toggleShorter}>
+                <FaTachometerAlt id="tooltip-optimize" data-testid="optimize" />
+                <TooltipPreset id="tooltip-optimize" msg ="Optimize Trip!" />
             </DropdownItem>
         </ActionsDropdown>
     );
+}
+
+function TooltipPreset(props){
+    const [tooltipOpen, setToolTipOpen] = useState(false);
+    return(
+        <Tooltip placement={'left'} delay={{ show: 500, hide: 100 }} flip isOpen={tooltipOpen} toggle={() => { setToolTipOpen(!tooltipOpen) }} data-testid={props.id} target={props.id}>{props.msg}</Tooltip>
+    )
 }
 
 export function PlaceActionsDropdown(props) {
