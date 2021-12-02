@@ -16,6 +16,7 @@ We note the amount of time each person spent reviewing the code in preparation f
 | Name | Preparation Time |
 | ---- | ---- |
 |  Ethan Myers | 20 minutes |
+| Dylan Armstrong | 22 minutes |
 
 
 
@@ -27,4 +28,5 @@ We add a GitHub issue for each defect that requires a modification to the system
 | file:line | problem | hi/med/low | who found | github#  |
 | --- | --- | :---: | :---: | --- |
 | Optimize.java:24-41| Code complexity is to high in distaceMatrix(). Split into two functions | med | Ethan Myers | #849 | 
+| Optimize.java:76-78 | "distance[findIndexOfPlace(StartingCity)]" is used 3 seperate times, create a variable for this to improve readibility. | low | Dylan | N/A |
 
