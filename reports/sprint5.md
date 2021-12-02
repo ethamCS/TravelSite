@@ -58,7 +58,7 @@ The fourth epic is User Experience epic, carying over from sprint 4. We gathered
 
 | Date | Tasks closed  | Tasks in progress | Impediments |
 | :--- | :--- | :--- | :--- |
-| *date* | *#task, ...* | *#task, ...* |  | 
+| *11/30/21* | *#625-#627, #763, #764, #766, #768, #770-#786, #788-#792, #794-#796, #798, #799, #801, #802, #804-#806, #809, #816-#818, #823, #825, #827, #831, #844, #846, #849 * | *#816, #781, #778, #779, #776* | Dylan And Christian's VS Code were having issues. | 
 
 
 ## Review
