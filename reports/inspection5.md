@@ -18,6 +18,7 @@ We note the amount of time each person spent reviewing the code in preparation f
 | Ethan Myers | 20 minutes |
 | Dylan Armstrong | 22 minutes |
 | Christian Carnahan | 15 minutes |
+| Evan Ide | 25 minutes |
 
 
 
@@ -33,3 +34,4 @@ We add a GitHub issue for each defect that requires a modification to the system
 | Optimize.java:1-141| Code complexity is too high and the algorithm is extremely inefficient. When implementing the timer, the code has a tough time with getting through a request in under a second so we always end up with optimizations over a second when they NEED to be under a second. Likely need to rework the entire file starting from scratch. | HIGH | Christian Carnahan | N/A |
 | Optimize.java:118-141| When we update the tour int array and places arraylist we are chaining fucntions. Reformat functions or functions calls to reduce chaining. | low | Ethan Myers | #859 | 
 | Optimize.java:118-125| shift final arraylist or places so starting place is the same as the orignal trip. | med | Ethan Myers | #860 |
+
