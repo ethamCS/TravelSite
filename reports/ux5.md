@@ -56,4 +56,5 @@ Add issues to GitHub for any changes necessary to the system.
 | 1 | Thought that the dice button was a search button, adding text/tooltip to let them know that it is a random search might help | low | N/A |
 | 8 | The trip she made was hard to see when she went back and forth between original and optimized due to the box that re-appears | low | N/A |
 | 2 | Emily had a hard time finding the the home button to add her current location. The hamburger menu is not clear and hides many features from the user. There needs to be a pop up to explain addtional features. This has been a common point of issues. | HIGH | TBD |
+| 8 | When moving from the optimized trip back to the orginal there were distoration that and she picked places that were less then one mile away so there wasnt a total distance. This is just an effect caused by our units. | low | TBD |
 
