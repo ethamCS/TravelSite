@@ -31,6 +31,7 @@ Age, nationality, and other background information can sometimes be helpful unde
 | :--- | :--- |
 | Christian's Mother | Interior Designer, 46 Years of age, not the best with technology |
 | Evan's Mom | Human Resources, also not the most technologically literate |
+| Dylan's Girlfriend | Hair Stylyst, 21 |
 
 
 
@@ -47,5 +48,7 @@ Add issues to GitHub for any changes necessary to the system.
 | 8 | trip was taking an extremely long time to optimize, this lead to her wondering if it was working. Also did not realize that you had to click the check mark to save the trip (this is not much of an issue she just is bad with technology, however the optimization is a big issue), she suggested a spinning mouse icon if possible while the trip is optimizing if it is going to take forever. | HIGH | N/A |
 | 5 | It wasn't immediately apparent to Evan's mom that the trip name was clickable | med | N/A |
 | 8 | The icon for optimize could be a little more obvious | low | #625 |
+| 1 | Thought that the dice button was a search button, adding text/tooltip to let them know that it is a random search might help | low | N/A |
+| 8 | The trip she made was hard to see when she went back and forth between original and optimized due to the box that re-appears | low | N/A |
 
 
