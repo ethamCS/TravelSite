@@ -36,4 +36,6 @@ We add a GitHub issue for each defect that requires a modification to the system
 | Optimize.java:118-125| shift final arraylist or places so starting place is the same as the orignal trip. | med | Ethan Myers | #860 |
 | Optimize.java:1-141 | There are arraylist operations like indexOf that could be done with arrays for better efficiency | high | Evan |
 | Optimize.java:58-60 | This function is not necessary, it's just a wrapper for indexOf() | med | Evan |
+| Optimize.java:93-95 | This function is also unnecessary and decreases readability | med | Evan |
+| Optimize.java:127-129 | This function is also unnecessary and makes the code harder to read | med | Evan |
 
