@@ -8,7 +8,6 @@ export function ItineraryActionsDropdown(props) {
     const [tooltipOpenRemove, setToolTipOpenRemove] = useState(false);
     const [tooltipOpenFind, setToolTipOpenFind] = useState(false);
     const [tooltipOpenWhereIs, setToolTipOpenWhereIs] = useState(false);
-    const [tooltipOpen, setToolTipOpen] = useState(false);
     return (
         <ActionsDropdown {...props}>
             <DropdownItem onClick={() =>
@@ -29,11 +28,18 @@ export function ItineraryActionsDropdown(props) {
                 <Tooltip placement={'left'} delay={{ show: 500, hide: 100 }} flip isOpen={tooltipOpenWhereIs} toggle={() => { setToolTipOpenWhereIs(!tooltipOpenWhereIs) }} data-testid="tool-tip-whereis" target="tooltip-whereis">Find Place By Coordinates!</Tooltip>
             </DropdownItem>
             <DropdownItem>
-            <FaTachometerAlt onClick={props.toggleShorter} style={{ cursor: 'pointer' }} id="tooltip-optimize" data-testid="optimize" />
-                <Tooltip placement={'left'} delay={{ show: 500, hide: 100 }} flip isOpen={tooltipOpen} toggle={() => { setToolTipOpen(!tooltipOpen) }} data-testid="tool-tip" target="tooltip-optimize">Optimize Trip!</Tooltip>
+                <FaTachometerAlt onClick={props.toggleShorter} style={{ cursor: 'pointer' }} id="tooltip-optimize" data-testid="optimize" />
+                <TooltipPreset id="tooltip-optimize" msg ="Optimize Trip!" />
             </DropdownItem>
         </ActionsDropdown>
     );
+}
+
+function TooltipPreset(props){
+    const [tooltipOpen, setToolTipOpen] = useState(false);
+    return(
+        <Tooltip placement={'left'} delay={{ show: 500, hide: 100 }} flip isOpen={tooltipOpen} toggle={() => { setToolTipOpen(!tooltipOpen) }} data-testid={props.id} target={props.id}>{props.msg}</Tooltip>
+    )
 }
 
 export function PlaceActionsDropdown(props) {
