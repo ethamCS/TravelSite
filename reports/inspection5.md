@@ -15,7 +15,7 @@ We note the amount of time each person spent reviewing the code in preparation f
 
 | Name | Preparation Time |
 | ---- | ---- |
-|  Ethan Myers | 20 minutes |
+| Ethan Myers | 20 minutes |
 | Dylan Armstrong | 22 minutes |
 
 
@@ -29,4 +29,5 @@ We add a GitHub issue for each defect that requires a modification to the system
 | --- | --- | :---: | :---: | --- |
 | Optimize.java:24-41| Code complexity is to high in distaceMatrix(). Split into two functions | med | Ethan Myers | #849 | 
 | Optimize.java:76-78 | "distance[findIndexOfPlace(StartingCity)]" is used 3 seperate times, create a variable for this to improve readibility. | low | Dylan | N/A |
+| Optimize.java:118-141| When we update the tour int array and places arraylist we are chaining fucntions. Reformat functions or functions calls to reduce chaining. | low | Ethan Myers | #85- | 
 
