@@ -23,13 +23,9 @@ public class TourRequest extends Request {
         Tour tour = new Tour(this.earthRadius, this.places, this.response);
         Countdown count = new Countdown(this.response);
         if(response > 0.0){
-            Optimize knn = new Optimize(tour);
+            Optimize knn = new Optimize(tour, count);
             knn.distancesMatrix();
-            //see if times up
-            while(count.timer()){
-                this.places = knn.startTourFromCity(); 
-                break;
-            }
+            this.places = knn.startTourFromCity(); 
         }  
         log.trace("buildResponse -> {}", this);
     }
