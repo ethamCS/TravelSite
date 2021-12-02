@@ -55,5 +55,5 @@ Add issues to GitHub for any changes necessary to the system.
 | 7 | Emily had issues finding the random button. She first had trouble with find so random was just added to the problem. It seems she didnt know those features were availble beciase they werre located in the hanburger button. Perhaps something to signify more features in the hamburger menu would fix the issue.  | med | TBD |
 | 1 | Thought that the dice button was a search button, adding text/tooltip to let them know that it is a random search might help | low | N/A |
 | 8 | The trip she made was hard to see when she went back and forth between original and optimized due to the box that re-appears | low | N/A |
-| 7 | Emily had a hard time finding the the home button to add her current location. The hamburger menu is not clear and hides many features from the user. There needs to be a pop up to explain addtional features. This has been a common point of issues. | HIGH | TBD |
+| 2 | Emily had a hard time finding the the home button to add her current location. The hamburger menu is not clear and hides many features from the user. There needs to be a pop up to explain addtional features. This has been a common point of issues. | HIGH | TBD |
 
