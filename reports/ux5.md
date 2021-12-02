@@ -32,7 +32,7 @@ Age, nationality, and other background information can sometimes be helpful unde
 | Christian's Mother | Interior Designer, 46 Years of age, not the best with technology |
 | Evan's Mom | Human Resources, also not the most technologically literate |
 | Emily, Ethan's Sister | Nurse and Pre-Med undergraduate, ok with technology |
-
+| Dylan's Girlfriend | Hair Stylyst, 21 |
 
 
 ### Observations
@@ -53,5 +53,7 @@ Add issues to GitHub for any changes necessary to the system.
 | 3 | When Emily was loading the file she didnt understand the purpose or the format. This is due to her not being the best with technology. She doesnt understand how the trips are structed in the file format. However, the load icon/button was clear and easy to use. | low | TBD |
 | 8 | When optimizing a large trip it took a long time. Emily thought it was not working and prematuraly exited the optimization. We need to fix our implementation| high | TBD |
 | 7 | Emily had issues finding the random button. She first had trouble with find so random was just added to the problem. It seems she didnt know those features were availble beciase they werre located in the hanburger button. Perhaps something to signify more features in the hamburger menu would fix the issue.  | med | TBD |
+| 1 | Thought that the dice button was a search button, adding text/tooltip to let them know that it is a random search might help | low | N/A |
+| 8 | The trip she made was hard to see when she went back and forth between original and optimized due to the box that re-appears | low | N/A |
 
 
