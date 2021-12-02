@@ -30,9 +30,12 @@ Age, nationality, and other background information can sometimes be helpful unde
 | Pseudonym | Demographics |
 | :--- | :--- |
 | Christian's Mother | Interior Designer, 46 Years of age, not the best with technology |
+| Farhan's friends | Geologist major, he like map but not tech savvy, ~24 y/ old | 
 | Evan's Mom | Human Resources, also not the most technologically literate |
 | Emily, Ethan's Sister | Nurse and Pre-Med undergraduate, ok with technology, 22 years old |
 | Dylan's Girlfriend | Hair Stylyst, 21 |
+
+
 
 
 ### Observations
@@ -42,11 +45,11 @@ Record the success, failures, and problems the user encountered for each task.
 Note any aid that was given along with anything you notice from their use of the application.
 Add issues to GitHub for any changes necessary to the system.
 
-| Task | problem, aid, observation | hi/med/low | github# |
-| :--- | :--- | :--- | :--- |
+| Task | problem, aid, observation | hi/med/low | github#  |
 | 5 | had trouble realizing that the tripname was click to edit, had to tell her to hover the mouse and pointed out that it was clickable. | med | N/A |
 | 7 | had trouble realizing that random places was in the find menu, thougght it should be its own thing in the 3 dot menu. Once I pointed out that it was in the find she still had trouble finding the random places button becuase she could not tell that the icon was dice, she just thought it was the search button for out search even though it is progressive disclosure. Once I pointed out that it was in the find menu and the the icon was dice she had no issue. | med/high | N/A |
 | 8 | trip was taking an extremely long time to optimize, this lead to her wondering if it was working. Also did not realize that you had to click the check mark to save the trip (this is not much of an issue she just is bad with technology, however the optimization is a big issue), she suggested a spinning mouse icon if possible while the trip is optimizing if it is going to take forever. | HIGH | N/A |
+| TBD  | The browser locked up when he was doing something | In Progress | HIGH | N/A |
 | 5 | It wasn't immediately apparent to Evan's mom that the trip name was clickable | med | N/A |
 | 8 | The icon for optimize could be a little more obvious | low | #625 |
 | 1 | The find button was hard to find. Emily didn't look through the hamburger menu at all. There could be a hoverable text over the hamburger to signify there are more features | high | TBD |
@@ -57,4 +60,3 @@ Add issues to GitHub for any changes necessary to the system.
 | 8 | The trip she made was hard to see when she went back and forth between original and optimized due to the box that re-appears | low | N/A |
 | 2 | Emily had a hard time finding the the home button to add her current location. The hamburger menu is not clear and hides many features from the user. There needs to be a pop up to explain addtional features. This has been a common point of issues. | HIGH | TBD |
 | 8 | When moving from the optimized trip back to the orginal there were distoration that and she picked places that were less then one mile away so there wasnt a total distance. This is just an effect caused by our units. | low | TBD |
-
