@@ -29,15 +29,6 @@ describe('TripName', () => {
         expect(tripinput.value).toEqual("new trip")
     });
 
-    it('shows tooltip', async() =>{
-        const optimize = screen.getByTestId('optimize');
-        user.hover(optimize);
-        await waitFor(() =>{
-            const optimizett = screen.getByTestId('tool-tip');
-            expect(optimizett.textContent).toEqual("Optimize Trip!");            
-        })
-    });
-
     it('upload file', () =>{
         const savebutton = screen.getByTestId('save-button');
         user.click(savebutton);
