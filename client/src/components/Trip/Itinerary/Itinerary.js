@@ -21,14 +21,14 @@ function Header(props) {
         <thead>
             <tr>
                 <th />
-                <EditTripName placeActions={props.placeActions} showMessage={props.showMessage} toggleShorter={props.toggleShorter} />
+                <EditTripName placeActions={props.placeActions} showMessage={props.showMessage} />
                 {props.places.length > 1 ? (
                     <th>
                         Round Trip Distance: <br />{props.totalDistance} mi
                     </th>) : (<th></th>)
                 }
                 <th>
-                    <ItineraryActionsDropdown placeActions={props.placeActions} openFind={props.openFind} openWhereIs={props.openWhereIs} />
+                    <ItineraryActionsDropdown placeActions={props.placeActions} openFind={props.openFind} openWhereIs={props.openWhereIs} toggleShorter={props.toggleShorter} />
                 </th>
             </tr>
         </thead>
