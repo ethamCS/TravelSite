@@ -23,8 +23,8 @@ export function ItineraryActionsDropdown(props) {
                 <FaQuestion id="tooltip-whereis" />
                 <TooltipPreset id="tooltip-whereis" msg="Find Place By Coordinates!" />
             </DropdownItem>
-            <DropdownItem>
-                <FaTachometerAlt onClick={props.toggleShorter} style={{ cursor: 'pointer' }} id="tooltip-optimize" data-testid="optimize" />
+            <DropdownItem onClick={props.toggleShorter}>
+                <FaTachometerAlt id="tooltip-optimize" data-testid="optimize" />
                 <TooltipPreset id="tooltip-optimize" msg ="Optimize Trip!" />
             </DropdownItem>
         </ActionsDropdown>
