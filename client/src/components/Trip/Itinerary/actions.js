@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { ButtonGroup, DropdownItem, DropdownMenu, DropdownToggle, UncontrolledDropdown, Tooltip } from 'reactstrap';
 import { BiDotsVerticalRounded } from 'react-icons/bi';
-import { FaHome, FaTrash, FaTrashAlt, FaSearchLocation, FaQuestion } from 'react-icons/fa';
+import { FaHome, FaTrash, FaTrashAlt, FaSearchLocation, FaQuestion, FaTachometerAlt } from 'react-icons/fa';
 
 export function ItineraryActionsDropdown(props) {
     const [tooltipOpenHome, setToolTipOpenHome] = useState(false);
     const [tooltipOpenRemove, setToolTipOpenRemove] = useState(false);
     const [tooltipOpenFind, setToolTipOpenFind] = useState(false);
     const [tooltipOpenWhereIs, setToolTipOpenWhereIs] = useState(false);
+    const [tooltipOpen, setToolTipOpen] = useState(false);
     return (
         <ActionsDropdown {...props}>
             <DropdownItem onClick={() =>
@@ -26,6 +27,10 @@ export function ItineraryActionsDropdown(props) {
             <DropdownItem onClick={props.openWhereIs}>
                 <FaQuestion id="tooltip-whereis" />
                 <Tooltip placement={'left'} delay={{ show: 500, hide: 100 }} flip isOpen={tooltipOpenWhereIs} toggle={() => { setToolTipOpenWhereIs(!tooltipOpenWhereIs) }} data-testid="tool-tip-whereis" target="tooltip-whereis">Find Place By Coordinates!</Tooltip>
+            </DropdownItem>
+            <DropdownItem>
+            <FaTachometerAlt onClick={props.toggleShorter} style={{ cursor: 'pointer' }} id="tooltip-optimize" data-testid="optimize" />
+                <Tooltip placement={'left'} delay={{ show: 500, hide: 100 }} flip isOpen={tooltipOpen} toggle={() => { setToolTipOpen(!tooltipOpen) }} data-testid="tool-tip" target="tooltip-optimize">Optimize Trip!</Tooltip>
             </DropdownItem>
         </ActionsDropdown>
     );
