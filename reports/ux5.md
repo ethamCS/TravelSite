@@ -31,6 +31,7 @@ Age, nationality, and other background information can sometimes be helpful unde
 | :--- | :--- |
 | Christian's Mother | Interior Designer, 46 Years of age, not the best with technology |
 | Evan's Mom | Human Resources, also not the most technologically literate |
+| Emily, Ethan's Sister | Nurse and Pre-Med undergraduate, ok with technology |
 
 
 
@@ -48,5 +49,9 @@ Add issues to GitHub for any changes necessary to the system.
 | 8 | trip was taking an extremely long time to optimize, this lead to her wondering if it was working. Also did not realize that you had to click the check mark to save the trip (this is not much of an issue she just is bad with technology, however the optimization is a big issue), she suggested a spinning mouse icon if possible while the trip is optimizing if it is going to take forever. | HIGH | N/A |
 | 5 | It wasn't immediately apparent to Evan's mom that the trip name was clickable | med | N/A |
 | 8 | The icon for optimize could be a little more obvious | low | #625 |
+| 1 | The find button was hard to find. Emily didn't look through the hamburger menu at all. There could be a hoverable text over the hamburger to signify there are more features | high | TBD |
+| 3 | When Emily was loading the file she didnt understand the purpose or the format. This is due to her not being the best with technology. She doesnt understand how the trips are structed in the file format. However, the load icon/button was clear and easy to use. | low | TBD |
+| 8 | When optimizing a large trip it took a long time. Emily thought it was not working and prematuraly exited the optimization. We need to fix our implementation| high | TBD |
+| 7 | Emily had issues finding the random button. She first had trouble with find so random was just added to the problem. It seems she didnt know those features were availble beciase they werre located in the hanburger button. Perhaps something to signify more features in the hamburger menu would fix the issue.  | med | TBD |
 
 
