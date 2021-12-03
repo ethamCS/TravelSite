@@ -55,11 +55,11 @@ function FindBody(props) {
             fetchPlaces(props.context, controller, props.serverSettings, active);
         }
 
-        else if (active !== WHERE_OPT[0]) {
+        else if (!isRandom && active !== WHERE_OPT[0]) {
             fetchPlaces(props.context, controller, props.serverSettings, active);
         }
 
-        else if (isRandom) {
+        else {
             setRandom(false);
         }
         return () => {
@@ -68,7 +68,7 @@ function FindBody(props) {
     }
     useEffect(() => {
         return fetchList();
-    }, [matchString, foundList.length, active]);
+    }, [matchString, foundList.length, isRandom, active]);
 
     return (
         <Container>
@@ -100,7 +100,7 @@ function FindInputGroup(props) {
     return (
         <InputGroup>
             <Input type="search" placeholder="Enter Location" data-testid="find-input" value={props.matchString} onChange={(e) => props.setMatchValue(e.target.value)} />
-            <Button color="primary" onClick={async () => showRandom(props.context, props.serverSettings, props.setRandom, active)}><FaDice/></Button>
+            <Button color="primary" onClick={async () => showRandom(props.context, props.serverSettings, props.setRandom)}><FaDice/></Button>
         </InputGroup>
     );
 }
@@ -112,14 +112,14 @@ async function fetchPlaces(context, controller, serverSettings, active) {
 }
 
 
-async function showRandom(context, serverSettings, setRandom, active) {
+async function showRandom(context, serverSettings, setRandom) {
     const { getPlaces, setList } = context;
     const controller = new AbortController();
     const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_';
     const searchChar = alphabet[Math.floor(Math.random() * alphabet.length)];
     setRandom(true);
 
-    const allPlaces = await getPlaces(searchChar, controller.signal, serverSettings, active);
+    const allPlaces = await getPlaces(searchChar, controller.signal, serverSettings);
     let randPlaces = [];
     for (let i = 0; i < 5; ++i) {
         randPlaces.push(allPlaces[Math.floor(Math.random() * (100))]);

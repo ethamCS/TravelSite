@@ -31,7 +31,7 @@ async function getPlaces(matchString, controllerSignal, serverSettings, typeArra
 async function sendFindRequest(matchString, searchLimit, controllerSignal, serverSettings, typeArray) {
     const url = serverSettings.serverUrl;
     const arr =[]
-    if (typeArray !== WHERE_OPT[0]) {
+    if (typeArray !== WHERE_OPT[0] && typeof typeArray !== 'undefined') {
         arr[0] = typeArray
     }
     else{ delete arr[0] }
