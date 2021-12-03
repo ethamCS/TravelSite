@@ -52,14 +52,14 @@ function FindBody(props) {
         const controller = new AbortController();
 
         if (!isRandom && active === WHERE_OPT[0]) {
-            fetchPlaces(props.context, controller, props.serverSettings);
+            fetchPlaces(props.context, controller, props.serverSettings, '');
         }
 
         else if (active !== WHERE_OPT[0]) {
             fetchPlaces(props.context, controller, props.serverSettings, active);
         }
 
-        else {
+        else if (isRandom) {
             setRandom(false);
         }
         return () => {
@@ -75,7 +75,7 @@ function FindBody(props) {
             <FindInputGroup context={props.context} serverSettings={props.serverSettings} matchString={matchString} setRandom={setRandom} setMatchValue={setMatchValue} />
             <Button onClick={() => setFilterOpen(!filterOpen)} aria-expanded={filterOpen}><FaFilter/>   Search Filter </Button>
                 <Collapse isOpen={filterOpen}>
-                <p><br lineHeight="7 px"></br>Type: </p>{dropdownType(dropdownOpen, setDropdownOpen, active, setActive)}
+                <p><br lineheight="7 px"></br>Type: </p>{dropdownType(dropdownOpen, setDropdownOpen, active, setActive)}
                 </Collapse>
             <Results placesList={foundList} places={props.places} selectedIndex={props.selectedIndex} placeActions={props.placeActions} />
         </Container>
@@ -100,7 +100,7 @@ function FindInputGroup(props) {
     return (
         <InputGroup>
             <Input type="search" placeholder="Enter Location" data-testid="find-input" value={props.matchString} onChange={(e) => props.setMatchValue(e.target.value)} />
-            <Button color="primary" onClick={async () => showRandom(props.context, props.serverSettings, props.setRandom)}><FaDice/></Button>
+            <Button color="primary" onClick={async () => showRandom(props.context, props.serverSettings, props.setRandom, active)}><FaDice/></Button>
         </InputGroup>
     );
 }
