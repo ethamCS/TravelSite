@@ -34,10 +34,8 @@ async function sendFindRequest(matchString, searchLimit, controllerSignal, serve
     if (typeArray !== WHERE_OPT[0]) {
         arr[0] = typeArray
     }
-
-    else{
-        delete arr[0]
-    }
+    else{ delete arr[0] }
+    
     const requestBody = {
         requestType: "find", 
         match: matchString, 
