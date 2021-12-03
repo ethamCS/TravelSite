@@ -52,7 +52,7 @@ function FindBody(props) {
         const controller = new AbortController();
 
         if (!isRandom && active === WHERE_OPT[0]) {
-            fetchPlaces(props.context, controller, props.serverSettings, active);
+            fetchPlaces(props.context, controller, props.serverSettings);
         }
 
         else if (!isRandom && active !== WHERE_OPT[0]) {
@@ -68,7 +68,7 @@ function FindBody(props) {
     }
     useEffect(() => {
         return fetchList();
-    }, [matchString, foundList.length, isRandom, active]);
+    }, [matchString, foundList.length, active]);
 
     return (
         <Container>
