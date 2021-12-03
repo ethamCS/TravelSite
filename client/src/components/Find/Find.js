@@ -52,7 +52,7 @@ function FindBody(props) {
         const controller = new AbortController();
 
         if (!isRandom && active === WHERE_OPT[0]) {
-            fetchPlaces(props.context, controller, props.serverSettings, '');
+            fetchPlaces(props.context, controller, props.serverSettings, active);
         }
 
         else if (active !== WHERE_OPT[0]) {
