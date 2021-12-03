@@ -48,15 +48,11 @@ function FindBody(props) {
     const [filterOpen, setFilterOpen] = useState(false);
     const [active, setActive] = useState(WHERE_OPT[0]);
  
-    useEffect(() => {
+    function fetchList() {
         const controller = new AbortController();
-        
-        if (!isRandom || active === 'Any') {
-            fetchPlaces(props.context, controller, props.serverSettings);
-        }
 
-        if (active !== 'Any'){
-            fetchPlaces(props.context, controller, props.serverSettings, active);
+        if (!isRandom && active === WHERE_OPT[0]) {
+            fetchPlaces(props.context, controller, props.serverSettings);
         }
 
         else {
@@ -64,19 +60,24 @@ function FindBody(props) {
         }
         return () => {
             controller.abort();
-        }
-    }, [matchString, foundList.length, filterOpen, dropdownOpen, active]);
+        };
+    }
+    useEffect(() => {
+        return fetchList();
+    }, [matchString, foundList.length, active]);
 
     return (
         <Container>
             <FindInputGroup context={props.context} serverSettings={props.serverSettings} matchString={matchString} setRandom={setRandom} setMatchValue={setMatchValue} />
-            <Button onClick={() => setFilterOpen(!filterOpen)} aria-expanded={filterOpen}><FaFilter/>   Search Filter </Button>
+            <Button onClick={() => setFilterOpen(!filterOpen)} aria-expanded={filterOpen}>Type: <FaFilter/>   Search Filter </Button>
                 <Collapse isOpen={filterOpen}>
                 {dropdownType(dropdownOpen, setDropdownOpen, active, setActive)}
                 </Collapse>
             <Results placesList={foundList} places={props.places} selectedIndex={props.selectedIndex} placeActions={props.placeActions} />
         </Container>
     );
+
+  
 }
 
 
@@ -102,20 +103,19 @@ function FindInputGroup(props) {
 
 async function fetchPlaces(context, controller, serverSettings, active) {
     const { matchString, getPlaces, setList } = context;
-    
     const placeList = await getPlaces(matchString, controller.signal, serverSettings, active);
     setList(placeList);
 }
 
 
-async function showRandom(context, serverSettings, setRandom) {
+async function showRandom(context, serverSettings, setRandom, active) {
     const { getPlaces, setList } = context;
     const controller = new AbortController();
     const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_';
     const searchChar = alphabet[Math.floor(Math.random() * alphabet.length)];
     setRandom(true);
 
-    const allPlaces = await getPlaces(searchChar, controller.signal, serverSettings);
+    const allPlaces = await getPlaces(searchChar, controller.signal, serverSettings, active);
     let randPlaces = [];
     for (let i = 0; i < 5; ++i) {
         randPlaces.push(allPlaces[Math.floor(Math.random() * (100))]);

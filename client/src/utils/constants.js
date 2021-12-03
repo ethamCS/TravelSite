@@ -33,4 +33,4 @@ export const MIME_TYPE = {
     KML: "application/vnd.google-earth.kml+xml"
 };
 
-export const WHERE_OPT = ['Any', 'airport', 'heliport', 'balloonport', 'other']
+export const WHERE_OPT = ['Off', 'airport', 'heliport', 'balloonport', 'other']
