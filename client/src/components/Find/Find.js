@@ -55,6 +55,10 @@ function FindBody(props) {
             fetchPlaces(props.context, controller, props.serverSettings);
         }
 
+        else if (active !== WHERE_OPT[0]) {
+            fetchPlaces(props.context, controller, props.serverSettings, active);
+        }
+
         else {
             setRandom(false);
         }
@@ -69,9 +73,9 @@ function FindBody(props) {
     return (
         <Container>
             <FindInputGroup context={props.context} serverSettings={props.serverSettings} matchString={matchString} setRandom={setRandom} setMatchValue={setMatchValue} />
-            <Button onClick={() => setFilterOpen(!filterOpen)} aria-expanded={filterOpen}>Type: <FaFilter/>   Search Filter </Button>
+            <Button onClick={() => setFilterOpen(!filterOpen)} aria-expanded={filterOpen}><FaFilter/>   Search Filter </Button>
                 <Collapse isOpen={filterOpen}>
-                {dropdownType(dropdownOpen, setDropdownOpen, active, setActive)}
+                <p><br lineHeight="7 px"></br>Type: </p>{dropdownType(dropdownOpen, setDropdownOpen, active, setActive)}
                 </Collapse>
             <Results placesList={foundList} places={props.places} selectedIndex={props.selectedIndex} placeActions={props.placeActions} />
         </Container>

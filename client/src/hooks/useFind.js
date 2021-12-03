@@ -30,10 +30,12 @@ async function getPlaces(matchString, controllerSignal, serverSettings, typeArra
 
 async function sendFindRequest(matchString, searchLimit, controllerSignal, serverSettings, typeArray) {
     const url = serverSettings.serverUrl;
+    const arr =[]
+    arr[0] = typeArray
     const requestBody = {
         requestType: "find", 
         match: matchString, 
-        type: typeArray,
+        type: arr,
         limit: searchLimit
     };
 
