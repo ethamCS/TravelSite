@@ -116,7 +116,22 @@ public class Query {
 
     public Places selectAll(){
         int result = 0;
-        String selectAllStatement = buildSelectAllQuery(); 
+        String selectAllStatement = buildSelectAllQuery();
+        if(this.where != null && this.type != null){
+            selectAllStatement +=  " AND country.name IN ('"+ this.where[0] +"')"
+                                + " AND world.type IN " + checkType(this.type)
+                                + " LIMIT " + this.limit+ ";";  
+        }
+        else if(this.where != null && this.type == null){
+            selectAllStatement +=  " AND country.name IN ('"+ this.where[0] +"')"
+                                + " LIMIT " + this.limit+ ";";
+
+        }else if(this.where == null && this.type != null){
+            selectAllStatement +=  " AND world.type IN " + checkType(this.type)
+                                + " LIMIT " + this.limit+ ";";
+        }else{
+            selectAllStatement += " LIMIT " + this.limit+ ";";
+        } 
         try {
             Statement query = DatabaseConnection.con.createStatement();
             ResultSet rs =  query.executeQuery(selectAllStatement);
