@@ -18,6 +18,7 @@ public class Query {
     private static Integer limit;
     private Places places;
     private Integer result;
+    private String filter;
 
     private final transient Logger log = LoggerFactory.getLogger(Query.class);
 
@@ -28,6 +29,38 @@ public class Query {
        this.result = 0;
        DatabaseConnection.connect();
    }
+
+   public String checkType(String[] type){
+    String airportTypes = "\'small_airport\', \'medium_airport\', \'large_airport\'";
+    String heliports = "\'heliport\'";
+    String ballonports = "\'balloonport\'";
+    String seaports = "\'seaplane_base\'";
+    String filter = "(";
+    int size = type.length;
+    int index = 0;
+    for(String s : type){
+        if(s.equals("airport")){
+           if(size != 0 && index != 0) filter += ", ";
+           filter +=  airportTypes; 
+           size--;
+           index++;
+        }
+        if(s.equals("heliport")){
+            if(size != 0 && index != 0) filter += ", ";
+            filter +=  heliports; 
+            size--;
+            index++;
+         }
+         if(s.equals("balloonport")){
+            if(size != 0 && index != 0) filter += ", ";
+            filter +=  ballonports; 
+            size--;
+            index++;
+        }
+    }
+    filter += ")";
+    return filter;
+}
     public String buildSelectAllQuery(){
         String query =  "SELECT world.iata_code, world.name, world.latitude, world.longitude, world.municipality,"
                         + " region.name, country.name, continent.name, world.altitude"
