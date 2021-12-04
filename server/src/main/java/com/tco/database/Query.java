@@ -18,6 +18,8 @@ public class Query {
     private static Integer limit;
     private Places places;
     private Integer result;
+    private String[] where = null;
+    private String[] type = null;
     private String filter;
 
     private final transient Logger log = LoggerFactory.getLogger(Query.class);
@@ -73,8 +75,7 @@ public class Query {
                         + " OR continent.name LIKE \'%" + this.match + "%\'"
                         + " OR world.municipality LIKE \'%" + this.match + "%\'"
                         + " OR country.name LIKE \'%" + this.match + "%\'"
-                        + " OR region.name LIKE \'%" + this.match + "%\')"
-                        + " LIMIT " + this.limit+ ";";
+                        + " OR region.name LIKE \'%" + this.match + "%\')";
 
         return query;
     }
