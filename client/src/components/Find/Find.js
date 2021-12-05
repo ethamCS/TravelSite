@@ -100,7 +100,7 @@ function FindInputGroup(props) {
     return (
         <InputGroup>
             <Input type="search" placeholder="Enter Location" data-testid="find-input" value={props.matchString} onChange={(e) => props.setMatchValue(e.target.value)} />
-            <Button color="primary" onClick={async () => showRandom(props.context, props.serverSettings, props.setRandom)}><FaDice/></Button>
+            <Button color="primary" onClick={async () => showRandom(props.context, props.serverSettings, props.setRandom, props.active)}><FaDice/></Button>
         </InputGroup>
     );
 }
@@ -112,14 +112,14 @@ async function fetchPlaces(context, controller, serverSettings, active) {
 }
 
 
-async function showRandom(context, serverSettings, setRandom) {
+async function showRandom(context, serverSettings, setRandom, active) {
     const { getPlaces, setList } = context;
     const controller = new AbortController();
     const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_';
     const searchChar = alphabet[Math.floor(Math.random() * alphabet.length)];
     setRandom(true);
 
-    const allPlaces = await getPlaces(searchChar, controller.signal, serverSettings);
+    const allPlaces = await getPlaces(searchChar, controller.signal, serverSettings, active);
     let randPlaces = [];
     for (let i = 0; i < 5; ++i) {
         randPlaces.push(allPlaces[Math.floor(Math.random() * (100))]);
