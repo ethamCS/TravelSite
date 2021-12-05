@@ -18,8 +18,9 @@ public class NewTour {
     private int currentTourDistance;
     private int shortestTourDistance;
     //private Double endTime;
+    private Countdown count;
 
-    public NewTour(Places placesList, Double earthRadius/*, Double endTime*/) {
+    public NewTour(Places placesList, Double earthRadius, Countdown count/*, Double endTime*/) {
         this.placesList = placesList;
         this.size = placesList.size();
         this.earthRadius = earthRadius;
@@ -30,6 +31,7 @@ public class NewTour {
         createDistancesMatrix();
         createOriginalTour();
         this.shortestTourDistance = this.originalDistance;
+        this.count = count;
         //this.endTime = endTime;
     }
 
@@ -82,21 +84,25 @@ public class NewTour {
     /**************************************************************************************************** 
     * This is the public API used to start the process of finding the best tour
     ****************************************************************************************************/
-    public /*Places*/ void findBestKNNTour() {
+    public Places findBestKNNTour() {
         for (int i = 0; i < this.size; ++i) {
-            createNearestNeighborTour(i);
-            System.out.println("Current Tour Distance: " + this.currentTourDistance);
-            System.out.println("Shortest Tour Distance: " + this.shortestTourDistance);
-            if (this.currentTourDistance < this.shortestTourDistance) {
-                updateShortestTour();
+            if (this.count.timer()) {
+                createNearestNeighborTour(i);
+                // System.out.println("Current Tour Distance: " + this.currentTourDistance);
+                // System.out.println("Shortest Tour Distance: " + this.shortestTourDistance);
+                if (this.currentTourDistance < this.shortestTourDistance) {
+                    updateShortestTour();
+                }
+                resetVisitedAndCurrentDistance();
             }
-            resetVisitedAndCurrentDistance();
+            else {
+                break;
+            }
         }
         // TODO: Rearrange places based on shortest tour and return the new places list
-        testPrint();
-        shiftShortestTourIndices();
-        Places updatedPlaces = new Places();
-        
+        // testPrint();
+        shiftShortestTourIndices(); 
+        return buildNewPlaces();
     }
 
     /**************************************************************************************************** 
@@ -110,8 +116,6 @@ public class NewTour {
         
         /* Loop through unvisited cities and find nearest neighbor */
         for (int i = 1; i < this.size; ++i) {
-            // int nearestNeighborIndex = (currentCityIndex + 1 < this.size) ? currentCityIndex + 1 : 0;
-            // int nearestNeighborDistance = this.distanceMatrix[currentCityIndex][nearestNeighborIndex];
             int nearestNeighborIndex = this.size;
             int nearestNeighborDistance = Integer.MAX_VALUE;
 
@@ -161,6 +165,14 @@ public class NewTour {
             }
             this.shortestTour[this.size - 1] = temp;
         }
+    }
+
+    private Places buildNewPlaces() {
+        Places newPlaces = new Places();
+        for (int i = 0; i < this.size; ++i) {
+            newPlaces.add(this.placesList.get(this.shortestTour[i]));
+        }
+        return newPlaces;
     }
 
     private void testPrint() {
