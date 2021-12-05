@@ -48,12 +48,12 @@ public class TestFindRequest {
         assertEquals(2, found); 
     }
 
-    // @Test
-    // @DisplayName("Where throws exception")
-    // public void testWhere() {
-    //     find.setWhere();
-    //     BadRequestException e = assertThrows(BadRequestException.class, () -> {find.buildResponse();});
-    // }
+    @Test
+    @DisplayName("Where throws exception")
+    public void testWhere() {
+        find.setWhere();
+        BadRequestException e = assertThrows(BadRequestException.class, () -> {find.buildResponse();});
+    }
 
     // @Test
     // @DisplayName("Type throws exception")
