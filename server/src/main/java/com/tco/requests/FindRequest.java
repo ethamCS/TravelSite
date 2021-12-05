@@ -21,11 +21,11 @@ public class FindRequest extends Request {
 
     @Override
     public void buildResponse() throws BadRequestException {
-        if (this.where != null || this.type != null) {
+        if (this.where != null) {
             throw new BadRequestException();
         }
         else {
-            Query query = new Query(this.match, this.limit);
+            Query query = new Query(this.match, this.limit, this.type);
             this.found = query.selectCount();
             this.places = query.selectAll();
         }
@@ -50,15 +50,20 @@ during normal execution, including the constructor. */
         return this.limit;
     }
 
+    public String[] getTypes(){ 
+        return this.type;
+    }
+    
     public Integer getFound(){
         return this.found;
+    }
+
+    public void setType() {
+        this.type = new String[]{"heliport"};
     }
 
     public void setWhere() {
         this.where = new String[]{"United States"};
     }
     
-    public void setType() {
-        this.type = new String[]{"heliport"};
-    }
 }
