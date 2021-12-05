@@ -17,10 +17,9 @@ public class NewTour {
     private int[] originalTour;
     private int currentTourDistance;
     private int shortestTourDistance;
-    //private Double endTime;
     private Countdown count;
 
-    public NewTour(Places placesList, Double earthRadius, Countdown count/*, Double endTime*/) {
+    public NewTour(Places placesList, Double earthRadius, Countdown count) {
         this.placesList = placesList;
         this.size = placesList.size();
         this.earthRadius = earthRadius;
@@ -32,7 +31,6 @@ public class NewTour {
         createOriginalTour();
         this.shortestTourDistance = this.originalDistance;
         this.count = count;
-        //this.endTime = endTime;
     }
 
     /************************************************************************************************************************  
