@@ -42,7 +42,7 @@ async function sendFindRequest(matchString, searchLimit, controllerSignal, serve
         requestType: "find", 
         match: matchString, 
         limit: searchLimit,
-        ...(typeArray === 'undefined' && {type: arr})
+        ...(typeof typeArray === 'undefined' || {type: arr})
     };
 
     const findResponse = await sendAPIRequest(requestBody, url, controllerSignal);
