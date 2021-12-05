@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import com.tco.database.DatabaseConnection;
 import java.sql.*;
 import java.util.Map;
+import java.util.HashMap;
 
 import com.tco.misc.Places;
 import com.tco.misc.Place;
@@ -24,41 +25,29 @@ public class Query {
 
     private final transient Logger log = LoggerFactory.getLogger(Query.class);
 
-   public Query(String match, Integer limit){
+   public Query(String match, Integer limit, String[] type){
        this.match = match;
        this.limit = (limit == 0) ? 100 : (limit);
+       this.type = type;
        this.places = new Places();
        this.result = 0;
        DatabaseConnection.connect();
    }
 
    public String checkType(String[] type){
-    String airportTypes = "\'small_airport\', \'medium_airport\', \'large_airport\'";
-    String heliports = "\'heliport\'";
-    String ballonports = "\'balloonport\'";
-    String seaports = "\'seaplane_base\'";
+    HashMap<String, String> types = new HashMap<String, String>();
+    types.put("airport", "\'small_airport\', \'medium_airport\', \'large_airport\'");
+    types.put("heliport", "\'heliport\'");
+    types.put("balloonport","\'balloonport\'");
+    types.put("other",  "\'seaplane_base\', \'closed\'");
     String filter = "(";
     int size = type.length;
     int index = 0;
     for(String s : type){
-        if(s.equals("airport")){
            if(size != 0 && index != 0) filter += ", ";
-           filter +=  airportTypes; 
+           filter += types.get(s); 
            size--;
            index++;
-        }
-        if(s.equals("heliport")){
-            if(size != 0 && index != 0) filter += ", ";
-            filter +=  heliports; 
-            size--;
-            index++;
-         }
-         if(s.equals("balloonport")){
-            if(size != 0 && index != 0) filter += ", ";
-            filter +=  ballonports; 
-            size--;
-            index++;
-        }
     }
     filter += ")";
     return filter;

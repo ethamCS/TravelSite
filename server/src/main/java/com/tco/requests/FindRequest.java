@@ -21,11 +21,11 @@ public class FindRequest extends Request {
 
     @Override
     public void buildResponse() throws BadRequestException {
-        if (this.where != null || this.type != null) {
+        if (this.where != null) {
             throw new BadRequestException();
         }
         else {
-            Query query = new Query(this.match, this.limit);
+            Query query = new Query(this.match, this.limit, this.type);
             this.found = query.selectCount();
             this.places = query.selectAll();
         }
