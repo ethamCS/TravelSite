@@ -26,10 +26,10 @@ public class NewTour {
         this.currentTour = new int[this.size];
         this.shortestTour = new int[this.size];
         this.visited = new boolean[this.size];
-        this.originalDistance = 0;
+        this.currentTourDistance = 0;
         createDistancesMatrix();
         createOriginalTour();
-        this.shortestTourDistance = this.currentTourDistance;
+        this.shortestTourDistance = this.originalDistance;
         //this.endTime = endTime;
     }
 
@@ -85,13 +85,18 @@ public class NewTour {
     public /*Places*/ void findBestKNNTour() {
         for (int i = 0; i < this.size; ++i) {
             createNearestNeighborTour(i);
+            System.out.println("Current Tour Distance: " + this.currentTourDistance);
+            System.out.println("Shortest Tour Distance: " + this.shortestTourDistance);
             if (this.currentTourDistance < this.shortestTourDistance) {
                 updateShortestTour();
             }
             resetVisitedAndCurrentDistance();
         }
         // TODO: Rearrange places based on shortest tour and return the new places list
-
+        testPrint();
+        shiftShortestTourIndices();
+        Places updatedPlaces = new Places();
+        
     }
 
     /**************************************************************************************************** 
@@ -139,23 +144,29 @@ public class NewTour {
         /* Add distance of return leg */
         int lastCity = this.currentTour[this.size - 1];
         this.currentTourDistance += this.distanceMatrix[startCityIndex][lastCity];
-        testPrint();
     }
 
     private void updateShortestTour() {
+        this.shortestTourDistance = this.currentTourDistance;
         for (int i = 0; i < this.size; ++i) {
             this.shortestTour[i] = this.currentTour[i];
         }
     }
 
-    private void shiftArray() {
-        
+    private void shiftShortestTourIndices() {
+        while (this.shortestTour[0] != 0) {
+            int temp = this.shortestTour[0];
+            for (int i = 0; i < this.size - 1; ++i) {
+                this.shortestTour[i] = this.shortestTour[i + 1];
+            }
+            this.shortestTour[this.size - 1] = temp;
+        }
     }
 
     private void testPrint() {
-        System.out.println("Current Tour: " + this.currentTourDistance);
+        System.out.println("Shortest Tour: " + this.shortestTourDistance);
         for (int i = 0; i < this.size; ++i) {
-            System.out.print(this.currentTour[i] + " ");
+            System.out.print(this.shortestTour[i] + " ");
         }
         System.out.println("\n\n");
     }
