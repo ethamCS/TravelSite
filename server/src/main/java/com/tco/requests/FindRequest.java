@@ -50,15 +50,20 @@ during normal execution, including the constructor. */
         return this.limit;
     }
 
+    public String[] getTypes(){ 
+        return this.type;
+    }
+    
     public Integer getFound(){
         return this.found;
+    }
+
+    public void setType() {
+        this.type = new String[]{"heliport"};
     }
 
     public void setWhere() {
         this.where = new String[]{"United States"};
     }
     
-    public void setType() {
-        this.type = new String[]{"heliport"};
-    }
 }

@@ -65,9 +65,9 @@ public class Query {
                         + " OR world.municipality LIKE \'%" + this.match + "%\'"
                         + " OR country.name LIKE \'%" + this.match + "%\'"
                         + " OR region.name LIKE \'%" + this.match + "%\')";
-
         return query;
     }
+    
     public String buildSelectCountQuery(){
         String query =  "SELECT COUNT(*)"
                         + " FROM world"

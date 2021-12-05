@@ -49,16 +49,19 @@ public class TestFindRequest {
     }
 
     @Test
+    @DisplayName("Type is \"heliport\"")
+    public void testTypeProperty() {
+        find.setType();
+        String[] types = find.getTypes();
+        assertEquals("heliport", types[0]);
+    }
+
+    @Test
     @DisplayName("Where throws exception")
     public void testWhere() {
         find.setWhere();
         BadRequestException e = assertThrows(BadRequestException.class, () -> {find.buildResponse();});
     }
 
-    // @Test
-    // @DisplayName("Type throws exception")
-    // public void testTypeProperty() {
-    //     find.setType();
-    //     BadRequestException e = assertThrows(BadRequestException.class, () -> {find.buildResponse();});
-    // }
+
 }
