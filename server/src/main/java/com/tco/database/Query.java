@@ -35,22 +35,22 @@ public class Query {
    }
 
    public String checkType(String[] type){
-    HashMap<String, String> types = new HashMap<String, String>();
-    types.put("airport", "\'small_airport\', \'medium_airport\', \'large_airport\'");
-    types.put("heliport", "\'heliport\'");
-    types.put("balloonport","\'balloonport\'");
-    types.put("other",  "\'seaplane_base\', \'closed\'");
-    String filter = "(";
-    int size = type.length;
-    int index = 0;
-    for(String s : type){
-           if(size != 0 && index != 0) filter += ", ";
-           filter += types.get(s); 
-           size--;
-           index++;
-    }
-    filter += ")";
-    return filter;
+        HashMap<String, String> types = new HashMap<String, String>();
+        types.put("airport", "\'small_airport\', \'medium_airport\', \'large_airport\'");
+        types.put("heliport", "\'heliport\'");
+        types.put("balloonport","\'balloonport\'");
+        types.put("other",  "\'seaplane_base\', \'closed\'");
+        String filter = "(";
+        int size = type.length;
+        int index = 0;
+        for(String s : type){
+            if(size != 0 && index != 0) filter += ", ";
+            filter += types.get(s); 
+            size--;
+            index++;
+        }
+        filter += ")";
+        return filter;
 }
     public String buildSelectAllQuery(){
         String query =  "SELECT world.iata_code, world.name, world.latitude, world.longitude, world.municipality,"
