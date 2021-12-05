@@ -33,6 +33,9 @@ public class NewTour {
         //this.endTime = endTime;
     }
 
+    /**************************************************************************************************** 
+    * This function is used in the constructor to create the distance lookup table
+    ****************************************************************************************************/
     private void createDistancesMatrix(){
         this.distanceMatrix = new int[this.size][this.size];
         Calculate calc = new Calculate();
@@ -55,6 +58,9 @@ public class NewTour {
         this.originalDistance += calc.circleDistance(this.placesList.get(0), this.placesList.get(this.size - 1), this.earthRadius);
     }
 
+    /**************************************************************************************************** 
+    * This function is used in the constructor for initializing data member arrays
+    ****************************************************************************************************/
     private void createOriginalTour() {
         this.originalTour = new int[this.size];
         for (int i = 0; i < this.size; ++i) {
@@ -63,10 +69,14 @@ public class NewTour {
         }
     }
 
-    private void resetVisited() {
+    /**************************************************************************************************** 
+    * This function resets the necessary variables for the next tour to be found correctly
+    ****************************************************************************************************/
+    private void resetVisitedAndCurrentDistance() {
         for (int i = 0; i < this.size; ++i) {
             this.visited[i] = false;
         }
+        this.currentTourDistance = 0;
     }
 
     public /*Places*/ void findBestKNNTour() {
@@ -75,7 +85,7 @@ public class NewTour {
             // if (this.currentTourDistance < this.shortestTourDistance) {
             //     updateShortestTour();
             // }
-            resetVisited();
+            resetVisitedAndCurrentDistance();
         }
         // TODO: Rearrange places based on shortest tour and return the new places list
     }
@@ -84,34 +94,37 @@ public class NewTour {
         // Add starting city to tour and mark it visited
         this.currentTour[startCityIndex] = this.originalTour[startCityIndex];
         this.visited[startCityIndex] = true;
-
-        
         int currentCityIndex = startCityIndex;
-        int nextCityIndex = (startCityIndex + 1 < this.size) ? startCityIndex + 1 : 0;
-
-        // Loop through unvisited cities and find nearest neighbor
+        
+        /* Loop through unvisited cities and find nearest neighbor */
         for (int i = 1; i < this.size; ++i) {
-            int nearestNeighborDistance = this.distanceMatrix[currentCityIndex][nextCityIndex];
-            
-            System.out.println("");
+            int nearestNeighborIndex = (currentCityIndex + 1 < this.size) ? currentCityIndex + 1 : 0;
+            int nearestNeighborDistance = this.distanceMatrix[currentCityIndex][nearestNeighborIndex];
+
             /* Find closest neighbor */
             for (int j = 0; j < this.size; ++j) {
+                System.out.println("j: " + j);
                 if (this.visited[j]) {
                     continue;
                 }
                 else {
                     // Get the distance b/n current city and 
                     int currentDistance = this.distanceMatrix[currentCityIndex][j];
-                    System.out.println(currentDistance + " " + nearestNeighborDistance);
                     if (currentDistance < nearestNeighborDistance) {
                         nearestNeighborDistance = currentDistance;
-                        this.currentTour[i] = j;
-                        this.visited[j] = true;
-                        this.currentTourDistance += currentDistance;
-                        currentCityIndex = (currentCityIndex + 1 < this.size) ? currentCityIndex + 1 : 0;
+                        nearestNeighborIndex = j;
                     }
+                    System.out.println("Current Distance: " + currentDistance);
+                    System.out.println("NearestNeigherDistance: " + nearestNeighborDistance);
+                    System.out.println("NearestNeigherIndex: " + nearestNeighborIndex);
                 }
             }
+
+            /* Add Nearest Neighbor to tour and update visited */
+            this.currentTour[i] = nearestNeighborIndex;
+            this.currentTourDistance += nearestNeighborDistance;
+            this.visited[nearestNeighborIndex] = true;
+            currentCityIndex = (currentCityIndex + 1 < this.size) ? currentCityIndex + 1 : 0;
         }
         testPrint();
     }
