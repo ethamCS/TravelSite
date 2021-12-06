@@ -28,6 +28,8 @@ public class FindRequest extends Request {
             Query query = new Query(this.match, this.limit, this.type);
             this.found = query.selectCount();
             this.places = query.selectAll();
+            if(this.type == null) this.type = new String[0];
+            else this.type = type;
         }
 
         log.trace("buildResponse -> {}", this);
