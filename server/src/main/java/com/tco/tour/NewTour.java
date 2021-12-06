@@ -121,7 +121,7 @@ public class NewTour {
                 else {
                     // Get the distance b/n current city and 
                     int currentDistance = this.distanceMatrix[currentCityIndex][j];
-                    if ((currentDistance < nearestNeighborDistance) && (currentDistance != 0)) {
+                    if ((currentDistance < nearestNeighborDistance) && (currentCityIndex != j)) {
                         nearestNeighborDistance = currentDistance;
                         nearestNeighborIndex = j;
                     }
