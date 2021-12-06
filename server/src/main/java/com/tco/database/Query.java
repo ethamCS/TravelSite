@@ -79,13 +79,27 @@ public class Query {
                         + " OR continent.name LIKE \'%" + this.match + "%\'"
                         + " OR world.municipality LIKE \'%" + this.match + "%\'"
                         + " OR country.name LIKE \'%" + this.match + "%\'"
-                        + " OR region.name LIKE \'%" + this.match + "%\')"
-                        + " ;";
+                        + " OR region.name LIKE \'%" + this.match + "%\')";
 
         return query;
     }
     public Integer selectCount() {
         String selectCountStatement = buildSelectCountQuery();
+        if(this.where != null && this.type != null){
+            selectCountStatement +=  " AND country.name IN ('"+ this.where[0] +"')"
+                                + " AND world.type IN " + checkType(this.type)
+                                + " LIMIT " + this.limit+ ";";  
+        }
+        else if(this.where != null && this.type == null){
+            selectCountStatement +=  " AND country.name IN ('"+ this.where[0] +"')"
+                                + " LIMIT " + this.limit+ ";";
+
+        }else if(this.where == null && this.type != null){
+            selectCountStatement +=  " AND world.type IN " + checkType(this.type)
+                                + " LIMIT " + this.limit+ ";";
+        }else{
+            selectCountStatement += " LIMIT " + this.limit+ ";";
+        } 
         try {
             Statement query = DatabaseConnection.con.createStatement();
             ResultSet rs =  query.executeQuery(selectCountStatement);
