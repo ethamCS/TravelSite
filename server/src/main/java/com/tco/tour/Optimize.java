@@ -14,8 +14,16 @@ public class Optimize{
     public int tourDistance; 
     public int shortestTourDistance;
     public int[] shortestTour;  
+    public Countdown count;
  
-    public Optimize(Tour tour){
+    public Optimize(Tour tour, Countdown count){
+        this.tour = tour; 
+        this.count = count;
+        this.shortestTourDistance = Integer.MAX_VALUE;
+        this.shortestTour = new int[tour.places.size()];
+    }
+
+    public Optimize(Tour tour) {
         this.tour = tour; 
         this.shortestTourDistance = Integer.MAX_VALUE;
         this.shortestTour = new int[tour.places.size()];
@@ -130,10 +138,14 @@ public class Optimize{
     }
 
     public Places startTourFromCity(){
+        for (int i = 0; i < tour.places.size(); i++) {
+            this.shortestTour[i] = i;
+        }
         for(int i = 0; i < tour.places.size(); i++){
-            int currentTourDistance = calcNearestNeighborDistance(tour.places.get(i));
-            updateShortestTour(currentTourDistance);
-      
+            if (this.count.timer()) {
+                int currentTourDistance = calcNearestNeighborDistance(tour.places.get(i));
+                updateShortestTour(currentTourDistance);
+            }
         }
         updatePlaceOrder();
         return tour.places;

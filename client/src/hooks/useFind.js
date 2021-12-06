@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { sendAPIRequest } from '../utils/restfulAPI';
-
+import { WHERE_OPT } from '../utils/constants';
 
 
 export function useFind(value) {
@@ -14,11 +14,11 @@ export function useFind(value) {
 
 }
 
-async function getPlaces(matchString, controllerSignal, serverSettings) {
+async function getPlaces(matchString, controllerSignal, serverSettings, typeArray) {
     if (matchString === "") {
         return [];
     }
-    const responseBody = await sendFindRequest(matchString, 0, controllerSignal, serverSettings);
+    const responseBody = await sendFindRequest(matchString, 0, controllerSignal, serverSettings, typeArray);
 
     if (responseBody) {
         return responseBody.places;
@@ -28,9 +28,22 @@ async function getPlaces(matchString, controllerSignal, serverSettings) {
 
 }
 
-async function sendFindRequest(matchString, searchLimit, controllerSignal, serverSettings) {
+async function sendFindRequest(matchString, searchLimit, controllerSignal, serverSettings, typeArray) {
     const url = serverSettings.serverUrl;
-    const requestBody = {requestType: "find", match: matchString, limit: searchLimit};
+
+    // handle typeArray without parameters
+    const arr =[]
+    if (typeArray !== WHERE_OPT[0] && typeof typeArray !== 'undefined') {
+        arr[0] = typeArray
+    }
+    else{ delete arr[0] }
+    
+    const requestBody = {
+        requestType: "find", 
+        match: matchString, 
+        limit: searchLimit,
+        ...(typeof typeArray === 'undefined' || {type: arr})
+    };
 
     const findResponse = await sendAPIRequest(requestBody, url, controllerSignal);
 

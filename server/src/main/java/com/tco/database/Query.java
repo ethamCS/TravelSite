@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import com.tco.database.DatabaseConnection;
 import java.sql.*;
 import java.util.Map;
+import java.util.HashMap;
 
 import com.tco.misc.Places;
 import com.tco.misc.Place;
@@ -18,16 +19,39 @@ public class Query {
     private static Integer limit;
     private Places places;
     private Integer result;
+    private String[] where = null;
+    private String[] type = null;
+    private String filter;
 
     private final transient Logger log = LoggerFactory.getLogger(Query.class);
 
-   public Query(String match, Integer limit){
+   public Query(String match, Integer limit, String[] type){
        this.match = match;
        this.limit = (limit == 0) ? 100 : (limit);
+       this.type = type;
        this.places = new Places();
        this.result = 0;
        DatabaseConnection.connect();
    }
+
+   public String checkType(String[] type){
+        HashMap<String, String> types = new HashMap<String, String>();
+        types.put("airport", "\'small_airport\', \'medium_airport\', \'large_airport\'");
+        types.put("heliport", "\'heliport\'");
+        types.put("balloonport","\'balloonport\'");
+        types.put("other",  "\'seaplane_base\', \'closed\'");
+        String filter = "(";
+        int size = type.length;
+        int index = 0;
+        for(String s : type){
+            if(size != 0 && index != 0) filter += ", ";
+            filter += types.get(s); 
+            size--;
+            index++;
+        }
+        filter += ")";
+        return filter;
+}
     public String buildSelectAllQuery(){
         String query =  "SELECT world.iata_code, world.name, world.latitude, world.longitude, world.municipality,"
                         + " region.name, country.name, continent.name, world.altitude"
@@ -40,11 +64,10 @@ public class Query {
                         + " OR continent.name LIKE \'%" + this.match + "%\'"
                         + " OR world.municipality LIKE \'%" + this.match + "%\'"
                         + " OR country.name LIKE \'%" + this.match + "%\'"
-                        + " OR region.name LIKE \'%" + this.match + "%\')"
-                        + " LIMIT " + this.limit+ ";";
-
+                        + " OR region.name LIKE \'%" + this.match + "%\')";
         return query;
     }
+    
     public String buildSelectCountQuery(){
         String query =  "SELECT COUNT(*)"
                         + " FROM world"
@@ -82,7 +105,22 @@ public class Query {
 
     public Places selectAll(){
         int result = 0;
-        String selectAllStatement = buildSelectAllQuery(); 
+        String selectAllStatement = buildSelectAllQuery();
+        if(this.where != null && this.type != null){
+            selectAllStatement +=  " AND country.name IN ('"+ this.where[0] +"')"
+                                + " AND world.type IN " + checkType(this.type)
+                                + " LIMIT " + this.limit+ ";";  
+        }
+        else if(this.where != null && this.type == null){
+            selectAllStatement +=  " AND country.name IN ('"+ this.where[0] +"')"
+                                + " LIMIT " + this.limit+ ";";
+
+        }else if(this.where == null && this.type != null){
+            selectAllStatement +=  " AND world.type IN " + checkType(this.type)
+                                + " LIMIT " + this.limit+ ";";
+        }else{
+            selectAllStatement += " LIMIT " + this.limit+ ";";
+        } 
         try {
             Statement query = DatabaseConnection.con.createStatement();
             ResultSet rs =  query.executeQuery(selectAllStatement);

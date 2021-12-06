@@ -22,7 +22,7 @@ export const EARTH_RADIUS_UNITS_DEFAULT = { "miles": 3959 };
 
 export const DEFAULT_STARTING_PLACE = { latitude: 40.5764, longitude: -105.0807 }; //originally 40.5734, -105.0865 reverseGeocode({lat: 40.5764, lng: -105.0807});
 
-export const SERVER_FEATURES = ["config", "find", "distances", "tour"];
+export const SERVER_FEATURES = ["config", "find", "distances", "tour", "type"];
 
 export const FILE_FORMATS = ".json, .csv, application/json, text/csv";
 
@@ -32,3 +32,5 @@ export const MIME_TYPE = {
     SVG: "image/svg+xml",
     KML: "application/vnd.google-earth.kml+xml"
 };
+
+export const WHERE_OPT = ['Off', 'airport', 'heliport', 'balloonport', 'other']

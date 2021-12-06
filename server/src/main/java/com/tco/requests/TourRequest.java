@@ -20,11 +20,12 @@ public class TourRequest extends Request {
     
     private final transient Logger log = LoggerFactory.getLogger(TourRequest.class); 
     
-     public void buildResponse() throws BadRequestException {
+    @Override
+    public void buildResponse() throws BadRequestException {
         if (response > 0.0) {
             Countdown count = new Countdown(this.response);
-            NewTour tester = new NewTour(this.places, this.earthRadius, count);
-            this.places = tester.findBestKNNTour();
+            NewTour tour = new NewTour(this.places, this.earthRadius, count);
+            this.places = tour.findBestKNNTour();
         }
         log.trace("buildResponse -> {}", this);
     }
