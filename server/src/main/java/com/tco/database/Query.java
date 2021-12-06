@@ -25,10 +25,11 @@ public class Query {
 
     private final transient Logger log = LoggerFactory.getLogger(Query.class);
 
-   public Query(String match, Integer limit, String[] type){
+   public Query(String match, Integer limit, String[] type, String[] where){
        this.match = match;
        this.limit = (limit == 0) ? 100 : (limit);
        this.type = type;
+       this.where = where;
        this.places = new Places();
        this.result = 0;
        DatabaseConnection.connect();
