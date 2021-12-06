@@ -21,17 +21,13 @@ public class FindRequest extends Request {
 
     @Override
     public void buildResponse() throws BadRequestException {
-        if (this.where != null) {
-            throw new BadRequestException();
-        }
-        else {
-            Query query = new Query(this.match, this.limit, this.type);
-            this.found = query.selectCount();
-            this.places = query.selectAll();
-            if(this.type == null) this.type = new String[0];
-            else this.type = type;
-        }
-
+        Query query = new Query(this.match, this.limit, this.type, this.where);
+        this.found = query.selectCount();
+        this.places = query.selectAll();
+        if(this.type == null) this.type = new String[0];
+        else this.type = type;
+        if(this.where == null) this.where = new String[0];
+        else this.where = where;
         log.trace("buildResponse -> {}", this);
     }
 
@@ -55,6 +51,9 @@ during normal execution, including the constructor. */
     public String[] getTypes(){ 
         return this.type;
     }
+    public String[] getWhere(){ 
+        return this.where;
+    }
     
     public Integer getFound(){
         return this.found;
@@ -65,7 +64,6 @@ during normal execution, including the constructor. */
     }
 
     public void setWhere() {
-        this.where = new String[]{"United States"};
-    }
-    
+        this.where = new String[]{"Canada"};
+    }   
 }
