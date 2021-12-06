@@ -8,6 +8,7 @@ import com.tco.misc.BadRequestException;
 import com.tco.tour.Tour; 
 import com.tco.tour.Optimize; 
 import com.tco.tour.Countdown; 
+import com.tco.tour.NewTour;
 
 import com.tco.misc.Places;
 import com.tco.misc.DummyPlaces;
@@ -21,13 +22,11 @@ public class TourRequest extends Request {
     
     @Override
     public void buildResponse() throws BadRequestException {
-        Tour tour = new Tour(this.earthRadius, this.places, this.response);
-        Countdown count = new Countdown(this.response);
-        if(response > 0.0){
-            Optimize knn = new Optimize(tour, count);
-            knn.distancesMatrix();
-            this.places = knn.startTourFromCity(); 
-        }  
+        if (response > 0.0) {
+            Countdown count = new Countdown(this.response);
+            NewTour tour = new NewTour(this.places, this.earthRadius, count);
+            this.places = tour.findBestKNNTour();
+        }
         log.trace("buildResponse -> {}", this);
     }
 
