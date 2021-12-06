@@ -83,6 +83,25 @@ public class Query {
 
         return query;
     }
+
+    public String appendToQuery(String selectStatement){
+        if(this.where != null && this.type != null){
+            return selectStatement +=  " AND country.name IN ('"+ this.where[0] +"')"
+                                + " AND world.type IN " + checkType(this.type)
+                                + " LIMIT " + this.limit+ ";";  
+        }
+        else if(this.where != null && this.type == null){
+            return selectStatement +=  " AND country.name IN ('"+ this.where[0] +"')"
+                                + " LIMIT " + this.limit+ ";";
+
+        }else if(this.where == null && this.type != null){
+            return selectStatement +=  " AND world.type IN " + checkType(this.type)
+                                + " LIMIT " + this.limit+ ";";
+        }else{
+            return selectStatement += " LIMIT " + this.limit+ ";";
+        } 
+    }
+   
     public Integer selectCount() {
         String selectCountStatement = buildSelectCountQuery();
         if(this.where != null && this.type != null){
@@ -120,21 +139,7 @@ public class Query {
     public Places selectAll(){
         int result = 0;
         String selectAllStatement = buildSelectAllQuery();
-        if(this.where != null && this.type != null){
-            selectAllStatement +=  " AND country.name IN ('"+ this.where[0] +"')"
-                                + " AND world.type IN " + checkType(this.type)
-                                + " LIMIT " + this.limit+ ";";  
-        }
-        else if(this.where != null && this.type == null){
-            selectAllStatement +=  " AND country.name IN ('"+ this.where[0] +"')"
-                                + " LIMIT " + this.limit+ ";";
-
-        }else if(this.where == null && this.type != null){
-            selectAllStatement +=  " AND world.type IN " + checkType(this.type)
-                                + " LIMIT " + this.limit+ ";";
-        }else{
-            selectAllStatement += " LIMIT " + this.limit+ ";";
-        } 
+        selectAllStatement = appendToQuery(selectAllStatement);
         try {
             Statement query = DatabaseConnection.con.createStatement();
             ResultSet rs =  query.executeQuery(selectAllStatement);
