@@ -86,8 +86,6 @@ public class NewTour {
         for (int i = 0; i < this.size; ++i) {
             if (this.count.timer()) {
                 createNearestNeighborTour(i);
-                // System.out.println("Current Tour Distance: " + this.currentTourDistance);
-                // System.out.println("Shortest Tour Distance: " + this.shortestTourDistance);
                 if (this.currentTourDistance < this.shortestTourDistance) {
                     updateShortestTour();
                 }
@@ -97,8 +95,6 @@ public class NewTour {
                 break;
             }
         }
-        // TODO: Rearrange places based on shortest tour and return the new places list
-        // testPrint();
         shiftShortestTourIndices(); 
         return buildNewPlaces();
     }
@@ -119,7 +115,6 @@ public class NewTour {
 
             /* Find closest neighbor */
             for (int j = 0; j < this.size; ++j) {
-                // System.out.println("j: " + j);
                 if (this.visited[j]) {
                     continue;
                 }
@@ -130,10 +125,6 @@ public class NewTour {
                         nearestNeighborDistance = currentDistance;
                         nearestNeighborIndex = j;
                     }
-                    // System.out.println("Current City: " + currentCityIndex);
-                    // System.out.println("Current Distance: " + currentDistance);
-                    // System.out.println("NearestNeigherDistance: " + nearestNeighborDistance);
-                    // System.out.println("NearestNeigherIndex: " + nearestNeighborIndex);
                 }
             }
 
@@ -172,13 +163,4 @@ public class NewTour {
         }
         return newPlaces;
     }
-
-    private void testPrint() {
-        System.out.println("Shortest Tour: " + this.shortestTourDistance);
-        for (int i = 0; i < this.size; ++i) {
-            System.out.print(this.shortestTour[i] + " ");
-        }
-        System.out.println("\n\n");
-    }
-
 }
