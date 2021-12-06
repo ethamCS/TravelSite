@@ -119,7 +119,7 @@ public class NewTour {
                     continue;
                 }
                 else {
-                    // Get the distance b/n current city and 
+                    /* Get the distance b/n current city and the next city in the array */
                     int currentDistance = this.distanceMatrix[currentCityIndex][j];
                     if ((currentDistance < nearestNeighborDistance) && (currentCityIndex != j)) {
                         nearestNeighborDistance = currentDistance;
@@ -139,6 +139,10 @@ public class NewTour {
         this.currentTourDistance += this.distanceMatrix[startCityIndex][lastCity];
     }
 
+
+    /************************************************************************************************************************  
+    * This function updates the shortest tour array to keep track of the current shortest tour found
+    *************************************************************************************************************************/
     private void updateShortestTour() {
         this.shortestTourDistance = this.currentTourDistance;
         for (int i = 0; i < this.size; ++i) {
@@ -146,6 +150,10 @@ public class NewTour {
         }
     }
 
+
+    /************************************************************************************************************************  
+    * This function rotates the indices in the shortest tour array in order to preserve the original starting point
+    *************************************************************************************************************************/
     private void shiftShortestTourIndices() {
         while (this.shortestTour[0] != 0) {
             int temp = this.shortestTour[0];
@@ -156,6 +164,10 @@ public class NewTour {
         }
     }
 
+
+    /************************************************************************************************************************  
+    * This function constructs a new Places object with the updated tour and returns it
+    *************************************************************************************************************************/
     private Places buildNewPlaces() {
         Places newPlaces = new Places();
         for (int i = 0; i < this.size; ++i) {
