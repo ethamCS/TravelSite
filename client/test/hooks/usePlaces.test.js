@@ -158,7 +158,8 @@ describe('usePlaces', () => {
         expect(hook.current.places).toEqual([]);
 
         const props = {
-            setName: jest.fn()
+            setName: jest.fn(),
+            showMessage: jest.fn()
         }
 
         const event = {
