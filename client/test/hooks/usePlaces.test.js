@@ -1,7 +1,7 @@
 import React from 'react';
 import '@testing-library/jest-dom';
 import { act, renderHook } from '@testing-library/react-hooks';
-import { beforeEach, describe, expect, it } from '@jest/globals';
+import { beforeEach, describe, expect, it, jest } from '@jest/globals';
 import { REVERSE_GEOCODE_RESPONSE, MOCK_DEFAULT_PLACE } from '../sharedMocks';
 import { DEFAULT_STARTING_PLACE, LOG } from '../../src/utils/constants';
 import { usePlaces } from '../../src/hooks/usePlaces';
@@ -148,4 +148,30 @@ describe('usePlaces', () => {
 
         expect(hook.current.places).toEqual([]);
     });
+
+    it('Reads a File', async () => {
+        var blob = new Blob([""], { type: 'text/html' });
+        blob["lastModifiedDate"] = "";
+        blob["name"] = "filename";
+        var fakeF = blob;
+
+        expect(hook.current.places).toEqual([]);
+
+        const props = {
+            setName: jest.fn()
+        }
+
+        const event = {
+            target: {
+                files: [fakeF]
+            }
+        }
+
+        await act(async () => {
+            hook.current.placeActions.readFile(mockPlace, event.target.files[0], props);
+        });
+
+        expect(hook.current.places).toEqual([]);
+    });
+
 });
