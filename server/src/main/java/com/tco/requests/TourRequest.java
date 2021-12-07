@@ -22,7 +22,7 @@ public class TourRequest extends Request {
     
     @Override
     public void buildResponse() throws BadRequestException {
-        if (response > 0.0) {
+        if (response > 0.0 && this.places.size() != 0) {
             Countdown count = new Countdown(this.response);
             NewTour tour = new NewTour(this.places, this.earthRadius, count);
             this.places = tour.findBestKNNTour();
