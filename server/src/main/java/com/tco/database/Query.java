@@ -25,10 +25,11 @@ public class Query {
 
     private final transient Logger log = LoggerFactory.getLogger(Query.class);
 
-   public Query(String match, Integer limit, String[] type){
+   public Query(String match, Integer limit, String[] type, String[] where){
        this.match = match;
        this.limit = (limit == 0) ? 100 : (limit);
        this.type = type;
+       this.where = where;
        this.places = new Places();
        this.result = 0;
        DatabaseConnection.connect();
@@ -79,13 +80,32 @@ public class Query {
                         + " OR continent.name LIKE \'%" + this.match + "%\'"
                         + " OR world.municipality LIKE \'%" + this.match + "%\'"
                         + " OR country.name LIKE \'%" + this.match + "%\'"
-                        + " OR region.name LIKE \'%" + this.match + "%\')"
-                        + " ;";
+                        + " OR region.name LIKE \'%" + this.match + "%\')";
 
         return query;
     }
+
+    public String appendToQuery(String selectStatement){
+        if(this.where != null && this.type != null){
+            return selectStatement +=  " AND country.name IN ('"+ this.where[0] +"')"
+                                + " AND world.type IN " + checkType(this.type)
+                                + " LIMIT " + this.limit+ ";";  
+        }
+        else if(this.where != null && this.type == null){
+            return selectStatement +=  " AND country.name IN ('"+ this.where[0] +"')"
+                                + " LIMIT " + this.limit+ ";";
+
+        }else if(this.where == null && this.type != null){
+            return selectStatement +=  " AND world.type IN " + checkType(this.type)
+                                + " LIMIT " + this.limit+ ";";
+        }else{
+            return selectStatement += " LIMIT " + this.limit+ ";";
+        } 
+    }
+   
     public Integer selectCount() {
         String selectCountStatement = buildSelectCountQuery();
+        selectCountStatement = appendToQuery(selectCountStatement);
         try {
             Statement query = DatabaseConnection.con.createStatement();
             ResultSet rs =  query.executeQuery(selectCountStatement);
@@ -106,21 +126,7 @@ public class Query {
     public Places selectAll(){
         int result = 0;
         String selectAllStatement = buildSelectAllQuery();
-        if(this.where != null && this.type != null){
-            selectAllStatement +=  " AND country.name IN ('"+ this.where[0] +"')"
-                                + " AND world.type IN " + checkType(this.type)
-                                + " LIMIT " + this.limit+ ";";  
-        }
-        else if(this.where != null && this.type == null){
-            selectAllStatement +=  " AND country.name IN ('"+ this.where[0] +"')"
-                                + " LIMIT " + this.limit+ ";";
-
-        }else if(this.where == null && this.type != null){
-            selectAllStatement +=  " AND world.type IN " + checkType(this.type)
-                                + " LIMIT " + this.limit+ ";";
-        }else{
-            selectAllStatement += " LIMIT " + this.limit+ ";";
-        } 
+        selectAllStatement = appendToQuery(selectAllStatement);
         try {
             Statement query = DatabaseConnection.con.createStatement();
             ResultSet rs =  query.executeQuery(selectAllStatement);

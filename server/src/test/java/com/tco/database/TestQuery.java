@@ -13,7 +13,7 @@ public class TestQuery {
     @BeforeEach
     public void createConfigurationForTestCases() {
         DatabaseConnection.connect();
-        query = new Query("sembawang", 0, new String[]{"airport"});
+        query = new Query("sembawang", 0, null, null);
     }
 
     @Test

@@ -57,10 +57,11 @@ public class TestFindRequest {
     }
 
     @Test
-    @DisplayName("Where throws exception")
+    @DisplayName("Where is \"Canada\"")
     public void testWhere() {
         find.setWhere();
-        BadRequestException e = assertThrows(BadRequestException.class, () -> {find.buildResponse();});
+        String[] where = find.getWhere();
+        assertEquals("Canada", where[0]);
     }
 
 
