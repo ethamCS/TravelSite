@@ -22,7 +22,7 @@ export default function LoadTripButton(props) {
 
     return (
         <React.Fragment>
-            <FaFileUpload onClick={onIconClick} data-testid="save-button" style={{ cursor: 'pointer', marginLeft: '10px' }} id="tooltip-load" />
+            <FaFileUpload onClick={onIconClick} data-testid="save-button" style={{ cursor: 'pointer', marginLeft: '10px' }} data-testid="load-button" id="tooltip-load" />
             <Tooltip placement={'left'} delay={{ show: 500, hide: 100 }} flip isOpen={tooltipOpen} toggle={() => { setToolTipOpen(!tooltipOpen) }} data-testid="tool-tip-load" target="tooltip-load">Load A Trip!</Tooltip>
             <Input style={{ display: 'none' }} id="file-input" type="file" accept={FILE_FORMATS} data-testid="file-input" onChange={handleFileUpload} />
         </React.Fragment>

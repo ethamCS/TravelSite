@@ -7,13 +7,13 @@ import userEvent from '@testing-library/user-event';
 
 describe('TripName', () => {
     beforeEach(() => {
-        render(<EditTripName/>);
+        render(<EditTripName />);
     });
 
-    it('renders text box', async () =>{
+    it('renders text box', async () => {
         const collapse = screen.getByTestId('trip-collapse');
         expect(collapse.classList.contains('show')).toBe(false);
-        
+
         const editbutton = screen.getByTestId('edit-button');
         user.click(editbutton);
         await waitFor(() => {
@@ -21,16 +21,16 @@ describe('TripName', () => {
         });
     });
 
-    it('updates trip name', async () =>{
+    it('updates trip name', async () => {
         const tripinput = screen.getByTestId('trip-input');
-        
+
         userEvent.type(tripinput, 'new trip');
-        
+
         expect(tripinput.value).toEqual("new trip")
     });
 
-    it('upload file', () =>{
-        const savebutton = screen.getByTestId('save-button');
-        user.click(savebutton);
+    it('upload file', () => {
+        const loadbutton = screen.getByTestId('load-button');
+        user.click(loadbutton);
     });
 });
