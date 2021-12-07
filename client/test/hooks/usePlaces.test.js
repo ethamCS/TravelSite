@@ -1,13 +1,13 @@
 import React from 'react';
 import '@testing-library/jest-dom';
-import {act, renderHook} from '@testing-library/react-hooks';
-import { beforeEach, describe, expect, it } from '@jest/globals';
-import { REVERSE_GEOCODE_RESPONSE } from '../sharedMocks';
-import { LOG } from '../../src/utils/constants';
+import { act, renderHook } from '@testing-library/react-hooks';
+import { beforeEach, describe, expect, it, jest } from '@jest/globals';
+import { REVERSE_GEOCODE_RESPONSE, MOCK_DEFAULT_PLACE } from '../sharedMocks';
+import { DEFAULT_STARTING_PLACE, LOG } from '../../src/utils/constants';
 import { usePlaces } from '../../src/hooks/usePlaces';
 
 describe('usePlaces', () => {
-    const mockPlace = {latitude: "40.570", longitude: "-105.085"};
+    const mockPlace = { latitude: "40.570", longitude: "-105.085" };
     const mockPlaceResponse = {
         lat: 40.57,
         lng: -105.085,
@@ -55,7 +55,7 @@ describe('usePlaces', () => {
     });
 
     it('sets index to -1 if selecting invalid index', () => {
-        jest.spyOn(LOG, 'error').mockImplementation(() => {});
+        jest.spyOn(LOG, 'error').mockImplementation(() => { });
 
         act(() => {
             hook.current.placeActions.selectIndex(99);
@@ -115,7 +115,7 @@ describe('usePlaces', () => {
     });
 
     it('denies removing a place at an invalid index', () => {
-        jest.spyOn(LOG, 'error').mockImplementation(() => {});
+        jest.spyOn(LOG, 'error').mockImplementation(() => { });
 
         act(() => {
             hook.current.placeActions.removeAtIndex(42);
@@ -138,4 +138,41 @@ describe('usePlaces', () => {
         });
         expect(hook.current.places).toEqual([]);
     });
+
+    it('Adds Starting Place on Move to Home Failure', async () => {
+        expect(hook.current.places).toEqual([]);
+
+        await act(async () => {
+            hook.current.placeActions.moveToHome();
+        });
+
+        expect(hook.current.places).toEqual([]);
+    });
+
+    it('Reads a File', async () => {
+        var blob = new Blob([""], { type: 'text/html' });
+        blob["lastModifiedDate"] = "";
+        blob["name"] = "filename";
+        var fakeF = blob;
+
+        expect(hook.current.places).toEqual([]);
+
+        const props = {
+            setName: jest.fn(),
+            showMessage: jest.fn()
+        }
+
+        const event = {
+            target: {
+                files: [fakeF]
+            }
+        }
+
+        await act(async () => {
+            hook.current.placeActions.readFile(mockPlace, event.target.files[0], props);
+        });
+
+        expect(hook.current.places).toEqual([]);
+    });
+
 });

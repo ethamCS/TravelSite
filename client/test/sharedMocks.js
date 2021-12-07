@@ -1,3 +1,12 @@
+export const MOCK_CONTROLLER = new AbortController();
+
+export const MOCK_DEFAULT_PLACE = { latitude: 40.5764, longitude: -105.0807 };
+
+export const MOCK_SERVER_SETTINGS = {
+    serverUrl: "thisisamock.com",
+    serverConfig: null
+}
+
 export const VALID_CONFIG_RESPONSE = JSON.stringify({
     requestType: 'config',
     serverName: 't17 We Push To Main',
@@ -20,8 +29,8 @@ export const MOCK_PLACES = [
 ];
 
 export const MOCK_RESULTS = [
-    {name: 'Place A', latitude: 40.0, longitude: 50.0},
-    {name: 'Place B', latitude: 45.0, longitude: 55.0}
+    { name: 'Place A', latitude: 40.0, longitude: 50.0 },
+    { name: 'Place B', latitude: 45.0, longitude: 55.0 }
 ];
 
 export const REVERSE_GEOCODE_RESPONSE = JSON.stringify({
