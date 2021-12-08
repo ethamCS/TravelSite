@@ -2,7 +2,7 @@ import React from 'react';
 import '@testing-library/jest-dom';
 import { act, renderHook } from '@testing-library/react-hooks';
 import { beforeEach, describe, expect, it, jest } from '@jest/globals';
-import { REVERSE_GEOCODE_RESPONSE, MOCK_DEFAULT_PLACE, MOCK_GEOLOCATION } from '../sharedMocks';
+import { REVERSE_GEOCODE_RESPONSE, MOCK_DEFAULT_PLACE, MOCK_GEOLOCATION, MOCK_PLACES } from '../sharedMocks';
 import { DEFAULT_STARTING_PLACE, LOG } from '../../src/utils/constants';
 import { usePlaces } from '../../src/hooks/usePlaces';
 
@@ -16,7 +16,9 @@ describe('usePlaces', () => {
 
     let hook;
 
-    window.URL.createObjectURL = function () { };
+    HTMLAnchorElement.prototype.click = jest.fn();
+
+    global.URL.createObjectURL = jest.fn();
 
     beforeEach(() => {
         jest.clearAllMocks();
@@ -194,7 +196,6 @@ describe('usePlaces', () => {
             fileName: "hello"
         }
 
-        global.URL.createObjectURL = jest.fn();
         act(() => {
             hook.current.placeActions.saveFile(props);
         });
@@ -214,10 +215,40 @@ describe('usePlaces', () => {
             fileName: "hello"
         }
 
-        global.URL.createObjectURL = jest.fn();
         act(() => {
             hook.current.placeActions.saveCSV(props);
         });
+    });
+
+    it('Saving a SVG File', async () => {
+        fetch.mockResponse(REVERSE_GEOCODE_RESPONSE);
+        expect(hook.current.places).toEqual([]);
+
+        await act(async () => {
+            hook.current.placeActions.append(mockPlace);
+        });
+
+        expect(hook.current.places).toEqual([mockPlaceResponse]);
+
+        const props = {
+            fileName: "hello"
+        }
+
+        act(() => {
+            hook.current.placeActions.saveSVG(props);
+        });
+    });
+
+    it('Setting a Tour', async () => {
+        fetch.mockResponse(REVERSE_GEOCODE_RESPONSE);
+        expect(hook.current.places).toEqual([]);
+
+        await act(async () => {
+            hook.current.placeActions.setTour(MOCK_PLACES);
+        });
+
+        expect(hook.current.places).toEqual(MOCK_PLACES);
+
     });
 
 });
