@@ -26,9 +26,8 @@ describe('Find', () => {
 
     test('clicks the random button', () => {
         render(<Find />);
-        const randomButton = screen.getByTestId("randomButton");
+        const randomButton = screen.getByTestId("random-button");
         user.click(randomButton)
-
     });
 
     test('clicks the clear find button', () => {
