@@ -28,10 +28,10 @@ function OptRadioButtons(props) {
 
     return (
         <ButtonGroup size='sm'>
-            <Button color='primary' outline size='sm' active={optimizedTrip} onClick={() => optClick(props.places, props.serverSettings, props.placeActions, props.context)}>
+            <Button data-testid="opt-trip" color='primary' outline size='sm' active={optimizedTrip} onClick={() => optClick(props.places, props.serverSettings, props.placeActions, props.context)}>
                 Optimized Trip
             </Button>
-            <Button color='primary' outline size='sm' active={origTrip} onClick={() => origClick(props.placeActions, props.context)}>
+            <Button data-testid="orig-trip" color='primary' outline size='sm' active={origTrip} onClick={() => origClick(props.placeActions, props.context)}>
                 Original Trip
             </Button>
         </ButtonGroup>
@@ -43,7 +43,7 @@ function CheckButton(props) {
 
     return (
         <Col>
-            <FaCheck id="accept-tooltip" onClick={() => checkClick(props.places, props.toggleShorter, props.context)} style={{ cursor: 'pointer' }}/>
+            <FaCheck data-testid="check-button" id="accept-tooltip" onClick={() => checkClick(props.places, props.toggleShorter, props.context)} style={{ cursor: 'pointer' }}/>
             <Tooltip delay={{ show:500, hide: 100 }} flip isOpen={tooltipOpen} toggle={() => {setToolTipOpen(!tooltipOpen)}} target="accept-tooltip" >Keep Trip</Tooltip>
         </Col>
     );
