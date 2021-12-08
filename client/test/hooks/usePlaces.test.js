@@ -16,6 +16,8 @@ describe('usePlaces', () => {
 
     let hook;
 
+    window.URL.createObjectURL = function () { };
+
     beforeEach(() => {
         jest.clearAllMocks();
         fetch.resetMocks();
@@ -176,6 +178,46 @@ describe('usePlaces', () => {
         });
 
         expect(hook.current.places).toEqual([]);
+    });
+
+    it('Saving a JSON File', async () => {
+        fetch.mockResponse(REVERSE_GEOCODE_RESPONSE);
+        expect(hook.current.places).toEqual([]);
+
+        await act(async () => {
+            hook.current.placeActions.append(mockPlace);
+        });
+
+        expect(hook.current.places).toEqual([mockPlaceResponse]);
+
+        const props = {
+            fileName: "hello"
+        }
+
+        global.URL.createObjectURL = jest.fn();
+        act(() => {
+            hook.current.placeActions.saveFile(props);
+        });
+    });
+
+    it('Saving a CSV File', async () => {
+        fetch.mockResponse(REVERSE_GEOCODE_RESPONSE);
+        expect(hook.current.places).toEqual([]);
+
+        await act(async () => {
+            hook.current.placeActions.append(mockPlace);
+        });
+
+        expect(hook.current.places).toEqual([mockPlaceResponse]);
+
+        const props = {
+            fileName: "hello"
+        }
+
+        global.URL.createObjectURL = jest.fn();
+        act(() => {
+            hook.current.placeActions.saveCSV(props);
+        });
     });
 
 });
