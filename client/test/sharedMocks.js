@@ -1,5 +1,17 @@
 export const MOCK_CONTROLLER = new AbortController();
 
+export const MOCK_GEOLOCATION = {
+    getCurrentPosition: jest.fn().mockImplementation((success) =>
+        Promise.resolve(
+            success({
+                coords: {
+                    latitude: 40.57,
+                    longitude: -105.085
+                }
+            })
+        )
+    )
+}
 export const MOCK_DEFAULT_PLACE = { latitude: 40.5764, longitude: -105.0807 };
 
 export const MOCK_SERVER_SETTINGS = {
