@@ -43,7 +43,7 @@ function CheckButton(props) {
 
     return (
         <Col>
-            <FaCheck id="accept-tooltip" onClick={() => checkClick(props.places, props.toggleShorter, props.context)} style={{ cursor: 'pointer' }}/>
+            <FaCheck data-testid="check-button" id="accept-tooltip" onClick={() => checkClick(props.places, props.toggleShorter, props.context)} style={{ cursor: 'pointer' }}/>
             <Tooltip delay={{ show:500, hide: 100 }} flip isOpen={tooltipOpen} toggle={() => {setToolTipOpen(!tooltipOpen)}} target="accept-tooltip" >Keep Trip</Tooltip>
         </Col>
     );
