@@ -24,6 +24,12 @@ describe('Find', () => {
 
     test(' \`Where\` Dropdown Open', ()=>{})
 
+    test('clicks the random button', () => {
+        render(<Find />);
+        const randomButton = screen.getByTestId("random-button");
+        user.click(randomButton)
+    });
+
     test('clicks the clear find button', () => {
         render(<Find />);
         const clearButton = screen.getByTestId("find-x-button");
