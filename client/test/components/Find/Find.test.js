@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent, waitForElementToBeRemoved } from '@testing-library/react';
 import { describe, expect, test } from '@jest/globals';
+import user from '@testing-library/user-event';
 import { act } from 'react-dom/test-utils';
 import Find from '../../../src/components/Find/Find';
 
@@ -22,4 +23,13 @@ describe('Find', () => {
     })
 
     test(' \`Where\` Dropdown Open', ()=>{})
+
+    test('clicks the random button', () => {
+        render(<Find />);
+        const randomButton = screen.getByTestId("randomButton");
+        user.click(randomButton)
+
+    });
+
+    
 });
