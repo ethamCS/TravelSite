@@ -63,15 +63,8 @@ function SaveTripFooter(props) {
                 <Row xs="5">
                     <Col />
                     <SaveTripCol fun={saveJSON} closeSaveTrip={props.closeSaveTrip} msg={".JSON"}/>
-                    <Col>
-                        <Button color={"primary"} onClick={saveJSON} onMouseUp={props.closeSaveTrip}>.JSON</Button>
-                    </Col>
-                    <Col>
-                        <Button color={"primary"} onClick={saveCSV} onMouseUp={props.closeSaveTrip}>.CSV</Button>
-                    </Col>
-                    <Col>
-                        <Button color={"primary"} onClick={saveSVG} onMouseUp={props.closeSaveTrip}>.SVG</Button>
-                    </Col>
+                    <SaveTripCol fun={saveCSV} closeSaveTrip={props.closeSaveTrip} msg={".CSV"}/>
+                    <SaveTripCol fun={saveSVG} closeSaveTrip={props.closeSaveTrip} msg={".SVG"}/>
                     <Col />
                 </Row>
             </Collapse>
