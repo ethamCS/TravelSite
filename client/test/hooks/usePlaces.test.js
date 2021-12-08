@@ -2,7 +2,7 @@ import React from 'react';
 import '@testing-library/jest-dom';
 import { act, renderHook } from '@testing-library/react-hooks';
 import { beforeEach, describe, expect, it, jest } from '@jest/globals';
-import { REVERSE_GEOCODE_RESPONSE, MOCK_DEFAULT_PLACE } from '../sharedMocks';
+import { REVERSE_GEOCODE_RESPONSE, MOCK_DEFAULT_PLACE, MOCK_GEOLOCATION } from '../sharedMocks';
 import { DEFAULT_STARTING_PLACE, LOG } from '../../src/utils/constants';
 import { usePlaces } from '../../src/hooks/usePlaces';
 
@@ -139,14 +139,17 @@ describe('usePlaces', () => {
         expect(hook.current.places).toEqual([]);
     });
 
-    it('Adds Starting Place on Move to Home Failure', async () => {
+    it('Adds Starting Place on Move to Home', async () => {
+        fetch.mockResponse(REVERSE_GEOCODE_RESPONSE);
         expect(hook.current.places).toEqual([]);
+
+        global.navigator.geolocation = MOCK_GEOLOCATION;
 
         await act(async () => {
             hook.current.placeActions.moveToHome();
         });
 
-        expect(hook.current.places).toEqual([]);
+        expect(hook.current.places).toEqual([mockPlaceResponse]);
     });
 
     it('Reads a File', async () => {

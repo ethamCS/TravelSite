@@ -54,13 +54,10 @@ export async function moveToHome(context) {
     function onSuccess({ coords }) {
         const place = { latitude: coords.latitude, longitude: coords.longitude };
         append(place, context);
-
-        LOG.info(`The user is located at ${JSON.stringify(place)}.`);
     }
 
     function onError(error) {
         append(DEFAULT_STARTING_PLACE, context);
-        LOG.info(error.message);
     }
 }
 
