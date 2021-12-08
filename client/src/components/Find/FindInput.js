@@ -21,10 +21,10 @@ export function FindInput(props){
 export function FindActionsDropdown(props){
     return (
         <FindDropdown {...props}>
-            <DropdownItem onClick={props.toggle}>
+            <DropdownItem onClick={props.toggle} data-testId="find-button">
                 <FaSearchLocation/>
             </DropdownItem>
-            <DropdownItem onClick={async () => showRandom(props.context, props.serverSettings, props.setRandom, props.active)}>
+            <DropdownItem data-testId="random-button" onClick={async () => showRandom(props.context, props.serverSettings, props.setRandom, props.active)}>
                 <FaDice/>
             </DropdownItem>
         </FindDropdown>
