@@ -34,7 +34,7 @@ function FindHeader(props) {
                     <h3>Find Locations</h3>
                 </Col>
                 <Col xs="auto">
-                    <FaTimes name="closeFind" color="primary" onMouseDown={clearFind} onMouseUp={props.closePage} style={{ cursor: 'pointer' }}/>
+                    <FaTimes name="closeFind" data-testid="find-x-button" color="primary" onMouseDown={clearFind} onMouseUp={props.closePage} style={{ cursor: 'pointer' }}/>
                 </Col>
             </Row>
         </Container>
@@ -73,7 +73,7 @@ function FindBody(props) {
     return (
         <Container>
             <FindInputGroup context={props.context} serverSettings={props.serverSettings} matchString={matchString} setRandom={setRandom} setMatchValue={setMatchValue} />
-            <Button onClick={() => setFilterOpen(!filterOpen)} aria-expanded={filterOpen}><FaFilter/>   Search Filter </Button>
+            <Button data-testid="filter-button" onClick={() => setFilterOpen(!filterOpen)} aria-expanded={filterOpen}><FaFilter/>   Search Filter </Button>
                 <Collapse isOpen={filterOpen}>
                 <p><br lineheight="7 px"></br>Type: </p>{dropdownType(dropdownOpen, setDropdownOpen, active, setActive)}
                 </Collapse>
@@ -100,7 +100,7 @@ function FindInputGroup(props) {
     return (
         <InputGroup>
             <Input type="search" placeholder="Enter Location" data-testid="find-input" value={props.matchString} onChange={(e) => props.setMatchValue(e.target.value)} />
-            <Button color="primary" onClick={async () => showRandom(props.context, props.serverSettings, props.setRandom, props.active)}><FaDice/></Button>
+            <Button color="primary" data-testid="randomButton" onClick={async () => showRandom(props.context, props.serverSettings, props.setRandom, props.active)}><FaDice/></Button>
         </InputGroup>
     );
 }
