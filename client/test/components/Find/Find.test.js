@@ -31,5 +31,10 @@ describe('Find', () => {
 
     });
 
-    
+    test('clicks the clear find button', () => {
+        render(<Find />);
+        const clearButton = screen.getByTestId("find-x-button");
+        user.click(clearButton);
+
+    });
 });
