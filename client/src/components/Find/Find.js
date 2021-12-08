@@ -96,7 +96,7 @@ function dropdownType(dropdownOpen, setDropdownOpen, active, setActive) {
     </Dropdown>;
 }
 
-function FindInputGroup(props) {
+export function FindInputGroup(props) {
     return (
         <InputGroup>
             <Input type="search" placeholder="Enter Location" data-testid="find-input" value={props.matchString} onChange={(e) => props.setMatchValue(e.target.value)} />
