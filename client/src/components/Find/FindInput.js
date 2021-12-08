@@ -6,35 +6,25 @@ import { FindInputGroup, showRandom } from "./Find";
 
 export function FindInput(props){
     const [search, setSearch] = useState(true);
-    const [random, setRandom] = useState(false);
 
     const toggle = () => {
-        setSearch(!search);
-        setRandom(!random);
+        setSearch(search);
     }
 
     return(
         <div>
-            <Collapse isOpen={search}>
-                <FindInputGroup context={props.context} serverSettings={props.serverSettings} matchString={props.matchString} setRandom={props.setRandom} setMatchValue={props.setMatchValue}/>
-            </Collapse>
-            <Collapse isOpen={random}>
-                <b>Random Places!  </b>
-                <Button color="primary" data-testid="randomButton" onClick={async () => showRandom(props.context, props.serverSettings, props.setRandom, props.active)}><FaDice/></Button>
-                <FindActionsDropdown toggle={toggle}/>
-            </Collapse>
-            <FindActionsDropdown toggle={toggle}/>
+            <FindInputGroup active={props.active} context={props.context} serverSettings={props.serverSettings} matchString={props.matchString} setRandom={props.setRandom} setMatchValue={props.setMatchValue} toggle={toggle}/>
         </div>
     );
 }
 
-function FindActionsDropdown(props){
+export function FindActionsDropdown(props){
     return (
         <FindDropdown {...props}>
             <DropdownItem onClick={props.toggle}>
                 <FaSearchLocation/>
             </DropdownItem>
-            <DropdownItem onClick={props.toggle}>
+            <DropdownItem onClick={async () => showRandom(props.context, props.serverSettings, props.setRandom, props.active)}>
                 <FaDice/>
             </DropdownItem>
         </FindDropdown>

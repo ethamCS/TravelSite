@@ -6,7 +6,7 @@ import Results from './Results.js'
 import { useFind } from '../../hooks/useFind';
 import { FaTimes, FaFilter } from 'react-icons/fa';
 import { WHERE_OPT } from '../../utils/constants';
-import { FindInput } from './FindInput.js';
+import { FindInput, FindActionsDropdown } from './FindInput.js';
 
 export default function Find(props) {
     const [matchString, setMatchValue, getPlaces] = useFind("");
@@ -101,6 +101,7 @@ export function FindInputGroup(props) {
     return (
         <InputGroup>
             <Input type="search" placeholder="Enter Location" data-testid="find-input" value={props.matchString} onChange={(e) => props.setMatchValue(e.target.value)} />
+            <FindActionsDropdown active={props.active} context={props.context} serverSettings={props.serverSettings} matchString={props.matchString} setRandom={props.setRandom} setMatchValue={props.setMatchValue} toggle={props.toggle}/>
         </InputGroup>
     );
 }
