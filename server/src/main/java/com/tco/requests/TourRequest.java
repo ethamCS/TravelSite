@@ -54,4 +54,7 @@ public class TourRequest extends Request {
         return this.places.size();
     }
     
+    public Places getPlaces() {
+        return this.places;
+    }
 }
