@@ -5,8 +5,6 @@ import org.slf4j.LoggerFactory;
 import com.tco.distances.Distances; 
 import com.tco.distances.Calculate; 
 import com.tco.misc.BadRequestException;
-import com.tco.tour.Tour; 
-import com.tco.tour.Optimize; 
 import com.tco.tour.Countdown; 
 import com.tco.tour.NewTour;
 
