@@ -37,4 +37,11 @@ describe('Find', () => {
         user.click(clearButton);
 
     });
+
+    test('clicks the filter button', () => {
+        render(<Find />);
+        const filterButton = screen.getByTestId("filter-button");
+        user.click(filterButton);
+
+    });
 });
