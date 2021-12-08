@@ -34,7 +34,7 @@ function FindHeader(props) {
                     <h3>Find Locations</h3>
                 </Col>
                 <Col xs="auto">
-                    <FaTimes name="closeFind" color="primary" onMouseDown={clearFind} onMouseUp={props.closePage} style={{ cursor: 'pointer' }}/>
+                    <FaTimes name="closeFind" data-testid="find-x-button" color="primary" onMouseDown={clearFind} onMouseUp={props.closePage} style={{ cursor: 'pointer' }}/>
                 </Col>
             </Row>
         </Container>
