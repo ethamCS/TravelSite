@@ -14,8 +14,6 @@ describe('usePlaces', () => {
         name: 'Colorado State University, South College Avenue, Fort Collins, Larimer County, Colorado, 80525-1725, United States'
     };
 
-    global.navigator.geolocation = MOCK_GEOLOCATION;
-
     let hook;
 
     beforeEach(() => {
@@ -141,9 +139,11 @@ describe('usePlaces', () => {
         expect(hook.current.places).toEqual([]);
     });
 
-    it('Adds Starting Place on Move to Home Failure', async () => {
+    it('Adds Starting Place on Move to Home', async () => {
         fetch.mockResponse(REVERSE_GEOCODE_RESPONSE);
         expect(hook.current.places).toEqual([]);
+
+        global.navigator.geolocation = MOCK_GEOLOCATION;
 
         await act(async () => {
             hook.current.placeActions.moveToHome();
