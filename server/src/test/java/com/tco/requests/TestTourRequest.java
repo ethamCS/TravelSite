@@ -38,5 +38,11 @@ public class TestTourRequest {
         assertEquals(1.0, response);
     }
 
+    @Test
+    @DisplayName("Places has 3 items")
+    public void testPlacesSize() {
+        int placesSize = tour.getPlacesSize();
+        assertEquals(3, placesSize);
+    }
     
 }
