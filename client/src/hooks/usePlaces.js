@@ -232,10 +232,6 @@ function downloadFile(fileNameWithExtension, mimeType, fileText) {
     link.download = fileNameWithExtension;
     document.body.appendChild(link);
     link.click();
-    setTimeout(function () {
-        document.body.removeChild(link);
-        window.URL.revokeObjectURL(url);
-    }, 0);
 }
 
 async function setTour(placesList, context) {
