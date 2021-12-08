@@ -3,6 +3,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import com.tco.misc.BadRequestException;
+import com.tco.misc.Place;
+import com.tco.misc.Places;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -32,11 +34,25 @@ public class TestTourRequest {
     }
 
     @Test
-    @DisplayName("Response Time is \"0.0\"")
+    @DisplayName("Response Time is \"1.0\"")
     public void testresponse() {
         Double response = tour.getresponse();
-        assertEquals(0.0, response);
+        assertEquals(1.0, response);
     }
 
+    @Test
+    @DisplayName("Places has 3 items")
+    public void testPlacesSize() {
+        int placesSize = tour.getPlacesSize();
+        assertEquals(3, placesSize);
+    }
+
+    @Test
+    @DisplayName("Starting place is preserved")
+    public void testStartPlace() {
+        Places places = tour.getPlaces();
+        Place firstPlace = places.get(0);
+        assertEquals("KDEN", firstPlace.get("name"));
+    }
     
 }
