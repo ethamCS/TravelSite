@@ -14,8 +14,8 @@ public class FindRequest extends Request {
     private Integer limit;
     private Integer found;
     private Places places;
-    private String[] where;
-    private String[] type;
+    private String[] where = null;
+    private String[] type = null;
 
     private final transient Logger log = LoggerFactory.getLogger(FindRequest.class);
 
