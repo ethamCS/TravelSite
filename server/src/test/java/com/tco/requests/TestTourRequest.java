@@ -32,10 +32,10 @@ public class TestTourRequest {
     }
 
     @Test
-    @DisplayName("Response Time is \"0.0\"")
+    @DisplayName("Response Time is \"1.0\"")
     public void testresponse() {
         Double response = tour.getresponse();
-        assertEquals(0.0, response);
+        assertEquals(1.0, response);
     }
 
     
