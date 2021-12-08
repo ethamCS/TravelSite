@@ -62,6 +62,7 @@ function SaveTripFooter(props) {
             <Collapse isOpen={props.fileName != null && props.fileName != ""}>
                 <Row xs="5">
                     <Col />
+                    <SaveTripCol fun={saveJSON} closeSaveTrip={props.closeSaveTrip} msg={".JSON"}/>
                     <Col>
                         <Button color={"primary"} onClick={saveJSON} onMouseUp={props.closeSaveTrip}>.JSON</Button>
                     </Col>
@@ -75,5 +76,13 @@ function SaveTripFooter(props) {
                 </Row>
             </Collapse>
         </Container>
+    );
+}
+
+function SaveTripCol(props){
+    return(
+        <Col>
+            <Button color={"primary"} onClick={props.fun} onMouseUp={props.closeSaveTrip}>{props.msg}</Button>
+        </Col>
     );
 }
