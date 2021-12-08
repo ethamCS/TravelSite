@@ -100,7 +100,7 @@ function FindInputGroup(props) {
     return (
         <InputGroup>
             <Input type="search" placeholder="Enter Location" data-testid="find-input" value={props.matchString} onChange={(e) => props.setMatchValue(e.target.value)} />
-            <Button color="primary" onClick={async () => showRandom(props.context, props.serverSettings, props.setRandom, props.active)}><FaDice/></Button>
+            <Button color="primary" data-testid="randomButton" onClick={async () => showRandom(props.context, props.serverSettings, props.setRandom, props.active)}><FaDice/></Button>
         </InputGroup>
     );
 }
